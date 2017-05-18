@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zuW-Nb-gP7">
+                    <rect key="frame" x="0.0" y="240" width="480" height="240"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mOS-60-M26">
+                            <rect key="frame" x="187" y="177" width="106" height="33"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="106" id="6xT-Cx-Aea"/>
+                                <constraint firstAttribute="height" constant="33" id="hEW-jV-Jry"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.062745098040000002" green="0.066666666669999999" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="mOS-60-M26" secondAttribute="centerX" id="EGK-km-OYS"/>
+                        <constraint firstAttribute="bottom" secondItem="mOS-60-M26" secondAttribute="bottom" constant="30" id="L2C-ZM-YSn"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgV-Dd-JgF">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="240"/>
+                    <color key="backgroundColor" red="0.062745098040000002" green="0.066666666669999999" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="h6B-pU-bHx">
+                    <rect key="frame" x="196" y="208" width="82" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="UMg-jh-WGS"/>
+                        <constraint firstAttribute="width" constant="82" id="wiq-op-h1f"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="hgV-Dd-JgF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="0Va-zL-spT"/>
+                <constraint firstAttribute="centerY" secondItem="h6B-pU-bHx" secondAttribute="centerY" constant="18" id="BbU-Wn-e75"/>
+                <constraint firstItem="zuW-Nb-gP7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="C0d-A7-Xgx"/>
+                <constraint firstAttribute="centerY" secondItem="hgV-Dd-JgF" secondAttribute="bottom" id="EfE-mP-Cq4"/>
+                <constraint firstAttribute="trailing" secondItem="zuW-Nb-gP7" secondAttribute="trailing" id="J04-V7-L96"/>
+                <constraint firstItem="zuW-Nb-gP7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="centerY" id="OKG-pF-Lo1"/>
+                <constraint firstAttribute="bottom" secondItem="zuW-Nb-gP7" secondAttribute="bottom" id="XMO-Mc-4m4"/>
+                <constraint firstAttribute="centerX" secondItem="h6B-pU-bHx" secondAttribute="centerX" id="ZBL-Jy-12S"/>
+                <constraint firstItem="hgV-Dd-JgF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="abV-OB-dD9"/>
+                <constraint firstAttribute="trailing" secondItem="hgV-Dd-JgF" secondAttribute="trailing" id="lU0-7r-0mt"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="548" y="455"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="logo" width="75" height="30"/>
+    </resources>
+</document>
