@@ -103,12 +103,12 @@ class MyLibViewController: UIViewController
         }
     }
     
-    func tableView(_ tableView:UITableView, canEditRowAt indexPath:IndexPath)->Bool
+    func tableView(_ tableView:UITableView, canEditRowAtIndexPath indexPath:IndexPath)->Bool
     {
         return indexPath.row<5 ? false : true
     }
     
-    func tableView(_ tableView:UITableView, editActionsForRowAt indexPath:IndexPath)->[UITableViewRowAction]?
+    func tableView(_ tableView:UITableView, editActionsForRowAtIndexPath indexPath:IndexPath)->[UITableViewRowAction]?
     {
         let clearButton=UITableViewRowAction(style:.default, title:"Clear")
         {action, indexPath in

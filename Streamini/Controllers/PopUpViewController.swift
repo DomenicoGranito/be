@@ -88,7 +88,7 @@ class PopUpViewController: BaseViewController
         if indexPath.row==3
         {
             view.window?.rootViewController?.dismiss(animated:true, completion:nil)
-            NotificationCenter.default.post(name:NSNotification.Name("goToChannels"), object:stream?.user)
+            NotificationCenter.default.post(name:Notification.Name("goToChannels"), object:stream?.user)
         }
         if indexPath.row==4
         {
@@ -112,9 +112,9 @@ class PopUpViewController: BaseViewController
             dismiss(animated:true, completion:nil)
             SocialConnector().block(stream!.user.id, blockSuccess, failureWithoutAction)
             SongManager.deleteBlockedUserVideos(stream!.user.id)
-            NotificationCenter.default.post(name:NSNotification.Name("blockUser"), object:nil)
-            NotificationCenter.default.post(name:NSNotification.Name("hideMiniPlayer"), object:nil)
-            NotificationCenter.default.post(name:NSNotification.Name("refreshAfterBlock"), object:nil)
+            NotificationCenter.default.post(name:Notification.Name("blockUser"), object:nil)
+            NotificationCenter.default.post(name:Notification.Name("hideMiniPlayer"), object:nil)
+            NotificationCenter.default.post(name:Notification.Name("refreshAfterBlock"), object:nil)
         }
     }
     

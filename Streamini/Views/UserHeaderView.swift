@@ -112,8 +112,6 @@ class UserHeaderView: UIView, UITextViewDelegate {
         SDWebImagePrefetcher.shared().prefetchURLs([user.avatarURL()])
     }
     
-    // MARK: - UITextViewDelegate
-    
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         if let del = delegate {
             del.descriptionWillStartEdit()

@@ -24,7 +24,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     
     override func viewDidLoad()
     {
-        seekBar.setThumbImage(UIImage(), for:UIControlState())
+        seekBar.setThumbImage(UIImage(), for:.normal)
         
         miniPlayerView.frame=CGRect(x:0, y:view.frame.size.height-99, width:view.frame.size.width, height:50)
         view.addSubview(miniPlayerView)
@@ -32,8 +32,8 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         
         getPermissions()
         
-        NotificationCenter.default.addObserver(self, selector:#selector(goToChannels), name:NSNotification.Name(rawValue:"goToChannels"), object:nil)
-        NotificationCenter.default.addObserver(self, selector:#selector(hideMiniPlayer), name:NSNotification.Name(rawValue:"hideMiniPlayer"), object:nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(goToChannels), name:Notification.Name("goToChannels"), object:nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(hideMiniPlayer), name:Notification.Name("hideMiniPlayer"), object:nil)
     }
         
     func hideMiniPlayer()

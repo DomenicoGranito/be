@@ -23,11 +23,11 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     
     override func viewDidLoad()
     {
-        nowPlayingStream=streamsArray.object(at: nowPlayingStreamIndex) as! Stream
+        nowPlayingStream=streamsArray.object(at:nowPlayingStreamIndex) as! Stream
         
-        streamsArray.removeObject(at: nowPlayingStreamIndex)
+        streamsArray.removeObject(at:nowPlayingStreamIndex)
         
-        backgroundImageView.sd_setImage(with: NSURL(string:"http://\(host)/thumb/\(nowPlayingStream.id).jpg") as URL!)
+        backgroundImageView.sd_setImage(with:URL(string:"http://\(host)/thumb/\(nowPlayingStream.id).jpg"))
         
         headerTitleLbl.text=nowPlayingStream.title
         
@@ -172,7 +172,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     
     func tableView(_ tableView:UITableView, moveRowAtIndexPath sourceIndexPath:IndexPath, toIndexPath destinationIndexPath:IndexPath)
     {
-        streamsArray.exchangeObject(at: sourceIndexPath.row, withObjectAt:destinationIndexPath.row)
+        streamsArray.exchangeObject(at:sourceIndexPath.row, withObjectAt:destinationIndexPath.row)
         itemsTbl.reloadData()
     }
     
@@ -188,8 +188,8 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
             let sourceIndex=selectedStreamsArray[i] as! Int
             let destinationIndex=nowPlayingStreamIndex+i
             
-            streamsArray.exchangeObject(at: sourceIndex, withObjectAt:destinationIndex)
-            upNextStreamsArray.add(streamsArray.object(at: sourceIndex))
+            streamsArray.exchangeObject(at:sourceIndex, withObjectAt:destinationIndex)
+            upNextStreamsArray.add(streamsArray.object(at:sourceIndex))
         }
         
         selectedStreamsArray.removeAllObjects()
@@ -202,7 +202,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let vc=storyboard.instantiateViewController(withIdentifier: "PopUpViewController") as! PopUpViewController
         vc.stream=nowPlayingStream
-        present(vc, animated:true, completion:nil)
+        present(vc, animated:true)
     }
     
     @IBAction func removeSelectedStreams()
@@ -241,16 +241,16 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     {
         streamsArray.insert(nowPlayingStream, at:nowPlayingStreamIndex)
         
-        NotificationCenter.default.post(name:NSNotification.Name(rawValue:"updatePlayer"), object:nowPlayingStreamIndex)
+        NotificationCenter.default.post(name:Notification.Name(rawValue:"updatePlayer"), object:nowPlayingStreamIndex)
         
-        dismiss(animated: true, completion:nil)
+        dismiss(animated:true)
     }
     
     @IBAction func closePlayer()
     {
         streamsArray.insert(nowPlayingStream, at:nowPlayingStreamIndex)
         
-        NotificationCenter.default.post(name:NSNotification.Name(rawValue:"updatePlayer"), object:nowPlayingStreamIndex)
+        NotificationCenter.default.post(name:Notification.Name("updatePlayer"), object:nowPlayingStreamIndex)
         
         view.window?.rootViewController?.dismiss(animated:true, completion:nil)
     }

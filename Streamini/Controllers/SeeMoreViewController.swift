@@ -19,7 +19,7 @@ class SeeMoreViewController: UIViewController
     
     override func viewWillAppear(_ animated:Bool)
     {
-        self.title = t.capitalized
+        self.title=t.capitalized
         navigationController?.isNavigationBarHidden=false
         
         if t=="streams"
@@ -32,7 +32,7 @@ class SeeMoreViewController: UIViewController
         }
     }
     
-    func tableView(_ tableView:UITableView, heightForRowAt indexPath:IndexPath)->CGFloat
+    func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
     {
         if t=="streams"
         {
@@ -56,7 +56,7 @@ class SeeMoreViewController: UIViewController
         }
     }
 
-    func tableView(_ tableView:UITableView, cellForRowAt indexPath:IndexPath)->UITableViewCell
+    func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:IndexPath)->UITableViewCell
     {
         if t=="streams"
         {
@@ -71,11 +71,11 @@ class SeeMoreViewController: UIViewController
         }
         else
         {
-            let cell=tableView.dequeueReusableCell(withIdentifier:"PeopleCell", for:indexPath as IndexPath) as! PeopleCell
+            let cell=tableView.dequeueReusableCell(withIdentifier:"PeopleCell", for:indexPath) as! PeopleCell
             
             let user=users[indexPath.row]
             
-            cell.userImageView.sd_setImage(with: user.avatarURL() as URL!)
+            cell.userImageView.sd_setImage(with:user.avatarURL() as! URL)
             cell.usernameLabel.text=user.name
             cell.likesLabel.text="\(user.likes)"
             
@@ -83,7 +83,7 @@ class SeeMoreViewController: UIViewController
         }
     }
 
-    func tableView(_ tableView:UITableView, didSelectRowAt indexPath:IndexPath)
+    func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:IndexPath)
     {
         if t=="streams"
         {
@@ -106,14 +106,14 @@ class SeeMoreViewController: UIViewController
         }
     }
 
-    func searchMoreStreamsSuccess(_ streams:[Stream])
+    func searchMoreStreamsSuccess(streams:[Stream])
     {
         self.streams=streams
         
         tableView.reloadData()
     }
     
-    func searchMoreOthersSuccess(_ users:[User])
+    func searchMoreOthersSuccess(users:[User])
     {
         self.users=users
         
@@ -125,10 +125,10 @@ class SeeMoreViewController: UIViewController
         
     }
     
-    func dotsButtonTapped(_ sender:UIButton)
+    func dotsButtonTapped(sender:UIButton)
     {
         let vc=storyBoard.instantiateViewController(withIdentifier:"PopUpViewController") as! PopUpViewController
         vc.stream=streams[sender.tag]
-        present(vc, animated:true, completion:nil)
+        present(vc, animated:true)
     }
 }

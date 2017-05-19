@@ -49,7 +49,7 @@ class ChannelsTableViewController: UITableViewController, ProfileDelegate
     override func prepare(for segue:UIStoryboardSegue, sender:Any?)
     {
         let controller=segue.destination as! ProfileStatisticsViewController
-        let index=(sender as! NSIndexPath).row
+        let index=(sender as! IndexPath).row
         controller.type=ProfileStatisticsType(rawValue:index)!
         controller.profileDelegate=self
     }

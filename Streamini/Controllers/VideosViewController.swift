@@ -44,7 +44,7 @@ class VideosViewController: UIViewController
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let vc=storyboard.instantiateViewController(withIdentifier:"PopUpViewController") as! PopUpViewController
         vc.stream=makeStreamClassObject(sender.tag)
-        present(vc, animated:true, completion:nil)
+        present(vc, animated:true)
     }
     
     func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:IndexPath)

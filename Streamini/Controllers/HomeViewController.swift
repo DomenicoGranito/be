@@ -19,8 +19,8 @@ class HomeViewController: UIViewController
     
     override func viewDidLoad()
     {
-        NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:NSNotification.Name("refreshAfterBlock"), object:nil)
-        NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:NSNotification.Name("status"), object:nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:Notification.Name("refreshAfterBlock"), object:nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:Notification.Name("status"), object:nil)
         
         updateUI()
     }

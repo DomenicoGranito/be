@@ -316,7 +316,7 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         UIGraphicsBeginImageContextWithOptions(userHeaderView.frame.size, true, 0)
         let context=UIGraphicsGetCurrentContext()
         
-        userHeaderView.layer.render(in: context!)
+        userHeaderView.layer.render(in:context!)
         
         let renderedImage=UIGraphicsGetImageFromCurrentImageContext()
         

@@ -276,7 +276,7 @@ class SearchViewController: UIViewController
             {
                 if indexPath.row<4
                 {
-                    let modalVC=storyBoard.instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
+                    let modalVC=storyBoard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController
                     
                     let streamsArray=NSMutableArray()
                     streamsArray.add(streams[indexPath.row])
@@ -296,7 +296,7 @@ class SearchViewController: UIViewController
             {
                 if indexPath.row<4
                 {
-                    let vc=storyBoard.instantiateViewController(withIdentifier: "UserViewControllerId") as! UserViewController
+                    let vc=storyBoard.instantiateViewController(withIdentifier:"UserViewControllerId") as! UserViewController
                     
                     if sectionTitle=="brands"
                     {
@@ -329,7 +329,7 @@ class SearchViewController: UIViewController
         }
     }
     
-    func searchSuccess(_ brands:[User], agencies:[User], venues:[User], talents:[User], profiles:[User], streams:[Stream])
+    func searchSuccess(brands:[User], agencies:[User], venues:[User], talents:[User], profiles:[User], streams:[Stream])
     {
         sectionTitlesArray.removeAllObjects()
         
@@ -376,7 +376,7 @@ class SearchViewController: UIViewController
     
     func cellTapped(_ section:Int)
     {
-        let vc=storyBoard.instantiateViewController(withIdentifier: "SeeMoreViewController") as! SeeMoreViewController
+        let vc=storyBoard.instantiateViewController(withIdentifier:"SeeMoreViewController") as! SeeMoreViewController
         vc.t=sectionTitlesArray[section] as! String
         vc.q=searchBar.text
         vc.TBVC=TBVC
@@ -385,8 +385,8 @@ class SearchViewController: UIViewController
     
     func dotsButtonTapped(sender:UIButton)
     {
-        let vc=storyBoard.instantiateViewController(withIdentifier: "PopUpViewController") as! PopUpViewController
+        let vc=storyBoard.instantiateViewController(withIdentifier:"PopUpViewController") as! PopUpViewController
         vc.stream=streams[sender.tag]
-        present(vc, animated:true, completion:nil)
+        present(vc, animated:true)
     }
 }

@@ -49,8 +49,8 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         stream=streamsArray!.object(at:selectedItemIndex) as? Stream
         
         NotificationCenter.default.addObserver(self, selector:#selector(onDeviceOrientationChange), name:.UIDeviceOrientationDidChange, object:nil)
-        NotificationCenter.default.addObserver(self, selector:#selector(deleteBlockUserVideos), name:NSNotification.Name("blockUser"), object:nil)
-        NotificationCenter.default.addObserver(self, selector:#selector(updatePlayer), name:NSNotification.Name("updatePlayer"), object:nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(deleteBlockUserVideos), name:Notification.Name("blockUser"), object:nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(updatePlayer), name:Notification.Name("updatePlayer"), object:nil)
         
         createPlaylist()
         updatePlayerWithStream()
@@ -60,7 +60,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
             carousel?.isPagingEnabled=true
             carousel?.type = .rotary
             
-            carousel?.scrollToItem(at: selectedItemIndex, animated:false)
+            carousel?.scrollToItem(at:selectedItemIndex, animated:false)
         }
         else
         {
@@ -102,7 +102,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         appDelegate.shouldRotate=false
     }
     
-    func updatePlayer(_ notification:NSNotification)
+    func updatePlayer(notification:NSNotification)
     {
         selectedItemIndex=notification.object as! Int
         updateButtons()
@@ -317,7 +317,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     func showPlayer()
     {
-        UIView.animate(withDuration: 0.5, animations:{
+        UIView.animate(withDuration:0.5, animations:{
             self.carousel!.currentItemView!.frame=CGRect(x:-20, y:0, width:self.view.frame.size.width, height:self.view.frame.size.width-140)
             }, completion:{(finished:Bool)->Void in
                 self.addPlayerAtIndex()
@@ -387,7 +387,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         fullScreenButton.frame=CGRect(x:0, y:0, width:0, height:0)
         player?.scalingMode = .fill
         carousel?.isScrollEnabled=false
-        view.bringSubview(toFront: topView!)
+        view.bringSubview(toFront:topView!)
         playlistButton?.isHidden=true
         closeButton?.setImage(UIImage(named:"nonfullscreen"), for:.normal)
     }
@@ -410,9 +410,9 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     @IBAction func more()
     {
-        let vc=storyBoard.instantiateViewController(withIdentifier: "PopUpViewController") as! PopUpViewController
+        let vc=storyBoard.instantiateViewController(withIdentifier:"PopUpViewController") as! PopUpViewController
         vc.stream=stream
-        present(vc, animated:true, completion:nil)
+        present(vc, animated:true)
     }
     
     @IBAction func like()
@@ -450,7 +450,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         else
         {
             UIApplication.shared.setStatusBarHidden(false, with:.fade)
-            dismiss(animated: true, completion:nil)
+            dismiss(animated:true)
         }
     }
     
@@ -460,7 +460,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         vc.transitioningDelegate=vc
         vc.nowPlayingStreamIndex=selectedItemIndex
         vc.streamsArray=streamsArray as! NSMutableArray
-        present(vc, animated:true, completion:nil)
+        present(vc, animated:true)
     }
     
     func secondsToReadableTime(_ durationSeconds:Double)->String
