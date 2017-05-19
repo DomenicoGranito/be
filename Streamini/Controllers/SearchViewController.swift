@@ -77,7 +77,7 @@ class SearchViewController: UIViewController
         return tableView==historyTbl ? 1 : 40
     }
     
-    func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
+    func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
     {
         if tableView==historyTbl
         {
@@ -98,7 +98,7 @@ class SearchViewController: UIViewController
         }
     }
     
-    func tableView(_ tableView:UITableView, viewForHeaderIn section:Int)->UIView?
+    func tableView(_ tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
     {
         if tableView==historyTbl
         {
@@ -162,7 +162,7 @@ class SearchViewController: UIViewController
         }
     }
     
-    func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
+    func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:IndexPath)->UITableViewCell
     {
         if tableView==historyTbl
         {
@@ -251,7 +251,7 @@ class SearchViewController: UIViewController
         }
     }
     
-    func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
+    func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:IndexPath)
     {
         if tableView==historyTbl
         {
@@ -369,7 +369,7 @@ class SearchViewController: UIViewController
         tableView.reloadData()
     }
     
-    func searchFailure(_ error:NSError)
+    func searchFailure(error:NSError)
     {
         
     }
@@ -383,7 +383,7 @@ class SearchViewController: UIViewController
         navigationController?.pushViewController(vc, animated:true)
     }
     
-    func dotsButtonTapped(_ sender:UIButton)
+    func dotsButtonTapped(sender:UIButton)
     {
         let vc=storyBoard.instantiateViewController(withIdentifier: "PopUpViewController") as! PopUpViewController
         vc.stream=streams[sender.tag]

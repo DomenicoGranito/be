@@ -107,7 +107,7 @@ class DiscoverViewController: UIViewController
         }
     }
     
-    func tableView(_ tableView:UITableView, heightForRowAt indexPath:IndexPath)->CGFloat
+    func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
     {
         if indexPath.section==0
         {
@@ -123,7 +123,7 @@ class DiscoverViewController: UIViewController
         }
     }
     
-    func tableView(_ tableView:UITableView, cellForRowAt indexPath:IndexPath)->UITableViewCell
+    func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:IndexPath)->UITableViewCell
     {
         if indexPath.section==0&&featuredStreamsArray.count>0
         {
@@ -221,11 +221,13 @@ class DiscoverViewController: UIViewController
             let userAvatar=user["avatar"] as? String
             
             let oneUser=User()
+            
             oneUser.id=UInt(userID)
             oneUser.name=userName
             oneUser.avatar=userAvatar
             
             let oneVideo=Stream()
+            
             oneVideo.id=UInt(videoID)
             oneVideo.vType=vType
             oneVideo.videoID=streamKey
@@ -247,7 +249,7 @@ class DiscoverViewController: UIViewController
             oneVideo.rlikes=UInt(rlikes)
             oneVideo.user=oneUser
             
-            featuredStreamsArray.add(video)
+            featuredStreamsArray.add(oneVideo)
         }
     }
     

@@ -26,14 +26,14 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     {
         seekBar.setThumbImage(UIImage(), for:UIControlState())
         
-        miniPlayerView.frame=CGRect(x: 0, y: view.frame.size.height-99, width: view.frame.size.width, height: 50)
+        miniPlayerView.frame=CGRect(x:0, y:view.frame.size.height-99, width:view.frame.size.width, height:50)
         view.addSubview(miniPlayerView)
         miniPlayerView.isHidden=true
         
         getPermissions()
         
-        NotificationCenter.default.addObserver(self, selector:#selector(goToChannels), name:NSNotification.Name(rawValue: "goToChannels"), object:nil)
-        NotificationCenter.default.addObserver(self, selector:#selector(hideMiniPlayer), name:NSNotification.Name(rawValue: "hideMiniPlayer"), object:nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(goToChannels), name:NSNotification.Name(rawValue:"goToChannels"), object:nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(hideMiniPlayer), name:NSNotification.Name(rawValue:"hideMiniPlayer"), object:nil)
     }
         
     func hideMiniPlayer()
@@ -41,7 +41,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         miniPlayerView.isHidden=true
     }
     
-    func updateSeekBar(_ current:Float, maximum:Float)
+    func updateSeekBar(_ current:Float, _ maximum:Float)
     {
         seekBar.maximumValue=maximum
         seekBar.value=current
@@ -64,7 +64,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         tapMiniPlayerButton()
     }
     
-    func goToChannels(_ notification:Notification)
+    func goToChannels(notification:Notification)
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let vc=storyboard.instantiateViewController(withIdentifier: "UserViewControllerId") as! UserViewController

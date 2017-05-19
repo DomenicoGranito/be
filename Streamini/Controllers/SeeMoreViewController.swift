@@ -120,7 +120,7 @@ class SeeMoreViewController: UIViewController
         tableView.reloadData()
     }
     
-    func searchFailure(_ error:NSError)
+    func searchFailure(error:NSError)
     {
         
     }

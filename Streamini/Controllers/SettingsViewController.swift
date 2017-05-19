@@ -14,7 +14,7 @@ class SettingsViewController:UITableViewController, UIActionSheetDelegate
         actionSheet.show(in:view)
     }
     
-    func logoutFailure(_ error:NSError)
+    func logoutFailure(error:NSError)
     {
         
     }
@@ -33,12 +33,12 @@ class SettingsViewController:UITableViewController, UIActionSheetDelegate
         
         let appDelegate=UIApplication.shared.delegate as! AppDelegate
         let navController=appDelegate.window!.rootViewController as! UINavigationController
-        navController.popToRootViewController(animated: true)
+        navController.popToRootViewController(animated:true)
     }
 
     override func tableView(_ tableView:UITableView, didSelectRowAt indexPath:IndexPath)
     {
-        tableView.deselectRow(at: indexPath as IndexPath, animated:true)
+        tableView.deselectRow(at:indexPath, animated:true)
         
         if indexPath.section==2&&indexPath.row==0
         {

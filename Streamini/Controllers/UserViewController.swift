@@ -136,7 +136,7 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         }
     }
     
-    func uploadAvatarFailure(_ error:NSError)
+    func uploadAvatarFailure(error:NSError)
     {
         handleError(error)
     }

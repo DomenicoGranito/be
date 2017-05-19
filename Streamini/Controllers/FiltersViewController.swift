@@ -29,16 +29,16 @@ class FiltersViewController: UIViewController
         return 4
     }
     
-    func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
+    func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:IndexPath)->UITableViewCell
     {
-        let cell=tableView.dequeueReusableCell(withIdentifier: "MenuCell") as! MenuCell
+        let cell=tableView.dequeueReusableCell(withIdentifier:"MenuCell") as! MenuCell
         
         cell.menuItemTitleLbl?.text=menuItemTitlesArray[indexPath.row] as? String
         
         return cell
     }
     
-    func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
+    func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:IndexPath)
     {
         
     }

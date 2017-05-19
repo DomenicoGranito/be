@@ -51,7 +51,7 @@ class MyLibViewController: UIViewController
         navigationController?.pushViewController(vc, animated:true)
     }
     
-    func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
+    func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
     {
         if indexPath.row<4
         {
@@ -72,7 +72,7 @@ class MyLibViewController: UIViewController
         return recentlyPlayed!.count+5
     }
     
-    func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
+    func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:IndexPath)->UITableViewCell
     {
         if indexPath.row<4
         {
@@ -103,12 +103,12 @@ class MyLibViewController: UIViewController
         }
     }
     
-    func tableView(_ tableView:UITableView, canEditRowAt indexPath:NSIndexPath)->Bool
+    func tableView(_ tableView:UITableView, canEditRowAt indexPath:IndexPath)->Bool
     {
         return indexPath.row<5 ? false : true
     }
     
-    func tableView(_ tableView:UITableView, editActionsForRowAt indexPath:NSIndexPath)->[UITableViewRowAction]?
+    func tableView(_ tableView:UITableView, editActionsForRowAt indexPath:IndexPath)->[UITableViewRowAction]?
     {
         let clearButton=UITableViewRowAction(style:.default, title:"Clear")
         {action, indexPath in
@@ -131,7 +131,7 @@ class MyLibViewController: UIViewController
         return [clearButton]
     }
     
-    func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
+    func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:IndexPath)
     {
         if indexPath.row>4
         {
@@ -169,7 +169,7 @@ class MyLibViewController: UIViewController
         if segue.identifier=="Videos"
         {
             let controller=segue.destination as! VideosTableViewController
-            controller.vType=(sender as! NSIndexPath).row-1
+            controller.vType=(sender as! IndexPath).row-1
         }
     }
     

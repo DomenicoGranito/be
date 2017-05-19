@@ -98,7 +98,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         player?.shouldAutoplay=false
         player?.pause()
         
-        TBVC.updateSeekBar(seekBar!.value, maximum:seekBar!.maximumValue)
+        TBVC.updateSeekBar(seekBar!.value, seekBar!.maximumValue)
         appDelegate.shouldRotate=false
     }
     

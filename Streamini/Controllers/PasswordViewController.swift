@@ -28,9 +28,9 @@ class PasswordViewController: BaseViewController
     
     @IBAction func doneButtonPressed()
     {
-        if let _=A0SimpleKeychain().string(forKey: "password")
+        if let _=A0SimpleKeychain().string(forKey:"password")
         {
-            if(A0SimpleKeychain().string(forKey: "password") != currentPassword.text)
+            if(A0SimpleKeychain().string(forKey:"password") != currentPassword.text)
             {
                 let alertView=UIAlertView.notAuthorizedAlert(NSLocalizedString("current_password_wrong", comment:""))
                 alertView.show()
@@ -55,7 +55,7 @@ class PasswordViewController: BaseViewController
         A0SimpleKeychain().setString(newPassword.text!, forKey:"password")
     }
     
-    func passwordFailure(_ error:NSError)
+    func passwordFailure(error:NSError)
     {
         handleError(error)
     }

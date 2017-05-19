@@ -87,22 +87,22 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         }
     }
     
-    func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
+    func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:IndexPath)->UITableViewCell
     {
         if indexPath.section==0
         {
-            let cell=tableView.dequeueReusableCell(withIdentifier: "NowPlayingCell") as! RecentStreamCell
+            let cell=tableView.dequeueReusableCell(withIdentifier:"NowPlayingCell") as! RecentStreamCell
             
             cell.streamNameLabel.text=nowPlayingStream.title
             cell.userLabel.text=nowPlayingStream.user.name
-            cell.playImageView.sd_setImage(with: NSURL(string:"http://\(host)/thumb/\(nowPlayingStream.id).jpg") as URL!)
+            cell.playImageView.sd_setImage(with:URL(string:"http://\(host)/thumb/\(nowPlayingStream.id).jpg"))
             cell.dotsButton?.addTarget(self, action:#selector(dotsButtonTapped), for:.touchUpInside)
             
             return cell
         }
         else
         {
-            let cell=tableView.dequeueReusableCell(withIdentifier: "UpNextCell") as! RecentStreamCell
+            let cell=tableView.dequeueReusableCell(withIdentifier:"UpNextCell") as! RecentStreamCell
             cell.playImageView.image=selectedStreamsArray.contains(indexPath.row) ? UIImage(named:"checkmark") : UIImage(named:"checkmarkblank")
             
             var stream:Stream!
@@ -127,11 +127,11 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         }
     }
     
-    func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
+    func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:IndexPath)
     {
         if indexPath.section>0
         {
-            let cell=tableView.cellForRow(at: indexPath as IndexPath) as! RecentStreamCell
+            let cell=tableView.cellForRow(at:indexPath) as! RecentStreamCell
             
             if selectedStreamsArray.contains(indexPath.row)
             {
@@ -155,22 +155,22 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         }
     }
     
-    func tableView(_ tableView:UITableView, editingStyleForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCellEditingStyle
+    func tableView(_ tableView:UITableView, editingStyleForRowAtIndexPath indexPath:IndexPath)->UITableViewCellEditingStyle
     {
         return .none
     }
     
-    func tableView(_ tableView:UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath:NSIndexPath)->Bool
+    func tableView(_ tableView:UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath:IndexPath)->Bool
     {
         return false
     }
     
-    func tableView(_ tableView:UITableView, canMoveRowAtIndexPath indexPath:NSIndexPath)->Bool
+    func tableView(_ tableView:UITableView, canMoveRowAtIndexPath indexPath:IndexPath)->Bool
     {
         return indexPath.section==0 ? false : true
     }
     
-    func tableView(_ tableView:UITableView, moveRowAtIndexPath sourceIndexPath:NSIndexPath, toIndexPath destinationIndexPath:NSIndexPath)
+    func tableView(_ tableView:UITableView, moveRowAtIndexPath sourceIndexPath:IndexPath, toIndexPath destinationIndexPath:IndexPath)
     {
         streamsArray.exchangeObject(at: sourceIndexPath.row, withObjectAt:destinationIndexPath.row)
         itemsTbl.reloadData()
@@ -223,7 +223,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
             indexSet.add(index)
         }
         
-        streamsArray.removeObjects(at: indexSet as IndexSet)
+        streamsArray.removeObjects(at:indexSet as IndexSet)
         selectedStreamsArray.removeAllObjects()
         itemsTbl.reloadData()
         performAnimation(0)
@@ -241,7 +241,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     {
         streamsArray.insert(nowPlayingStream, at:nowPlayingStreamIndex)
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updatePlayer"), object:nowPlayingStreamIndex)
+        NotificationCenter.default.post(name:NSNotification.Name(rawValue:"updatePlayer"), object:nowPlayingStreamIndex)
         
         dismiss(animated: true, completion:nil)
     }
@@ -250,9 +250,9 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     {
         streamsArray.insert(nowPlayingStream, at:nowPlayingStreamIndex)
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updatePlayer"), object:nowPlayingStreamIndex)
+        NotificationCenter.default.post(name:NSNotification.Name(rawValue:"updatePlayer"), object:nowPlayingStreamIndex)
         
-        view.window?.rootViewController?.dismiss(animated: true, completion:nil)
+        view.window?.rootViewController?.dismiss(animated:true, completion:nil)
     }
     
     func createTransitionImageView()->UIImageView

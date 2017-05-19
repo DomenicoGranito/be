@@ -32,7 +32,7 @@ class LegalViewController: BaseViewController, UIWebViewDelegate
             self.title=NSLocalizedString("profile_privacy", comment:"")
         }
         
-        webView.loadRequest(NSURLRequest(url:NSURL(string:urlString)! as URL) as URLRequest)
+        webView.loadRequest(URLRequest(url:URL(string:urlString)!))
     }
     
     func webView(_ webView:UIWebView, shouldStartLoadWith request:URLRequest, navigationType:UIWebViewNavigationType)->Bool

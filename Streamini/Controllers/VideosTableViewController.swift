@@ -25,13 +25,13 @@ class VideosTableViewController: UITableViewController, ProfileDelegate
         UserConnector().get(nil, success:userSuccess, failure:userFailure)
     }
     
-    func userSuccess(_ user:User)
+    func userSuccess(user:User)
     {
         myCountLbl.text="\(user.streams)"
         favouritesCountLbl.text="\(SongManager.getFavourites(vType).count)"
     }
     
-    func userFailure(_ error:NSError)
+    func userFailure(error:NSError)
     {
         
     }
