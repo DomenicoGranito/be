@@ -24,9 +24,9 @@ class CategoryRow: UITableViewCell
         return oneCategoryItemsArray.count
     }
     
-    func collectionView(_ collectionView:UICollectionView, cellForItemAtIndexPath indexPath:NSIndexPath)->UICollectionViewCell
+    func collectionView(_ collectionView:UICollectionView, cellForItemAtIndexPath indexPath:IndexPath)->UICollectionViewCell
     {
-        let cell=collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier!, for:indexPath as IndexPath) as! VideoCell
+        let cell=collectionView.dequeueReusableCell(withReuseIdentifier:cellIdentifier!, for:indexPath) as! VideoCell
         
         let stream=oneCategoryItemsArray[indexPath.row] as! Stream
         
@@ -35,7 +35,7 @@ class CategoryRow: UITableViewCell
         if cellIdentifier=="videoCell"
         {
             cell.followersCountLbl?.text=stream.user.name
-            cell.videoThumbnailImageView?.sd_setImage(with: NSURL(string:"http://\(host)/thumb/\(stream.id).jpg") as URL!)
+            cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream.id).jpg"))
             
             let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
             cell.tag=indexPath.row
@@ -47,7 +47,7 @@ class CategoryRow: UITableViewCell
             {
                 cell.videoTitleLbl?.isHidden=true
                 cell.followersCountLbl?.isHidden=true
-                cell.videoThumbnailImageView?.sd_setImage(with: NSURL(string:"http://\(host)/thumb/\(stream.id).jpg") as URL!)
+                cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream.id).jpg"))
             }
             else
             {
@@ -59,10 +59,10 @@ class CategoryRow: UITableViewCell
         return cell
     }
     
-    func cellTapped(_ gestureRecognizer:UITapGestureRecognizer)
+    func cellTapped(gestureRecognizer:UITapGestureRecognizer)
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let modalVC=storyboard.instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
+        let modalVC=storyboard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController
         
         let stream=oneCategoryItemsArray[gestureRecognizer.view!.tag] as! Stream
         

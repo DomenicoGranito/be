@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "2112F25E8B61D9471CB1C515E4E931CB2B8B9BE9",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "CBE5A2244EE90AB96708747492F93E63FAE5CC2E" : 9223372036854775807,
+    "2112F25E8B61D9471CB1C515E4E931CB2B8B9BE9" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0685334F-4A4B-4F21-9433-CCB3D2A0A59D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "CBE5A2244EE90AB96708747492F93E63FAE5CC2E" : "be\/",
+    "2112F25E8B61D9471CB1C515E4E931CB2B8B9BE9" : "stream5\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "BEINIT",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "BEINIT.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/srdotnet\/stream5",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2112F25E8B61D9471CB1C515E4E931CB2B8B9BE9"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/srdotnet\/be",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CBE5A2244EE90AB96708747492F93E63FAE5CC2E"
+    }
+  ]
+}

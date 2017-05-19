@@ -128,7 +128,7 @@ class HomeViewController: UIViewController
         }
     }
     
-    func headerTapped(_ gestureRecognizer:UITapGestureRecognizer)
+    func headerTapped(gestureRecognizer:UITapGestureRecognizer)
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let vc=storyboard.instantiateViewController(withIdentifier: "CategoriesViewController") as! CategoriesViewController
@@ -176,7 +176,7 @@ class HomeViewController: UIViewController
         cell.reloadCollectionView()
     }
     
-    func successStreams(_ response:NSDictionary)
+    func successStreams(response:NSDictionary)
     {
         errorView.isHidden=true
         activityView.isHidden=true
@@ -192,7 +192,7 @@ class HomeViewController: UIViewController
             let data=categorydata[i] as! NSDictionary
             
             let categoryName=data["category_name"] as! String
-            let categoryID=data["category_id"] as! String
+            let categoryID=(data["category_id"] as AnyObject).integerValue
             
             categoryNamesArray.add(categoryName)
             categoryIDsArray.add(categoryID)
@@ -227,6 +227,7 @@ class HomeViewController: UIViewController
                 let userAvatar=user["avatar"] as? String
                 
                 let oneUser=User()
+                
                 oneUser.id=UInt(userID)
                 oneUser.name=userName
                 oneUser.avatar=userAvatar
@@ -253,7 +254,7 @@ class HomeViewController: UIViewController
                 oneVideo.rlikes=UInt(rlikes)
                 oneVideo.user=oneUser
                 
-                oneCategoryItemsArray.add(video)
+                oneCategoryItemsArray.add(oneVideo)
             }
             
             allCategoryItemsArray.add(oneCategoryItemsArray)
@@ -263,7 +264,7 @@ class HomeViewController: UIViewController
         itemsTbl!.isHidden=false
     }
     
-    func failureStream(_ error:NSError)
+    func failureStream(error:NSError)
     {
         activityView.isHidden=true
         errorView.update("An error occured", icon:"user")
