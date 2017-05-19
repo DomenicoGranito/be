@@ -1,5 +1,3 @@
-
-
 //
 //  AllCategoriesRow.swift
 //  Streamini
@@ -25,15 +23,15 @@ class AllCategoriesRow: UITableViewCell
         return sectionItemsArray.count
     }
     
-    func collectionView(_ collectionView:UICollectionView, cellForItemAtIndexPath indexPath:NSIndexPath)->UICollectionViewCell
+    func collectionView(_ collectionView:UICollectionView, cellForItemAtIndexPath indexPath:IndexPath)->UICollectionViewCell
     {
-        let cell=collectionView.dequeueReusableCell(withReuseIdentifier: "videoCell", for:indexPath as IndexPath) as! VideoCell
+        let cell=collectionView.dequeueReusableCell(withReuseIdentifier:"videoCell", for:indexPath) as! VideoCell
         
         let video=sectionItemsArray[indexPath.row] as! Stream
         
         cell.followersCountLbl?.text=video.user.name
         cell.videoTitleLbl?.text=video.title
-        cell.videoThumbnailImageView?.sd_setImage(with: NSURL(string:"http://\(host)/thumb/\(video.id).jpg") as URL!)
+        cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"http://\(host)/thumb/\(video.id).jpg"))
         
         let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
         cell.tag=indexPath.row
@@ -42,10 +40,10 @@ class AllCategoriesRow: UITableViewCell
         return cell
     }
     
-    func cellTapped(_ gestureRecognizer:UITapGestureRecognizer)
+    func cellTapped(gestureRecognizer:UITapGestureRecognizer)
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let modalVC=storyboard.instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
+        let modalVC=storyboard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController
         
         let stream=sectionItemsArray[gestureRecognizer.view!.tag] as! Stream
         
@@ -59,7 +57,7 @@ class AllCategoriesRow: UITableViewCell
         TBVC.configure(stream)
     }
     
-    func collectionView(_ collectionView:UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAtIndexPath indexPath:NSIndexPath)->CGSize
+    func collectionView(_ collectionView:UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAtIndexPath indexPath:IndexPath)->CGSize
     {
         let width=(collectionView.frame.size.width-30)/2
         

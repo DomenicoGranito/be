@@ -19,8 +19,8 @@ class HomeViewController: UIViewController
     
     override func viewDidLoad()
     {
-        NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:NSNotification.Name(rawValue: "refreshAfterBlock"), object:nil)
-        NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:NSNotification.Name(rawValue: "status"), object:nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:NSNotification.Name(rawValue:"refreshAfterBlock"), object:nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:NSNotification.Name(rawValue:"status"), object:nil)
         
         updateUI()
     }
@@ -41,7 +41,7 @@ class HomeViewController: UIViewController
         {
             itemsTbl!.isHidden=true
             activityView.isHidden=true
-            errorView.update("No Internet Connection", icon:"user")
+            errorView.update("No Internet Connection", "user")
         }
     }
     
@@ -58,7 +58,7 @@ class HomeViewController: UIViewController
         else
         {
             itemsTbl!.isHidden=true
-            errorView.update("No Internet Connection", icon:"user")
+            errorView.update("No Internet Connection", "user")
         }
     }
     
@@ -267,6 +267,6 @@ class HomeViewController: UIViewController
     func failureStream(error:NSError)
     {
         activityView.isHidden=true
-        errorView.update("An error occured", icon:"user")
+        errorView.update("An error occured", "user")
     }
 }

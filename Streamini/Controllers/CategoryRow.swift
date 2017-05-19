@@ -76,7 +76,7 @@ class CategoryRow: UITableViewCell
         TBVC.configure(stream)
     }
     
-    func collectionView(_ collectionView:UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAtIndexPath indexPath:NSIndexPath)->CGSize
+    func collectionView(_ collectionView:UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAtIndexPath indexPath:IndexPath)->CGSize
     {
         let width=(collectionView.frame.size.width-25)/2
         

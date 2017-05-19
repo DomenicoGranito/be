@@ -11,7 +11,7 @@ class ErrorView:UIView
     @IBOutlet var errorImageView:UIImageView!
     @IBOutlet var errorLbl:UILabel!
     
-    func update(_ error:String, icon:String)
+    func update(_ error:String, _ icon:String)
     {
         errorImageView.image=UIImage(named:icon)
         errorLbl.text=error

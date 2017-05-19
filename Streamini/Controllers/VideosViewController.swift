@@ -25,9 +25,9 @@ class VideosViewController: UIViewController
         return favouriteStreams!.count
     }
     
-    func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
+    func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:IndexPath)->UITableViewCell
     {
-        let cell=tableView.dequeueReusableCell(withIdentifier: "RecentStreamCell") as! RecentStreamCell
+        let cell=tableView.dequeueReusableCell(withIdentifier:"RecentStreamCell") as! RecentStreamCell
         
         cell.streamNameLabel?.text=favouriteStreams![indexPath.row].value(forKey: "streamTitle") as? String
         cell.userLabel?.text=favouriteStreams![indexPath.row].value(forKey: "streamUserName") as? String
@@ -39,18 +39,18 @@ class VideosViewController: UIViewController
         return cell
     }
     
-    func dotsButtonTapped(_ sender:UIButton)
+    func dotsButtonTapped(sender:UIButton)
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewController(withIdentifier: "PopUpViewController") as! PopUpViewController
+        let vc=storyboard.instantiateViewController(withIdentifier:"PopUpViewController") as! PopUpViewController
         vc.stream=makeStreamClassObject(sender.tag)
         present(vc, animated:true, completion:nil)
     }
     
-    func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
+    func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:IndexPath)
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let modalVC=storyboard.instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
+        let modalVC=storyboard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController
         
         let streamsArray=NSMutableArray()
         streamsArray.add(makeStreamClassObject(indexPath.row))
@@ -66,15 +66,15 @@ class VideosViewController: UIViewController
     {
         let user=User()
         
-        user.name=favouriteStreams![row].value(forKey: "streamUserName") as! String
-        user.id=favouriteStreams![row].value(forKey: "streamUserID") as! UInt
+        user.name=favouriteStreams![row].value(forKey:"streamUserName") as! String
+        user.id=favouriteStreams![row].value(forKey:"streamUserID") as! UInt
         
         let stream=Stream()
         
-        stream.id=favouriteStreams![row].value(forKey: "streamID") as! UInt
-        stream.title=favouriteStreams![row].value(forKey: "streamTitle") as! String
-        stream.streamHash=favouriteStreams![row].value(forKey: "streamHash") as! String
-        stream.videoID=favouriteStreams![row].value(forKey: "streamKey") as! String
+        stream.id=favouriteStreams![row].value(forKey:"streamID") as! UInt
+        stream.title=favouriteStreams![row].value(forKey:"streamTitle") as! String
+        stream.streamHash=favouriteStreams![row].value(forKey:"streamHash") as! String
+        stream.videoID=favouriteStreams![row].value(forKey:"streamKey") as! String
         stream.user=user
         
         return stream

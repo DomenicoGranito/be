@@ -51,7 +51,7 @@ class DiscoverViewController: UIViewController
         {
             tableView.isHidden=true
             activityView.isHidden=true
-            errorView.update("No Internet Connection", icon:"user")
+            errorView.update("No Internet Connection", "user")
         }
     }
     
@@ -107,7 +107,7 @@ class DiscoverViewController: UIViewController
         }
     }
     
-    func tableView(_ tableView:UITableView, heightForRowAt indexPath:NSIndexPath)->CGFloat
+    func tableView(_ tableView:UITableView, heightForRowAt indexPath:IndexPath)->CGFloat
     {
         if indexPath.section==0
         {
@@ -123,11 +123,11 @@ class DiscoverViewController: UIViewController
         }
     }
     
-    func tableView(_ tableView:UITableView, cellForRowAt indexPath:NSIndexPath)->UITableViewCell
+    func tableView(_ tableView:UITableView, cellForRowAt indexPath:IndexPath)->UITableViewCell
     {
         if indexPath.section==0&&featuredStreamsArray.count>0
         {
-            let cell=tableView.dequeueReusableCell(withIdentifier: "Recent") as! CategoryRow
+            let cell=tableView.dequeueReusableCell(withIdentifier:"Recent") as! CategoryRow
             
             cell.oneCategoryItemsArray=featuredStreamsArray
             cell.TBVC=tabBarController as! TabBarViewController
@@ -137,7 +137,7 @@ class DiscoverViewController: UIViewController
         }
         if indexPath.section==1
         {
-            let cell=tableView.dequeueReusableCell(withIdentifier: "Menu") as! MenuCell
+            let cell=tableView.dequeueReusableCell(withIdentifier:"Menu") as! MenuCell
             
             cell.menuItemTitleLbl?.text=menuItemTitlesArray[indexPath.row]
             cell.menuItemIconImageView?.image=UIImage(named:menuItemIconsArray[indexPath.row])
@@ -146,7 +146,7 @@ class DiscoverViewController: UIViewController
         }
         if indexPath.section==2
         {
-            let cell=tableView.dequeueReusableCell(withIdentifier: "Category") as! AllCategoryRow
+            let cell=tableView.dequeueReusableCell(withIdentifier:"Category") as! AllCategoryRow
             
             cell.sectionItemsArray=allCategoriesArray[indexPath.row] as! NSArray
             cell.navigationControllerReference=navigationController
@@ -157,7 +157,7 @@ class DiscoverViewController: UIViewController
         return UITableViewCell()
     }
     
-    func tableView(_ tableView:UITableView, willDisplayCell cell:UITableViewCell, forRowAtIndexPath indexPath:NSIndexPath)
+    func tableView(_ tableView:UITableView, willDisplayCell cell:UITableViewCell, forRowAtIndexPath indexPath:IndexPath)
     {
         if cell is AllCategoryRow
         {
@@ -165,7 +165,7 @@ class DiscoverViewController: UIViewController
         }
     }
     
-    func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
+    func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:IndexPath)
     {
         if indexPath.section==1&&indexPath.row==0
         {
@@ -173,7 +173,7 @@ class DiscoverViewController: UIViewController
         }
     }
 
-    func discoverSuccess(_ data:NSDictionary)
+    func discoverSuccess(data:NSDictionary)
     {
         errorView.isHidden=true
         activityView.isHidden=true
@@ -283,6 +283,6 @@ class DiscoverViewController: UIViewController
     func discoverFailure(_ error:NSError)
     {
         activityView.isHidden=true
-        errorView.update("An error cccured", icon:"user")
+        errorView.update("An error cccured", "user")
     }
 }
