@@ -35,7 +35,7 @@ class HomeViewController: UIViewController
             activityView.isHidden=false
             
             view.bringSubview(toFront: activityView)
-            StreamConnector().homeStreams(successStreams, failure:failureStream)
+            StreamConnector().homeStreams(successStreams, failureStream)
         }
         else
         {
@@ -53,7 +53,7 @@ class HomeViewController: UIViewController
         {
             errorView.isHidden=true
             
-            StreamConnector().homeStreams(successStreams, failure:failureStream)
+            StreamConnector().homeStreams(successStreams, failureStream)
         }
         else
         {

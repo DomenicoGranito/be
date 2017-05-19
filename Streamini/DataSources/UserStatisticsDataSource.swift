@@ -79,18 +79,18 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         
         if type == .blocked
         {
-            connector.unblock(userId, success:unfollowSuccess, failure:followActionFailure)
+            connector.unblock(userId, unfollowSuccess, followActionFailure)
             updateBlockedStatus(users[index], status:false)
         }
         else
         {
             if selectedCell.isStatusOn
             {
-                connector.unfollow(userId, success:unfollowSuccess, failure:followActionFailure)
+                connector.unfollow(userId, unfollowSuccess, followActionFailure)
             }
             else
             {
-                connector.follow(userId, success:followSuccess, failure:followActionFailure)
+                connector.follow(userId, followSuccess, followActionFailure)
             }
         }
     }

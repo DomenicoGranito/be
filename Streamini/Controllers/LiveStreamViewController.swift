@@ -34,7 +34,7 @@ class LiveStreamViewController: BaseViewController, UserSelecting, UserStatusDel
     
     @IBAction func closeButtonPressed(_ sender: AnyObject) {
         let connector = StreamConnector()
-        connector.close(stream!.id, success: closeStreamSuccess, failure: closeStreamFailure)
+        connector.close(stream!.id, closeStreamSuccess, closeStreamFailure)
     }
     
     @IBAction func rotateButtonPressed(_ sender: AnyObject) {
@@ -60,7 +60,7 @@ class LiveStreamViewController: BaseViewController, UserSelecting, UserStatusDel
         } else {
             // If viewers collection view is closed - get viewers list from server 
             // and open collection view
-            StreamConnector().viewers(NSDictionary(object: stream!.id, forKey: "streamId" as NSCopying), success: viewersSuccess, failure: viewersFailure)
+            StreamConnector().viewers(NSDictionary(object: stream!.id, forKey: "streamId" as NSCopying), viewersSuccess, viewersFailure)
             
             UIView.animate(withDuration: 0.3, animations: { () -> Void in
                 self.viewersCollectionViewHeight.constant = 58.0
@@ -74,7 +74,7 @@ class LiveStreamViewController: BaseViewController, UserSelecting, UserStatusDel
     // MARK: - Viewers counter
     
     func updateCounter() {
-        StreamConnector().get(stream!.id, success: getStreamSuccess, failure: getStreamFailure)
+        StreamConnector().get(stream!.id, getStreamSuccess, getStreamFailure)
     }
     
     // MARK: - Network responses
@@ -131,7 +131,7 @@ class LiveStreamViewController: BaseViewController, UserSelecting, UserStatusDel
     // MARK: - Handle notifications
     
     func forceClose(_ notification: NSNotification) {
-        StreamConnector().close(stream!.id, success: closeStreamSilentSuccess, failure: closeStreamFailure)
+        StreamConnector().close(stream!.id, closeStreamSilentSuccess, closeStreamFailure)
     }
     
     // MARK: - UserSelecting protocol
@@ -173,13 +173,13 @@ class LiveStreamViewController: BaseViewController, UserSelecting, UserStatusDel
     }
     
     func ping(_ timer: Timer) {
-        StreamConnector().ping(stream!.id, success: pingSuccess, failure: pingFailure)
+        StreamConnector().ping(stream!.id, pingSuccess, pingFailure)
     }
     
     // MARK: - UIAlertViewDelegate
     
     func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
-        StreamConnector().close(stream!.id, success: closeStreamSuccess, failure: closeStreamFailure)
+        StreamConnector().close(stream!.id, closeStreamSuccess, closeStreamFailure)
     }
     
     // MARK: - View life cycle

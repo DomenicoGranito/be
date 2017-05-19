@@ -150,9 +150,9 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         
         let connector = SocialConnector()
         if selectedCell.isStatusOn {
-            connector.unfollow(userId, success: unfollowSuccess, failure: followActionFailure)
+            connector.unfollow(userId, unfollowSuccess, followActionFailure)
         } else {
-            connector.follow(userId, success: followSuccess, failure: followActionFailure)
+            connector.follow(userId, followSuccess, followActionFailure)
         }
     }
     
@@ -264,7 +264,7 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
     }
     
     func reload() {
-        SocialConnector().users(NSDictionary(), success: peopleSuccess, failure: actionFailure)
+        SocialConnector().users(NSDictionary(), peopleSuccess, actionFailure)
     }
     
     func fetchMore() {
@@ -273,7 +273,7 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
             searchMore(searchData)
         } else {
             page += 1
-            SocialConnector().users(NSDictionary(object: page, forKey: "p" as NSCopying), success: fetchMoreSuccess, failure: actionFailure)
+            SocialConnector().users(NSDictionary(object: page, forKey: "p" as NSCopying), fetchMoreSuccess, actionFailure)
         }
     }
     
@@ -281,11 +281,11 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
     {
         searchPage=0
         searchData=NSMutableDictionary(dictionary:data)
-        SocialConnector().search(data, success:searchSuccess, failure:actionFailure)
+        SocialConnector().search(data, searchSuccess, actionFailure)
     }
     
     func searchMore(_ data: NSDictionary)
     {
-        SocialConnector().search(data, success:searchMoreSuccess, failure:actionFailure)
+        SocialConnector().search(data, searchMoreSuccess, actionFailure)
     }
 }

@@ -38,7 +38,7 @@ class GetStartedViewController: BaseViewController
         
         if let _=A0SimpleKeychain().string(forKey: "PHPSESSID")
         {
-            UserConnector().get(nil, success:successUser, failure:forgotFailure)
+            UserConnector().get(nil, successUser, forgotFailure)
             
             let storyBoard=UIStoryboard(name:"Main", bundle:nil)
             let vc=storyBoard.instantiateViewController(withIdentifier: "TabBarViewController")

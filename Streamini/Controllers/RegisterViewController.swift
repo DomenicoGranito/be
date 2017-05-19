@@ -53,7 +53,7 @@ class RegisterViewController: BaseViewController
         }
         
         let connector=UserConnector()
-        connector.login(loginData, success:loginSuccess, failure:forgotFailure)
+        connector.login(loginData, loginSuccess, forgotFailure)
     }
     
     func loginSuccess(_ session:String)

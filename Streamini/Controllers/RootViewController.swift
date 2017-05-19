@@ -73,7 +73,7 @@ UserSelecting, ProfileDelegate {
         activator.startAnimating()
         
         self.navigationItem.rightBarButtonItem=UIBarButtonItem(customView:activator)
-        UserConnector().get(nil, success:successGetUser, failure:successFailure)
+        UserConnector().get(nil, successGetUser, successFailure)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -141,7 +141,7 @@ UserSelecting, ProfileDelegate {
     }
     
     func reload() {
-        UserConnector().get(nil, success: successGetUser, failure: successFailure)
+        UserConnector().get(nil, successGetUser, successFailure)
     }
     
     func close() {
@@ -170,7 +170,7 @@ UserSelecting, ProfileDelegate {
         activator.startAnimating()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activator)
         
-        UserConnector().userDescription(text, success: userDescriptionTextSuccess, failure: userDescriptionTextFailure)
+        UserConnector().userDescription(text, userDescriptionTextSuccess, userDescriptionTextFailure)
     }
     
     func userDescriptionTextSuccess() {

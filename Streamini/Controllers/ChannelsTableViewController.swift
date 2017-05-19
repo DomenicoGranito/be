@@ -24,7 +24,7 @@ class ChannelsTableViewController: UITableViewController, ProfileDelegate
         activator.startAnimating()
         
         navigationItem.rightBarButtonItem=UIBarButtonItem(customView:activator)
-        UserConnector().get(nil, success:userSuccess, failure:userFailure)
+        UserConnector().get(nil, userSuccess, userFailure)
     }
     
     func userSuccess(_ user:User)
@@ -56,7 +56,7 @@ class ChannelsTableViewController: UITableViewController, ProfileDelegate
     
     func reload()
     {
-        UserConnector().get(nil, success:userSuccess, failure:userFailure)
+        UserConnector().get(nil, userSuccess, userFailure)
     }
     
     func close()

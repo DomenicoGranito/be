@@ -69,7 +69,7 @@ class SearchViewController: UIViewController
     
     func searchBar(_ searchBar:UISearchBar, textDidChange searchText:String)
     {
-        StreamConnector().search(searchText, success:searchSuccess, failure:searchFailure)
+        StreamConnector().search(searchText, searchSuccess, searchFailure)
     }
     
     func tableView(_ tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
@@ -262,10 +262,10 @@ class SearchViewController: UIViewController
             }
             else
             {
-                searchBar.text=searchHistroy[indexPath.row].value(forKey: "title") as? String
+                searchBar.text=searchHistroy[indexPath.row].value(forKey:"title") as? String
                 historyTbl.isHidden=true
                 tableView.isHidden=false
-                StreamConnector().search(searchBar.text!, success:searchSuccess, failure:searchFailure)
+                StreamConnector().search(searchBar.text!, searchSuccess, searchFailure)
             }
         }
         else

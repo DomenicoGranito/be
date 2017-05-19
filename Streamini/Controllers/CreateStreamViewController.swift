@@ -71,12 +71,12 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
         goLiveButton.isHidden = true
         
         if AmazonTool.isAmazonSupported() {
-            StreamConnector().create(data, success: createStreamSuccess, failure: createStreamFailure)
+            StreamConnector().create(data, createStreamSuccess, createStreamFailure)
         } else {
             let filename = "screenshot.jpg"
             let screenshotData = UIImageJPEGRepresentation(camera.captureStillImage()!, 1.0)!
           
-            StreamConnector().createWithFile(filename, fileData: screenshotData as NSData, data: data, success: createStreamSuccess, failure: createStreamFailure)
+            StreamConnector().createWithFile(filename, screenshotData as NSData, data, createStreamSuccess, createStreamFailure)
         }
     }
     
@@ -249,7 +249,7 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
         
         nameTextView.becomeFirstResponder()
         
-        StreamConnector().categories(categoriesSuccess, failure: categoriesFailure)
+        StreamConnector().categories(categoriesSuccess, categoriesFailure)
     }
     
     override func viewWillAppear(_ animated: Bool) {

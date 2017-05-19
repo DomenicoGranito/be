@@ -43,7 +43,7 @@ class NotificationsDelegate: NSObject, UIAlertViewDelegate {
     func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
         if buttonIndex != alertView.cancelButtonIndex {
             if let id = streamId {
-                StreamConnector().get(id, success: streamSuccess, failure: streamFailure)
+                StreamConnector().get(id, streamSuccess, streamFailure)
             }
         }
     }

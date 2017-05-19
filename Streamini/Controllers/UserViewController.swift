@@ -118,8 +118,7 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         else
         {
             let data=UIImageJPEGRepresentation(image, 1.0)!
-            UserConnector().uploadAvatar(filename, data:data as NSData, success:uploadAvatarSuccess, failure:uploadAvatarFailure, progress:
-                {(bytesSent, totalBytesSent, totalBytesExpectedToSend)->Void in
+            UserConnector().uploadAvatar(filename, data as NSData, uploadAvatarSuccess, uploadAvatarFailure, {(bytesSent, totalBytesSent, totalBytesExpectedToSend)->Void in
                     //let progress: Float = Float(totalBytesSent)/Float(totalBytesExpectedToSend)
                     //self.userHeaderView.progressView.setProgress(progress, animated: true)
             })
@@ -143,7 +142,7 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
     
     func imageDidUpload()
     {
-        UserConnector().avatar(uploadAvatarSuccess, failure:uploadAvatarFailure)
+        UserConnector().avatar(uploadAvatarSuccess, uploadAvatarFailure)
     }
 
     func imageUploadFailed(_ error:NSError)
@@ -195,11 +194,11 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         
         if user!.isFollowed
         {
-            SocialConnector().unfollow(user!.id, success:unfollowSuccess, failure:unfollowFailure)
+            SocialConnector().unfollow(user!.id, unfollowSuccess, unfollowFailure)
         }
         else
         {
-            SocialConnector().follow(user!.id, success:followSuccess, failure:followFailure)
+            SocialConnector().follow(user!.id, followSuccess, followFailure)
         }
     }
     
@@ -304,12 +303,12 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
     func update(_ userId:UInt)
     {
         activityIndicator.startAnimating()
-        UserConnector().get(userId, success:getUserSuccess, failure:getUserFailure)
+        UserConnector().get(userId, getUserSuccess, getUserFailure)
     }
     
     @IBAction func back()
     {
-        navigationController?.popViewController(animated: true)
+        navigationController!.popViewController(animated: true)
     }
     
     func renderImageFromView()->UIImage?

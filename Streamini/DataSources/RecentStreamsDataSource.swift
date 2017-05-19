@@ -96,7 +96,7 @@ class RecentStreamsDataSource:UserStatisticsDataSource
     
     override func reload()
     {
-        StreamConnector().recent(userId, success:recentSuccess, failure:recentFailure)
+        StreamConnector().recent(userId, recentSuccess, recentFailure)
     }
     
     override func fetchMore()

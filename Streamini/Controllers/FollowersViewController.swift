@@ -73,7 +73,7 @@ class FollowersViewController: BaseViewController, UISearchBarDelegate, UserSele
         self.tableView.addInfiniteScrolling { () -> Void in
             self.page += 1
             let data = NSDictionary(objects: [self.page, self.searchTerm], forKeys: ["p" as NSCopying, "q" as NSCopying])
-            UserConnector().followers(data, success: self.addFollowersSuccess, failure: self.followersFailure)
+            UserConnector().followers(data, self.addFollowersSuccess, self.followersFailure)
         }
         
         self.searchBar.placeholder = NSLocalizedString("search_followers_placeholder", comment: "")
@@ -85,7 +85,7 @@ class FollowersViewController: BaseViewController, UISearchBarDelegate, UserSele
         configureView()
         
         let data = [ "p" : page ]
-        UserConnector().followers(data as NSDictionary, success: followersSuccess, failure: followersFailure)
+        UserConnector().followers(data as NSDictionary, followersSuccess, followersFailure)
     }
     
     // MARK: - UITableView Delegate & DataSource
@@ -125,18 +125,16 @@ class FollowersViewController: BaseViewController, UISearchBarDelegate, UserSele
         }
     }
     
-    // MARK: - UISearchBarDelegate
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         page = 0
         searchTerm = searchText
         let data = NSDictionary(objects: [page, searchTerm], forKeys: ["p" as NSCopying, "q" as NSCopying])
-        UserConnector().followers(data, success: followersSuccess, failure: followersFailure)
+        UserConnector().followers(data, followersSuccess, followersFailure)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         let data = [ "p" : 0 ]
-        UserConnector().followers(data as NSDictionary, success: followersSuccess, failure: followersFailure)
+        UserConnector().followers(data as NSDictionary, followersSuccess, followersFailure)
         
         page            = 0
         searchTerm      = ""

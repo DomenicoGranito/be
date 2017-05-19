@@ -10,14 +10,14 @@ class FollowingDataSource: UserStatisticsDataSource
 {
     override func reload()
     {
-        UserConnector().following(NSDictionary(object:userId, forKey:"id" as NSCopying), success:statisticsDataSuccess, failure:statisticsDataFailure)
+        UserConnector().following(NSDictionary(object:userId, forKey:"id" as NSCopying), statisticsDataSuccess, statisticsDataFailure)
     }
     
     override func fetchMore()
     {
         page+=1
         let dictionary=NSDictionary(objects:[userId, page], forKeys:["id" as NSCopying, "p" as NSCopying])
-        UserConnector().following(dictionary, success:moreStatisticsDataSuccess, failure:statisticsDataFailure)
+        UserConnector().following(dictionary, moreStatisticsDataSuccess, statisticsDataFailure)
     }
     
     func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)

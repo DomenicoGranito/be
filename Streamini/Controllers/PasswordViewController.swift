@@ -45,7 +45,7 @@ class PasswordViewController: BaseViewController
             return
         }
         
-        UserConnector().password(newPassword.text!, success:passwordSuccess, failure:passwordFailure)
+        UserConnector().password(newPassword.text!, passwordSuccess, passwordFailure)
     }
     
     func passwordSuccess()

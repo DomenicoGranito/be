@@ -93,7 +93,7 @@ class PopUpViewController: BaseViewController
         }
         if indexPath.row==4
         {
-            StreamConnector().report(stream!.id, success:reportSuccess, failure:failureWithoutAction)
+            StreamConnector().report(stream!.id, reportSuccess, failureWithoutAction)
         }
         if indexPath.row==5
         {
@@ -111,11 +111,11 @@ class PopUpViewController: BaseViewController
         if indexPath.row==6
         {
             dismiss(animated: true, completion:nil)
-            SocialConnector().block(stream!.user.id, success:blockSuccess, failure:failureWithoutAction)
+            SocialConnector().block(stream!.user.id, blockSuccess, failureWithoutAction)
             SongManager.deleteBlockedUserVideos(stream!.user.id)
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "blockUser"), object:nil)
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "hideMiniPlayer"), object:nil)
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshAfterBlock"), object:nil)
+            NotificationCenter.default.post(name:NSNotification.Name(rawValue:"blockUser"), object:nil)
+            NotificationCenter.default.post(name:NSNotification.Name(rawValue:"hideMiniPlayer"), object:nil)
+            NotificationCenter.default.post(name:NSNotification.Name(rawValue:"refreshAfterBlock"), object:nil)
         }
     }
     

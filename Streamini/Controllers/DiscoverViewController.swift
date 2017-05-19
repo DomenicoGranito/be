@@ -45,7 +45,7 @@ class DiscoverViewController: UIViewController
             errorView.isHidden=true
             activityView.isHidden=false
             
-            StreamConnector().discover(discoverSuccess, failure:discoverFailure)
+            StreamConnector().discover(discoverSuccess, discoverFailure)
         }
         else
         {

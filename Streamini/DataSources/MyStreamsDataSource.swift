@@ -24,7 +24,7 @@ class MyStreamsDataSource: RecentStreamsDataSource
     
     override func reload()
     {
-        StreamConnector().recent(userId, success:myRecentSuccess, failure:recentFailure)
+        StreamConnector().recent(userId, myRecentSuccess, recentFailure)
     }
     
     override func fetchMore()
@@ -37,13 +37,13 @@ class MyStreamsDataSource: RecentStreamsDataSource
         return true
     }
     
-    func tableView(_ tableView:UITableView, commitEditingStyle editingStyle:UITableViewCellEditingStyle, forRowAtIndexPath indexPath:NSIndexPath)
+    func tableView(_ tableView:UITableView, commitEditingStyle editingStyle:UITableViewCellEditingStyle, forRowAtIndexPath indexPath:IndexPath)
     {
         if editingStyle == .delete
         {
-            StreamConnector().del(streams[indexPath.row].id, success:delSuccess, failure:delFailure)
-            self.streams.remove(at: indexPath.row)
-            self.tableView.deleteRows(at: [indexPath as IndexPath], with:.automatic)
+            StreamConnector().del(streams[indexPath.row].id, delSuccess, delFailure)
+            self.streams.remove(at:indexPath.row)
+            self.tableView.deleteRows(at:[indexPath], with:.automatic)
         }
     }
     

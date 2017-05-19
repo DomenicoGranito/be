@@ -59,7 +59,7 @@ class LoginViewController: BaseViewController
         let code=notification.object as! String
         
         let accessTokenLinkString=buildAccessTokenLink(code)
-        UserConnector().getWeChatAccessToken(accessTokenLinkString, success:successAccessToken, failure:forgotFailure)
+        UserConnector().getWeChatAccessToken(accessTokenLinkString, successAccessToken, forgotFailure)
     }
     
     func successAccessToken(_ data:NSDictionary)
@@ -68,7 +68,7 @@ class LoginViewController: BaseViewController
         let openID=data["openid"] as! String
         
         let userProfileLinkString="userinfo?access_token="+accessToken+"&openid="+openID
-        UserConnector().getWeChatUserProfile(userProfileLinkString, success:successUserProfile, failure:forgotFailure)
+        UserConnector().getWeChatUserProfile(userProfileLinkString, successUserProfile, forgotFailure)
     }
     
     func successUserProfile(_ data:NSDictionary)
@@ -107,7 +107,7 @@ class LoginViewController: BaseViewController
             loginData["apn"]=""
         }
         
-        UserConnector().login(loginData, success:loginSuccess, failure:signupFailure)
+        UserConnector().login(loginData, loginSuccess, signupFailure)
     }
     
     func signupFailure(_ error:NSError)
@@ -142,7 +142,7 @@ class LoginViewController: BaseViewController
             loginData["apn"]=""
         }
         
-        UserConnector().login(loginData, success:loginSuccess, failure:forgotFailure)
+        UserConnector().login(loginData, loginSuccess, forgotFailure)
     }
     
     @IBAction func login()
@@ -159,7 +159,7 @@ class LoginViewController: BaseViewController
     {
         A0SimpleKeychain().setString(session, forKey:"PHPSESSID")
         
-        UserConnector().get(nil, success:successUser, failure:forgotFailure)
+        UserConnector().get(nil, successUser, forgotFailure)
         
         let vc=storyBoard.instantiateViewController(withIdentifier: "TabBarViewController")
         navigationController?.pushViewController(vc, animated:true)
@@ -178,7 +178,7 @@ class LoginViewController: BaseViewController
         }
         else
         {
-            UserConnector().forgot(username, success:forgotSuccess, failure:forgotFailure)
+            UserConnector().forgot(username, forgotSuccess, forgotFailure)
         }
     }
     

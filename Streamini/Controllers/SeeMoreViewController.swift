@@ -24,11 +24,11 @@ class SeeMoreViewController: UIViewController
         
         if t=="streams"
         {
-            StreamConnector().searchMoreStreams(q, success:searchMoreStreamsSuccess, failure:searchFailure)
+            StreamConnector().searchMoreStreams(q, searchMoreStreamsSuccess, searchFailure)
         }
         else
         {
-            StreamConnector().searchMoreOthers(q, identifier:t, success:searchMoreOthersSuccess, failure:searchFailure)
+            StreamConnector().searchMoreOthers(q, t, searchMoreOthersSuccess, searchFailure)
         }
     }
     

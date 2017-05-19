@@ -8,25 +8,25 @@
 
 class Connector: NSObject
 {
-    var manager = RKObjectManager(baseURL: Connector.baseUrl() as URL!)
+    var manager=RKObjectManager(baseURL:Connector.baseUrl())!
     var errorDescriptor:RKResponseDescriptor?
     
-    class func baseUrl() -> NSURL
+    class func baseUrl()->URL
     {
-        let (host) = Config.shared.api()
-        return NSURL(string: host)!
+        let (host)=Config.shared.api()
+        return URL(string:host)!
     }
     
     override init ()
     {
         super.init()
-        self.manager?.requestSerializationMIMEType = RKMIMETypeFormURLEncoded
-        self.addErrorResponseDescriptor()
+        manager.requestSerializationMIMEType = RKMIMETypeFormURLEncoded
+        addErrorResponseDescriptor()
     }
     
     func sessionParams()->[String:AnyObject]?
     {
-        if let session=A0SimpleKeychain().string(forKey: "PHPSESSID")
+        if let session=A0SimpleKeychain().string(forKey:"PHPSESSID")
         {
             return ["PHPSESSID":session as AnyObject]
         }
@@ -36,54 +36,64 @@ class Connector: NSObject
         }
     }
     
-    func loginData() -> NSDictionary? {
-        let data = NSMutableDictionary()
-        if let _ = A0SimpleKeychain().string(forKey: "id") {
-            data["id"] = A0SimpleKeychain().string(forKey: "id")
+    func loginData()->NSDictionary?
+    {
+        let data=NSMutableDictionary()
+        
+        if let _=A0SimpleKeychain().string(forKey:"id")
+        {
+            data["id"]=A0SimpleKeychain().string(forKey:"id")
         }
-        if let _ = A0SimpleKeychain().string(forKey: "password") {
-            data["password"] = A0SimpleKeychain().string(forKey: "password")
+        if let _=A0SimpleKeychain().string(forKey:"password")
+        {
+            data["password"]=A0SimpleKeychain().string(forKey:"password")
         }
-        if let _ = A0SimpleKeychain().string(forKey: "type") {
-            data["type"] = A0SimpleKeychain().string(forKey: "type")
+        if let _=A0SimpleKeychain().string(forKey:"type")
+        {
+            data["type"]=A0SimpleKeychain().string(forKey:"type")
         }
-        data["token"] = "2"
-        return (data.count == 4) ? data : nil
+        
+        data["token"]="2"
+        
+        return data.count==4 ? data : nil
     }
     
-    func login(_ loginData: NSDictionary, success: @escaping (_ session: String) -> (), failure: @escaping (_ error:NSError) -> ())
+    func login(_ loginData:NSDictionary, _ success:@escaping(_ session:String)->(), _ failure:@escaping(_ error:NSError)->())
     {
-        let path = "user/login"
+        let path="user/login"
         
-        let requestMapping  = UserMappingProvider.loginRequestMapping()
-        let responseMapping = UserMappingProvider.loginResponseMapping()
+        let requestMapping=UserMappingProvider.loginRequestMapping()
+        let responseMapping=UserMappingProvider.loginResponseMapping()
         
-        let requestDescriptor = RKRequestDescriptor(mapping: requestMapping, objectClass: NSDictionary.self, rootKeyPath: nil, method:.POST)
+        let requestDescriptor=RKRequestDescriptor(mapping:requestMapping, objectClass:NSDictionary.self, rootKeyPath:nil, method:.POST)
         
-        manager?.addRequestDescriptor(requestDescriptor)
+        manager.addRequestDescriptor(requestDescriptor)
         
-        let statusCode = RKStatusCodeIndexSetForClass(.successful)
+        let statusCode=RKStatusCodeIndexSetForClass(.successful)
         
-        let loginResponseDescriptor = RKResponseDescriptor(mapping: responseMapping, method:.POST, pathPattern: nil, keyPath: "data", statusCodes: statusCode)
-        manager?.addResponseDescriptor(loginResponseDescriptor)
+        let loginResponseDescriptor=RKResponseDescriptor(mapping:responseMapping, method:.POST, pathPattern:nil, keyPath:"data", statusCodes:statusCode)
+        manager.addResponseDescriptor(loginResponseDescriptor)
         
-        manager?.post(loginData, path: path, parameters: nil, success: { (operation, mappingResult) -> Void in
-            // success code
-            let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
-            if !error.status {
+        manager.post(loginData, path:path, parameters:nil, success:{(operation, mappingResult)->Void in
+            
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
+            
+            if !error.status
+            {
                 failure(error.toNSError())
-            } else {
-                let data = mappingResult?.dictionary()["data"] as! NSDictionary
-                let session = data["session"] as! String
+            }
+            else
+            {
+                let data=mappingResult?.dictionary()["data"] as! NSDictionary
+                let session=data["session"] as! String
                 success(session)
             }
-            },
-          failure:{(operation, error)->Void in
-            //failure(error)
+            }, failure:{(operation, error)->Void in
+                //failure(error)
         })
     }
     
-    func relogin(_ success: @escaping () -> (), failure: @escaping () -> ())
+    func relogin(_ success:@escaping()->(), failure:@escaping()->())
     {
         func loginSuccess(_ session:String)
         {
@@ -97,7 +107,7 @@ class Connector: NSObject
         
         if let data=loginData()
         {
-            self.login(data, success:loginSuccess, failure:loginFailure)
+            self.login(data, loginSuccess, loginFailure)
         }
         else
         {
@@ -105,17 +115,21 @@ class Connector: NSObject
         }
     }
 
-    func addErrorResponseDescriptor() {
-        let mapping = ErrorMappingProvider.errorObjectMapping()
+    func addErrorResponseDescriptor()
+    {
+        let mapping=ErrorMappingProvider.errorObjectMapping()
 
-        let statusCode = RKStatusCodeIndexSetForClass(.successful)
-        self.errorDescriptor = RKResponseDescriptor(mapping: mapping, method:.any, pathPattern: nil, keyPath: "", statusCodes: statusCode)
-        self.manager?.addResponseDescriptor(self.errorDescriptor)
+        let statusCode=RKStatusCodeIndexSetForClass(.successful)
+        errorDescriptor=RKResponseDescriptor(mapping:mapping, method:.any, pathPattern:nil, keyPath:"", statusCodes:statusCode)
+        manager.addResponseDescriptor(errorDescriptor)
     }
     
-    func findErrorObject(mappingResult: RKMappingResult) -> Error? {
-        for obj in mappingResult.array() {
-            if obj is Error {
+    func findErrorObject(mappingResult:RKMappingResult)->Error?
+    {
+        for obj in mappingResult.array()
+        {
+            if obj is Error
+            {
                 return obj as? Error
             }
         }

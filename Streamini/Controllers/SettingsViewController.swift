@@ -23,7 +23,7 @@ class SettingsViewController:UITableViewController, UIActionSheetDelegate
     {
         if buttonIndex != actionSheet.cancelButtonIndex
         {
-            UserConnector().logout(logoutSuccess, failure:logoutFailure)
+            UserConnector().logout(logoutSuccess, logoutFailure)
         }
     }
     

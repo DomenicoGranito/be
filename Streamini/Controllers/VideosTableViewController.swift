@@ -22,7 +22,7 @@ class VideosTableViewController: UITableViewController, ProfileDelegate
             myLbl.text="My Videos"
         }
         
-        UserConnector().get(nil, success:userSuccess, failure:userFailure)
+        UserConnector().get(nil, userSuccess, userFailure)
     }
     
     func userSuccess(user:User)
@@ -61,7 +61,7 @@ class VideosTableViewController: UITableViewController, ProfileDelegate
     
     func reload()
     {
-        UserConnector().get(nil, success:userSuccess, failure:userFailure)
+        UserConnector().get(nil, userSuccess, userFailure)
     }
     
     func close()

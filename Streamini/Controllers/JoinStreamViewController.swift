@@ -60,7 +60,7 @@ UIActionSheetDelegate, SelectFollowersDelegate, ReplayViewDelegate, UserSelectin
         closeButton.isEnabled = false
                 
         if streamPlayer != nil {
-            StreamConnector().leave(stream!.id, likes: likes, success: leaveSuccess, failure: leaveFailure)
+            StreamConnector().leave(stream!.id, likes, leaveSuccess, leaveFailure)
         } else {
             self.dismiss(animated: true, completion: nil)
         }
@@ -68,7 +68,7 @@ UIActionSheetDelegate, SelectFollowersDelegate, ReplayViewDelegate, UserSelectin
     
     func closeStream() {
         if streamPlayer != nil {
-            StreamConnector().leave(stream!.id, likes: likes, success: leaveWithAlertSuccess, failure: leaveFailure)
+            StreamConnector().leave(stream!.id, likes, leaveWithAlertSuccess, leaveFailure)
         } else {
             UIAlertView.streamClosedAlert(nil).show()
         }
@@ -102,7 +102,7 @@ UIActionSheetDelegate, SelectFollowersDelegate, ReplayViewDelegate, UserSelectin
                 
                 self.view.layoutIfNeeded()
             })
-            StreamConnector().viewers(NSDictionary(object: stream!.id, forKey: "streamId" as NSCopying), success: viewersSuccess, failure: failureWithoutAction)
+            StreamConnector().viewers(NSDictionary(object: stream!.id, forKey: "streamId" as NSCopying), viewersSuccess, failureWithoutAction)
         }
     }
     
@@ -134,7 +134,7 @@ UIActionSheetDelegate, SelectFollowersDelegate, ReplayViewDelegate, UserSelectin
     }
     
     func replayViewStreamDidEnd(_ replayView: ReplayView) {
-        StreamConnector().leave(stream!.id, likes: 0, success: leaveAnother, failure: leaveFailure)
+        StreamConnector().leave(stream!.id, 0, leaveAnother, leaveFailure)
     }
     
     func replayViewWillBeHidden(_ replayView: ReplayView) {
@@ -148,7 +148,7 @@ UIActionSheetDelegate, SelectFollowersDelegate, ReplayViewDelegate, UserSelectin
             viewersButtonPressed(eyeButton)
         }
         
-        StreamConnector().join(stream!.id, success: joinSuccess, failure: joinFailure)
+        StreamConnector().join(stream!.id, joinSuccess, joinFailure)
     }
     
     func replayViewCloseButtonPressed(_ replayView: ReplayView) {
@@ -172,7 +172,7 @@ UIActionSheetDelegate, SelectFollowersDelegate, ReplayViewDelegate, UserSelectin
             }
         } else {
             page = 0
-            StreamConnector().viewers(NSDictionary(object: stream!.id, forKey: "streamId" as NSCopying), success: viewersSuccess, failure: failureWithoutAction)
+            StreamConnector().viewers(NSDictionary(object: stream!.id, forKey: "streamId" as NSCopying), viewersSuccess, failureWithoutAction)
         }
     }
     
@@ -189,7 +189,7 @@ UIActionSheetDelegate, SelectFollowersDelegate, ReplayViewDelegate, UserSelectin
             }
         } else {
             page = 0
-            StreamConnector().replayViewers(NSDictionary(object: stream!.id, forKey: "streamId" as NSCopying), success: viewersSuccess, failure: failureWithoutAction)
+            StreamConnector().replayViewers(NSDictionary(object: stream!.id, forKey: "streamId" as NSCopying), viewersSuccess, failureWithoutAction)
         }
     }
     
@@ -197,14 +197,14 @@ UIActionSheetDelegate, SelectFollowersDelegate, ReplayViewDelegate, UserSelectin
     
     func followersDidSelected(_ users: [User]) {
         let usersId = users.map({ $0.id })
-        StreamConnector().share(stream!.id, usersId: usersId, success: successWithoutAction, failure: failureWithoutAction)
+        StreamConnector().share(stream!.id, usersId, successWithoutAction, failureWithoutAction)
     }
     
     // MARK: - UIActionSheetDelegate
     
     func actionSheet(_ actionSheet: UIActionSheet, clickedButtonAt buttonIndex: Int) {
         if buttonIndex == 1 {
-            StreamConnector().share(stream!.id, usersId: nil, success: successWithoutAction, failure: failureWithoutAction)
+            StreamConnector().share(stream!.id, nil, successWithoutAction, failureWithoutAction)
         }
         if buttonIndex == 2 {
             self.performSegue(withIdentifier: "JoinToFollowers", sender: self)
@@ -215,14 +215,14 @@ UIActionSheetDelegate, SelectFollowersDelegate, ReplayViewDelegate, UserSelectin
     
     func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
         if buttonIndex != alertView.cancelButtonIndex {
-            StreamConnector().report(stream!.id, success: successWithoutAction, failure: failureWithoutAction)
+            StreamConnector().report(stream!.id, successWithoutAction, failureWithoutAction)
         }
     }
     
     // MARK: - Update counter
     
     func updateCounter() {
-        StreamConnector().get(stream!.id, success: getStreamSuccess, failure: failureWithoutAction)
+        StreamConnector().get(stream!.id, getStreamSuccess, failureWithoutAction)
     }
     
     // MARK: - Block Stream
@@ -231,7 +231,7 @@ UIActionSheetDelegate, SelectFollowersDelegate, ReplayViewDelegate, UserSelectin
         if userId == UserContainer.shared.logged().id {
             UIAlertView.userBlockedAlert().show()
             if streamPlayer != nil {
-                StreamConnector().leave(stream!.id, likes: likes, success: leaveSuccess, failure: leaveFailure)
+                StreamConnector().leave(stream!.id, likes, leaveSuccess, leaveFailure)
             }
         }
     }
@@ -359,7 +359,7 @@ UIActionSheetDelegate, SelectFollowersDelegate, ReplayViewDelegate, UserSelectin
     
     func forceLeave(_ notification: NSNotification) {
         if streamPlayer != nil {
-            StreamConnector().leave(stream!.id, likes: likes, success: leaveSilentSuccess, failure: leaveFailure)
+            StreamConnector().leave(stream!.id, likes, leaveSilentSuccess, leaveFailure)
             if let mes = messenger {
                 mes.send(Message.disconnected(), streamId: stream!.id)
                 mes.disconnect(stream!.id)
@@ -381,7 +381,7 @@ UIActionSheetDelegate, SelectFollowersDelegate, ReplayViewDelegate, UserSelectin
 
         NotificationCenter.default.addObserver(self, selector: #selector(JoinStreamViewController.forceLeave(_:)), name: NSNotification.Name(rawValue: "Close/Leave"), object: nil)
         if !isRecent {
-            StreamConnector().join(stream!.id, success: joinSuccess, failure: joinFailure)
+            StreamConnector().join(stream!.id, joinSuccess, joinFailure)
         } else {
             streamPlayer = StreamPlayer(stream: stream!, isRecent: isRecent, view: previewView, indicator: activityIndicator)
             self.streamPlayer!.delegate = DefaultStreamPlayerDelegate(isRecent: isRecent, replayView: replayView)
@@ -524,10 +524,10 @@ UIActionSheetDelegate, SelectFollowersDelegate, ReplayViewDelegate, UserSelectin
     func collectionViewDidBeginPullingLeft(_ collectionView: UIScrollView, offset: CGFloat) {
         let data = NSDictionary(objects: [stream!.id, page+=1], forKeys: ["streamId" as NSCopying, "p" as NSCopying])
         if replayView.viewersIsShown {
-            StreamConnector().viewers(data, success: moreViewersSuccess, failure: failureWithoutAction)
+            StreamConnector().viewers(data, moreViewersSuccess, failureWithoutAction)
         }
         if replayView.replaysIsShown {
-            StreamConnector().replayViewers(data, success: moreViewersSuccess, failure: failureWithoutAction)
+            StreamConnector().replayViewers(data, moreViewersSuccess, failureWithoutAction)
         }
     }
 }

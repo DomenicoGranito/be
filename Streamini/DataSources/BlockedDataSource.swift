@@ -10,14 +10,14 @@ class BlockedDataSource: UserStatisticsDataSource
 {
     override func reload()
     {
-        UserConnector().blocked(NSDictionary(object:userId, forKey:"id" as NSCopying), success:statisticsDataSuccess, failure:statisticsDataFailure)
+        UserConnector().blocked(NSDictionary(object:userId, forKey:"id" as NSCopying), statisticsDataSuccess, statisticsDataFailure)
     }
     
     override func fetchMore()
     {
         page+=1
         let dictionary=NSDictionary(objects:[userId, page], forKeys:["id" as NSCopying, "p" as NSCopying])
-        UserConnector().blocked(dictionary, success:moreStatisticsDataSuccess, failure:statisticsDataFailure)
+        UserConnector().blocked(dictionary, moreStatisticsDataSuccess, statisticsDataFailure)
     }
     
     override func updateBlockedStatus(_ user:User, status:Bool)

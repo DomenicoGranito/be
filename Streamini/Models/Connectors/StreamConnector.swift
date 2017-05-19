@@ -8,7 +8,7 @@
 
 class StreamConnector: Connector {
     
-    func cities(_ success: @escaping (_ cities: [String]) -> (), failure: @escaping (_ error:NSError) -> ()) {
+    func cities(_ success: @escaping (_ cities: [String]) -> (), _ failure: @escaping (_ error:NSError) -> ()) {
         let path = "stream/cities"
         
         let mapping = StreamMappingProvider.cityResponseMapping()
@@ -16,16 +16,16 @@ class StreamConnector: Connector {
         
         let responseDescriptor = RKResponseDescriptor(mapping: mapping, method:.GET, pathPattern: nil, keyPath: "data.cities", statusCodes: statusCode)
         
-        manager?.addResponseDescriptor(responseDescriptor)
+        manager.addResponseDescriptor(responseDescriptor)
         
-        manager?.getObjectsAtPath(path, parameters: self.sessionParams(), success: { (operation, mappingResult) -> Void in
+        manager.getObjectsAtPath(path, parameters: self.sessionParams(), success: { (operation, mappingResult) -> Void in
             let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
             if !error.status
             {
                 if error.code == Error.kLoginExpiredCode
                 {
                     self.relogin({ () -> () in
-                        self.cities(success, failure: failure)
+                        self.cities(success, failure)
                         },
                                  failure:{ () -> () in
                             failure(error.toNSError())
@@ -50,7 +50,7 @@ class StreamConnector: Connector {
         })
     }
     
-    func categories(_ success: @escaping (_ cats: [Category]) -> (), failure: @escaping (_ error: NSError) -> ()) {
+    func categories(_ success: @escaping (_ cats: [Category]) -> (), _ failure: @escaping (_ error: NSError) -> ()) {
    
     //let path = "stream/categories"
         let path = "category/categories"
@@ -60,15 +60,15 @@ class StreamConnector: Connector {
         
         let responseDescriptor = RKResponseDescriptor(mapping: mapping, method:.GET, pathPattern: nil, keyPath: "data.categories", statusCodes: statusCode)
         
-        manager?.addResponseDescriptor(responseDescriptor)
+        manager.addResponseDescriptor(responseDescriptor)
         
-        manager?.getObjectsAtPath(path, parameters: self.sessionParams(), success: { (operation, mappingResult) -> Void in
+        manager.getObjectsAtPath(path, parameters: self.sessionParams(), success: { (operation, mappingResult) -> Void in
             // success code
             let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
             if !error.status {
                 if error.code == Error.kLoginExpiredCode {
                     self.relogin({ () -> () in
-                        self.categories(success, failure: failure)
+                        self.categories(success, failure)
                         }, failure: { () -> () in
                             failure(error.toNSError())
                     })
@@ -84,7 +84,7 @@ class StreamConnector: Connector {
         })
     }
     
-    func streams(_ getGlobal: Bool, success: @escaping (_ live: [Stream], _ recent: [Stream]) -> (), failure: @escaping (_ error: NSError) -> ()) {
+    func streams(_ getGlobal: Bool, _ success: @escaping (_ live: [Stream], _ recent: [Stream]) -> (), _ failure: @escaping (_ error: NSError) -> ()) {
         let path = (getGlobal) ? "stream/global" : "stream/followed"
         
         let streamMapping = StreamMappingProvider.streamResponseMapping()
@@ -94,16 +94,16 @@ class StreamConnector: Connector {
         
         let recentStreamResponseDescriptor = RKResponseDescriptor(mapping: streamMapping, method: RKRequestMethod.GET, pathPattern: nil, keyPath: "data.recent", statusCodes: statusCode)
         
-        manager?.addResponseDescriptor(liveStreamResponseDescriptor)
-        manager?.addResponseDescriptor(recentStreamResponseDescriptor)
+        manager.addResponseDescriptor(liveStreamResponseDescriptor)
+        manager.addResponseDescriptor(recentStreamResponseDescriptor)
         
-        manager?.getObjectsAtPath(path, parameters: self.sessionParams(), success: { (operation, mappingResult) -> Void in
+        manager.getObjectsAtPath(path, parameters: self.sessionParams(), success: { (operation, mappingResult) -> Void in
             // success code
             let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
             if !error.status {
                 if error.code == Error.kLoginExpiredCode {
                     self.relogin({ () -> () in
-                        self.streams(getGlobal, success: success, failure: failure)
+                        self.streams(getGlobal, success, failure)
                     }, failure: { () -> () in
                         failure(error.toNSError())
                     })
@@ -130,11 +130,11 @@ class StreamConnector: Connector {
     
     /*** WRITTEN BY ANKIT GARG ***/
     
-    func discover(_ success:@escaping (_ data:NSDictionary)->(), failure:@escaping (_ error:NSError)->())
+    func discover(_ success:@escaping (_ data:NSDictionary)->(), _ failure:@escaping (_ error:NSError)->())
     {
         let path="category/discover"
         
-        manager?.getObjectsAtPath(path, parameters:sessionParams(), success:{ (operation, mappingResult)->Void in
+        manager.getObjectsAtPath(path, parameters:sessionParams(), success:{ (operation, mappingResult)->Void in
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
@@ -143,7 +143,7 @@ class StreamConnector: Connector {
                 if error.code==Error.kLoginExpiredCode
                 {
                     self.relogin({()->() in
-                        self.discover(success, failure:failure)
+                        self.discover(success, failure)
                         },
                         failure:{()->() in
                             failure(error.toNSError())
@@ -165,11 +165,11 @@ class StreamConnector: Connector {
         })
     }
     
-    func homeStreams(_ success:@escaping (_ data:NSDictionary)->(), failure:@escaping (_ error:NSError)->())
+    func homeStreams(_ success:@escaping (_ data:NSDictionary)->(), _ failure:@escaping (_ error:NSError)->())
     {
         let path="category/streams"
         
-        manager?.getObjectsAtPath(path, parameters:sessionParams(), success:{ (operation, mappingResult)->Void in
+        manager.getObjectsAtPath(path, parameters:sessionParams(), success:{ (operation, mappingResult)->Void in
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
@@ -178,7 +178,7 @@ class StreamConnector: Connector {
                 if error.code==Error.kLoginExpiredCode
                 {
                     self.relogin({()->() in
-                        self.homeStreams(success, failure:failure)
+                        self.homeStreams(success, failure)
                         },
                         failure:{()->() in
                             failure(error.toNSError())
@@ -201,11 +201,11 @@ class StreamConnector: Connector {
         })
     }
     
-    func categoryStreams(_ categoryID:Int, pageID:Int, success:@escaping (_ data:NSDictionary)->(), failure:@escaping (_ error:NSError)->())
+    func categoryStreams(_ categoryID:Int, pageID:Int, _ success:@escaping (_ data:NSDictionary)->(), _ failure:@escaping (_ error:NSError)->())
     {
         let path="category/streamscategory?c=\(categoryID)&p=\(pageID)"
         
-        manager?.getObjectsAtPath(path, parameters:sessionParams(), success:{ (operation, mappingResult)->Void in
+        manager.getObjectsAtPath(path, parameters:sessionParams(), success:{ (operation, mappingResult)->Void in
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
@@ -214,7 +214,7 @@ class StreamConnector: Connector {
                 if error.code==Error.kLoginExpiredCode
                 {
                     self.relogin({()->() in
-                        self.categoryStreams(categoryID, pageID:pageID, success:success, failure:failure)
+                        self.categoryStreams(categoryID, pageID:pageID, success, failure)
                         },
                         failure:{()->() in
                             failure(error.toNSError())
@@ -237,7 +237,7 @@ class StreamConnector: Connector {
         })
     }
     
-    func search(_ query:String, success:@escaping (_ brands:[User], _ agencies:[User], _ venues:[User], _ talents:[User], _ profiles:[User], _ streams:[Stream])->(), failure:@escaping (_ error:NSError)->())
+    func search(_ query:String, _ success:@escaping (_ brands:[User], _ agencies:[User], _ venues:[User], _ talents:[User], _ profiles:[User], _ streams:[Stream])->(), _ failure:@escaping (_ error:NSError)->())
     {
         let path="stream/search?q=\(query)"
         
@@ -253,14 +253,14 @@ class StreamConnector: Connector {
         let profilesResponseDescriptor=RKResponseDescriptor(mapping:userMapping, method:.GET, pathPattern:nil, keyPath:"data.profiles", statusCodes:statusCode)
         let streamsResponseDescriptor=RKResponseDescriptor(mapping:streamMapping, method:.GET, pathPattern:nil, keyPath:"data.streams", statusCodes:statusCode)
         
-        manager?.addResponseDescriptor(brandsResponseDescriptor)
-        manager?.addResponseDescriptor(agenciesResponseDescriptor)
-        manager?.addResponseDescriptor(venuesResponseDescriptor)
-        manager?.addResponseDescriptor(talentsResponseDescriptor)
-        manager?.addResponseDescriptor(profilesResponseDescriptor)
-        manager?.addResponseDescriptor(streamsResponseDescriptor)
+        manager.addResponseDescriptor(brandsResponseDescriptor)
+        manager.addResponseDescriptor(agenciesResponseDescriptor)
+        manager.addResponseDescriptor(venuesResponseDescriptor)
+        manager.addResponseDescriptor(talentsResponseDescriptor)
+        manager.addResponseDescriptor(profilesResponseDescriptor)
+        manager.addResponseDescriptor(streamsResponseDescriptor)
         
-        manager?.getObjectsAtPath(path, parameters:sessionParams(), success:{(operation, mappingResult)->Void in
+        manager.getObjectsAtPath(path, parameters:sessionParams(), success:{(operation, mappingResult)->Void in
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
@@ -269,7 +269,7 @@ class StreamConnector: Connector {
                 if error.code == Error.kLoginExpiredCode
                 {
                     self.relogin({()->() in
-                        self.search(query, success:success, failure:failure)
+                        self.search(query, success, failure)
                         },
                         failure:{()->() in
                             failure(error.toNSError())
@@ -297,7 +297,7 @@ class StreamConnector: Connector {
         })
     }
     
-    func searchMoreStreams(_ query:String, success:@escaping (_ streams:[Stream])->(), failure:@escaping (_ error:NSError)->())
+    func searchMoreStreams(_ query:String, _ success:@escaping (_ streams:[Stream])->(), _ failure:@escaping (_ error:NSError)->())
     {
         let path="stream/searchmore?q=\(query)&t=streams"
         
@@ -307,9 +307,9 @@ class StreamConnector: Connector {
         
         let streamsResponseDescriptor=RKResponseDescriptor(mapping:streamMapping, method:.GET, pathPattern:nil, keyPath:"data.streams", statusCodes:statusCode)
         
-        manager?.addResponseDescriptor(streamsResponseDescriptor)
+        manager.addResponseDescriptor(streamsResponseDescriptor)
         
-        manager?.getObjectsAtPath(path, parameters:sessionParams(), success:{(operation, mappingResult)->Void in
+        manager.getObjectsAtPath(path, parameters:sessionParams(), success:{(operation, mappingResult)->Void in
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
@@ -318,7 +318,7 @@ class StreamConnector: Connector {
                 if error.code == Error.kLoginExpiredCode
                 {
                     self.relogin({()->() in
-                        self.searchMoreStreams(query, success:success, failure:failure)
+                        self.searchMoreStreams(query, success, failure)
                         },
                         failure:{()->() in
                             failure(error.toNSError())
@@ -340,7 +340,7 @@ class StreamConnector: Connector {
         })
     }
 
-    func searchMoreOthers(_ query:String, identifier:String, success:@escaping (_ users:[User])->(), failure:@escaping (_ error:NSError)->())
+    func searchMoreOthers(_ query:String, _ identifier:String, _ success:@escaping (_ users:[User])->(), _ failure:@escaping (_ error:NSError)->())
     {
         let path="stream/searchmore?q=\(query)&t=\(identifier)"
         
@@ -350,9 +350,9 @@ class StreamConnector: Connector {
         
         let usersResponseDescriptor=RKResponseDescriptor(mapping:userMapping, method:.GET, pathPattern:nil, keyPath:"data.\(identifier)", statusCodes:statusCode)
         
-        manager?.addResponseDescriptor(usersResponseDescriptor)
+        manager.addResponseDescriptor(usersResponseDescriptor)
         
-        manager?.getObjectsAtPath(path, parameters:sessionParams(), success:{(operation, mappingResult)->Void in
+        manager.getObjectsAtPath(path, parameters:sessionParams(), success:{(operation, mappingResult)->Void in
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
@@ -361,7 +361,7 @@ class StreamConnector: Connector {
                 if error.code == Error.kLoginExpiredCode
                 {
                     self.relogin({()->() in
-                        self.searchMoreOthers(query, identifier:identifier, success:success, failure:failure)
+                        self.searchMoreOthers(query, identifier, success, failure)
                         },
                         failure:{()->() in
                             failure(error.toNSError())
@@ -386,7 +386,7 @@ class StreamConnector: Connector {
 
     /*** WRITTEN BY ANKIT GARG ***/
     
-    func recent(_ userId: UInt, success: @escaping (_ streams: [Stream]) -> (), failure: @escaping (_ error: NSError) -> ()) {
+    func recent(_ userId: UInt, _ success: @escaping (_ streams: [Stream]) -> (), _ failure: @escaping (_ error: NSError) -> ()) {
         let path = ("stream/recent" as NSString).appendingPathComponent("\(userId)")
         
         let streamMapping = StreamMappingProvider.streamResponseMapping()
@@ -394,15 +394,15 @@ class StreamConnector: Connector {
         
         let responseDescriptor = RKResponseDescriptor(mapping: streamMapping, method:.GET, pathPattern: nil, keyPath: "data.recent", statusCodes: statusCode)
         
-        manager?.addResponseDescriptor(responseDescriptor)
+        manager.addResponseDescriptor(responseDescriptor)
         
-        manager?.getObjectsAtPath(path, parameters: self.sessionParams(), success: { (operation, mappingResult) -> Void in
-            // success code
+        manager.getObjectsAtPath(path, parameters: self.sessionParams(), success: { (operation, mappingResult) -> Void in
+            
             let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
             if !error.status {
                 if error.code == Error.kLoginExpiredCode {
                     self.relogin({ () -> () in
-                        self.recent(userId, success: success, failure: failure)
+                        self.recent(userId, success, failure)
                     }, failure: { () -> () in
                         failure(error.toNSError())
                     })
@@ -418,7 +418,7 @@ class StreamConnector: Connector {
         })
     }
     
-    func my(_ success: @escaping (_ streams: [Stream]) -> (), failure: @escaping (_ error: NSError) -> ()) {
+    func my(_ success: @escaping (_ streams: [Stream]) -> (), _ failure: @escaping (_ error: NSError) -> ()) {
         let path = "stream/my"
         
         let streamMapping = StreamMappingProvider.streamResponseMapping()
@@ -426,15 +426,15 @@ class StreamConnector: Connector {
         
         let responseDescriptor = RKResponseDescriptor(mapping: streamMapping, method:.GET, pathPattern: nil, keyPath: "data.streams", statusCodes: statusCode)
         
-        manager?.addResponseDescriptor(responseDescriptor)
+        manager.addResponseDescriptor(responseDescriptor)
         
-        manager?.getObjectsAtPath(path, parameters: self.sessionParams(), success: { (operation, mappingResult) -> Void in
+        manager.getObjectsAtPath(path, parameters: self.sessionParams(), success: { (operation, mappingResult) -> Void in
             // success code
             let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
             if !error.status {
                 if error.code == Error.kLoginExpiredCode {
                     self.relogin({ () -> () in
-                        self.my(success, failure: failure)
+                        self.my(success, failure)
                     }, failure: { () -> () in
                         failure(error.toNSError())
                     })
@@ -450,27 +450,27 @@ class StreamConnector: Connector {
         })
     }
     
-    func create(_ data: NSDictionary, success: @escaping (_ stream: Stream) -> (), failure: @escaping (_ error: NSError) -> ()) {
+    func create(_ data: NSDictionary, _ success: @escaping (_ stream: Stream) -> (), _ failure: @escaping (_ error: NSError) -> ()) {
         let path = "stream/create"
         
         let requestMapping  = StreamMappingProvider.createStreamRequestMapping()
         let streamMapping   = StreamMappingProvider.streamResponseMapping()
         
         let requestDescriptor = RKRequestDescriptor(mapping: requestMapping, objectClass: NSDictionary.self, rootKeyPath: nil, method:.POST)
-        manager?.addRequestDescriptor(requestDescriptor)
+        manager.addRequestDescriptor(requestDescriptor)
 
         let statusCode = RKStatusCodeIndexSetForClass(.successful)
         let streamResponseDescriptor = RKResponseDescriptor(mapping: streamMapping, method:.POST, pathPattern: nil, keyPath: "data", statusCodes: statusCode)
         
-        manager?.addResponseDescriptor(streamResponseDescriptor)
+        manager.addResponseDescriptor(streamResponseDescriptor)
         
-        manager?.post(data, path: path, parameters: self.sessionParams(), success: { (operation, mappingResult) -> Void in
+        manager.post(data, path: path, parameters: self.sessionParams(), success: { (operation, mappingResult) -> Void in
             // success code
             let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
             if !error.status {
                 if error.code == Error.kLoginExpiredCode {
                     self.relogin({ () -> () in
-                        self.create(data, success: success, failure: failure)
+                        self.create(data, success, failure)
                     }, failure: { () -> () in
                         failure(error.toNSError())
                     })
@@ -486,32 +486,32 @@ class StreamConnector: Connector {
         })
     }
     
-    func createWithFile(_ filename: String, fileData: NSData, data: NSDictionary, success: @escaping (_ stream: Stream) -> (), failure: @escaping (_ error:NSError) -> ()) {
+    func createWithFile(_ filename: String, _ fileData: NSData, _ data: NSDictionary, _ success: @escaping (_ stream: Stream) -> (), _ failure: @escaping (_ error:NSError) -> ()) {
         let path = "stream/create"
         
         let requestMapping  = StreamMappingProvider.createStreamRequestMapping()
         let streamMapping   = StreamMappingProvider.streamResponseMapping()
         
         let requestDescriptor = RKRequestDescriptor(mapping: requestMapping, objectClass: NSDictionary.self, rootKeyPath: nil, method:.POST)
-        manager?.addRequestDescriptor(requestDescriptor)
+        manager.addRequestDescriptor(requestDescriptor)
         
         let statusCode = RKStatusCodeIndexSetForClass(.successful)
         let streamResponseDescriptor = RKResponseDescriptor(mapping: streamMapping, method:.POST, pathPattern: nil, keyPath: "data", statusCodes: statusCode)
         
-        manager?.addResponseDescriptor(streamResponseDescriptor)
+        manager.addResponseDescriptor(streamResponseDescriptor)
         
         let request =
-        manager?.multipartFormRequest(with:data, method:.POST, path: path, parameters:self.sessionParams())
+        manager.multipartFormRequest(with:data, method:.POST, path: path, parameters:self.sessionParams())
         { (formData) -> Void in
             formData?.appendPart(withFileData: fileData as Data, name: "image", fileName: filename, mimeType: "image/jpeg")
         }
         
-        let operation = manager?.objectRequestOperation(with: request as URLRequest!, success: { (operation, mappingResult) -> Void in
+        let operation = manager.objectRequestOperation(with: request as URLRequest!, success: { (operation, mappingResult) -> Void in
             let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
             if !error.status {
                 if error.code == Error.kLoginExpiredCode {
                     self.relogin({ () -> () in
-                        self.createWithFile(filename, fileData: fileData, data: data, success: success, failure: failure)
+                        self.createWithFile(filename, fileData, data, success, failure)
                     }, failure: { () -> () in
                         failure(error.toNSError())
                     })
@@ -527,22 +527,22 @@ class StreamConnector: Connector {
             //failure(error)
         })
         
-        manager?.enqueue(operation)
+        manager.enqueue(operation)
     }
     
-    func del(_ streamId: UInt, success: @escaping () -> (), failure: @escaping (_ error: NSError) -> ()) {
+    func del(_ streamId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ()) {
         let path = "stream/delete"
         
         var params = self.sessionParams()
         params!["id"] = streamId as AnyObject?
         
-        manager?.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
+        manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
             // success code
             let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
             if !error.status {
                 if error.code == Error.kLoginExpiredCode {
                     self.relogin({ () -> () in
-                        self.del(streamId, success: success, failure: failure)
+                        self.del(streamId, success, failure)
                         }, failure: { () -> () in
                             failure(error.toNSError())
                     })
@@ -557,19 +557,19 @@ class StreamConnector: Connector {
     }
 
     
-    func close(_ streamId: UInt, success: @escaping () -> (), failure: @escaping (_ error: NSError) -> ()) {
+    func close(_ streamId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ()) {
         let path = "stream/close"
         
         var params = self.sessionParams()
         params!["id"] = streamId as AnyObject?
         
-        manager?.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
+        manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
             // success code
             let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
             if !error.status {
                 if error.code == Error.kLoginExpiredCode {
                     self.relogin({ () -> () in
-                        self.close(streamId, success: success, failure: failure)
+                        self.close(streamId, success, failure)
                     }, failure: { () -> () in
                         failure(error.toNSError())
                     })
@@ -583,18 +583,18 @@ class StreamConnector: Connector {
         })
     }
     
-    func join(_ streamId: UInt, success: @escaping () -> (), failure: @escaping (_ error: NSError) -> ()) {
+    func join(_ streamId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ()) {
         let path = "stream/join"
         
         var params = self.sessionParams()
         params!["id"] = streamId as AnyObject?
         
-        manager?.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
+        manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
             let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
             if !error.status {
                 if error.code == Error.kLoginExpiredCode {
                     self.relogin({ () -> () in
-                        self.join(streamId, success: success, failure: failure)
+                        self.join(streamId, success, failure)
                     }, failure: { () -> () in
                         failure(error.toNSError())
                     })
@@ -608,19 +608,19 @@ class StreamConnector: Connector {
         })
     }
     
-    func leave(_ streamId: UInt, likes: UInt, success: @escaping () -> (), failure: @escaping (_ error: NSError) -> ()) {
+    func leave(_ streamId: UInt, _ likes: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ()) {
         let path = "stream/leave"
         
         var params = self.sessionParams()
         params!["id"] = streamId as AnyObject?
         params!["likes"] = likes as AnyObject?
         
-        manager?.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
+        manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
             let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
             if !error.status {
                 if error.code == Error.kLoginExpiredCode {
                     self.relogin({ () -> () in
-                        self.leave(streamId, likes: likes, success: success, failure: failure)
+                        self.leave(streamId, likes, success, failure)
                     }, failure: { () -> () in
                         failure(error.toNSError())
                     })
@@ -634,7 +634,7 @@ class StreamConnector: Connector {
         })
     }
     
-    func viewers(_ data: NSDictionary, success: @escaping (_ likes: UInt, _ viewers: UInt, _ users: [User]) -> (), failure: @escaping (_ error: NSError) -> ()) {
+    func viewers(_ data: NSDictionary, _ success: @escaping (_ likes: UInt, _ viewers: UInt, _ users: [User]) -> (), _ failure: @escaping (_ error: NSError) -> ()) {
         let streamId = data["streamId"] as! UInt
         let path = ("stream/viewers" as NSString).appendingPathComponent("\(streamId)")
         
@@ -643,19 +643,19 @@ class StreamConnector: Connector {
         
         let streamResponseDescriptor = RKResponseDescriptor(mapping: streamMapping, method:.GET, pathPattern: nil, keyPath: "data", statusCodes: statusCode)
         
-        manager?.addResponseDescriptor(streamResponseDescriptor)
+        manager.addResponseDescriptor(streamResponseDescriptor)
         
         var params = self.sessionParams()
         if let page: UInt = (data["p"] as? UInt) {
             params!["p"] = page as AnyObject?
         }
         
-        manager?.getObjectsAtPath(path, parameters: params, success: { (operation, mappingResult) -> Void in
+        manager.getObjectsAtPath(path, parameters: params, success: { (operation, mappingResult) -> Void in
             let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
             if !error.status {
                 if error.code == Error.kLoginExpiredCode {
                     self.relogin({ () -> () in
-                        self.viewers(data, success: success, failure: failure)
+                        self.viewers(data, success, failure)
                     }, failure: { () -> () in
                         failure(error.toNSError())
                     })
@@ -673,7 +673,7 @@ class StreamConnector: Connector {
         })
     }
     
-    func replayViewers(_ data: NSDictionary, success: @escaping (_ likes: UInt, _ viewers: UInt, _ users: [User]) -> (), failure: @escaping (_ error: NSError) -> ()) {
+    func replayViewers(_ data: NSDictionary, _ success: @escaping (_ likes: UInt, _ viewers: UInt, _ users: [User]) -> (), _ failure: @escaping (_ error: NSError) -> ()) {
         let streamId = data["streamId"] as! UInt
         let path = ("stream/rviewers" as NSString).appendingPathComponent("\(streamId)")
         
@@ -682,19 +682,19 @@ class StreamConnector: Connector {
         
         let streamResponseDescriptor = RKResponseDescriptor(mapping: streamMapping, method:.GET, pathPattern: nil, keyPath: "data", statusCodes: statusCode)
         
-        manager?.addResponseDescriptor(streamResponseDescriptor)
+        manager.addResponseDescriptor(streamResponseDescriptor)
         
         var params = self.sessionParams()
         if let page: UInt = (data["p"] as? UInt) {
             params!["p"] = page as AnyObject?
         }
         
-        manager?.getObjectsAtPath(path, parameters: params, success: { (operation, mappingResult) -> Void in
+        manager.getObjectsAtPath(path, parameters: params, success: { (operation, mappingResult) -> Void in
             let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
             if !error.status {
                 if error.code == Error.kLoginExpiredCode {
                     self.relogin({ () -> () in
-                        self.replayViewers(data, success: success, failure: failure)
+                        self.replayViewers(data, success, failure)
                     }, failure: { () -> () in
                         failure(error.toNSError())
                     })
@@ -712,7 +712,7 @@ class StreamConnector: Connector {
         })
     }
     
-    func get(_ streamId: UInt, success: @escaping (_ stream: Stream) -> (), failure: @escaping (_ error: NSError) -> ()) {
+    func get(_ streamId: UInt, _ success: @escaping (_ stream: Stream) -> (), _ failure: @escaping (_ error: NSError) -> ()) {
         let path = ("stream" as NSString).appendingPathComponent("\(streamId)")
         
         let streamMapping = StreamMappingProvider.streamResponseMapping()
@@ -720,14 +720,14 @@ class StreamConnector: Connector {
         
         let streamResponseDescriptor = RKResponseDescriptor(mapping: streamMapping, method:.GET, pathPattern: nil, keyPath: "data", statusCodes: statusCode)
         
-        manager?.addResponseDescriptor(streamResponseDescriptor)
+        manager.addResponseDescriptor(streamResponseDescriptor)
         
-        manager?.getObjectsAtPath(path, parameters: self.sessionParams(), success: { (operation, mappingResult) -> Void in
+        manager.getObjectsAtPath(path, parameters: self.sessionParams(), success: { (operation, mappingResult) -> Void in
             let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
             if !error.status {
                 if error.code == Error.kLoginExpiredCode {
                     self.relogin({ () -> () in
-                        self.get(streamId, success: success, failure: failure)
+                        self.get(streamId, success, failure)
                     }, failure: { () -> () in
                         failure(error.toNSError())
                     })
@@ -742,18 +742,18 @@ class StreamConnector: Connector {
         })
     }    
     
-    func report(_ streamId: UInt, success: @escaping () -> (), failure: @escaping (_ error: NSError) -> ()) {
+    func report(_ streamId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ()) {
         let path = "stream/report"
         
         var params = self.sessionParams()
         params!["id"] = streamId as AnyObject?
         
-        manager?.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
+        manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
             let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
             if !error.status {
                 if error.code == Error.kLoginExpiredCode {
                     self.relogin({ () -> () in
-                        self.report(streamId, success: success, failure: failure)
+                        self.report(streamId, success, failure)
                     }, failure: { () -> () in
                         failure(error.toNSError())
                     })
@@ -767,7 +767,7 @@ class StreamConnector: Connector {
         }
     }
     
-    func share(_ streamId: UInt, usersId: [UInt]?, success: @escaping () -> (), failure: @escaping (_ error: NSError) -> ()) {
+    func share(_ streamId: UInt, _ usersId: [UInt]?, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ()) {
         let path = "stream/share"
         
         var params = self.sessionParams()
@@ -777,12 +777,12 @@ class StreamConnector: Connector {
             params!["users"] = users as AnyObject?
         }
         
-        manager?.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
+        manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
             let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
             if !error.status {
                 if error.code == Error.kLoginExpiredCode {
                     self.relogin({ () -> () in
-                        self.share(streamId, usersId: usersId, success: success, failure: failure)
+                        self.share(streamId, usersId, success, failure)
                     }, failure: { () -> () in
                         failure(error.toNSError())
                     })
@@ -797,18 +797,18 @@ class StreamConnector: Connector {
         })
     }
     
-    func ping(_ streamId: UInt, success: @escaping () -> (), failure: @escaping (_ error: NSError) -> ()) {
+    func ping(_ streamId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ()) {
         let path = "stream/ping"
         
         var params = self.sessionParams()
         params!["id"] = streamId as AnyObject?
         
-        manager?.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
+        manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
             let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
             if !error.status {
                 if error.code == Error.kLoginExpiredCode {
                     self.relogin({ () -> () in
-                        self.ping(streamId, success: success, failure: failure)
+                        self.ping(streamId, success, failure)
                     }, failure: { () -> () in
                         failure(error.toNSError())
                     })

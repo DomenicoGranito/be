@@ -34,7 +34,7 @@ class CategoriesViewController: BaseViewController
             self.fetchMore()
         }
         
-        StreamConnector().categoryStreams(categoryID!, pageID:page, success:successStreams, failure:failureStream)
+        StreamConnector().categoryStreams(categoryID!, pageID:page, successStreams, failureStream)
     }
     
     func scrollViewDidScroll(_ scrollView:UIScrollView)
@@ -79,7 +79,7 @@ class CategoriesViewController: BaseViewController
     func fetchMore()
     {
         page+=1
-        StreamConnector().categoryStreams(categoryID!, pageID:page, success:fetchMoreSuccess, failure:failureStream)
+        StreamConnector().categoryStreams(categoryID!, pageID:page, fetchMoreSuccess, failureStream)
     }
     
     func tableView(_ tableView:UITableView, heightForRowAt indexPath:IndexPath)->CGFloat
