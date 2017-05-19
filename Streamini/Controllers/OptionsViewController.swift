@@ -21,7 +21,7 @@ class OptionsViewController: UIViewController
     
     @IBAction func closeButtonPressed()
     {
-        dismiss(animated: true, completion:nil)
+        dismiss(animated:true, completion:nil)
     }
     
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
@@ -29,9 +29,9 @@ class OptionsViewController: UIViewController
         return 4
     }
     
-    func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
+    func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:IndexPath)->UITableViewCell
     {
-        let cell=tableView.dequeueReusableCell(withIdentifier: "MenuCell") as! MenuCell
+        let cell=tableView.dequeueReusableCell(withIdentifier:"MenuCell") as! MenuCell
         
         cell.menuItemTitleLbl?.text=menuItemTitlesArray[indexPath.row] as? String
         

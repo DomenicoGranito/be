@@ -27,7 +27,7 @@ class ChannelsTableViewController: UITableViewController, ProfileDelegate
         UserConnector().get(nil, userSuccess, userFailure)
     }
     
-    func userSuccess(_ user:User)
+    func userSuccess(user:User)
     {
         followingValueLabel.text="\(user.following)"
         followersValueLabel.text="\(user.followers)"
@@ -36,14 +36,14 @@ class ChannelsTableViewController: UITableViewController, ProfileDelegate
         navigationItem.rightBarButtonItem=nil
     }
     
-    func userFailure(_ error:NSError)
+    func userFailure(error:NSError)
     {
         
     }
     
     override func tableView(_ tableView:UITableView, didSelectRowAt indexPath:IndexPath)
     {
-        performSegue(withIdentifier: "GoToUsers", sender:indexPath)
+        performSegue(withIdentifier:"GoToUsers", sender:indexPath)
     }
 
     override func prepare(for segue:UIStoryboardSegue, sender:Any?)

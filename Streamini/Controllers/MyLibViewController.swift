@@ -46,7 +46,7 @@ class MyLibViewController: UIViewController
     @IBAction func myaccount()
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewController(withIdentifier: "UserViewControllerId") as! UserViewController
+        let vc=storyboard.instantiateViewController(withIdentifier:"UserViewControllerId") as! UserViewController
         vc.user=UserContainer.shared.logged()
         navigationController?.pushViewController(vc, animated:true)
     }
@@ -76,7 +76,7 @@ class MyLibViewController: UIViewController
     {
         if indexPath.row<4
         {
-            let cell=tableView.dequeueReusableCell(withIdentifier: "MenuCell") as! MenuCell
+            let cell=tableView.dequeueReusableCell(withIdentifier:"MenuCell") as! MenuCell
             
             cell.menuItemTitleLbl?.text=menuItemTitlesArray[indexPath.row]
             cell.menuItemIconImageView?.image=UIImage(named:menuItemIconsArray[indexPath.row])
@@ -85,7 +85,7 @@ class MyLibViewController: UIViewController
         }
         else if indexPath.row==4
         {
-            let cell=tableView.dequeueReusableCell(withIdentifier: "EditCell") as! EditCell
+            let cell=tableView.dequeueReusableCell(withIdentifier:"EditCell") as! EditCell
             
             cell.editButton?.isHidden=recentlyPlayed!.count==0 ? true : false
             
@@ -93,7 +93,7 @@ class MyLibViewController: UIViewController
         }
         else
         {
-            let cell=tableView.dequeueReusableCell(withIdentifier: "RecentlyPlayedCell") as! RecentlyPlayedCell
+            let cell=tableView.dequeueReusableCell(withIdentifier:"RecentlyPlayedCell") as! RecentlyPlayedCell
             
             cell.videoTitleLbl?.text=recentlyPlayed![indexPath.row-5].value(forKey:"streamTitle") as? String
             cell.artistNameLbl?.text=recentlyPlayed![indexPath.row-5].value(forKey:"streamUserName") as? String
@@ -113,8 +113,8 @@ class MyLibViewController: UIViewController
         let clearButton=UITableViewRowAction(style:.default, title:"Clear")
         {action, indexPath in
             SongManager.deleteRecentlyPlayed(self.recentlyPlayed![indexPath.row-5])
-            self.recentlyPlayed?.remove(at: indexPath.row-5)
-            tableView.deleteRows(at: [indexPath], with:.automatic)
+            self.recentlyPlayed?.remove(at:indexPath.row-5)
+            tableView.deleteRows(at:[indexPath], with:.automatic)
             
             if self.recentlyPlayed!.count==0
             {
@@ -136,7 +136,7 @@ class MyLibViewController: UIViewController
         if indexPath.row>4
         {
             let storyboard=UIStoryboard(name:"Main", bundle:nil)
-            let modalVC=storyboard.instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
+            let modalVC=storyboard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController
             
             let streamsArray=NSMutableArray()
             streamsArray.add(makeStreamClassObject(indexPath.row-5))
@@ -151,15 +151,15 @@ class MyLibViewController: UIViewController
         {
             if indexPath.row==0
             {
-                performSegue(withIdentifier: "Playlists", sender:nil)
+                performSegue(withIdentifier:"Playlists", sender:nil)
             }
             if indexPath.row==2||indexPath.row==1
             {
-                performSegue(withIdentifier: "Videos", sender:indexPath)
+                performSegue(withIdentifier:"Videos", sender:indexPath)
             }
             if indexPath.row==3
             {
-                performSegue(withIdentifier: "Channels", sender:nil)
+                performSegue(withIdentifier:"Channels", sender:nil)
             }
         }
     }
@@ -191,15 +191,15 @@ class MyLibViewController: UIViewController
     {
         let user=User()
         
-        user.name=recentlyPlayed![row].value(forKey: "streamUserName") as! String
-        user.id=recentlyPlayed![row].value(forKey: "streamUserID") as! UInt
+        user.name=recentlyPlayed![row].value(forKey:"streamUserName") as! String
+        user.id=recentlyPlayed![row].value(forKey:"streamUserID") as! UInt
         
         let stream=Stream()
         
-        stream.id=recentlyPlayed![row].value(forKey: "streamID") as! UInt
-        stream.title=recentlyPlayed![row].value(forKey: "streamTitle") as! String
-        stream.streamHash=recentlyPlayed![row].value(forKey: "streamHash") as! String
-        stream.videoID=recentlyPlayed![row].value(forKey: "streamKey") as! String
+        stream.id=recentlyPlayed![row].value(forKey:"streamID") as! UInt
+        stream.title=recentlyPlayed![row].value(forKey:"streamTitle") as! String
+        stream.streamHash=recentlyPlayed![row].value(forKey:"streamHash") as! String
+        stream.videoID=recentlyPlayed![row].value(forKey:"streamKey") as! String
         
         stream.user=user
         

@@ -21,16 +21,16 @@ class PopUpViewController: BaseViewController
     {
         if SongManager.isAlreadyFavourited(stream!.id)
         {
-            menuItemTitlesArray.replaceObject(at: 4, with:"Remove from favourite")
-            menuItemIconsArray.replaceObject(at: 4, with:"time.png")
+            menuItemTitlesArray.replaceObject(at:4, with:"Remove from favourite")
+            menuItemIconsArray.replaceObject(at:4, with:"time.png")
         }
         
-        backgroundImageView?.sd_setImage(with: NSURL(string:"http://\(host)/thumb/\(stream!.id).jpg") as URL!)
+        backgroundImageView?.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream!.id).jpg"))
     }
     
     @IBAction func closeButtonPressed()
     {
-        dismiss(animated: true, completion:nil)
+        dismiss(animated:true, completion:nil)
     }
     
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
@@ -38,7 +38,7 @@ class PopUpViewController: BaseViewController
         return 7
     }
     
-    func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
+    func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
     {
         if indexPath.row==0
         {
@@ -50,15 +50,15 @@ class PopUpViewController: BaseViewController
         }
     }
     
-    func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
+    func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:IndexPath)->UITableViewCell
     {
         if indexPath.row==0
         {
-            let cell=tableView.dequeueReusableCell(withIdentifier: "RecentlyPlayedCell") as! RecentlyPlayedCell
+            let cell=tableView.dequeueReusableCell(withIdentifier:"RecentlyPlayedCell") as! RecentlyPlayedCell
             
             cell.videoTitleLbl?.text=stream?.title
             cell.artistNameLbl?.text=stream?.user.name
-            cell.videoThumbnailImageView?.sd_setImage(with: NSURL(string:"http://\(host)/thumb/\(stream!.id).jpg") as URL!)
+            cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream!.id).jpg"))
             
             videoImage=cell.videoThumbnailImageView?.image
             
@@ -66,7 +66,7 @@ class PopUpViewController: BaseViewController
         }
         else
         {
-            let cell=tableView.dequeueReusableCell(withIdentifier: "MenuCell") as! MenuCell
+            let cell=tableView.dequeueReusableCell(withIdentifier:"MenuCell") as! MenuCell
             
             cell.menuItemTitleLbl?.text=menuItemTitlesArray[indexPath.row-1] as? String
             cell.menuItemIconImageView?.image=UIImage(named:menuItemIconsArray[indexPath.row-1] as! String)
@@ -75,7 +75,7 @@ class PopUpViewController: BaseViewController
         }
     }
     
-    func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
+    func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:IndexPath)
     {
         if indexPath.row==1
         {
@@ -87,9 +87,8 @@ class PopUpViewController: BaseViewController
         }
         if indexPath.row==3
         {
-            view.window?.rootViewController?.dismiss(animated: true, completion:nil)
-            
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "goToChannels"), object:stream?.user)
+            view.window?.rootViewController?.dismiss(animated:true, completion:nil)
+            NotificationCenter.default.post(name:NSNotification.Name("goToChannels"), object:stream?.user)
         }
         if indexPath.row==4
         {
@@ -97,7 +96,7 @@ class PopUpViewController: BaseViewController
         }
         if indexPath.row==5
         {
-            dismiss(animated: true, completion:nil)
+            dismiss(animated:true, completion:nil)
             
             if SongManager.isAlreadyFavourited(stream!.id)
             {
@@ -105,17 +104,17 @@ class PopUpViewController: BaseViewController
             }
             else
             {
-                SongManager.addToFavourite(stream!.title, streamHash:stream!.streamHash, streamID:stream!.id, streamUserName:stream!.user.name, vType:stream!.vType, streamKey:stream!.videoID, streamUserID:stream!.user.id)
+                SongManager.addToFavourite(stream!.title, stream!.streamHash, stream!.id, stream!.user.name, stream!.vType, stream!.videoID, stream!.user.id)
             }
         }
         if indexPath.row==6
         {
-            dismiss(animated: true, completion:nil)
+            dismiss(animated:true, completion:nil)
             SocialConnector().block(stream!.user.id, blockSuccess, failureWithoutAction)
             SongManager.deleteBlockedUserVideos(stream!.user.id)
-            NotificationCenter.default.post(name:NSNotification.Name(rawValue:"blockUser"), object:nil)
-            NotificationCenter.default.post(name:NSNotification.Name(rawValue:"hideMiniPlayer"), object:nil)
-            NotificationCenter.default.post(name:NSNotification.Name(rawValue:"refreshAfterBlock"), object:nil)
+            NotificationCenter.default.post(name:NSNotification.Name("blockUser"), object:nil)
+            NotificationCenter.default.post(name:NSNotification.Name("hideMiniPlayer"), object:nil)
+            NotificationCenter.default.post(name:NSNotification.Name("refreshAfterBlock"), object:nil)
         }
     }
     

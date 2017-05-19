@@ -19,8 +19,8 @@ class HomeViewController: UIViewController
     
     override func viewDidLoad()
     {
-        NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:NSNotification.Name(rawValue:"refreshAfterBlock"), object:nil)
-        NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:NSNotification.Name(rawValue:"status"), object:nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:NSNotification.Name("refreshAfterBlock"), object:nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:NSNotification.Name("status"), object:nil)
         
         updateUI()
     }
@@ -34,7 +34,7 @@ class HomeViewController: UIViewController
             errorView.isHidden=true
             activityView.isHidden=false
             
-            view.bringSubview(toFront: activityView)
+            view.bringSubview(toFront:activityView)
             StreamConnector().homeStreams(successStreams, failureStream)
         }
         else
@@ -66,7 +66,7 @@ class HomeViewController: UIViewController
     {
         navigationController?.isNavigationBarHidden=false
         
-        timer=Timer.scheduledTimer(timeInterval: 15, target:self, selector:#selector(reload), userInfo:nil, repeats:true)
+        timer=Timer.scheduledTimer(timeInterval:15, target:self, selector:#selector(reload), userInfo:nil, repeats:true)
     }
     
     override func viewWillDisappear(_ animated:Bool)
@@ -74,7 +74,7 @@ class HomeViewController: UIViewController
         timer!.invalidate()
     }
     
-    func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
+    func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
     {
         let width=(view.frame.size.width-25)/2
         
@@ -131,7 +131,7 @@ class HomeViewController: UIViewController
     func headerTapped(gestureRecognizer:UITapGestureRecognizer)
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewController(withIdentifier: "CategoriesViewController") as! CategoriesViewController
+        let vc=storyboard.instantiateViewController(withIdentifier:"CategoriesViewController") as! CategoriesViewController
         vc.categoryName=categoryNamesArray[gestureRecognizer.view!.tag] as? String
         vc.categoryID=categoryIDsArray[gestureRecognizer.view!.tag] as? Int
         navigationController?.pushViewController(vc, animated:true)
@@ -147,7 +147,7 @@ class HomeViewController: UIViewController
         return 1
     }
     
-    func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
+    func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:IndexPath)->UITableViewCell
     {
         let cell=tableView.dequeueReusableCell(withIdentifier:"cell") as! CategoryRow
         
@@ -169,14 +169,14 @@ class HomeViewController: UIViewController
         return cell
     }
     
-    func tableView(_ tableView:UITableView, willDisplayCell cell:UITableViewCell, forRowAtIndexPath indexPath:NSIndexPath)
+    func tableView(_ tableView:UITableView, willDisplayCell cell:UITableViewCell, forRowAtIndexPath indexPath:IndexPath)
     {
         let cell=cell as! CategoryRow
         
         cell.reloadCollectionView()
     }
     
-    func successStreams(response:NSDictionary)
+    func successStreams(data:NSDictionary)
     {
         errorView.isHidden=true
         activityView.isHidden=true
@@ -185,19 +185,19 @@ class HomeViewController: UIViewController
         categoryIDsArray=NSMutableArray()
         allCategoryItemsArray=NSMutableArray()
         
-        let categorydata=response["data"] as! NSArray
+        let categories=data["data"] as! NSArray
         
-        for i in 0 ..< categorydata.count
+        for i in 0 ..< categories.count
         {
-            let data=categorydata[i] as! NSDictionary
+            let category=categories[i] as! NSDictionary
             
-            let categoryName=data["category_name"] as! String
-            let categoryID=(data["category_id"] as AnyObject).integerValue
+            let categoryName=category["category_name"] as! String
+            let categoryID=category["category_id"] as! Int
             
             categoryNamesArray.add(categoryName)
             categoryIDsArray.add(categoryID)
             
-            let videos=data["videos"] as! NSArray
+            let videos=category["videos"] as! NSArray
             
             let oneCategoryItemsArray=NSMutableArray()
             

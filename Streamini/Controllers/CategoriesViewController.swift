@@ -26,15 +26,15 @@ class CategoriesViewController: BaseViewController
     
     override func viewDidLoad()
     {
-        //TBVC=tabBarController as! TabBarViewController
+        TBVC=tabBarController as! TabBarViewController
         
-        //headerLbl?.text=categoryName?.uppercased
+        headerLbl?.text=categoryName?.uppercased()
         navigationController?.isNavigationBarHidden=true
         itemsTbl?.addInfiniteScrolling{()->Void in
             self.fetchMore()
         }
         
-        StreamConnector().categoryStreams(categoryID!, pageID:page, successStreams, failureStream)
+        StreamConnector().categoryStreams(categoryID!, page, successStreams, failureStream)
     }
     
     func scrollViewDidScroll(_ scrollView:UIScrollView)
@@ -79,10 +79,10 @@ class CategoriesViewController: BaseViewController
     func fetchMore()
     {
         page+=1
-        StreamConnector().categoryStreams(categoryID!, pageID:page, fetchMoreSuccess, failureStream)
+        StreamConnector().categoryStreams(categoryID!, page, fetchMoreSuccess, failureStream)
     }
     
-    func tableView(_ tableView:UITableView, heightForRowAt indexPath:IndexPath)->CGFloat
+    func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
     {
         let width=(view.frame.size.width-30)/2
         
@@ -94,9 +94,9 @@ class CategoriesViewController: BaseViewController
         return allItemsArray.count
     }
     
-    func tableView(_ tableView:UITableView, cellForRowAt indexPath:IndexPath)->UITableViewCell
+    func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:IndexPath)->UITableViewCell
     {
-        let cell=tableView.dequeueReusableCell(withIdentifier: "cell") as! AllCategoriesRow
+        let cell=tableView.dequeueReusableCell(withIdentifier:"cell") as! AllCategoriesRow
         
         cell.sectionItemsArray=allItemsArray[indexPath.row] as! NSArray
         cell.TBVC=TBVC
@@ -104,7 +104,7 @@ class CategoriesViewController: BaseViewController
         return cell
     }
     
-    func tableView(_ tableView:UITableView, willDisplayCell cell:UITableViewCell, forRowAt indexPath:NSIndexPath)
+    func tableView(_ tableView:UITableView, willDisplayCell cell:UITableViewCell, forRowAt indexPath:IndexPath)
     {
         let cell=cell as! AllCategoriesRow
         
@@ -113,34 +113,34 @@ class CategoriesViewController: BaseViewController
     
     @IBAction func back()
     {
-        navigationController?.popViewController(animated: true)
+        navigationController!.popViewController(animated:true)
     }
     
     func successStreams(_ data:NSDictionary)
     {
         shufflePlayButton.isEnabled=true
-        allItemsArray.addObjects(from: getData(data) as [AnyObject])
+        allItemsArray.addObjects(from:getData(data) as [AnyObject])
         itemsTbl?.reloadData()
     }
     
     func fetchMoreSuccess(_ data:NSDictionary)
     {
         itemsTbl?.infiniteScrollingView.stopAnimating()
-        allItemsArray.addObjects(from: getData(data) as [AnyObject])
+        allItemsArray.addObjects(from:getData(data) as [AnyObject])
         itemsTbl?.reloadData()
     }
     
     func getData(_ data:NSDictionary)->NSMutableArray
     {
-        let data=data["data"] as! NSArray
+        let videos=data["data"] as! NSArray
         
         var sectionItemsArray=NSMutableArray()
         let allItemsArray=NSMutableArray()
         var count=0
         
-        for i in 0 ..< data.count
+        for i in 0 ..< videos.count
         {
-            let video=data[i] as! NSDictionary
+            let video=videos[i] as! NSDictionary
             
             let videoID=video["id"] as! Int
             let streamKey=video["streamkey"] as! String

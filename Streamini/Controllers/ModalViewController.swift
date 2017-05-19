@@ -46,11 +46,11 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         
         appDelegate=UIApplication.shared.delegate as! AppDelegate
         
-        stream=streamsArray!.object(at: selectedItemIndex) as? Stream
+        stream=streamsArray!.object(at:selectedItemIndex) as? Stream
         
-        NotificationCenter.default.addObserver(self, selector:#selector(onDeviceOrientationChange), name:NSNotification.Name.UIDeviceOrientationDidChange, object:nil)
-        NotificationCenter.default.addObserver(self, selector:#selector(deleteBlockUserVideos), name:NSNotification.Name(rawValue: "blockUser"), object:nil)
-        NotificationCenter.default.addObserver(self, selector:#selector(updatePlayer), name:NSNotification.Name(rawValue: "updatePlayer"), object:nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(onDeviceOrientationChange), name:.UIDeviceOrientationDidChange, object:nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(deleteBlockUserVideos), name:NSNotification.Name("blockUser"), object:nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(updatePlayer), name:NSNotification.Name("updatePlayer"), object:nil)
         
         createPlaylist()
         updatePlayerWithStream()
@@ -123,8 +123,8 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
             {
                 streamsMutableArray.remove(stream)
                 
-                let index=videoIDs.index(of: stream.videoID)
-                videoIDs.remove(at: index!)
+                let index=videoIDs.index(of:stream.videoID)
+                videoIDs.remove(at:index!)
             }
         }
         
@@ -142,13 +142,13 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     func updatePlayerWithStream()
     {
-        backgroundImageView?.sd_setImage(with: NSURL(string:"http://\(host)/thumb/\(stream!.id).jpg") as URL!)
+        backgroundImageView?.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream!.id).jpg"))
         
         headerTitleLbl?.text=stream?.title
         videoTitleLbl?.text=stream?.title
         videoArtistNameLbl?.text=stream?.user.name
         
-        SongManager.addToRecentlyPlayed(stream!.title, streamHash:stream!.streamHash, streamID:stream!.id, streamUserName:stream!.user.name, streamKey:stream!.videoID, streamUserID:stream!.user.id)
+        SongManager.addToRecentlyPlayed(stream!.title, stream!.streamHash, stream!.id, stream!.user.name, stream!.videoID, stream!.user.id)
         
         songLikeStatus()
     }
@@ -185,9 +185,9 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         player?.controlStyle = .none
         player?.scalingMode = .aspectFit
         
-        NotificationCenter.default.addObserver(self, selector:#selector(moviePlayerDurationAvailable), name:NSNotification.Name.MPMovieDurationAvailable, object:player!)
+        NotificationCenter.default.addObserver(self, selector:#selector(moviePlayerDurationAvailable), name:.MPMovieDurationAvailable, object:player!)
         
-        timer=Timer.scheduledTimer(timeInterval: 1, target:self, selector:#selector(timerHandler), userInfo:nil, repeats:true)
+        timer=Timer.scheduledTimer(timeInterval:1, target:self, selector:#selector(timerHandler), userInfo:nil, repeats:true)
     }
     
     func timerHandler()
@@ -209,21 +209,21 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     {
         selectedItemIndex=Int(arc4random_uniform(UInt32(streamsArray!.count)))
         
-        carousel?.scrollToItem(at: selectedItemIndex, animated:true)
+        carousel?.scrollToItem(at:selectedItemIndex, animated:true)
     }
     
     @IBAction func previous()
     {
-        selectedItemIndex=streamsArray!.index(of: stream!)-1
+        selectedItemIndex=streamsArray!.index(of:stream!)-1
         
-        carousel?.scrollToItem(at: selectedItemIndex, animated:true)
+        carousel?.scrollToItem(at:selectedItemIndex, animated:true)
     }
     
     @IBAction func next()
     {
-        selectedItemIndex=streamsArray!.index(of: stream!)+1
+        selectedItemIndex=streamsArray!.index(of:stream!)+1
         
-        carousel?.scrollToItem(at: selectedItemIndex, animated:true)
+        carousel?.scrollToItem(at:selectedItemIndex, animated:true)
     }
     
     @IBAction func play()
@@ -265,7 +265,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         
         let thumbnailView=UIImageView(frame:CGRect(x:0, y:0, width:self.view.frame.size.width-5, height:self.view.frame.size.width-140))
         thumbnailView.backgroundColor=UIColor.darkGray
-        thumbnailView.sd_setImage(with: NSURL(string:"http://\(host)/thumb/\(stream!.id).jpg") as URL!)
+        thumbnailView.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream!.id).jpg"))
         
         return thumbnailView
     }
@@ -425,7 +425,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         else
         {
             likeButton?.setImage(UIImage(named:"red_heart"), for:.normal)
-            SongManager.addToFavourite(stream!.title, streamHash:stream!.streamHash, streamID:stream!.id, streamUserName:stream!.user.name, vType:stream!.vType, streamKey:stream!.videoID, streamUserID:stream!.user.id)
+            SongManager.addToFavourite(stream!.title, stream!.streamHash, stream!.id, stream!.user.name, stream!.vType, stream!.videoID, stream!.user.id)
         }
     }
     

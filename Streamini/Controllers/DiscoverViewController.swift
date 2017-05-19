@@ -26,7 +26,7 @@ class DiscoverViewController: UIViewController
     
     override func viewDidLoad()
     {
-        NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:NSNotification.Name(rawValue: "status"), object:nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:NSNotification.Name("status"), object:nil)
         
         updateUI()
     }
