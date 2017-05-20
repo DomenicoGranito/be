@@ -107,23 +107,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         self.saveContext()
     }
     
-    // MARK: - Core Data stack
-    
     lazy var applicationDocumentsDirectory: URL = {
-        // The directory the application uses to store the Core Data store file. This code uses a directory named "com.Music_Player" in the application's documents Application Support directory.
+        
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return urls[urls.count-1]
     }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
-        // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
+        
         let modelURL = Bundle.main.url(forResource: "Music_Player", withExtension: "momd")!
         return NSManagedObjectModel(contentsOf: modelURL)!
     }()
     
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
-        // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
-        // Create the coordinator and store
+        
         var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         let url = self.applicationDocumentsDirectory.appendingPathComponent("Music_Player.sqlite")
         var error: NSError? = nil
@@ -151,7 +148,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
     }()
     
     lazy var managedObjectContext: NSManagedObjectContext? = {
-        // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
+        
         let coordinator = self.persistentStoreCoordinator
         if coordinator == nil {
             return nil
@@ -161,8 +158,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         return managedObjectContext
     }()
     
-    // MARK: - Core Data Saving support
-    
     func saveContext () {
         if let moc = self.managedObjectContext {
             var error: NSError? = nil
@@ -171,8 +166,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
                     try moc.save()
                 } catch let error1 as NSError {
                     error = error1
-                    // Replace this implementation with code to handle the error appropriately.
-                    // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                    
                     NSLog("Unresolved error \(error), \(error!.userInfo)")
                     abort()
                 }
@@ -193,31 +187,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         UITextField.appearance().tintColor=UIColor(colorLiteralRed:43/255, green:185/255, blue:86/255, alpha:1)
         UITextField.appearance().keyboardAppearance = .dark
         
-        //let twitter = Twitter()
-        //let (consumerKey, consumerSecret, _) = Config.shared.twitter()
-        //twitter.startWithConsumerKey(consumerKey, consumerSecret: consumerSecret)
-        
         RestKitObjC.setupLog()
         //Fabric.with([twitter])
         registerForNotification()
         
-        // Setup Amazon S3
-        AmazonTool.shared
-        //UIApplication.sharedApplication().statusBarStyle = .LightContent
-      //  UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.init(rawValue: <#T##Int#>)
-       // UIApplication.sharedApplication().statusBarStyle = .Black
-     //   UIApplication.sharedApplication().statusBarStyle = .Default
-        UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.lightContent, animated: true)
+        UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.lightContent, animated:true)
 
        // UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: .Fade)
         UINavigationBar.setCustomAppereance()
-        
-       // UINavigationBar.appearance().backgroundColor = UIColor.whiteColor()
-        /*UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: .Fade)
-        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "nav-background"), forBarMetrics: UIBarMetrics.Default)
-        UINavigationBar.appearance().shadowImage = UIImage(named: "nav-border")
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]*/
         
         UserDefaults.standard.removeObject(forKey: "isGlobalStreamsInMain")
         
@@ -245,13 +222,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
 
     func reachabilityChanged()
     {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "status"), object:nil)
+        NotificationCenter.default.post(name:Notification.Name("status"), object:nil)
     }
 
     func applicationDidBecomeActive(_ application:UIApplication)
     {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        
        if let task = self.bgTask {
             if (task != UIBackgroundTaskInvalid)
             {
@@ -260,17 +235,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
             }
         }
         
-        // Post notifications to current controllers
-        NotificationCenter.default.post(NSNotification(name: NSNotification.Name(rawValue: "Open"), object: nil) as Notification)
+       NotificationCenter.default.post(name:Notification.Name("Open"), object:nil)
     }
-
-   // func applicationWillTerminate(application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-   // }
-
-    // MARK: - Notifications
     
-    func registerForNotification() {
+    func registerForNotification()
+    {
         let application = UIApplication.shared
         
         if #available(iOS 8.0, *) {
@@ -284,7 +253,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         }
     }
     
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void)
+    {
         completionHandler(UIBackgroundFetchResult.noData)
         
         if !UserContainer.shared.isLogged() {
@@ -309,7 +279,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         UIAlertView.notificationAlert(notificationsDelegate, userInfo: userInfo).show()
     }
     
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+    func application(_ application:UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken:NSData)
+    {
         /* Each byte in the data will be translated to its hex value like 0x01 or
         0xAB excluding the 0x part, so for 1 byte, we will need 2 characters to
         represent that byte, hence the * 2 */
@@ -328,11 +299,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         self.deviceToken = tokenAsString as String
     }
     
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError){
+    func application(_ application:UIApplication, didFailToRegisterForRemoteNotificationsWithError error:NSError)
+    {
         NSLog("%@",error.localizedDescription)
     }
     
-    func application(_ application:UIApplication, handleOpenURL url:NSURL)->Bool
+    func application(_ application:UIApplication, handleOpen url:URL)->Bool
     {
         return WXApi.handleOpen(url as URL!, delegate:self)
     }
@@ -343,7 +315,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         {
             if authResp.code != nil
             {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "getCode"), object:authResp.code)
+                NotificationCenter.default.post(name:Notification.Name("getCode"), object:authResp.code)
             }
             else
             {
