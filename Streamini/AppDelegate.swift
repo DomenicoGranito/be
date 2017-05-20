@@ -174,11 +174,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         }
     }
     
-    func application(_ application:UIApplication, didFinishLaunchingWithOptions launchOptions:[AnyHashable: Any]?)->Bool
+    func application(_ application:UIApplication, didFinishLaunchingWithOptions launchOptions:[UIApplicationLaunchOptionsKey:Any]?)->Bool
     {
         reachability=Reachability()
         
-        NotificationCenter.default.addObserver(self, selector:#selector(reachabilityChanged), name:NSNotification.Name("ReachabilityChangedNotification"), object:nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(reachabilityChanged), name:ReachabilityChangedNotification, object:nil)
         
         try! reachability.startNotifier()
 
@@ -188,35 +188,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         UITextField.appearance().keyboardAppearance = .dark
         
         RestKitObjC.setupLog()
-        //Fabric.with([twitter])
+        
         registerForNotification()
         
         UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.lightContent, animated:true)
-
-       // UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: .Fade)
+        
         UINavigationBar.setCustomAppereance()
         
         UserDefaults.standard.removeObject(forKey: "isGlobalStreamsInMain")
-        
-        //Clear keychain on first run in case of reinstallation
-        if !UserDefaults.standard.bool(forKey: "RegularRun") {
-            UserDefaults.standard.set(true, forKey: "RegularRun")
-            UserDefaults.standard.synchronize()
-            
-            if let _ = A0SimpleKeychain().string(forKey: "PHPSESSID") {
-                A0SimpleKeychain().deleteEntry(forKey: "PHPSESSID")
-            }
-            if let _ = A0SimpleKeychain().string(forKey: "id") {
-                A0SimpleKeychain().deleteEntry(forKey: "id")
-            }
-            if let _ = A0SimpleKeychain().string(forKey: "password") {
-                A0SimpleKeychain().deleteEntry(forKey: "password")
-            }
-            if let _ = A0SimpleKeychain().string(forKey: "type") {
-                A0SimpleKeychain().deleteEntry(forKey: "type")
-            }
-        }
-        
+                
         return true
     }
 
@@ -253,7 +233,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         }
     }
     
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void)
+    func application(_ application:UIApplication, didReceiveRemoteNotification userInfo:[AnyHashable:Any], fetchCompletionHandler completionHandler:(UIBackgroundFetchResult)->Void)
     {
         completionHandler(UIBackgroundFetchResult.noData)
         
