@@ -29,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
     var downloadTable : downloadTableViewControllerDelegate?
     var dataDownloader : DataDownloader?
     
-    fileprivate func addCustomMenuItems() {
-        
+    fileprivate func addCustomMenuItems()
+    {
         let menuController = UIMenuController.shared
         var menuItems = menuController.menuItems ?? [UIMenuItem]()
         
@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         }
     }
     
-    func applicationWillResignActive(_ application: UIApplication)
+    func applicationWillResignActive(_ application:UIApplication)
     {
         if(closeStream)
         {
@@ -78,20 +78,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         }
     }
     
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        //disable video tracks to allow background audio play
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "enteredBackgroundID"), object: nil)
-    }
-    
-    func applicationWillEnterForeground(_ application: UIApplication)
+    func applicationDidEnterBackground(_ application:UIApplication)
     {
-        //renable video tracks
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "enteredForegroundID"), object: nil)
+        NotificationCenter.default.post(name:Notification.Name("enteredBackgroundID"), object:nil)
     }
     
-    func applicationWillTerminate(_ application: UIApplication) {
-        
-        //remove excess documents and data
+    func applicationWillEnterForeground(_ application:UIApplication)
+    {
+        NotificationCenter.default.post(name:Notification.Name("enteredForegroundID"), object:nil)
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication)
+    {
         let cacheFolder = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
         var dirsToClean : [String] = []
         
@@ -196,7 +194,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         UINavigationBar.setCustomAppereance()
         
         UserDefaults.standard.removeObject(forKey: "isGlobalStreamsInMain")
-                
+        
         return true
     }
 
