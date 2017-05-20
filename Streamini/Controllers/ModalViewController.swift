@@ -50,7 +50,8 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         
         NotificationCenter.default.addObserver(self, selector:#selector(onDeviceOrientationChange), name:.UIDeviceOrientationDidChange, object:nil)
         NotificationCenter.default.addObserver(self, selector:#selector(deleteBlockUserVideos), name:Notification.Name("blockUser"), object:nil)
-        NotificationCenter.default.addObserver(self, selector:#selector(updatePlayer), name:Notification.Name("updatePlayer"), object:nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(closePlaylist), name:Notification.Name("closePlaylist"), object:nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(closePlayer), name:Notification.Name("closePlayer"), object:nil)
         
         createPlaylist()
         updatePlayerWithStream()
@@ -102,8 +103,18 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         appDelegate.shouldRotate=false
     }
     
-    func updatePlayer(notification:Notification)
+    func closePlaylist(notification:Notification)
     {
+        selectedItemIndex=notification.object as! Int
+        updateButtons()
+        videoIDs.removeAll()
+        createPlaylist()
+    }
+    
+    func closePlayer(notification:Notification)
+    {
+        UIApplication.shared.setStatusBarHidden(false, with:.fade)
+        
         selectedItemIndex=notification.object as! Int
         updateButtons()
         videoIDs.removeAll()

@@ -62,7 +62,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         return headerView
     }
     
-    func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
+    func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
     {
         return indexPath.section==0 ? 80 : 50
     }
@@ -241,18 +241,18 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     {
         streamsArray.insert(nowPlayingStream, at:nowPlayingStreamIndex)
         
-        NotificationCenter.default.post(name:Notification.Name(rawValue:"updatePlayer"), object:nowPlayingStreamIndex)
+        NotificationCenter.default.post(name:Notification.Name("closePlaylist"), object:nowPlayingStreamIndex)
         
         dismiss(animated:true)
     }
     
     @IBAction func closePlayer()
     {
+        view.window?.rootViewController?.dismiss(animated:true)
+        
         streamsArray.insert(nowPlayingStream, at:nowPlayingStreamIndex)
         
-        NotificationCenter.default.post(name:Notification.Name("updatePlayer"), object:nowPlayingStreamIndex)
-        
-        view.window?.rootViewController?.dismiss(animated:true, completion:nil)
+        NotificationCenter.default.post(name:Notification.Name("closePlayer"), object:nowPlayingStreamIndex)
     }
     
     func createTransitionImageView()->UIImageView
