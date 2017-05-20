@@ -8,7 +8,8 @@
 
 class SocialConnector: Connector
 {
-    func users(_ data: NSDictionary, _ success: @escaping (_ top: [User], _ featured: [User]) -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func users(_ data: NSDictionary, _ success: @escaping (_ top: [User], _ featured: [User]) -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         let path = "social"
         
         var params=self.sessionParams()
@@ -49,7 +50,8 @@ class SocialConnector: Connector
         })
     }
     
-    func search(_ data: NSDictionary, _ success: @escaping (_ users: [User]) -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func search(_ data: NSDictionary, _ success: @escaping (_ users: [User]) -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         let path = "social/search"
         
         var params=self.sessionParams()
@@ -99,7 +101,7 @@ class SocialConnector: Connector
         
         manager.post(nil, path: path, parameters: params, success:
             { (operation, mappingResult) -> Void in
-            // success code
+            
             let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
             if !error.status
             {
@@ -125,14 +127,15 @@ class SocialConnector: Connector
         })
     }
     
-    func unfollow(_ userId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func unfollow(_ userId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         let path = "social/unfollow"
         
         var params = self.sessionParams()
         params!["id"] = userId as AnyObject?
         
         manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
-            // success code
+            
             let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
             if !error.status {
                 if error.code == Error.kLoginExpiredCode {
@@ -152,14 +155,15 @@ class SocialConnector: Connector
         })
     }
     
-    func block(_ userId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func block(_ userId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         let path = "social/block"
         
         var params = self.sessionParams()
         params!["id"] = userId as AnyObject?
         
         manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
-            // success code
+            
             let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
             if !error.status {
                 if error.code == Error.kLoginExpiredCode {
@@ -179,14 +183,15 @@ class SocialConnector: Connector
         })
     }
     
-    func unblock(_ userId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func unblock(_ userId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         let path = "social/unblock"
         
         var params = self.sessionParams()
         params!["id"] = userId as AnyObject?
         
         manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
-            // success code
+            
             let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
             if !error.status {
                 if error.code == Error.kLoginExpiredCode {

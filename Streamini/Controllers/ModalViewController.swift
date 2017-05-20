@@ -102,7 +102,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         appDelegate.shouldRotate=false
     }
     
-    func updatePlayer(notification:NSNotification)
+    func updatePlayer(notification:Notification)
     {
         selectedItemIndex=notification.object as! Int
         updateButtons()
@@ -456,7 +456,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     @IBAction func menu()
     {
-        let vc=storyBoard.instantiateViewController(withIdentifier: "PlaylistViewController") as! PlaylistViewController
+        let vc=storyBoard.instantiateViewController(withIdentifier:"PlaylistViewController") as! PlaylistViewController
         vc.transitioningDelegate=vc
         vc.nowPlayingStreamIndex=selectedItemIndex
         vc.streamsArray=streamsArray as! NSMutableArray

@@ -6,9 +6,10 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-class StreamConnector: Connector {
-    
-    func cities(_ success: @escaping (_ cities: [String]) -> (), _ failure: @escaping (_ error:NSError) -> ()) {
+class StreamConnector: Connector
+{
+    func cities(_ success: @escaping (_ cities: [String]) -> (), _ failure: @escaping (_ error:NSError) -> ())
+    {
         let path = "stream/cities"
         
         let mapping = StreamMappingProvider.cityResponseMapping()
@@ -50,9 +51,8 @@ class StreamConnector: Connector {
         })
     }
     
-    func categories(_ success: @escaping (_ cats: [Category]) -> (), _ failure: @escaping (_ error: NSError) -> ()) {
-   
-    //let path = "stream/categories"
+    func categories(_ success: @escaping (_ cats: [Category]) -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         let path = "category/categories"
         
         let mapping = CategoryMappingProvider.categoryResponseMapping()
@@ -84,7 +84,8 @@ class StreamConnector: Connector {
         })
     }
     
-    func streams(_ getGlobal: Bool, _ success: @escaping (_ live: [Stream], _ recent: [Stream]) -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func streams(_ getGlobal: Bool, _ success: @escaping (_ live: [Stream], _ recent: [Stream]) -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         let path = (getGlobal) ? "stream/global" : "stream/followed"
         
         let streamMapping = StreamMappingProvider.streamResponseMapping()
@@ -127,8 +128,6 @@ class StreamConnector: Connector {
             //failure(error)
         })
     }
-    
-    /*** WRITTEN BY ANKIT GARG ***/
     
     func discover(_ success:@escaping (_ data:NSDictionary)->(), _ failure:@escaping (_ error:NSError)->())
     {
@@ -384,9 +383,8 @@ class StreamConnector: Connector {
         })
     }
 
-    /*** WRITTEN BY ANKIT GARG ***/
-    
-    func recent(_ userId: UInt, _ success: @escaping (_ streams: [Stream]) -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func recent(_ userId: UInt, _ success: @escaping (_ streams: [Stream]) -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         let path = ("stream/recent" as NSString).appendingPathComponent("\(userId)")
         
         let streamMapping = StreamMappingProvider.streamResponseMapping()
@@ -419,7 +417,8 @@ class StreamConnector: Connector {
         })
     }
     
-    func my(_ success: @escaping (_ streams: [Stream]) -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func my(_ success: @escaping (_ streams: [Stream]) -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         let path = "stream/my"
         
         let streamMapping = StreamMappingProvider.streamResponseMapping()
@@ -430,7 +429,7 @@ class StreamConnector: Connector {
         manager.addResponseDescriptor(responseDescriptor)
         
         manager.getObjectsAtPath(path, parameters: self.sessionParams(), success: { (operation, mappingResult) -> Void in
-            // success code
+            
             let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
             if !error.status {
                 if error.code == Error.kLoginExpiredCode {
@@ -451,7 +450,8 @@ class StreamConnector: Connector {
         })
     }
     
-    func create(_ data: NSDictionary, _ success: @escaping (_ stream: Stream) -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func create(_ data: NSDictionary, _ success: @escaping (_ stream: Stream) -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         let path = "stream/create"
         
         let requestMapping  = StreamMappingProvider.createStreamRequestMapping()
@@ -466,7 +466,7 @@ class StreamConnector: Connector {
         manager.addResponseDescriptor(streamResponseDescriptor)
         
         manager.post(data, path: path, parameters: self.sessionParams(), success: { (operation, mappingResult) -> Void in
-            // success code
+           
             let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
             if !error.status {
                 if error.code == Error.kLoginExpiredCode {
@@ -487,7 +487,8 @@ class StreamConnector: Connector {
         })
     }
     
-    func createWithFile(_ filename: String, _ fileData: NSData, _ data: NSDictionary, _ success: @escaping (_ stream: Stream) -> (), _ failure: @escaping (_ error:NSError) -> ()) {
+    func createWithFile(_ filename: String, _ fileData: NSData, _ data: NSDictionary, _ success: @escaping (_ stream: Stream) -> (), _ failure: @escaping (_ error:NSError) -> ())
+    {
         let path = "stream/create"
         
         let requestMapping  = StreamMappingProvider.createStreamRequestMapping()
@@ -531,14 +532,15 @@ class StreamConnector: Connector {
         manager.enqueue(operation)
     }
     
-    func del(_ streamId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func del(_ streamId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         let path = "stream/delete"
         
         var params = self.sessionParams()
         params!["id"] = streamId as AnyObject?
         
         manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
-            // success code
+            
             let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
             if !error.status {
                 if error.code == Error.kLoginExpiredCode {
@@ -558,14 +560,15 @@ class StreamConnector: Connector {
     }
 
     
-    func close(_ streamId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func close(_ streamId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         let path = "stream/close"
         
         var params = self.sessionParams()
         params!["id"] = streamId as AnyObject?
         
         manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
-            // success code
+        
             let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
             if !error.status {
                 if error.code == Error.kLoginExpiredCode {
@@ -584,7 +587,8 @@ class StreamConnector: Connector {
         })
     }
     
-    func join(_ streamId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func join(_ streamId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         let path = "stream/join"
         
         var params = self.sessionParams()
@@ -609,7 +613,8 @@ class StreamConnector: Connector {
         })
     }
     
-    func leave(_ streamId: UInt, _ likes: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func leave(_ streamId: UInt, _ likes: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         let path = "stream/leave"
         
         var params = self.sessionParams()
@@ -635,7 +640,8 @@ class StreamConnector: Connector {
         })
     }
     
-    func viewers(_ data: NSDictionary, _ success: @escaping (_ likes: UInt, _ viewers: UInt, _ users: [User]) -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func viewers(_ data: NSDictionary, _ success: @escaping (_ likes: UInt, _ viewers: UInt, _ users: [User]) -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         let streamId = data["streamId"] as! UInt
         let path = ("stream/viewers" as NSString).appendingPathComponent("\(streamId)")
         
@@ -674,7 +680,8 @@ class StreamConnector: Connector {
         })
     }
     
-    func replayViewers(_ data: NSDictionary, _ success: @escaping (_ likes: UInt, _ viewers: UInt, _ users: [User]) -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func replayViewers(_ data: NSDictionary, _ success: @escaping (_ likes: UInt, _ viewers: UInt, _ users: [User]) -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         let streamId = data["streamId"] as! UInt
         let path = ("stream/rviewers" as NSString).appendingPathComponent("\(streamId)")
         
