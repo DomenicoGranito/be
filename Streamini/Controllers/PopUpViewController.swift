@@ -128,7 +128,7 @@ class PopUpViewController: BaseViewController
         
     }
     
-    func failureWithoutAction(_ error:NSError)
+    func failureWithoutAction(error:NSError)
     {
         handleError(error)
     }

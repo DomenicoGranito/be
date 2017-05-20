@@ -17,7 +17,7 @@ open class SongManager
     class func getSong(_ identifier:String)->NSManagedObject
     {
         let songRequest:NSFetchRequest<NSFetchRequestResult>=NSFetchRequest(entityName:"Song")
-        songRequest.predicate = NSPredicate(format: "identifier = %@", identifier)
+        songRequest.predicate=NSPredicate(format:"identifier=%@", identifier)
         let fetchedSongs=try! context.fetch(songRequest) as NSArray
         return fetchedSongs[0] as! NSManagedObject
     }
@@ -25,7 +25,16 @@ open class SongManager
     class func getRecentlyPlayed()->[NSManagedObject]
     {
         let recentlyPlayedRequest:NSFetchRequest<NSFetchRequestResult>=NSFetchRequest(entityName:"RecentlyPlayed")
-        return try! context.fetch(recentlyPlayedRequest) as! [NSManagedObject]
+        let fetchedSongs=try! context.fetch(recentlyPlayedRequest)
+        
+        let sortedArray=NSMutableArray()
+        
+        for i in stride(from:fetchedSongs.count-1, through:0, by:-1)
+        {
+            sortedArray.add(fetchedSongs[i])
+        }
+        
+        return (sortedArray as NSArray) as! [NSManagedObject]
     }
     
     class func getSearchHistory()->[NSManagedObject]
