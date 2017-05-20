@@ -48,7 +48,7 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
     
     func tableView(_ tableView:UITableView, cellForRowAt indexPath:IndexPath)->UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PeopleCell", for: indexPath as IndexPath) as! PeopleCell
+        let cell = tableView.dequeueReusableCell(withIdentifier:"PeopleCell", for:indexPath) as! PeopleCell
         
         let user: User
         if isSearchMode {
@@ -62,7 +62,7 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderIn section:Int)->CGFloat
+    func tableView(_ tableView:UITableView, heightForHeaderIn section:Int)->CGFloat
     {
         if (section == 0 && top.isEmpty) || (section == 1 && featured.isEmpty) || isSearchMode {
             return 0.0
@@ -70,7 +70,7 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         return 35.0
     }
     
-    func tableView(_ tableView:UITableView, viewForHeaderIn section:Int)->UIView?
+    func tableView(_ tableView:UITableView, viewForHeaderInIn section:Int)->UIView?
     {
         if (section == 0 && top.isEmpty) || (section == 1 && featured.isEmpty) || isSearchMode {
             return nil
@@ -96,7 +96,7 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         return header
     }
     
-    func tableView(_ tableView:UITableView, heightForRowAt indexPath:NSIndexPath)->CGFloat
+    func tableView(_ tableView:UITableView, heightForRowAt indexPath:IndexPath)->CGFloat
     {
         let user: User
         if isSearchMode {

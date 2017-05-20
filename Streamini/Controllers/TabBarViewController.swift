@@ -53,8 +53,8 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         
         videoTitleLbl.text=stream.title
         videoArtistLbl.text=stream.user.name
-        videoThumbnailImageView.sd_setImage(with: URL(string:"http://\(host)/thumb/\(stream.id).jpg"))
-        backgroundImageView.sd_setImage(with: URL(string:"http://\(host)/thumb/\(stream.id).jpg"))
+        videoThumbnailImageView.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream.id).jpg"))
+        backgroundImageView.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream.id).jpg"))
     }
     
     func configure(_ stream:Stream)
@@ -67,7 +67,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     func goToChannels(notification:Notification)
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewController(withIdentifier: "UserViewControllerId") as! UserViewController
+        let vc=storyboard.instantiateViewController(withIdentifier:"UserViewControllerId") as! UserViewController
         vc.user=notification.object as? User
         
         let navigationController=self.viewControllers![self.selectedIndex] as! UINavigationController
@@ -76,13 +76,13 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     
     @IBAction func tapMiniPlayerButton()
     {
-        present(modalVC, animated:true, completion:nil)
+        present(modalVC, animated:true)
     }
     
     func tabBarController(_ tabBarController:UITabBarController, shouldSelect viewController:UIViewController)->Bool
     {
         let tabViewControllers=tabBarController.viewControllers
-        let fromIndex=tabViewControllers?.index(of: tabBarController.selectedViewController!)
+        let fromIndex=tabViewControllers?.index(of:tabBarController.selectedViewController!)
         
         UserDefaults.standard.set(fromIndex!, forKey:"previousTab")
         
@@ -94,6 +94,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         let animation=MusicPlayerTransitionAnimation(rootVC:self, modalVC:modalVC)
         
         animation.completion={isPresenting in
+            
             if isPresenting
             {
                 //let modalGestureHandler=TransitionGestureHandler(targetVC:self, direction:.bottom)

@@ -41,11 +41,6 @@ final class MusicPlayerTransitionAnimation : TransitionAnimatable
         self.containerView=containerView
         
         rootVC.view.insertSubview(modalVC.view, belowSubview:rootVC.vtabBar)
-        
-        rootVC.view.setNeedsLayout()
-        rootVC.view.layoutIfNeeded()
-        modalVC.view.setNeedsLayout()
-        modalVC.view.layoutIfNeeded()
     }
     
     func willAnimation(_ transitionType:TransitionType, containerView:UIView)

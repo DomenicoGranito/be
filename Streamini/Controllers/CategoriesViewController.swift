@@ -116,14 +116,14 @@ class CategoriesViewController: BaseViewController
         navigationController!.popViewController(animated:true)
     }
     
-    func successStreams(_ data:NSDictionary)
+    func successStreams(data:NSDictionary)
     {
         shufflePlayButton.isEnabled=true
         allItemsArray.addObjects(from:getData(data) as [AnyObject])
         itemsTbl?.reloadData()
     }
     
-    func fetchMoreSuccess(_ data:NSDictionary)
+    func fetchMoreSuccess(data:NSDictionary)
     {
         itemsTbl?.infiniteScrollingView.stopAnimating()
         allItemsArray.addObjects(from:getData(data) as [AnyObject])
@@ -194,7 +194,7 @@ class CategoriesViewController: BaseViewController
             streamsArray.add(oneVideo)
             count+=1
             
-            if(count==2||(count==1&&i==data.count-1))
+            if(count==2||(count==1&&i==videos.count-1))
             {
                 count=0
                 allItemsArray.add(sectionItemsArray)
@@ -205,7 +205,7 @@ class CategoriesViewController: BaseViewController
         return allItemsArray
     }
     
-    func failureStream(_ error:NSError)
+    func failureStream(error:NSError)
     {
         handleError(error)
     }
