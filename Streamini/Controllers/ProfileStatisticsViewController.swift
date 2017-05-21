@@ -86,7 +86,7 @@ class ProfileStatisticsViewController: UIViewController, UserSelecting, UserStat
     func userDidSelected(_ user:User)
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewController(withIdentifier: "UserViewControllerId") as! UserViewController
+        let vc=storyboard.instantiateViewController(withIdentifier:"UserViewControllerId") as! UserViewController
         vc.user=user
         navigationController!.pushViewController(vc, animated:true)
     }
