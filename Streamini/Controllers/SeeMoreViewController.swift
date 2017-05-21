@@ -19,7 +19,7 @@ class SeeMoreViewController: UIViewController
     
     override func viewWillAppear(_ animated:Bool)
     {
-        self.title=t.capitalized
+        self.title=t.uppercased()
         navigationController?.isNavigationBarHidden=false
         
         if t=="streams"
@@ -75,7 +75,7 @@ class SeeMoreViewController: UIViewController
             
             let user=users[indexPath.row]
             
-            cell.userImageView.sd_setImage(with:user.avatarURL() as! URL)
+            cell.userImageView.sd_setImage(with:user.avatarURL(), placeholderImage:UIImage(named:"profile"))
             cell.usernameLabel.text=user.name
             cell.likesLabel.text="\(user.likes)"
             

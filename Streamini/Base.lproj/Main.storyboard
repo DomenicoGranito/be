@@ -12,7 +12,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Discover-->
+        <!--DISCOVER-->
         <scene sceneID="udW-Mk-lme">
             <objects>
                 <viewController id="YQS-np-9E3" customClass="DiscoverViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
@@ -231,14 +231,16 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="145" height="150"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="faP-XK-2eS">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="faP-XK-2eS">
                                                                         <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </imageView>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7YE-aI-Irf">
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="80" id="Ctc-Oz-AKU"/>
+                                                                        </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="electroNOW" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cH-Pq-sHN">
                                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="40" id="uS5-Gc-InD"/>
-                                                                        </constraints>
                                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
@@ -247,15 +249,20 @@
                                                             </view>
                                                             <color key="backgroundColor" red="0.1333333333" green="0.13725490200000001" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
+                                                                <constraint firstItem="8cH-Pq-sHN" firstAttribute="top" secondItem="7YE-aI-Irf" secondAttribute="bottom" id="1GG-Bw-EqQ"/>
                                                                 <constraint firstAttribute="trailing" secondItem="8cH-Pq-sHN" secondAttribute="trailing" id="8Y8-k2-bKD"/>
                                                                 <constraint firstAttribute="trailing" secondItem="faP-XK-2eS" secondAttribute="trailing" id="ATx-L1-7nt"/>
                                                                 <constraint firstItem="faP-XK-2eS" firstAttribute="leading" secondItem="7fs-SF-oc1" secondAttribute="leading" id="Cqz-p2-EtC"/>
-                                                                <constraint firstItem="8cH-Pq-sHN" firstAttribute="centerY" secondItem="7fs-SF-oc1" secondAttribute="centerY" id="DU7-Tq-5Hp"/>
+                                                                <constraint firstAttribute="trailing" secondItem="7YE-aI-Irf" secondAttribute="trailing" id="ExN-s4-qrq"/>
                                                                 <constraint firstItem="faP-XK-2eS" firstAttribute="top" secondItem="7fs-SF-oc1" secondAttribute="top" id="T02-W3-SM7"/>
+                                                                <constraint firstItem="7YE-aI-Irf" firstAttribute="leading" secondItem="7fs-SF-oc1" secondAttribute="leading" id="T7l-I4-36E"/>
                                                                 <constraint firstItem="8cH-Pq-sHN" firstAttribute="leading" secondItem="7fs-SF-oc1" secondAttribute="leading" id="WiA-7g-kR0"/>
+                                                                <constraint firstItem="7YE-aI-Irf" firstAttribute="top" secondItem="7fs-SF-oc1" secondAttribute="top" constant="10" id="aKZ-w5-4Ak"/>
+                                                                <constraint firstAttribute="bottom" secondItem="8cH-Pq-sHN" secondAttribute="bottom" constant="20" id="tfm-a4-qFG"/>
                                                                 <constraint firstAttribute="bottom" secondItem="faP-XK-2eS" secondAttribute="bottom" id="up2-N7-Mgq"/>
                                                             </constraints>
                                                             <connections>
+                                                                <outlet property="iconImageView" destination="7YE-aI-Irf" id="CaF-QX-o84"/>
                                                                 <outlet property="videoThumbnailImageView" destination="faP-XK-2eS" id="jgO-pD-iee"/>
                                                                 <outlet property="videoTitleLbl" destination="8cH-Pq-sHN" id="51V-5k-03T"/>
                                                             </connections>
@@ -305,7 +312,9 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Discover" id="3ly-Gd-EIc"/>
+                    <navigationItem key="navigationItem" title="DISCOVER" id="3ly-Gd-EIc">
+                        <barButtonItem key="backBarButtonItem" title=" " id="CGS-7W-TaY"/>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="480"/>
                     <connections>
@@ -777,7 +786,7 @@
             </objects>
             <point key="canvasLocation" x="-3082" y="-4536"/>
         </scene>
-        <!--People View Controller-->
+        <!--CHANNELS-->
         <scene sceneID="bEc-os-5j6">
             <objects>
                 <viewController storyboardIdentifier="PeopleViewController" id="aek-ff-zgE" customClass="PeopleViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
@@ -795,8 +804,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="110" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ad9-xm-a5N">
-                                <color key="backgroundColor" red="0.070588235294117646" green="0.074509803921568626" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.070588235294117646" green="0.074509803921568626" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="separatorColor" red="0.14509803921568626" green="0.14117647058823529" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PeopleCell" id="k1O-A1-Ox8" customClass="PeopleCell" customModule="Streamini" customModuleProvider="target">
@@ -922,7 +931,7 @@
                                                     </variation>
                                                 </button>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.062745098039215685" green="0.066666666666666666" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.070588235294117646" green="0.074509803921568626" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="7Sr-4L-RPl" firstAttribute="top" secondItem="R4t-C5-LN9" secondAttribute="bottom" constant="4" id="7X4-6n-dxf">
                                                     <variation key="heightClass=regular-widthClass=compact" constant="5"/>
@@ -1024,7 +1033,7 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.070588235294117646" green="0.074509803921568626" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="descriptionLabel" destination="1kU-wk-MDL" id="YvI-79-qFZ"/>
                                             <outlet property="likesIcon" destination="1Sz-Ct-3xA" id="PLF-JM-KZY"/>
@@ -1038,7 +1047,7 @@
                             </tableView>
                             <searchBar contentMode="redraw" text="" placeholder="Search" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vto-MJ-9M9">
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="barTintColor" red="0.062745098039215685" green="0.066666666666666666" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" red="0.070588235294117646" green="0.074509803921568626" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="aek-ff-zgE" id="ybn-uO-psB"/>
@@ -1095,6 +1104,7 @@
                         </variation>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="CHANNELS" id="EEH-OX-SY9"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="480"/>
                     <connections>
@@ -1187,7 +1197,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mG5-C5-Tf4">
-                                                    <color key="backgroundColor" red="0.89411764709999997" green="0.68235294120000001" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="110" id="Bkm-dk-FoS"/>
                                                         <constraint firstAttribute="height" constant="70" id="niY-zP-XHa"/>
@@ -1452,7 +1462,9 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="kGV-fK-te0"/>
+                    <navigationItem key="navigationItem" id="kGV-fK-te0">
+                        <barButtonItem key="backBarButtonItem" title=" " id="EpM-GE-GF9"/>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="480"/>
                     <connections>
@@ -1834,8 +1846,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TfD-Od-Uc4">
-                                                    <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="tintColor" red="0.1215686275" green="0.43529411759999997" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="70" id="Hdz-ct-8G2"/>
                                                         <constraint firstAttribute="width" constant="110" id="QXJ-e5-7VM"/>
@@ -2470,6 +2482,7 @@
                                                                 <frame key="frameInset" minX="10" minY="5" width="70" height="70"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TzH-Sz-5sY">
                                                                 <frame key="frameInset" minX="95" minY="18" width="200" height="20"/>
@@ -2753,8 +2766,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MjS-JO-s97">
-                                                    <color key="backgroundColor" red="0.89411764709999997" green="0.68235294120000001" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="tintColor" red="0.1215686275" green="0.43529411759999997" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="70" id="HzY-na-aDy"/>
                                                         <constraint firstAttribute="width" constant="110" id="ZBf-uj-kM0"/>
@@ -5395,7 +5408,7 @@
             </objects>
             <point key="canvasLocation" x="-2387" y="-5949"/>
         </scene>
-        <!--Home-->
+        <!--HOME-->
         <scene sceneID="vc0-al-M5g">
             <objects>
                 <viewController id="aIF-hk-ASP" customClass="HomeViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
@@ -5613,7 +5626,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Home" id="1wg-aa-cOt"/>
+                    <navigationItem key="navigationItem" title="HOME" id="1wg-aa-cOt"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="480"/>
                     <connections>
@@ -6681,7 +6694,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0rJ-QK-fFK">
-                                                    <color key="backgroundColor" red="0.89411764709999997" green="0.68235294120000001" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="110" id="XSA-dG-aCv"/>
                                                         <constraint firstAttribute="height" constant="70" id="mQP-Xg-GEZ"/>
@@ -6751,7 +6765,8 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KlW-1m-te7">
                                                     <frame key="frameInset" minX="15" minY="10" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="0.89411764709999997" green="0.68235294120000001" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                             <integer key="value" value="25"/>
@@ -6988,7 +7003,7 @@
             </objects>
             <point key="canvasLocation" x="-4868" y="-3825"/>
         </scene>
-        <!--My Library-->
+        <!--MY LIBRARY-->
         <scene sceneID="w1u-TN-QrS">
             <objects>
                 <viewController id="88Q-eZ-4eh" customClass="MyLibViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
@@ -7109,7 +7124,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xz1-zb-OAc">
-                                                    <color key="backgroundColor" red="0.89411764709999997" green="0.68235294120000001" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="110" id="6XM-f3-GlJ"/>
                                                     </constraints>
@@ -7173,7 +7189,8 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="My Library" id="Wzz-T0-HKj">
+                    <navigationItem key="navigationItem" title="MY LIBRARY" id="Wzz-T0-HKj">
+                        <barButtonItem key="backBarButtonItem" title=" " id="kjJ-6C-7Ht"/>
                         <rightBarButtonItems>
                             <barButtonItem image="profile" id="HBf-Kp-QhT" userLabel="My Profile">
                                 <color key="tintColor" red="0.74509803921568629" green="0.55686274509803924" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
@@ -7228,8 +7245,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d20-V8-1oK">
-                                                    <color key="backgroundColor" red="0.89411764709999997" green="0.68235294120000001" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="tintColor" red="0.1215686275" green="0.43529411759999997" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="70" id="ZPq-2d-V2Q"/>
                                                         <constraint firstAttribute="width" constant="110" id="f91-7t-Xcd"/>
@@ -7668,7 +7685,7 @@
             </objects>
             <point key="canvasLocation" x="-3099" y="-3754"/>
         </scene>
-        <!--Settings-->
+        <!--SETTINGS-->
         <scene sceneID="8EG-UU-JOW">
             <objects>
                 <tableViewController id="ZYA-Ih-Cct" customClass="SettingsViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
@@ -7882,7 +7899,9 @@
                         </sections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Settings" id="oDQ-nC-3vW"/>
+                    <navigationItem key="navigationItem" title="SETTINGS" id="oDQ-nC-3vW">
+                        <barButtonItem key="backBarButtonItem" title=" " id="jQB-7f-cmd"/>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="480"/>
                 </tableViewController>
@@ -7890,7 +7909,7 @@
             </objects>
             <point key="canvasLocation" x="-285" y="-3025"/>
         </scene>
-        <!--Account-->
+        <!--ACCOUNT-->
         <scene sceneID="7bo-V9-uGa">
             <objects>
                 <tableViewController id="4Z8-Pa-DVz" customClass="SubscriptionViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
@@ -7941,7 +7960,7 @@
                         </sections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Account" id="Uhe-Ki-IzD">
+                    <navigationItem key="navigationItem" title="ACCOUNT" id="Uhe-Ki-IzD">
                         <barButtonItem key="backBarButtonItem" title=" " id="5gV-ow-TaK"/>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -7951,7 +7970,7 @@
             </objects>
             <point key="canvasLocation" x="1141" y="-4732"/>
         </scene>
-        <!--Social-->
+        <!--SOCIAL-->
         <scene sceneID="TUz-iG-h6k">
             <objects>
                 <tableViewController id="ecw-gG-N5G" propertyAccessControl="none" sceneMemberID="viewController">
@@ -8058,7 +8077,7 @@
                         </sections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Social" id="oY1-gA-sFt"/>
+                    <navigationItem key="navigationItem" title="SOCIAL" id="oY1-gA-sFt"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="480"/>
                 </tableViewController>
@@ -8066,7 +8085,7 @@
             </objects>
             <point key="canvasLocation" x="1141" y="-3704"/>
         </scene>
-        <!--About-->
+        <!--ABOUT-->
         <scene sceneID="QvI-zs-MAp">
             <objects>
                 <tableViewController id="a4t-q3-aSe" customClass="AboutTableViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
@@ -8188,7 +8207,7 @@
                         </sections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="About" id="l9h-jO-yE1"/>
+                    <navigationItem key="navigationItem" title="ABOUT" id="l9h-jO-yE1"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="480"/>
                     <connections>
@@ -8678,7 +8697,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="30C-m1-olj">
-                                                    <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="110" id="E3J-9W-S7d"/>
                                                         <constraint firstAttribute="height" constant="70" id="b6R-Ap-OEq"/>
@@ -8868,7 +8888,7 @@
             </objects>
             <point key="canvasLocation" x="686" y="-1607"/>
         </scene>
-        <!--Channels-->
+        <!--CHANNELS-->
         <scene sceneID="Ljx-g4-oOI">
             <objects>
                 <tableViewController id="kbb-NK-hdI" customClass="ChannelsTableViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
@@ -8965,7 +8985,7 @@
                         </sections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Channels" id="UEp-kI-kMO">
+                    <navigationItem key="navigationItem" title="CHANNELS" id="UEp-kI-kMO">
                         <barButtonItem key="backBarButtonItem" title=" " id="QIr-bT-SdN"/>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -8981,7 +9001,7 @@
             </objects>
             <point key="canvasLocation" x="-2331.1999999999998" y="-2147.226386806597"/>
         </scene>
-        <!--Live Streams-->
+        <!--LIVE STREAMS-->
         <scene sceneID="hRV-ef-G39">
             <objects>
                 <tableViewController id="UeV-21-YCs" customClass="VideosTableViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
@@ -9052,7 +9072,9 @@
                         </sections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Live Streams" id="CJl-81-1ov"/>
+                    <navigationItem key="navigationItem" title="LIVE STREAMS" id="CJl-81-1ov">
+                        <barButtonItem key="backBarButtonItem" title=" " id="xMt-Fu-dE1"/>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="480"/>
                     <connections>

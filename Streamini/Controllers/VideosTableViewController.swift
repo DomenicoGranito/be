@@ -18,7 +18,7 @@ class VideosTableViewController: UITableViewController, ProfileDelegate
     {
         if vType==1
         {
-            self.title="Videos"
+            self.title="VIDEOS"
             myLbl.text="My Videos"
         }
         

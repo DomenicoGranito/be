@@ -73,10 +73,10 @@
 "profile_userpic_gallery" = "Gallery";
 "profile_description_placeholder" = "Tap here to add description";
 "profile_logout_actionsheet_title" = "You want to log out?";
-"profile_following" = "Following";
-"profile_followers" = "Followers";
-"profile_blocked" = "Blocked";
-"profile_streams" = "Streams";
+"profile_following" = "FOLLOWING";
+"profile_followers" = "FOLLOWERS";
+"profile_blocked" = "BLOCKED";
+"profile_streams" = "STREAMS";
 "profile_share" = "Share";
 "profile_share_message" = "Streamini is awesome!";
 "profile_feedback" = "Feedback";

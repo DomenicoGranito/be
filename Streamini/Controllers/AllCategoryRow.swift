@@ -24,12 +24,13 @@ class AllCategoryRow: UITableViewCell
     
     func collectionView(_ collectionView:UICollectionView, cellForItemAtIndexPath indexPath:IndexPath)->UICollectionViewCell
     {
-        let cell=collectionView.dequeueReusableCell(withReuseIdentifier: "categoryCell", for:indexPath) as! CategoryCell
+        let cell=collectionView.dequeueReusableCell(withReuseIdentifier:"categoryCell", for:indexPath) as! CategoryCell
         
         let category=sectionItemsArray[indexPath.row] as! Category
         
         cell.videoTitleLbl?.text=category.name
-        cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"http://spectator.live/thumb/\(category.id).jpg"))
+        cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"http://beinit.live/media/bg_\(category.id).png"))
+        cell.iconImageView?.sd_setImage(with:URL(string:"http://beinit.live/media/icon_\(category.id).png"))
         
         let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
         cell.tag=indexPath.row

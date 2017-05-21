@@ -10,4 +10,5 @@ class CategoryCell: UICollectionViewCell
 {
     @IBOutlet var videoTitleLbl:UILabel?
     @IBOutlet var videoThumbnailImageView:UIImageView?
+    @IBOutlet var iconImageView:UIImageView?
 }
