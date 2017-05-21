@@ -15,6 +15,11 @@ class VideosViewController: UIViewController
     
     override func viewDidLoad()
     {
+        if vType==1
+        {
+            self.title="FAVOURITE VIDEOS"
+        }
+
         TBVC=tabBarController as! TabBarViewController
         
         favouriteStreams=SongManager.getFavourites(vType)

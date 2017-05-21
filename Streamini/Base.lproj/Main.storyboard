@@ -907,7 +907,7 @@
                                                     <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKa-bp-tOd" customClass="SensibleButton" customModule="Streamini" customModuleProvider="target">
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKa-bp-tOd" customClass="SensibleButton" customModule="Streamini" customModuleProvider="target">
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="2Yf-yJ-gRD"/>
@@ -7220,7 +7220,7 @@
             </objects>
             <point key="canvasLocation" x="-1164.8" y="-3025.1874062968518"/>
         </scene>
-        <!--Videos View Controller-->
+        <!--FAVOURITE LIVE STREAMS-->
         <scene sceneID="wLe-Hn-fc6">
             <objects>
                 <viewController id="aED-mx-nre" customClass="VideosViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
@@ -7387,6 +7387,7 @@
                             <constraint firstItem="6mA-99-NcJ" firstAttribute="leading" secondItem="jZI-Ay-3j8" secondAttribute="leading" id="gk7-xp-MwS"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="FAVOURITE LIVE STREAMS" id="Jgx-17-9jq"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="480"/>
                 </viewController>
@@ -9123,7 +9124,7 @@
         <image name="user" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bjY-rG-Avh"/>
+        <segue reference="7Qu-7p-ztG"/>
         <segue reference="ybU-Cf-XEH"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -20,6 +20,6 @@ class SearchStreamCell: StreamCell
     {
         userLabel.text=stream.user.name
         streamNameLabel.text=stream.title
-        streamImageView.sd_setImage(with: NSURL(string:"http://\(host)/thumb/\(stream.id).jpg") as URL!)
+        streamImageView.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream.id).jpg"), placeholderImage:UIImage(named:"stream"))
     }
 }

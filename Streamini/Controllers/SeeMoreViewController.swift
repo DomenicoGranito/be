@@ -19,7 +19,7 @@ class SeeMoreViewController: UIViewController
     
     override func viewWillAppear(_ animated:Bool)
     {
-        self.title=t.uppercased()
+        self.title="\"\(q!)\" in \(t!)".uppercased()
         navigationController?.isNavigationBarHidden=false
         
         if t=="streams"

@@ -26,11 +26,11 @@ class PeopleCell: UITableViewCell {
             } else {
                 image = UIImage(named: "plus")
             }
-            userStatusButton.setImage(image!, for: UIControlState())
+            userStatusButton.setImage(image!, for:.normal)
         }
     }
         
-    func update(_ user: User)
+    func update(_ user:User)
     {
         self.user=user
         
