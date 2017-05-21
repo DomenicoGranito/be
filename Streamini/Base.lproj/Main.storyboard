@@ -1774,7 +1774,7 @@
                                                     <state key="normal" title="Unblock"/>
                                                 </button>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="vI4-CR-32L" firstAttribute="leading" secondItem="9IC-MO-afd" secondAttribute="trailing" constant="10" id="B65-PW-cDN"/>
                                                 <constraint firstAttribute="trailing" secondItem="9HY-tI-TuP" secondAttribute="trailing" constant="19" id="Jge-kO-hyd">
@@ -1821,7 +1821,7 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="unblockButton" destination="GMA-e9-L0T" id="hyg-W3-M6Z"/>
                                             <outlet property="userImageView" destination="9IC-MO-afd" id="hmL-vH-nXw"/>
@@ -1914,7 +1914,7 @@
                                                     <state key="normal" image="more_icon"/>
                                                 </button>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="TfD-Od-Uc4" firstAttribute="leading" secondItem="gc7-Km-087" secondAttribute="leading" constant="14" id="43P-lh-EKJ">
                                                     <variation key="heightClass=regular-widthClass=compact" constant="10"/>
@@ -1956,7 +1956,7 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.082352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="dotsButton" destination="ixR-bM-hJJ" id="9Ze-DK-hGD"/>
                                             <outlet property="playImageView" destination="TfD-Od-Uc4" id="UME-d4-iX6"/>
