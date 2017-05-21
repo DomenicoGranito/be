@@ -26,7 +26,7 @@ class DiscoverViewController: UIViewController
     
     override func viewDidLoad()
     {
-        NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:NSNotification.Name("status"), object:nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:Notification.Name("status"), object:nil)
         
         updateUI()
     }
@@ -74,7 +74,7 @@ class DiscoverViewController: UIViewController
             
             let titleLbl=UILabel(frame:CGRect(x:10, y:30, width:285, height:20))
             titleLbl.text="GENRES & MOODS"
-            titleLbl.font=UIFont.systemFont(ofSize: 24)
+            titleLbl.font=UIFont.systemFont(ofSize:24)
             titleLbl.textColor=UIColor(colorLiteralRed:190/255, green:142/255, blue:64/255, alpha:1)
             
             let lineView=UIView(frame:CGRect(x:10, y:59.5, width:tableView.frame.size.width-20, height:0.5))
@@ -169,7 +169,7 @@ class DiscoverViewController: UIViewController
     {
         if indexPath.section==1&&indexPath.row==0
         {
-            performSegue(withIdentifier: "Channels", sender:nil)
+            performSegue(withIdentifier:"Channels", sender:nil)
         }
     }
 
@@ -282,7 +282,7 @@ class DiscoverViewController: UIViewController
         }
     }
     
-    func discoverFailure(_ error:NSError)
+    func discoverFailure(error:NSError)
     {
         activityView.isHidden=true
         errorView.update("An error cccured", "user")
