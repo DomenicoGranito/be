@@ -30,7 +30,7 @@ class CategoriesViewController: BaseViewController
         
         headerLbl?.text=categoryName?.uppercased()
         navigationController?.isNavigationBarHidden=true
-        itemsTbl?.addInfiniteScrolling{()->Void in
+        itemsTbl?.addInfiniteScrolling{()->() in
             self.fetchMore()
         }
         
@@ -104,7 +104,7 @@ class CategoriesViewController: BaseViewController
         return cell
     }
     
-    func tableView(_ tableView:UITableView, willDisplayCell cell:UITableViewCell, forRowAt indexPath:IndexPath)
+    func tableView(_ tableView:UITableView, willDisplayCell cell:UITableViewCell, forRowAtIndexPath indexPath:IndexPath)
     {
         let cell=cell as! AllCategoriesRow
         
