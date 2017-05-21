@@ -30,22 +30,25 @@ class PeopleCell: UITableViewCell {
         }
     }
         
-    func update(_ user: User) {
-        self.user = user
+    func update(_ user: User)
+    {
+        self.user=user
         
-        userImageView.sd_setImage(with: user.avatarURL() as URL!)
+        userImageView.sd_setImage(with:user.avatarURL(), placeholderImage:UIImage(named:"profile"))
         
         usernameLabel.text      = user.name
         likesLabel.text         = "\(user.likes)"
         descriptionLabel.text   = user.desc
         
-        userStatusButton.isHidden = (UserContainer.shared.logged().id == user.id)
-        isStatusOn = user.isFollowed
-        userStatusButton.addTarget(self, action: #selector(PeopleCell.statusButtonPressed(_:)), for: UIControlEvents.touchUpInside)
+        userStatusButton.isHidden=(UserContainer.shared.logged().id==user.id)
+        isStatusOn=user.isFollowed
+        userStatusButton.addTarget(self, action:#selector(statusButtonPressed), for:.touchUpInside)
     }
     
-    func statusButtonPressed(_ sender: AnyObject) {
-        if let del = delegate {
+    func statusButtonPressed()
+    {
+        if let del=delegate
+        {
             del.willStatusChanged(self)
         }
     }

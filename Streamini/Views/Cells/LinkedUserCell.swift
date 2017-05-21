@@ -34,8 +34,7 @@ class LinkedUserCell: UITableViewCell
     func update(_ user:User)
     {
         usernameLabel.text=user.name
-        userImageView.contentMode = .scaleToFill
-        userImageView.sd_setImage(with: user.avatarURL() as URL!)
+        userImageView.sd_setImage(with:user.avatarURL(), placeholderImage:UIImage(named:"profile"))
         
         userStatusButton.isHidden=UserContainer.shared.logged().id==user.id
         unblockButton.isHidden=UserContainer.shared.logged().id==user.id
@@ -53,10 +52,8 @@ class LinkedUserCell: UITableViewCell
         }
     }
     
-    func updateRecent(_ recent:Stream, isMyStream: Bool = false)
+    func updateRecent(_ recent:Stream, isMyStream:Bool = false)
     {
-        userImageView.contentMode = .center
-        
         if isMyStream
         {
             self.textLabel!.text = recent.title

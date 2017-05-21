@@ -39,11 +39,13 @@ extension User {
         try super.validateValue(ioValue, forKeyPath: inKeyPath)
     }
     
-    func avatarURL()->NSURL
+    func avatarURL()->URL
     {
-        if let avatar = self.avatar {
-            if !avatar.isEmpty {
-                return NSURL(string: avatar)!
+        if let avatar=self.avatar
+        {
+            if !avatar.isEmpty
+            {
+                return URL(string:avatar)!
             }
         }
         
@@ -54,7 +56,6 @@ extension User {
             ? "\(site)/uploads/\(self.id)-avatar.jpg"
             : "http://\(s3site).amazonaws.com/\(imagesBucket)/\(self.id)-avatar.jpg"
         
-        return NSURL(string: string)!
-
+        return URL(string:string)!
     }
 }
