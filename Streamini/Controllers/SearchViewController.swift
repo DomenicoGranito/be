@@ -168,14 +168,14 @@ class SearchViewController: UIViewController
         {
             if indexPath.row<searchHistroy.count
             {
-                let cell=tableView.dequeueReusableCell(withIdentifier: "SearchCell", for:indexPath as IndexPath)
-                cell.textLabel?.text=searchHistroy[indexPath.row].value(forKey: "title") as? String
+                let cell=tableView.dequeueReusableCell(withIdentifier:"SearchCell", for:indexPath)
+                cell.textLabel?.text=searchHistroy[indexPath.row].value(forKey:"title") as? String
                 
                 return cell
             }
             else
             {
-                let cell=tableView.dequeueReusableCell(withIdentifier: "ClearCell", for:indexPath as IndexPath)
+                let cell=tableView.dequeueReusableCell(withIdentifier:"ClearCell", for:indexPath)
                 
                 return cell
             }
@@ -188,7 +188,7 @@ class SearchViewController: UIViewController
             {
                 if indexPath.row<4
                 {
-                    let cell=tableView.dequeueReusableCell(withIdentifier: "StreamCell", for:indexPath as IndexPath) as! SearchStreamCell
+                    let cell=tableView.dequeueReusableCell(withIdentifier:"StreamCell", for:indexPath) as! SearchStreamCell
                     let stream=streams[indexPath.row]
                     cell.update(stream)
                     
@@ -199,7 +199,7 @@ class SearchViewController: UIViewController
                 }
                 else
                 {
-                    let cell=tableView.dequeueReusableCell(withIdentifier: "SeeMoreCell", for:indexPath as IndexPath)
+                    let cell=tableView.dequeueReusableCell(withIdentifier:"SeeMoreCell", for:indexPath)
                     cell.textLabel?.text="See all \(sectionTitlesArray[indexPath.section])"
                     
                     return cell
@@ -209,7 +209,7 @@ class SearchViewController: UIViewController
             {
                 if indexPath.row<4
                 {
-                    let cell=tableView.dequeueReusableCell(withIdentifier: "PeopleCell", for:indexPath as IndexPath) as! PeopleCell
+                    let cell=tableView.dequeueReusableCell(withIdentifier:"PeopleCell", for:indexPath) as! PeopleCell
                     
                     let user:User
                     
@@ -234,7 +234,7 @@ class SearchViewController: UIViewController
                         user=profiles[indexPath.row]
                     }
                     
-                    cell.userImageView.sd_setImage(with: user.avatarURL() as URL!)
+                    cell.userImageView.sd_setImage(with:user.avatarURL(), placeholderImage:UIImage(named:"profile"))
                     cell.usernameLabel.text=user.name
                     cell.likesLabel.text="\(user.likes)"
                     
@@ -242,7 +242,7 @@ class SearchViewController: UIViewController
                 }
                 else
                 {
-                    let cell=tableView.dequeueReusableCell(withIdentifier: "SeeMoreCell", for:indexPath as IndexPath)
+                    let cell=tableView.dequeueReusableCell(withIdentifier:"SeeMoreCell", for:indexPath)
                     cell.textLabel?.text="See all \(sectionTitlesArray[indexPath.section])"
                     
                     return cell
