@@ -41,21 +41,8 @@ extension User {
     
     func avatarURL()->URL
     {
-        if let avatar=self.avatar
-        {
-            if !avatar.isEmpty
-            {
-                return URL(string:avatar)!
-            }
-        }
+        let site=Config.shared.site()
         
-        let (accessKeyId, _, region, _, imagesBucket) = Config.shared.amazon()
-        let site = Config.shared.site()
-        let s3site = region == "us-east-1" ? "s3" : "s3-\(region)"
-        let string = accessKeyId == ""
-            ? "\(site)/uploads/\(self.id)-avatar.jpg"
-            : "http://\(s3site).amazonaws.com/\(imagesBucket)/\(self.id)-avatar.jpg"
-        
-        return URL(string:string)!
+        return URL(string:"\(site)/uploads/\(self.id)-avatar.png")!
     }
 }

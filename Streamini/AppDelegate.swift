@@ -25,9 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         
     var documentsDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
     
-    // this will be used when opening Webview from playlist
-    var downloadTable : downloadTableViewControllerDelegate?
-    var dataDownloader : DataDownloader?
+    var downloadTable:downloadTableViewControllerDelegate?
+    var dataDownloader:DataDownloader?
     
     fileprivate func addCustomMenuItems()
     {
@@ -35,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         var menuItems = menuController.menuItems ?? [UIMenuItem]()
         
         let copyLinkItem = UIMenuItem(title: "Copy Link", action: MenuAction.copyLink.selector())
-        let saveVideoItem = UIMenuItem(title: "Save to Camera Roll", action: MenuAction.saveVideo.selector())
+        let saveVideoItem = UIMenuItem(title: "Save to Camera Roll", action:MenuAction.saveVideo.selector())
         
         menuItems.append(copyLinkItem)
         menuItems.append(saveVideoItem)
@@ -58,10 +57,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
     {
         if(closeStream)
         {
-            // Post notifications to current controllers
             NotificationCenter.default.post(name:Notification.Name("Close/Leave"), object:nil)
             
-            // Dismiss all view controllers behind MainViewController
             let root = UIApplication.shared.delegate!.window!?.rootViewController as! UINavigationController
             
             if root.topViewController!.presentedViewController != nil {
@@ -88,7 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         NotificationCenter.default.post(name:Notification.Name("enteredForegroundID"), object:nil)
     }
     
-    func applicationWillTerminate(_ application: UIApplication)
+    func applicationWillTerminate(_ application:UIApplication)
     {
         let cacheFolder = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
         var dirsToClean : [String] = []
@@ -181,19 +178,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         try! reachability.startNotifier()
 
         addCustomMenuItems()
-           
-        UITextField.appearance().tintColor=UIColor(colorLiteralRed:43/255, green:185/255, blue:86/255, alpha:1)
-        UITextField.appearance().keyboardAppearance = .dark
         
         RestKitObjC.setupLog()
         
         registerForNotification()
         
-        UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.lightContent, animated:true)
+        UIApplication.shared.setStatusBarStyle(.lightContent, animated:true)
         
         UINavigationBar.setCustomAppereance()
         
-        UserDefaults.standard.removeObject(forKey: "isGlobalStreamsInMain")
+        UserDefaults.standard.removeObject(forKey:"isGlobalStreamsInMain")
         
         return true
     }
@@ -284,7 +278,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
     
     func application(_ application:UIApplication, handleOpen url:URL)->Bool
     {
-        return WXApi.handleOpen(url as URL!, delegate:self)
+        return WXApi.handleOpen(url, delegate:self)
     }
     
     func onResp(_ resp:BaseResp)

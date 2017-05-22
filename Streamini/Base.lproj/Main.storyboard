@@ -2962,7 +2962,7 @@
                                 </constraints>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="go"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert" returnKeyType="go"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="KKZ-6c-wZA"/>
@@ -3059,10 +3059,9 @@
                         <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.08235294118" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="MaE-dr-eRw" firstAttribute="leading" secondItem="Pe1-NI-Xv8" secondAttribute="leading" constant="16" id="1WD-5h-b29">
-                                <variation key="heightClass=regular-widthClass=compact" constant="32"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="WPy-5d-41L" firstAttribute="top" secondItem="Pe1-NI-Xv8" secondAttribute="top" id="2Lg-Fr-Xsm"/>
-                            <constraint firstAttribute="centerX" secondItem="MaE-dr-eRw" secondAttribute="centerX" id="5B7-tm-CfR"/>
                             <constraint firstItem="S9b-3y-Tmp" firstAttribute="top" secondItem="TLe-qy-7ZE" secondAttribute="bottom" constant="5" id="6Xj-67-wfb">
                                 <variation key="heightClass=regular-widthClass=compact" constant="16"/>
                             </constraint>
@@ -3072,12 +3071,12 @@
                             </constraint>
                             <constraint firstItem="fB9-xX-5G7" firstAttribute="top" secondItem="zTd-P6-nkX" secondAttribute="bottom" id="CZG-zc-xBi"/>
                             <constraint firstItem="f7n-On-dqd" firstAttribute="top" secondItem="gct-g5-vcA" secondAttribute="bottom" constant="8" id="E5O-Ri-Yre"/>
-                            <constraint firstItem="1Eq-ts-7wp" firstAttribute="top" secondItem="MaE-dr-eRw" secondAttribute="bottom" constant="240" id="Eci-VG-Rqw"/>
+                            <constraint firstItem="1Eq-ts-7wp" firstAttribute="top" secondItem="MaE-dr-eRw" secondAttribute="bottom" constant="167" id="Eci-VG-Rqw"/>
                             <constraint firstAttribute="trailing" secondItem="MaE-dr-eRw" secondAttribute="trailing" constant="16" id="GHG-aE-zxi">
-                                <variation key="heightClass=regular-widthClass=compact" constant="32"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstAttribute="centerX" secondItem="gct-g5-vcA" secondAttribute="centerX" id="ICK-fg-8Q7"/>
-                            <constraint firstItem="MaE-dr-eRw" firstAttribute="centerY" secondItem="f7n-On-dqd" secondAttribute="centerY" id="KM3-ig-o3b"/>
+                            <constraint firstItem="MaE-dr-eRw" firstAttribute="centerY" secondItem="f7n-On-dqd" secondAttribute="centerY" constant="73" id="KM3-ig-o3b"/>
                             <constraint firstItem="WPy-5d-41L" firstAttribute="leading" secondItem="Pe1-NI-Xv8" secondAttribute="leading" id="Lmj-Sj-mad"/>
                             <constraint firstAttribute="trailing" secondItem="LE7-kD-3FE" secondAttribute="trailing" id="MuA-9W-b49"/>
                             <constraint firstItem="zTd-P6-nkX" firstAttribute="leading" secondItem="Pe1-NI-Xv8" secondAttribute="leading" constant="16" id="UEQ-GZ-POw">
@@ -3138,7 +3137,6 @@
                                 <exclude reference="dzP-8g-fa7"/>
                                 <exclude reference="f0v-G9-rCb"/>
                                 <exclude reference="1WD-5h-b29"/>
-                                <exclude reference="5B7-tm-CfR"/>
                                 <exclude reference="GHG-aE-zxi"/>
                                 <exclude reference="KM3-ig-o3b"/>
                                 <exclude reference="6Xj-67-wfb"/>
@@ -3186,7 +3184,6 @@
                                 <include reference="dzP-8g-fa7"/>
                                 <include reference="f0v-G9-rCb"/>
                                 <include reference="1WD-5h-b29"/>
-                                <include reference="5B7-tm-CfR"/>
                                 <include reference="GHG-aE-zxi"/>
                                 <include reference="KM3-ig-o3b"/>
                                 <include reference="6Xj-67-wfb"/>
