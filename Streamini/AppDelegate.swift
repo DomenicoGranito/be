@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
             {
                 return .allButUpsideDown
             }
-            //return .allButUpsideDown
+            return .allButUpsideDown
         }
         else
         {
@@ -188,6 +188,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         try! reachability.startNotifier()
 
         addCustomMenuItems()
+        
+        UITextField.appearance().keyboardAppearance = .dark
         
         RestKitObjC.setupLog()
         
