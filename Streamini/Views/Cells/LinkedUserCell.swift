@@ -15,6 +15,7 @@ class LinkedUserCell: UITableViewCell
 {
     @IBOutlet var userImageView:UIImageView!
     @IBOutlet var usernameLabel:UILabel!
+    @IBOutlet var likesLbl:UILabel!
     @IBOutlet var userStatusButton:SensibleButton!
     @IBOutlet var unblockButton:UIButton!
     
@@ -33,6 +34,7 @@ class LinkedUserCell: UITableViewCell
     
     func update(_ user:User)
     {
+        likesLbl.text="\(user.likes) FOLLOWERS - \(user.desc!)"
         usernameLabel.text=user.name
         userImageView.sd_setImage(with:user.avatarURL(), placeholderImage:UIImage(named:"profile"))
         
