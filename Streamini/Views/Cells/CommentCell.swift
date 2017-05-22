@@ -23,7 +23,7 @@ class CommentCell: UITableViewCell {
         
         usernameLabel.text = message.sender.name
         
-        userImageView.sd_setImage(with: message.sender.avatarURL() as URL!)
+        userImageView.sd_setImage(with:message.sender.avatarURL())
         
         commentLabel.text = message.text
         usernameLabelWidthConstraint.constant = width

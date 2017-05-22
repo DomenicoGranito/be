@@ -10,7 +10,7 @@ class MyStreamsDataSource: RecentStreamsDataSource
 {
     override func tableView(_ tableView:UITableView, cellForRowAt indexPath:IndexPath)->UITableViewCell
     {
-        let cell=tableView.dequeueReusableCell(withIdentifier: "RecentStreamCell", for:indexPath as IndexPath) as! RecentStreamCell
+        let cell=tableView.dequeueReusableCell(withIdentifier:"RecentStreamCell", for:indexPath) as! RecentStreamCell
         let stream=streams[indexPath.row]
         cell.updateMyStream(stream)
         

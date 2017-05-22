@@ -46,7 +46,7 @@ class RecentStreamsDataSource:UserStatisticsDataSource
     override func tableView(_ tableView:UITableView, cellForRowAt indexPath:IndexPath)->UITableViewCell
     {
         let stream=streams[indexPath.row]
-        let cell=tableView.dequeueReusableCell(withIdentifier:"RecentStreamCell", for:indexPath as IndexPath) as! RecentStreamCell
+        let cell=tableView.dequeueReusableCell(withIdentifier:"RecentStreamCell", for:indexPath) as! RecentStreamCell
         
         cell.dotsButton?.tag=indexPath.row
         cell.dotsButton?.addTarget(self, action:#selector(dotsButtonTapped), for:.touchUpInside)
@@ -63,7 +63,7 @@ class RecentStreamsDataSource:UserStatisticsDataSource
         }
     }
     
-    func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
+    func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:IndexPath)
     {
         if let delegate=streamSelectedDelegate
         {

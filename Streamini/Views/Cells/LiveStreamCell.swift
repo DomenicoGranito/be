@@ -39,8 +39,8 @@ class LiveStreamCell: StreamCell {
         
         self.streamLiveView.setCount(stream.viewers)
         
-        userImageView.sd_setImage(with: stream.user.avatarURL() as URL!)        
-        streamImageView.sd_setImage(with: stream.urlToStreamImage() as URL!)
+        userImageView.sd_setImage(with:stream.user.avatarURL())
+        streamImageView.sd_setImage(with:stream.urlToStreamImage())
 
         if let delegate = userSelectedDelegate {
             self.userSelectingHandler = UserSelectingHandler(imageView: userImageView, delegate: delegate, user: stream.user)

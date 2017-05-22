@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
             {
                 return .allButUpsideDown
             }
-            return .allButUpsideDown
+            //return .allButUpsideDown
         }
         else
         {

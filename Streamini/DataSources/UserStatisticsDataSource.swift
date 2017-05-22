@@ -55,7 +55,7 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
     
     func tableView(_ tableView:UITableView, cellForRowAt indexPath:IndexPath)->UITableViewCell
     {
-        let cell=tableView.dequeueReusableCell(withIdentifier: "LinkedUserCell", for:indexPath as IndexPath) as! LinkedUserCell
+        let cell=tableView.dequeueReusableCell(withIdentifier:"LinkedUserCell", for:indexPath) as! LinkedUserCell
         
         let user=users[indexPath.row]
         
