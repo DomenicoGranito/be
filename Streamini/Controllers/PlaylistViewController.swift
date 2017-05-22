@@ -95,7 +95,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
             
             cell.streamNameLabel.text=nowPlayingStream.title
             cell.userLabel.text=nowPlayingStream.user.name
-            cell.playImageView.sd_setImage(with:URL(string:"http://\(host)/thumb/\(nowPlayingStream.id).jpg"))
+            cell.playImageView.sd_setImage(with:URL(string:"http://\(host)/thumb/\(nowPlayingStream.id).jpg"), placeholderImage:UIImage(named:"stream"))
             cell.dotsButton?.addTarget(self, action:#selector(dotsButtonTapped), for:.touchUpInside)
             
             return cell

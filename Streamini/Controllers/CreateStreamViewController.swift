@@ -111,7 +111,8 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     // MARK: - Network responses
     
-    func createStreamSuccess(_ stream: Stream) {
+    func createStreamSuccess(_ stream:Stream)
+    {
         self.stream = stream
         
         LocationManager.shared.stopMonitoringLocation()
@@ -151,13 +152,15 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
         self.performSegue(withIdentifier: "CreateStreamToLiveStream", sender: self)
     }
     
-    func createStreamFailure(_ error: NSError) {
+    func createStreamFailure(_ error:NSError)
+    {
         handleError(error)
         connectingIndicator.stopAnimating()
         goLiveButton.isHidden = false
     }
     
-    func categoriesSuccess(_ cats: [Category]) {
+    func categoriesSuccess(_ cats:[Category])
+    {
         self.categories = cats
         if(cats.count > 0) {
             self.selectedCategory = cats[0]
@@ -166,7 +169,8 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
         categoryPicker.reloadAllComponents()
     }
     
-    func categoriesFailure(_ error: NSError) {
+    func categoriesFailure(_ error:NSError)
+    {
         handleError(error)
         
     }

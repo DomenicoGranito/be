@@ -8,32 +8,32 @@
 
 import UIKit
 
-class CreateStreamKeyboardHandler: NSObject {
+class CreateStreamKeyboardHandler: NSObject
+{
     var view: UIView
     var constraint: NSLayoutConstraint
     var pickerConstraint: NSLayoutConstraint
     
-    init(view: UIView, constraint: NSLayoutConstraint, pickerConstraint: NSLayoutConstraint) {
+    init(view: UIView, constraint: NSLayoutConstraint, pickerConstraint: NSLayoutConstraint)
+    {
         self.view           = view
         self.constraint     = constraint
         self.pickerConstraint = pickerConstraint
         super.init()
     }
     
-    func register() {
-        NotificationCenter.default
-            .addObserver(self, selector: #selector(CreateStreamKeyboardHandler.keyboardWillBeShown(_:)), name: NSNotification.Name(rawValue: "UIKeyboardWillShowNotification"), object: nil)
+    func register()
+    {
+        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillBeShown), name:Notification.Name("UIKeyboardWillShowNotification"), object:nil)
         
-        NotificationCenter.default
-            .addObserver(self, selector: #selector(CreateStreamKeyboardHandler.keyboardWillHide(_:)), name: NSNotification.Name(rawValue: "UIKeyboardWillHideNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillHide), name:Notification.Name("UIKeyboardWillHideNotification"), object:nil)
     }
     
-    func unregister() {
-        NotificationCenter.default
-            .removeObserver(self, name: NSNotification.Name(rawValue: "UIKeyboardWillShowNotification"), object: nil)
+    func unregister()
+    {
+        NotificationCenter.default.removeObserver(self, name:Notification.Name("UIKeyboardWillShowNotification"), object:nil)
         
-        NotificationCenter.default
-            .removeObserver(self, name: NSNotification.Name(rawValue: "UIKeyboardWillHideNotification"), object: nil)
+        NotificationCenter.default.removeObserver(self, name:Notification.Name("UIKeyboardWillHideNotification"), object: nil)
     }
     
     func keyboardWillBeShown(_ notification: Notification) {
