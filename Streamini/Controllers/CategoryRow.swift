@@ -35,7 +35,7 @@ class CategoryRow: UITableViewCell
         if cellIdentifier=="videoCell"
         {
             cell.followersCountLbl?.text=stream.user.name
-            cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream.id).jpg"))
+            cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream.id).jpg"), placeholderImage:UIImage(named:"videostream"))
             
             let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
             cell.tag=indexPath.row
@@ -47,7 +47,7 @@ class CategoryRow: UITableViewCell
             {
                 cell.videoTitleLbl?.isHidden=true
                 cell.followersCountLbl?.isHidden=true
-                cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream.id).jpg"))
+                cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream.id).jpg"), placeholderImage:UIImage(named:"videostream"))
             }
             else
             {

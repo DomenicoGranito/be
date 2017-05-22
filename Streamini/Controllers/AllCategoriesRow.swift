@@ -31,7 +31,7 @@ class AllCategoriesRow: UITableViewCell
         
         cell.followersCountLbl?.text=video.user.name
         cell.videoTitleLbl?.text=video.title
-        cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"http://\(host)/thumb/\(video.id).jpg"))
+        cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"http://\(host)/thumb/\(video.id).jpg"), placeholderImage:UIImage(named:"videostream"))
         
         let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
         cell.tag=indexPath.row

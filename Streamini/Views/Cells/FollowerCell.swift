@@ -20,8 +20,8 @@ class FollowerCell: UITableViewCell {
             self.userSelectingHandler = UserSelectingHandler(imageView: userImageView, delegate: delegate, user: user)
         }
         
-        userImageView.sd_setImage(with: user.avatarURL() as URL!)
+        userImageView.sd_setImage(with:user.avatarURL(), placeholderImage:UIImage(named:"profile"))
         
-        usernameLabel.text = user.name
+        usernameLabel.text=user.name
     }
 }
