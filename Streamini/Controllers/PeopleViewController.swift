@@ -72,18 +72,20 @@ class PeopleViewController: BaseViewController, UserSelecting, ProfileDelegate, 
     
     func configureView()
     {
-        emptyLabel.text = NSLocalizedString("table_no_data", comment: "")
+        emptyLabel.text=NSLocalizedString("table_no_data", comment:"")
         
-        tableView.tableFooterView = UIView()
-        tableView.addPullToRefresh { () -> Void in
+        tableView.tableFooterView=UIView()
+        
+        tableView.addPullToRefresh{()->() in
             self.dataSource!.reload()
         }
-        tableView.addInfiniteScrolling { () -> Void in
+        
+        tableView.addInfiniteScrolling{()->() in
             self.dataSource!.fetchMore()
         }
         
-        self.dataSource = PeopleDataSource(tableView: tableView)
-        dataSource!.userSelectedDelegate = self
+        self.dataSource=PeopleDataSource(tableView:tableView)
+        dataSource!.userSelectedDelegate=self
         hideSearch(false)
     }
     
@@ -109,20 +111,20 @@ class PeopleViewController: BaseViewController, UserSelecting, ProfileDelegate, 
         
     }    
     
-    func followStatusDidChange(_ status: Bool, user: User)
+    func followStatusDidChange(_ status:Bool, user:User)
     {
-        dataSource!.updateUser(user, isFollowed: status, isBlocked: user.isBlocked)
+        dataSource!.updateUser(user, isFollowed:status, isBlocked:user.isBlocked)
     }
     
-    func blockStatusDidChange(_ status: Bool, user: User)
+    func blockStatusDidChange(_ status:Bool, user:User)
     {
-        dataSource!.updateUser(user, isFollowed: user.isFollowed, isBlocked: status)
+        dataSource!.updateUser(user, isFollowed:user.isFollowed, isBlocked:status)
     }
     
     func userDidSelected(_ user:User)
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewController(withIdentifier: "UserViewControllerId") as! UserViewController
+        let vc=storyboard.instantiateViewController(withIdentifier:"UserViewControllerId") as! UserViewController
         vc.user=user
         navigationController?.pushViewController(vc, animated:true)
         

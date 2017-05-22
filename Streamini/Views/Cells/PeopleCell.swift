@@ -8,28 +8,29 @@
 
 import UIKit
 
-class PeopleCell: UITableViewCell {
-    @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var likesLabel: UILabel!
-    @IBOutlet weak var likesIcon: UIImageView!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var userStatusButton: SensibleButton!
-    weak var delegate: LinkedUserCellDelegate?
-    var user: User?
+class PeopleCell: UITableViewCell
+{
+    @IBOutlet var userImageView:UIImageView!
+    @IBOutlet var usernameLabel:UILabel!
+    @IBOutlet var likesLabel:UILabel!
+    //@IBOutlet var likesIcon:UIImageView!
+    @IBOutlet var descriptionLabel:UILabel!
+    //@IBOutlet var userStatusButton:SensibleButton!
+    //weak var delegate:LinkedUserCellDelegate?
+    var user:User?
     
-    var isStatusOn = false {
-        didSet {
-            let image: UIImage?
-            if isStatusOn {
-                image = UIImage(named: "checkmark")
-            } else {
-                image = UIImage(named: "plus")
-            }
-            userStatusButton.setImage(image!, for:.normal)
-        }
-    }
-        
+//    var isStatusOn = false {
+//        didSet {
+//            let image: UIImage?
+//            if isStatusOn {
+//                image = UIImage(named: "checkmark")
+//            } else {
+//                image = UIImage(named: "plus")
+//            }
+//            userStatusButton.setImage(image!, for:.normal)
+//        }
+//    }
+    
     func update(_ user:User)
     {
         self.user=user
@@ -40,16 +41,16 @@ class PeopleCell: UITableViewCell {
         likesLabel.text         = "\(user.likes)"
         descriptionLabel.text   = user.desc
         
-        userStatusButton.isHidden=(UserContainer.shared.logged().id==user.id)
-        isStatusOn=user.isFollowed
-        userStatusButton.addTarget(self, action:#selector(statusButtonPressed), for:.touchUpInside)
+        //userStatusButton.isHidden=(UserContainer.shared.logged().id==user.id)
+        //isStatusOn=user.isFollowed
+        //userStatusButton.addTarget(self, action:#selector(statusButtonPressed), for:.touchUpInside)
     }
     
-    func statusButtonPressed()
-    {
-        if let del=delegate
-        {
-            del.willStatusChanged(self)
-        }
-    }
+//    func statusButtonPressed()
+//    {
+//        if let del=delegate
+//        {
+//            del.willStatusChanged(self)
+//        }
+//    }
 }

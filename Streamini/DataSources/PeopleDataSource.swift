@@ -58,7 +58,7 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         }
         
         cell.update(user)
-        cell.delegate = self
+        //cell.delegate = self
         return cell
     }
     
@@ -96,25 +96,25 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         return header
     }
     
-    func tableView(_ tableView:UITableView, heightForRowAt indexPath:IndexPath)->CGFloat
-    {
-        let user: User
-        if isSearchMode {
-            user = foundUsers[indexPath.row]
-        } else {
-            user = (indexPath.section == 0) ? top[indexPath.row] : featured[indexPath.row]
-        }
-        
-        var text: String? = nil
-        if user.desc != nil {
-            if !user.desc!.trimmingCharacters(in:CharacterSet.whitespacesAndNewlines).isEmpty {
-                text = user.desc
-            }
-        }
-        l.text = text
-        let expectedSize = l.sizeThatFits(CGSize(width:tableView.bounds.size.width-98, height:1000))
-        return expectedSize.height + 82.0
-    }
+//    func tableView(_ tableView:UITableView, heightForRowAt indexPath:IndexPath)->CGFloat
+//    {
+//        let user: User
+//        if isSearchMode {
+//            user = foundUsers[indexPath.row]
+//        } else {
+//            user = (indexPath.section == 0) ? top[indexPath.row] : featured[indexPath.row]
+//        }
+//        
+//        var text: String? = nil
+//        if user.desc != nil {
+//            if !user.desc!.trimmingCharacters(in:CharacterSet.whitespacesAndNewlines).isEmpty {
+//                text = user.desc
+//            }
+//        }
+//        l.text = text
+//        let expectedSize = l.sizeThatFits(CGSize(width:tableView.bounds.size.width-98, height:1000))
+//        return expectedSize.height + 82.0
+//    }
     
     func tableView(_ tableView:UITableView, didSelectRowAt indexPath:IndexPath)
     {
@@ -146,37 +146,37 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
             userId = (indexPath.section == 0) ? top[indexPath.row].id : featured[indexPath.row].id
         }
         
-        selectedCell.userStatusButton.isEnabled = false
+        //selectedCell.userStatusButton.isEnabled = false
         
-        let connector = SocialConnector()
-        if selectedCell.isStatusOn {
-            connector.unfollow(userId, unfollowSuccess, followActionFailure)
-        } else {
-            connector.follow(userId, followSuccess, followActionFailure)
-        }
+//        let connector = SocialConnector()
+//        if selectedCell.isStatusOn {
+//            connector.unfollow(userId, unfollowSuccess, followActionFailure)
+//        } else {
+//            connector.follow(userId, followSuccess, followActionFailure)
+//        }
     }
     
     // MARK: - Network communication
     
-    func unfollowSuccess() {
-        let selectedCell = self.selectedCells[0]
-        selectedCell.isStatusOn = false
-        selectedCell.userStatusButton.isEnabled = true
-        selectedCells.remove(at: 0)
-    }
-    
-    func followSuccess() {
-        let selectedCell = self.selectedCells[0]
-        selectedCell.isStatusOn = true
-        selectedCell.userStatusButton.isEnabled = true
-        selectedCells.remove(at: 0)
-    }
-    
-    func followActionFailure(_ error: NSError) {
-        let selectedCell = self.selectedCells[0]
-        selectedCell.userStatusButton.isEnabled = true
-        selectedCells.remove(at: 0)
-    }
+//    func unfollowSuccess() {
+//        let selectedCell = self.selectedCells[0]
+//        selectedCell.isStatusOn = false
+//        selectedCell.userStatusButton.isEnabled = true
+//        selectedCells.remove(at: 0)
+//    }
+//    
+//    func followSuccess() {
+//        let selectedCell = self.selectedCells[0]
+//        selectedCell.isStatusOn = true
+//        selectedCell.userStatusButton.isEnabled = true
+//        selectedCells.remove(at: 0)
+//    }
+//    
+//    func followActionFailure(_ error: NSError) {
+//        let selectedCell = self.selectedCells[0]
+//        selectedCell.userStatusButton.isEnabled = true
+//        selectedCells.remove(at: 0)
+//    }
     
     func peopleSuccess(_ top: [User], featured: [User]) {
         tableView.pullToRefreshView.stopAnimating()
@@ -227,8 +227,6 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         tableView.pullToRefreshView.stopAnimating()
         print("get user failed: \(error.localizedDescription)")
     }
-    
-    // MARK: - Reload methods
     
     func updateUser(_ user: User, isFollowed: Bool, isBlocked: Bool) {
         if isSearchMode {
