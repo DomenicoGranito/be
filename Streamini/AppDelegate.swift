@@ -45,7 +45,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
     {
         if shouldRotate
         {
-            return .allButUpsideDown
+            let orientation=UIApplication.shared.statusBarOrientation
+            
+            if UIInterfaceOrientationIsLandscape(orientation)
+            {
+                return .landscapeRight
+            }
+            else
+            {
+                return .allButUpsideDown
+            }
+            //return .allButUpsideDown
         }
         else
         {
