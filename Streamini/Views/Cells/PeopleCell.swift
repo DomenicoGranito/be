@@ -14,7 +14,7 @@ class PeopleCell: UITableViewCell
     @IBOutlet var usernameLabel:UILabel!
     @IBOutlet var likesLabel:UILabel!
     //@IBOutlet var likesIcon:UIImageView!
-    @IBOutlet var descriptionLabel:UILabel!
+    //@IBOutlet var descriptionLabel:UILabel!
     //@IBOutlet var userStatusButton:SensibleButton!
     //weak var delegate:LinkedUserCellDelegate?
     var user:User?
@@ -37,9 +37,9 @@ class PeopleCell: UITableViewCell
         
         userImageView.sd_setImage(with:user.avatarURL(), placeholderImage:UIImage(named:"profile"))
         
-        usernameLabel.text      = user.name
-        likesLabel.text         = "\(user.likes)"
-        descriptionLabel.text   = user.desc
+        usernameLabel.text=user.name
+        likesLabel.text="\(user.likes) FOLLOWERS - \(user.desc!)"
+        //descriptionLabel.text   = user.desc
         
         //userStatusButton.isHidden=(UserContainer.shared.logged().id==user.id)
         //isStatusOn=user.isFollowed
