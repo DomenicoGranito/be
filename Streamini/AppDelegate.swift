@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         if(closeStream)
         {
             // Post notifications to current controllers
-            NotificationCenter.default.post(NSNotification(name: NSNotification.Name(rawValue: "Close/Leave"), object: nil) as Notification)
+            NotificationCenter.default.post(name:Notification.Name("Close/Leave"), object:nil)
             
             // Dismiss all view controllers behind MainViewController
             let root = UIApplication.shared.delegate!.window!?.rootViewController as! UINavigationController

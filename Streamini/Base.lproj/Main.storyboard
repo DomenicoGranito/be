@@ -1593,7 +1593,7 @@
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9HY-tI-TuP" customClass="SensibleButton" customModule="Streamini" customModuleProvider="target">
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GMA-e9-L0T">
                                                     <constraints>
@@ -2513,16 +2513,13 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2P-Z8-h0Y">
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="25" id="7AF-rO-mNA"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2kN-8W-Bdh" customClass="SensibleButton" customModule="Streamini" customModuleProvider="target">
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <state key="normal">
                                                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
@@ -2540,19 +2537,17 @@
                                                 <constraint firstItem="tpM-lb-rjL" firstAttribute="leading" secondItem="5BE-M8-NNW" secondAttribute="leading" constant="17" id="1Se-O0-4CO">
                                                     <variation key="heightClass=regular-widthClass=compact" constant="10"/>
                                                 </constraint>
+                                                <constraint firstAttribute="trailing" secondItem="2kN-8W-Bdh" secondAttribute="trailing" constant="10" id="3Vr-3Y-UDD"/>
                                                 <constraint firstItem="I2P-Z8-h0Y" firstAttribute="top" secondItem="2bV-0q-x6V" secondAttribute="bottom" id="BWW-pf-NTW"/>
                                                 <constraint firstAttribute="centerY" secondItem="tpM-lb-rjL" secondAttribute="centerY" id="Eh3-st-OBE"/>
                                                 <constraint firstAttribute="trailing" secondItem="iIC-O4-ZHY" secondAttribute="trailing" constant="10" id="L2w-0K-wwj"/>
                                                 <constraint firstItem="iIC-O4-ZHY" firstAttribute="leading" secondItem="I2P-Z8-h0Y" secondAttribute="trailing" constant="10" id="P2V-Eu-dc6"/>
-                                                <constraint firstAttribute="trailing" secondItem="2kN-8W-Bdh" secondAttribute="trailing" constant="19" id="bCU-9A-RmM">
-                                                    <variation key="heightClass=regular-widthClass=compact" constant="10"/>
-                                                </constraint>
                                                 <constraint firstItem="iIC-O4-ZHY" firstAttribute="centerY" secondItem="5BE-M8-NNW" secondAttribute="centerY" id="bkq-pq-XqH"/>
                                                 <constraint firstItem="2bV-0q-x6V" firstAttribute="top" secondItem="5BE-M8-NNW" secondAttribute="top" constant="15" id="cft-rz-trf"/>
                                                 <constraint firstItem="2bV-0q-x6V" firstAttribute="leading" secondItem="tpM-lb-rjL" secondAttribute="trailing" constant="10" id="eh5-0N-Ty1"/>
                                                 <constraint firstItem="I2P-Z8-h0Y" firstAttribute="leading" secondItem="tpM-lb-rjL" secondAttribute="trailing" constant="10" id="pRj-ny-D5M"/>
                                                 <constraint firstItem="iIC-O4-ZHY" firstAttribute="leading" secondItem="2bV-0q-x6V" secondAttribute="trailing" constant="10" id="sA1-zt-aIg"/>
-                                                <constraint firstAttribute="centerY" secondItem="2kN-8W-Bdh" secondAttribute="centerY" id="z1j-fa-Mny"/>
+                                                <constraint firstItem="2kN-8W-Bdh" firstAttribute="centerY" secondItem="5BE-M8-NNW" secondAttribute="centerY" id="w4P-dL-Ggg"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
@@ -2564,8 +2559,6 @@
                                                     <exclude reference="1Se-O0-4CO"/>
                                                     <exclude reference="Eh3-st-OBE"/>
                                                     <exclude reference="eh5-0N-Ty1"/>
-                                                    <exclude reference="bCU-9A-RmM"/>
-                                                    <exclude reference="z1j-fa-Mny"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -2578,8 +2571,6 @@
                                                     <include reference="1Se-O0-4CO"/>
                                                     <include reference="Eh3-st-OBE"/>
                                                     <include reference="eh5-0N-Ty1"/>
-                                                    <include reference="bCU-9A-RmM"/>
-                                                    <include reference="z1j-fa-Mny"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
