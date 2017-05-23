@@ -43,13 +43,13 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         {
             modalVC.player?.pause()
             
-            playButton?.setImage(UIImage(named:"big_play_button"), for:.normal)
+            playButton?.setImage(UIImage(named:"miniplay"), for:.normal)
         }
         else
         {
             modalVC.player?.play()
             
-            playButton?.setImage(UIImage(named:"big_pause_button"), for:.normal)
+            playButton?.setImage(UIImage(named:"minipause"), for:.normal)
         }
     }
 
@@ -65,14 +65,14 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         
         if modalVC.player?.playbackState == .playing
         {
-            playButton?.setImage(UIImage(named:"big_pause_button"), for:.normal)
+            playButton?.setImage(UIImage(named:"minipause"), for:.normal)
         }
         else
         {
-            playButton?.setImage(UIImage(named:"big_play_button"), for:.normal)
+            playButton?.setImage(UIImage(named:"miniplay"), for:.normal)
         }
         
-        modalVC.player?.view.frame=CGRect(x:0, y:2, width:50, height:48)
+        modalVC.player?.view.frame=CGRect(x:0, y:2, width:80, height:48)
         miniPlayerView.addSubview(modalVC.player!.view)
         miniPlayerView.bringSubview(toFront:modalVC.player!.view)
     }
