@@ -17,6 +17,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     @IBOutlet var videoThumbnailImageView:UIImageView!
     @IBOutlet var backgroundImageView:UIImageView!
     @IBOutlet var seekBar:UISlider!
+    @IBOutlet var playButton:UIButton!
     
     var animator:ARNTransitionAnimator!
     var modalVC:ModalViewController!
@@ -35,7 +36,23 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         NotificationCenter.default.addObserver(self, selector:#selector(goToChannels), name:Notification.Name("goToChannels"), object:nil)
         NotificationCenter.default.addObserver(self, selector:#selector(hideMiniPlayer), name:Notification.Name("hideMiniPlayer"), object:nil)
     }
-        
+    
+    @IBAction func play()
+    {
+        if modalVC.player?.playbackState == .playing
+        {
+            modalVC.player?.pause()
+            
+            playButton?.setImage(UIImage(named:"big_play_button"), for:.normal)
+        }
+        else
+        {
+            modalVC.player?.play()
+            
+            playButton?.setImage(UIImage(named:"big_pause_button"), for:.normal)
+        }
+    }
+
     func hideMiniPlayer()
     {
         miniPlayerView.isHidden=true
@@ -49,11 +66,20 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     
     func updateMiniPlayerWithStream(_ stream:Stream)
     {
+        if modalVC.player?.playbackState == .playing
+        {
+            playButton?.setImage(UIImage(named:"big_pause_button"), for:.normal)
+        }
+        else
+        {
+            playButton?.setImage(UIImage(named:"big_play_button"), for:.normal)
+        }
+
         miniPlayerView.isHidden=false
         
         videoTitleLbl.text=stream.title
         videoArtistLbl.text=stream.user.name
-        videoThumbnailImageView.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream.id).jpg"))
+        videoThumbnailImageView.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream.id).jpg"), placeholderImage:UIImage(named:"stream"))
         backgroundImageView.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream.id).jpg"))
     }
     
