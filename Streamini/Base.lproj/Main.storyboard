@@ -6846,7 +6846,7 @@
                                             <frame key="frameInset" width="818" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="time" translatesAutoresizingMaskIntoConstraints="NO" id="D4w-E4-5Tx">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="time" translatesAutoresizingMaskIntoConstraints="NO" id="D4w-E4-5Tx">
                                                     <frame key="frameInset" minX="15" minY="7" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -8905,7 +8905,7 @@
         <image name="play-big" width="60" height="70"/>
         <image name="prev_song" width="28" height="27"/>
         <image name="profile" width="25" height="25"/>
-        <image name="rec-off" width="60" height="60"/>
+        <image name="rec-off" width="40" height="40"/>
         <image name="rotate" width="27" height="27"/>
         <image name="search" width="25" height="25"/>
         <image name="shuffle_icon" width="17" height="14"/>

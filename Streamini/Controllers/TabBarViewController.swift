@@ -62,10 +62,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     {
         seekBar.maximumValue=maximum
         seekBar.value=current
-    }
-    
-    func updateMiniPlayerWithStream(_ stream:Stream)
-    {
+        
         if modalVC.player?.playbackState == .playing
         {
             playButton?.setImage(UIImage(named:"big_pause_button"), for:.normal)
@@ -74,7 +71,14 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         {
             playButton?.setImage(UIImage(named:"big_play_button"), for:.normal)
         }
-
+        
+        modalVC.player?.view.frame=CGRect(x:0, y:2, width:50, height:48)
+        miniPlayerView.addSubview(modalVC.player!.view)
+        miniPlayerView.bringSubview(toFront:modalVC.player!.view)
+    }
+    
+    func updateMiniPlayerWithStream(_ stream:Stream)
+    {
         miniPlayerView.isHidden=false
         
         videoTitleLbl.text=stream.title

@@ -133,6 +133,8 @@ class DiscoverViewController: UIViewController
             cell.TBVC=tabBarController as! TabBarViewController
             cell.cellIdentifier="videoCell"
             
+            //getImage()
+            
             return cell
         }
         if indexPath.section==1
@@ -280,6 +282,13 @@ class DiscoverViewController: UIViewController
                 sectionItemsArray=NSMutableArray()
             }
         }
+    }
+    
+    func getImage()
+    {
+        let tableViewCell=tableView.cellForRow(at:IndexPath(row:0, section:0)) as! CategoryRow
+        let collectionViewCell=tableViewCell.collectionView?.cellForItem(at:IndexPath(row:0, section:0)) as! VideoCell
+        let videoImage=collectionViewCell.videoThumbnailImageView?.image
     }
     
     func discoverFailure(error:NSError)
