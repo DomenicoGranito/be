@@ -71,8 +71,6 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     override func viewWillAppear(_ animated:Bool)
     {
-        UIApplication.shared.setStatusBarHidden(true, with:.fade)
-        
         songLikeStatus()
         
         appDelegate.shouldRotate=true
@@ -80,6 +78,8 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     override func viewDidAppear(_ animated:Bool)
     {
+        UIApplication.shared.setStatusBarHidden(true, with:.slide)
+        
         if isPlaying
         {
             player?.play()
@@ -113,7 +113,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     func closePlayer(notification:Notification)
     {
-        UIApplication.shared.setStatusBarHidden(false, with:.fade)
+        UIApplication.shared.setStatusBarHidden(false, with:.slide)
         
         selectedItemIndex=notification.object as! Int
         updateButtons()
@@ -460,7 +460,8 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         }
         else
         {
-            UIApplication.shared.setStatusBarHidden(false, with:.fade)
+            appDelegate.shouldRotate=false
+            UIApplication.shared.setStatusBarHidden(false, with:.slide)
             dismiss(animated:true)
         }
     }

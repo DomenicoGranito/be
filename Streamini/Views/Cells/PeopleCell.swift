@@ -21,6 +21,6 @@ class PeopleCell: UITableViewCell
         
         userImageView.sd_setImage(with:user.avatarURL(), placeholderImage:UIImage(named:"profile"))
         usernameLabel.text=user.name
-        likesLabel.text="\(user.likes) FOLLOWERS - \(user.desc!)"
+        likesLabel.text="\(user.followers) FOLLOWERS - \(user.desc!)"
     }
 }

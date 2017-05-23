@@ -45,17 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
     {
         if shouldRotate
         {
-            let orientation=UIApplication.shared.statusBarOrientation
-            
-            if UIInterfaceOrientationIsLandscape(orientation)
-            {
-                return .landscapeRight
-            }
-            else
-            {
-                return .allButUpsideDown
-            }
-            //return .allButUpsideDown
+            return .allButUpsideDown
         }
         else
         {
@@ -201,6 +191,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         
         UserDefaults.standard.removeObject(forKey:"isGlobalStreamsInMain")
         
+        if !UserDefaults.standard.bool(forKey:"RegularRun")
+        {
+            UserDefaults.standard.set(true, forKey:"RegularRun")
+            
+            A0SimpleKeychain().clearAll()
+        }
+
         return true
     }
 

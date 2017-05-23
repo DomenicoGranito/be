@@ -25,9 +25,9 @@ class BlockedDataSource: UserStatisticsDataSource
         reload()
     }
     
-    func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
+    func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:IndexPath)
     {
-        tableView.deselectRow(at: indexPath as IndexPath, animated:true)
+        tableView.deselectRow(at:indexPath, animated:true)
         
         let user=users[indexPath.row]
         
