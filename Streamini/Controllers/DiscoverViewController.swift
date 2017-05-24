@@ -14,7 +14,7 @@ class MenuCell: UITableViewCell
 
 class DiscoverViewController: UIViewController
 {
-    @IBOutlet var tableView:UITableView!
+    @IBOutlet var tableView:GradientTableView!
     @IBOutlet var errorView:ErrorView!
     @IBOutlet var activityView:ActivityIndicatorView!
     
@@ -133,8 +133,6 @@ class DiscoverViewController: UIViewController
             cell.TBVC=tabBarController as! TabBarViewController
             cell.cellIdentifier="videoCell"
             
-            //getImage()
-            
             return cell
         }
         if indexPath.section==1
@@ -193,6 +191,8 @@ class DiscoverViewController: UIViewController
         
         tableView.isHidden=false
         tableView.reloadData()
+        
+        getImage()
     }
     
     func parseFeaturedStreams(_ videos:NSArray)
@@ -289,6 +289,8 @@ class DiscoverViewController: UIViewController
         let tableViewCell=tableView.cellForRow(at:IndexPath(row:0, section:0)) as! CategoryRow
         let collectionViewCell=tableViewCell.collectionView?.cellForItem(at:IndexPath(row:0, section:0)) as! VideoCell
         let videoImage=collectionViewCell.videoThumbnailImageView?.image
+        
+        tableView.createGradientLayer(videoImage!)
     }
     
     func discoverFailure(error:NSError)
