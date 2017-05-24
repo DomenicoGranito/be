@@ -290,7 +290,29 @@ class DiscoverViewController: UIViewController
         let collectionViewCell=tableViewCell.collectionView?.cellForItem(at:IndexPath(row:0, section:0)) as! VideoCell
         let videoImage=collectionViewCell.videoThumbnailImageView?.image
         
-        tableView.createGradientLayer(videoImage!)
+        let data1=UIImageJPEGRepresentation(videoImage!, 1)
+        let data2=UIImageJPEGRepresentation(UIImage(named:"stream")!, 1)
+        
+        if data1==data2
+        {
+            print("YES")
+            getImage()
+        }
+        else
+        {
+            print("NUI")
+            tableView.createGradientLayer(videoImage!)
+        }
+    }
+    
+    func convertImage(_ sourceImage:UIImage)->UIImage
+    {
+        UIGraphicsBeginImageContext(sourceImage.size)
+        sourceImage.draw(in:CGRect(x:0, y:0, width:sourceImage.size.width, height:sourceImage.size.height))
+        let targetImage=UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return targetImage!
     }
     
     func discoverFailure(error:NSError)
