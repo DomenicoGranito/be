@@ -21,9 +21,9 @@ extension UINavigationBar
     
     class func resetCustomAppereance()
     {
-        UINavigationBar.appearance().tintColor = nil
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        UINavigationBar.appearance().shadowImage = nil
-        UINavigationBar.appearance().titleTextAttributes = nil
+        UINavigationBar.appearance().tintColor=nil
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for:.default)
+        UINavigationBar.appearance().shadowImage=nil
+        UINavigationBar.appearance().titleTextAttributes=nil
     }
 }

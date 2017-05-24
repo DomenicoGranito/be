@@ -13,8 +13,8 @@ class GradientTableView: UITableView
     
     func createGradientLayer(_ image:UIImage)
     {
-        let colorTop=image.getPixelColor(CGPoint(x:100, y:100))
-        let colorBottom=image.getPixelColor(CGPoint(x:200, y:200))
+        let colorTop=image.getPixelColor(CGPoint(x:100, y:100)).cgColor
+        let colorBottom=image.getPixelColor(CGPoint(x:200, y:200)).cgColor
         
         gradientLayer=CAGradientLayer()
         gradientLayer.colors=[colorTop, colorBottom]

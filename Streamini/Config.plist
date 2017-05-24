@@ -41,7 +41,7 @@
 	<key>Wowza</key>
 	<dict>
 		<key>host</key>
-		<string>mediastream.com.cn</string>
+		<string>beinit.live</string>
 		<key>port</key>
 		<string>1935</string>
 		<key>application</key>
