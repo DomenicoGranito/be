@@ -20,7 +20,6 @@ class DiscoverViewController: UIViewController
     
     var allCategoriesArray=NSMutableArray()
     var featuredStreamsArray=NSMutableArray()
-    
     var menuItemTitlesArray=["Channels"]
     var menuItemIconsArray=["videochannel"]
     
@@ -286,33 +285,18 @@ class DiscoverViewController: UIViewController
     
     func getImage()
     {
-        let tableViewCell=tableView.cellForRow(at:IndexPath(row:0, section:0)) as! CategoryRow
-        let collectionViewCell=tableViewCell.collectionView?.cellForItem(at:IndexPath(row:0, section:0)) as! VideoCell
-        let videoImage=collectionViewCell.videoThumbnailImageView?.image
-        
-        let data1=UIImageJPEGRepresentation(videoImage!, 1)
-        let data2=UIImageJPEGRepresentation(UIImage(named:"stream")!, 1)
-        
-        if data1==data2
-        {
-            print("YES")
-            getImage()
+        DispatchQueue.global().async
+            {
+                let (host, _, _, _, _)=Config.shared.wowza()
+                let stream=self.featuredStreamsArray[0] as! Stream
+                let url=URL(string:"http://\(host)/thumb/\(stream.id).jpg")
+                let data=try! Data(contentsOf:url!)
+                
+                DispatchQueue.main.async(execute:
+                    {
+                        self.tableView.createGradientLayer(UIImage(data:data)!)
+                })
         }
-        else
-        {
-            print("NUI")
-            tableView.createGradientLayer(videoImage!)
-        }
-    }
-    
-    func convertImage(_ sourceImage:UIImage)->UIImage
-    {
-        UIGraphicsBeginImageContext(sourceImage.size)
-        sourceImage.draw(in:CGRect(x:0, y:0, width:sourceImage.size.width, height:sourceImage.size.height))
-        let targetImage=UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return targetImage!
     }
     
     func discoverFailure(error:NSError)
