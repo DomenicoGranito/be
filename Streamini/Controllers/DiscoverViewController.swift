@@ -89,7 +89,7 @@ class DiscoverViewController: UIViewController
             return nil
         }
     }
-
+    
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
         if section==0
@@ -171,7 +171,7 @@ class DiscoverViewController: UIViewController
             performSegue(withIdentifier:"Channels", sender:nil)
         }
     }
-
+    
     func discoverSuccess(data:NSDictionary)
     {
         errorView.isHidden=true

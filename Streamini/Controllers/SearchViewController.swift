@@ -25,6 +25,15 @@ class SearchViewController: UIViewController
     
     override func viewDidLoad()
     {
+        searchBar.backgroundImage=UIImage()
+        
+        let attributes=[NSForegroundColorAttributeName:UIColor.white]
+        
+        if #available(iOS 9.0, *)
+        {
+            UIBarButtonItem.appearance(whenContainedInInstancesOf:[UISearchBar.self]).setTitleTextAttributes(attributes, for:.normal)
+        }
+        
         TBVC=tabBarController as! TabBarViewController
         searchHistroy=SongManager.getSearchHistory()
         
