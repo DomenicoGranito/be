@@ -972,26 +972,40 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j0J-L5-0fo">
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="fMu-Iz-EGe">
-                                        <frame key="frameInset" minX="157" minY="208" width="42" height="42"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="fMu-Iz-EGe">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="FwL-EV-bWe"/>
+                                            <constraint firstAttribute="width" constant="40" id="WyL-cn-mvV"/>
+                                        </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Search Beinit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YoG-VA-nA4">
-                                        <frame key="frameInset" minX="90" minY="258" width="185" height="51"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Beinit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YoG-VA-nA4">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="185" id="rmZ-19-uf4"/>
+                                            <constraint firstAttribute="height" constant="30" id="tdb-J2-0U3"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Find your favourite agencies, brands, series, podcasts &amp; videos, playlists and channels." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRb-QW-WZt">
-                                        <frame key="frameInset" minX="90" minY="328" width="195" height="115"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find your favourite agencies, brands, series, podcasts &amp; videos, playlists and channels." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRb-QW-WZt">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="KaA-n1-8JT"/>
+                                            <constraint firstAttribute="width" constant="195" id="phl-ok-GRu"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="fMu-Iz-EGe" firstAttribute="centerX" secondItem="j0J-L5-0fo" secondAttribute="centerX" id="2tA-FP-sG8"/>
+                                    <constraint firstItem="YoG-VA-nA4" firstAttribute="centerX" secondItem="j0J-L5-0fo" secondAttribute="centerX" id="Evk-Ap-jRA"/>
+                                    <constraint firstItem="aRb-QW-WZt" firstAttribute="centerX" secondItem="j0J-L5-0fo" secondAttribute="centerX" id="JYJ-rb-9I1"/>
+                                    <constraint firstItem="fMu-Iz-EGe" firstAttribute="top" secondItem="j0J-L5-0fo" secondAttribute="top" constant="130" id="ayd-cu-RfH"/>
+                                    <constraint firstItem="aRb-QW-WZt" firstAttribute="top" secondItem="YoG-VA-nA4" secondAttribute="bottom" id="loz-oc-Bts"/>
+                                    <constraint firstItem="YoG-VA-nA4" firstAttribute="top" secondItem="fMu-Iz-EGe" secondAttribute="bottom" constant="20" id="yOk-pb-82U"/>
+                                </constraints>
                             </view>
                             <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="e1D-TE-qTK">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
