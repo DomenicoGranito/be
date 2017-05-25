@@ -215,7 +215,6 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         seekBar?.maximumValue=Float(player!.duration)
         
         player!.view.isHidden=false
-        TBVC.updatePlayerView()
     }
     
     @IBAction func shuffle()

@@ -62,6 +62,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     {
         if let player=modalVC.player
         {
+            seekBar.maximumValue=Float(modalVC.player!.duration)
             seekBar.value=Float(player.currentPlaybackTime)
         }
         
@@ -74,12 +75,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
             playButton?.setImage(UIImage(named:"miniplay"), for:.normal)
         }
     }
-    
-    func updatePlayerView()
-    {
-        seekBar.maximumValue=Float(modalVC.player!.duration)
-    }
-    
+        
     func updateMiniPlayerWithStream(_ stream:Stream)
     {
         miniPlayerView.isHidden=false
