@@ -96,10 +96,6 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     override func viewWillDisappear(_ animated:Bool)
     {
-        player?.shouldAutoplay=false
-        player?.pause()
-        
-        TBVC.updateSeekBar(seekBar!.value, seekBar!.maximumValue)
         appDelegate.shouldRotate=false
     }
     
@@ -206,6 +202,8 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         videoDurationLbl?.text="-\(secondsToReadableTime(player!.duration-player!.currentPlaybackTime))"
         videoProgressDurationLbl?.text=secondsToReadableTime(player!.currentPlaybackTime)
         seekBar?.value=Float(player!.currentPlaybackTime)
+        
+        TBVC.updateSeekBar()
     }
     
     func moviePlayerDurationAvailable()
@@ -214,6 +212,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         seekBar?.maximumValue=Float(player!.duration)
         
         player!.view.isHidden=false
+        TBVC.updatePlayerView()
     }
     
     @IBAction func shuffle()
@@ -421,6 +420,8 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     @IBAction func more()
     {
+        player?.pause()
+        
         let vc=storyBoard.instantiateViewController(withIdentifier:"PopUpViewController") as! PopUpViewController
         vc.stream=stream
         present(vc, animated:true)
@@ -468,6 +469,8 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     @IBAction func menu()
     {
+        player?.pause()
+        
         let vc=storyBoard.instantiateViewController(withIdentifier:"PlaylistViewController") as! PlaylistViewController
         vc.transitioningDelegate=vc
         vc.nowPlayingStreamIndex=selectedItemIndex

@@ -76,15 +76,12 @@ class Camera {
         session!.cameraState = (session!.cameraState == VCCameraState.back) ? VCCameraState.front : VCCameraState.back
     }
     
-    // MAKR: - Private methods
-    
-    fileprivate func getConnectionData(_ hash: String, streamId: UInt) -> (String, String) {
-        let (host, port, application, username, password) = Config.shared.wowza()
-        //let url = "rtmp://\(username):\(password)@\(host):\(port)/\(application)"
-        //let streamName = "\(hash)-\(streamId)"
-        let url="rtmp://139.196.33.50/src"
-        let streamName="ED929683A25348679C33DC5901307461?token=AlhyEruK"
+    fileprivate func getConnectionData(_ hash: String, streamId: UInt) -> (String, String)
+    {
+        let (host, port, application, username, password)=Config.shared.wowza()
+        let url="rtmp://\(username):\(password)@\(host):\(port)/\(application)"
+        let streamName="\(hash)-\(streamId)"
+        
         return (url, streamName)
     }
-    
 }

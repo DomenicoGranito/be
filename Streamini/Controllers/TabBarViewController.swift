@@ -52,16 +52,15 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
             playButton?.setImage(UIImage(named:"minipause"), for:.normal)
         }
     }
-
+    
     func hideMiniPlayer()
     {
         miniPlayerView.isHidden=true
     }
     
-    func updateSeekBar(_ current:Float, _ maximum:Float)
+    func updateSeekBar()
     {
-        seekBar.maximumValue=maximum
-        seekBar.value=current
+        seekBar.value=Float(modalVC.player!.currentPlaybackTime)
         
         if modalVC.player?.playbackState == .playing
         {
@@ -71,6 +70,11 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         {
             playButton?.setImage(UIImage(named:"miniplay"), for:.normal)
         }
+    }
+    
+    func updatePlayerView()
+    {
+        seekBar.maximumValue=Float(modalVC.player!.duration)
         
         modalVC.player?.view.frame=CGRect(x:0, y:2, width:80, height:48)
         miniPlayerView.addSubview(modalVC.player!.view)

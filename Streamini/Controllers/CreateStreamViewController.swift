@@ -11,7 +11,8 @@ import CoreLocation
 import SCLAlertView
 
 class CreateStreamViewController: BaseViewController, UITextFieldDelegate, LocationManagerDelegate,
-UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource
+{
     @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var darkPreviewView: UIView!
     @IBOutlet weak var nameTextView: UITextView!
@@ -41,10 +42,6 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     var keep = 0
     
     var user: User?
-    var usr: User?
-    
-    
-    // MARK: - Actions
     
     @IBAction func trashTapped(_ sender: AnyObject) {
         
@@ -104,12 +101,12 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBAction func closeButtonPressed()
     {
-        self.tabBarController?.selectedIndex=UserDefaults.standard.integer(forKey: "previousTab")
+        self.tabBarController?.selectedIndex=UserDefaults.standard.integer(forKey:"previousTab")
         
         LocationManager.shared.stopMonitoringLocation()
+        
+        camera.stop()
     }
-    
-    // MARK: - Network responses
     
     func createStreamSuccess(_ stream:Stream)
     {
@@ -121,7 +118,7 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
         
         if AmazonTool.isAmazonSupported() {
             let screenshot = camera.captureStillImage()!
-            let filename = "\(UserContainer.shared.logged().id)-\(stream.id)-screenshot.jpg"
+            let filename = "\(user!.id)-\(stream.id)-screenshot.jpg"
             AmazonTool.shared.uploadImage(screenshot, name: filename)
         }
         //let imageView =  UIImage(named: filename)
@@ -147,9 +144,9 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
         let twitter = SocialToolFactory.getSocial("Twitter")!
         let url = "\(Config.shared.twitter().tweetURL)/\(stream.streamHash)/\(stream.id)"
-        twitter.post(UserContainer.shared.logged().name, live: URL(string: url)!)
+        twitter.post(user!.name, live: URL(string: url)!)
         
-        self.performSegue(withIdentifier: "CreateStreamToLiveStream", sender: self)
+        self.performSegue(withIdentifier:"CreateStreamToLiveStream", sender:self)
     }
     
     func createStreamFailure(_ error:NSError)
@@ -228,7 +225,6 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
         
         trashButton.setImageTintColor(UIColor(white: 1.0, alpha: 1.0), for: UIControlState.normal)
         trashButton.setImageTintColor(UIColor(white: 1.0, alpha: 1.0), for: UIControlState.highlighted)
-        
     }
     
     func updateCategory()
@@ -243,7 +239,8 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
         self.view.layoutIfNeeded()
     }
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
         configureView()
@@ -256,36 +253,39 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
         StreamConnector().categories(categoriesSuccess, categoriesFailure)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated:Bool)
+    {
         self.tabBarController?.hidesBottomBarWhenPushed = true
         self.navigationController!.setNavigationBarHidden(true, animated: false)
         (tabBarController as! TabBarViewController).miniPlayerView.isHidden=true
         super.viewWillAppear(animated)
         keyboardHandler!.register()
-        UIApplication.shared.setStatusBarHidden(true, with: .fade)
         
-      
-    // showModal()
-    
-        self.usr  = UserContainer.shared.logged()
-       if  (self.usr?.subscription == "free" || self.usr?.subscription == "")
-       {
+        UIApplication.shared.setStatusBarHidden(true, with:.fade)
+        
+        user=UserContainer.shared.logged()
+        
+        if user!.subscription=="free"||user!.subscription==""
+        {
             showModal()
-       }
+        }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool)
+    {
         super.viewDidAppear(animated)
         camera.setup(previewView)
         darkPreviewView.layer.addDarkGradientLayer()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated:Bool)
+    {
         super.viewWillDisappear(animated)
         keyboardHandler!.unregister()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated:Bool)
+    {
         super.viewDidDisappear(animated)
         connectingIndicator.stopAnimating()
         goLiveButton.isHidden = false
@@ -354,25 +354,27 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
         return true
     }
     
-    func applyPlaceholderStyle(_ aTextview: UITextView, placeholderText: String)
+    func applyPlaceholderStyle(_ aTextview:UITextView, placeholderText:String)
     {
         // make it look (initially) like a placeholder
         aTextview.textColor = UIColor(white: 1.0, alpha: 0.5)
         aTextview.text = placeholderText
     }
     
-    func applyNonPlaceholderStyle(_ aTextview: UITextView)
+    func applyNonPlaceholderStyle(_ aTextview:UITextView)
     {
         // make it look like normal text instead of a placeholder
         aTextview.textColor = UIColor.white
         aTextview.alpha = 1.0
     }
     
-    deinit {
+    deinit
+    {
         camera.stop()
     }
     
-    func categoryTapped(_ sender:UITapGestureRecognizer) {
+    func categoryTapped(_ sender:UITapGestureRecognizer)
+    {
         self.nameTextView.resignFirstResponder()
         UIView.animate(withDuration: 0.1, animations: { () -> Void in
             self.categoryPickerConstraint.constant = 0.0

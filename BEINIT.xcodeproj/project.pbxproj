@@ -936,7 +936,7 @@
 						CreatedOnToolsVersion = 6.3.2;
 						DevelopmentTeam = G88EVHJ24D;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 1;
@@ -1335,7 +1335,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_HEADERS_RUN_UNIFDEF = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = G88EVHJ24D;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1377,8 +1377,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.uniprogy.dominic;
 				PRODUCT_NAME = Streamini;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "aae76422-2ef0-4c19-884f-740e038fb033";
+				PROVISIONING_PROFILE_SPECIFIER = "Be Init Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "Streamini/Streamini-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1395,7 +1395,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_HEADERS_RUN_UNIFDEF = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = G88EVHJ24D;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1435,8 +1435,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.uniprogy.dominic;
 				PRODUCT_NAME = Streamini;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "aae76422-2ef0-4c19-884f-740e038fb033";
+				PROVISIONING_PROFILE_SPECIFIER = "Be Init Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "Streamini/Streamini-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
