@@ -60,7 +60,10 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     
     func updateSeekBar()
     {
-        seekBar.value=Float(modalVC.player!.currentPlaybackTime)
+        if let player=modalVC.player
+        {
+            seekBar.value=Float(player.currentPlaybackTime)
+        }
         
         if modalVC.player?.playbackState == .playing
         {
@@ -75,10 +78,6 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     func updatePlayerView()
     {
         seekBar.maximumValue=Float(modalVC.player!.duration)
-        
-        modalVC.player?.view.frame=CGRect(x:0, y:2, width:80, height:48)
-        miniPlayerView.addSubview(modalVC.player!.view)
-        miniPlayerView.bringSubview(toFront:modalVC.player!.view)
     }
     
     func updateMiniPlayerWithStream(_ stream:Stream)

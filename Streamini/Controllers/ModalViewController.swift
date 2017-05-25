@@ -96,6 +96,9 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     override func viewWillDisappear(_ animated:Bool)
     {
+        player?.shouldAutoplay=false
+        player?.pause()
+        
         appDelegate.shouldRotate=false
     }
     
@@ -420,8 +423,6 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     @IBAction func more()
     {
-        player?.pause()
-        
         let vc=storyBoard.instantiateViewController(withIdentifier:"PopUpViewController") as! PopUpViewController
         vc.stream=stream
         present(vc, animated:true)
@@ -469,8 +470,6 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     @IBAction func menu()
     {
-        player?.pause()
-        
         let vc=storyBoard.instantiateViewController(withIdentifier:"PlaylistViewController") as! PlaylistViewController
         vc.transitioningDelegate=vc
         vc.nowPlayingStreamIndex=selectedItemIndex
