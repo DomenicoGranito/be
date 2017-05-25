@@ -275,7 +275,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     {
         stream=streamsArray![index] as? Stream
         
-        let thumbnailView=UIImageView(frame:CGRect(x:0, y:0, width:self.view.frame.size.width-5, height:self.view.frame.size.width-140))
+        let thumbnailView=UIImageView(frame:CGRect(x:0, y:0, width:self.view.frame.size.width, height:self.view.frame.size.width-140))
         thumbnailView.backgroundColor=UIColor.darkGray
         thumbnailView.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream!.id).jpg"))
         

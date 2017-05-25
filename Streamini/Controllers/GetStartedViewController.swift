@@ -36,7 +36,7 @@ class GetStartedViewController: BaseViewController
         swipeRight.direction = .right
         view.addGestureRecognizer(swipeRight)
         
-        if let _=A0SimpleKeychain().string(forKey: "PHPSESSID")
+        if let _=A0SimpleKeychain().string(forKey:"PHPSESSID")
         {
             UserConnector().get(nil, successUser, forgotFailure)
             
@@ -45,7 +45,7 @@ class GetStartedViewController: BaseViewController
             navigationController?.pushViewController(vc, animated:false)
         }
     }
-        
+    
     func successUser(_ user:User)
     {
         UserContainer.shared.setLogged(user)

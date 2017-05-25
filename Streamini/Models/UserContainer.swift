@@ -33,8 +33,9 @@ class UserContainer {
         self.loggedUser = user
     }
     
-    func logout() {        
-        self.loggedUser = nil
-        image = nil
+    func logout()
+    {
+        self.loggedUser=nil
+        image=nil
     }
 }

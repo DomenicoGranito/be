@@ -161,11 +161,11 @@ class LoginViewController: BaseViewController
         
         UserConnector().get(nil, successUser, forgotFailure)
         
-        let vc=storyBoard.instantiateViewController(withIdentifier: "TabBarViewController")
+        let vc=storyBoard.instantiateViewController(withIdentifier:"TabBarViewController")
         navigationController?.pushViewController(vc, animated:true)
     }
     
-    func successUser(_ user:User)
+    func successUser(user:User)
     {
         UserContainer.shared.setLogged(user)
     }
@@ -194,7 +194,7 @@ class LoginViewController: BaseViewController
     
     @IBAction func back()
     {
-        navigationController?.popViewController(animated: true)
+        navigationController!.popViewController(animated: true)
     }
     
     func textFieldShouldReturn(_ textField:UITextField)->Bool
