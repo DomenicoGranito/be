@@ -35,6 +35,8 @@ class CategoriesViewController: BaseViewController
         }
         
         StreamConnector().categoryStreams(categoryID!, page, successStreams, failureStream)
+        
+        topImageView?.sd_setImage(with:URL(string:"http://beinit.live/media/bg_\(categoryID!).png"))
     }
     
     func scrollViewDidScroll(_ scrollView:UIScrollView)
