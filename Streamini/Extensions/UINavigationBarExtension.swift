@@ -13,7 +13,7 @@ extension UINavigationBar
     class func setCustomAppereance()
     {
         UINavigationBar.appearance().shadowImage=UIImage()
-        UINavigationBar.appearance().titleTextAttributes=[NSForegroundColorAttributeName:UIColor.white]
+        UINavigationBar.appearance().titleTextAttributes=[NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont.systemFont(ofSize:15)]
         UINavigationBar.appearance().isTranslucent=true
         UINavigationBar.appearance().barTintColor=UIColor.clear
         UINavigationBar.appearance().backgroundColor=UIColor.black
