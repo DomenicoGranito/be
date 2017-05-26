@@ -30,7 +30,7 @@ class LoginViewController: BaseViewController
     {
         WXApi.registerApp(appID)
         
-        NotificationCenter.default.addObserver(self, selector:#selector(onResp), name:NSNotification.Name(rawValue: "getCode"), object:nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(onResp), name:Notification.Name("getCode"), object:nil)
         
         usernameImageView?.image=usernameImageView?.image?.withRenderingMode(.alwaysTemplate)
         passwordImageView?.image=passwordImageView?.image?.withRenderingMode(.alwaysTemplate)

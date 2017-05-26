@@ -1,0 +1,10 @@
+framework module AirPlay {
+  umbrella header "AirPlay.h"
+
+  export *
+  module * { export * }
+}
+
+module AirPlay.Swift {
+    header "AirPlay-Swift.h"
+}

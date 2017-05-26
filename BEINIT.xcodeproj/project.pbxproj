@@ -12,6 +12,9 @@
 		3E20216F1D81AB440058DAAD /* CategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E20216E1D81AB440058DAAD /* CategoryRow.swift */; };
 		3E2021711D81ACFF0058DAAD /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2021701D81ACFE0058DAAD /* VideoCell.swift */; };
 		3E2674D61D7453DB00E33DCD /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2674D51D7453DA00E33DCD /* Empty.swift */; };
+		3E2A5A581ED8062800133E1D /* AirPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A5A571ED8062700133E1D /* AirPlay.swift */; };
+		3E2A5A5A1ED80CDC00133E1D /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A5A591ED80CDC00133E1D /* DevicesViewController.swift */; };
+		3E2A5A5C1ED81C2000133E1D /* AirPlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E2A5A5B1ED81C2000133E1D /* AirPlay.framework */; };
 		3E356FA01E843583008FD8B9 /* libCCSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E356F9F1E843580008FD8B9 /* libCCSDK.a */; };
 		3E4B9D461E95E54700B80BA6 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B9D451E95E54700B80BA6 /* FiltersViewController.swift */; };
 		3E4E1A6D1EC5C00E00AE1F0E /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4E1A6C1EC5C00E00AE1F0E /* AboutTableViewController.swift */; };
@@ -219,6 +222,9 @@
 		3E20216E1D81AB440058DAAD /* CategoryRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryRow.swift; sourceTree = "<group>"; };
 		3E2021701D81ACFE0058DAAD /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		3E2674D51D7453DA00E33DCD /* Empty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Empty.swift; path = Streamini/Empty.swift; sourceTree = SOURCE_ROOT; };
+		3E2A5A571ED8062700133E1D /* AirPlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirPlay.swift; sourceTree = "<group>"; };
+		3E2A5A591ED80CDC00133E1D /* DevicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevicesViewController.swift; sourceTree = "<group>"; };
+		3E2A5A5B1ED81C2000133E1D /* AirPlay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AirPlay.framework; sourceTree = "<group>"; };
 		3E356F981E843580008FD8B9 /* DWAdInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWAdInfo.h; path = DWSDK/DWAdInfo.h; sourceTree = "<group>"; };
 		3E356F991E843580008FD8B9 /* DWDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWDownloader.h; path = DWSDK/DWDownloader.h; sourceTree = "<group>"; };
 		3E356F9A1E843580008FD8B9 /* DWLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWLog.h; path = DWSDK/DWLog.h; sourceTree = "<group>"; };
@@ -431,6 +437,7 @@
 			files = (
 				868CBDBF1E5746D600BF14C3 /* libz.1.2.8.tbd in Frameworks */,
 				B67448321E2C7FB40049890F /* MobileCoreServices.framework in Frameworks */,
+				3E2A5A5C1ED81C2000133E1D /* AirPlay.framework in Frameworks */,
 				B66561E31E09884100EDA684 /* libWeChatSDK.a in Frameworks */,
 				B66561EB1E09890600EDA684 /* libz.tbd in Frameworks */,
 				3E356FA01E843583008FD8B9 /* libCCSDK.a in Frameworks */,
@@ -493,6 +500,7 @@
 		786304F139CBAD59E4F652FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3E2A5A5B1ED81C2000133E1D /* AirPlay.framework */,
 				868CBDBE1E5746D500BF14C3 /* libz.1.2.8.tbd */,
 				865C333F1E520459008EA556 /* GameKit.framework */,
 				B67448311E2C7FB30049890F /* MobileCoreServices.framework */,
@@ -739,6 +747,7 @@
 				B77AABE31B398627007DE187 /* RestKitObjC.m */,
 				B77AABE11B398606007DE187 /* Streamini-Bridging-Header.h */,
 				3E642D9D1ECB30C600F598DC /* Reachability.swift */,
+				3E2A5A571ED8062700133E1D /* AirPlay.swift */,
 				B7B0F0931B397E92006FDA5D /* Models */,
 				B7D6F0AF1B37F14D0070C36A /* Controllers */,
 				B7AA93231B3172740005972E /* AppDelegate.swift */,
@@ -850,6 +859,7 @@
 				B733B1F41B78CF04002FEAB6 /* PeopleViewController.swift */,
 				B7AA45571B79CAC8001D293A /* RootViewController.swift */,
 				3EF535B71E092A330049B2E9 /* ModalViewController.swift */,
+				3E2A5A591ED80CDC00133E1D /* DevicesViewController.swift */,
 				3ECEC44C1EA22F8A006A00F7 /* PlaylistViewController.swift */,
 				B6A941CE1E48AB00003E2331 /* SettingsViewController.swift */,
 				86564ECE1E540BA300584405 /* SeriesViewController.swift */,
@@ -1090,6 +1100,7 @@
 				B6EAF82A1E28F179007038DC /* CategoryCell.swift in Sources */,
 				B67448191E2C63CC0049890F /* DownloadTableViewController.swift in Sources */,
 				B79469FE1BE1F94B0071CC97 /* StreamExtension.swift in Sources */,
+				3E2A5A5A1ED80CDC00133E1D /* DevicesViewController.swift in Sources */,
 				3EEF52BD1D83127C0015BA92 /* CategoriesViewController.swift in Sources */,
 				B63C1A4E1E451AE100EF2F7C /* MyLibViewController.swift in Sources */,
 				B7316E081B55342F0079D387 /* JoinStreamViewController.swift in Sources */,
@@ -1163,6 +1174,7 @@
 				3E79060E1E7FBD6A00257C5B /* iCarousel.m in Sources */,
 				B7D5EA921B564BAA003EE25D /* Message.swift in Sources */,
 				B6D4134D1E141DBE001E8108 /* TabBarViewController.swift in Sources */,
+				3E2A5A581ED8062800133E1D /* AirPlay.swift in Sources */,
 				B67448251E2C63CC0049890F /* SongCell.swift in Sources */,
 				B746FB121B5FC27900DE3534 /* FollowerCell.swift in Sources */,
 				B794ADA21B59560B0069C2A8 /* UIEdgeInsets.swift in Sources */,
