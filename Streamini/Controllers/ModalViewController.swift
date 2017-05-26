@@ -345,7 +345,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         player!.view.isHidden=true
         carousel!.currentItemView!.addSubview(player!.view)
         
-        fullScreenButton=UIButton(frame:CGRect(x:view.frame.size.width-50, y:player!.view.frame.size.width-47, width:50, height:50))
+        fullScreenButton=UIButton(frame:CGRect(x:view.frame.size.width-50, y:player!.view.frame.size.width-57, width:50, height:50))
         fullScreenButton.setImage(UIImage(named:"fullscreen"), for:.normal)
         fullScreenButton.addTarget(self, action:#selector(rotateScreen), for:.touchUpInside)
         view.insertSubview(fullScreenButton, aboveSubview:player!.view)
@@ -394,7 +394,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     func showLandscape()
     {
         informationView?.isHidden=true
-        bottomSpaceConstraint!.constant=75
+        bottomSpaceConstraint!.constant=108
         player!.view.frame=CGRect(x:-(view.frame.size.width-view.frame.size.height)/2, y:-56, width:view.frame.size.width, height:view.frame.size.height)
         fullScreenButton.frame=CGRect(x:0, y:0, width:0, height:0)
         player?.scalingMode = .fill
@@ -409,7 +409,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         informationView?.isHidden=false
         bottomSpaceConstraint!.constant=0
         player!.view.frame=CGRect(x:0, y:0, width:view.frame.size.width, height:view.frame.size.width-140)
-        fullScreenButton.frame=CGRect(x:view.frame.size.width-50, y:player!.view.frame.size.width-47, width:50, height:50)
+        fullScreenButton.frame=CGRect(x:view.frame.size.width-50, y:player!.view.frame.size.width-57, width:50, height:50)
         player?.scalingMode = .aspectFit
         playlistButton?.isHidden=false
         closeButton?.setImage(UIImage(named:"arrow_down"), for:.normal)

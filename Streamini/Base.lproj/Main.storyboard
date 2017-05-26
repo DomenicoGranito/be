@@ -235,7 +235,7 @@
                                                                     </imageView>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7YE-aI-Irf">
                                                                         <constraints>
-                                                                            <constraint firstAttribute="height" constant="80" id="Ctc-Oz-AKU"/>
+                                                                            <constraint firstAttribute="height" constant="90" id="Ctc-Oz-AKU"/>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="electroNOW" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cH-Pq-sHN">
@@ -256,7 +256,7 @@
                                                                 <constraint firstItem="faP-XK-2eS" firstAttribute="top" secondItem="7fs-SF-oc1" secondAttribute="top" id="T02-W3-SM7"/>
                                                                 <constraint firstItem="7YE-aI-Irf" firstAttribute="leading" secondItem="7fs-SF-oc1" secondAttribute="leading" id="T7l-I4-36E"/>
                                                                 <constraint firstItem="8cH-Pq-sHN" firstAttribute="leading" secondItem="7fs-SF-oc1" secondAttribute="leading" id="WiA-7g-kR0"/>
-                                                                <constraint firstItem="7YE-aI-Irf" firstAttribute="top" secondItem="7fs-SF-oc1" secondAttribute="top" constant="10" id="aKZ-w5-4Ak"/>
+                                                                <constraint firstItem="7YE-aI-Irf" firstAttribute="top" secondItem="7fs-SF-oc1" secondAttribute="top" constant="20" id="aKZ-w5-4Ak"/>
                                                                 <constraint firstAttribute="bottom" secondItem="8cH-Pq-sHN" secondAttribute="bottom" constant="20" id="tfm-a4-qFG"/>
                                                                 <constraint firstAttribute="bottom" secondItem="faP-XK-2eS" secondAttribute="bottom" id="up2-N7-Mgq"/>
                                                             </constraints>
@@ -1388,7 +1388,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="keyPath">
+                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                 <color key="value" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
@@ -1421,7 +1421,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="value" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
