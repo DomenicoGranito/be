@@ -22,12 +22,17 @@ class GradientTableView: UITableView
         gradientLayer.frame=rect(forSection:0)
         layer.insertSublayer(gradientLayer, at:0)
         
+        addMessage()
+    }
+    
+    func addMessage()
+    {
         titleLbl=UILabel()
         titleLbl.text="Celebrating Asian Pacific Heritage!"
         titleLbl.textColor=UIColor.white
         titleLbl.textAlignment = .center
-        titleLbl.frame=CGRect(x:0, y:0, width:gradientLayer.frame.size.width, height:60)
-        gradientLayer.addSublayer(titleLbl.layer)
+        titleLbl.frame=CGRect(x:0, y:0, width:self.frame.size.width, height:60)
+        layer.addSublayer(titleLbl.layer)
     }
 }
 

@@ -294,7 +294,14 @@ class DiscoverViewController: UIViewController
                 
                 DispatchQueue.main.async(execute:
                     {
-                        self.tableView.createGradientLayer(UIImage(data:data)!)
+                        if let image=UIImage(data:data)
+                        {
+                            self.tableView.createGradientLayer(image)
+                        }
+                        else
+                        {
+                            self.tableView.addMessage()
+                        }
                 })
         }
     }
