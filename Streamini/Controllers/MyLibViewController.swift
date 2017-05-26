@@ -81,6 +81,8 @@ class MyLibViewController: UIViewController
             cell.menuItemTitleLbl?.text=menuItemTitlesArray[indexPath.row]
             cell.menuItemIconImageView?.image=UIImage(named:menuItemIconsArray[indexPath.row])
             
+            cell.selectedBackgroundView=SelectedCellView().create()
+            
             return cell
         }
         else if indexPath.row==3
@@ -98,6 +100,8 @@ class MyLibViewController: UIViewController
             cell.videoTitleLbl?.text=recentlyPlayed![indexPath.row-4].value(forKey:"streamTitle") as? String
             cell.artistNameLbl?.text=recentlyPlayed![indexPath.row-4].value(forKey:"streamUserName") as? String
             cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"http://\(host)/thumb/\(recentlyPlayed![indexPath.row-4].value(forKey:"streamID") as! Int).jpg"), placeholderImage:UIImage(named:"stream"))
+            
+            cell.selectedBackgroundView=SelectedCellView().create()
             
             return cell
         }

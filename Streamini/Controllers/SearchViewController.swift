@@ -180,11 +180,15 @@ class SearchViewController: UIViewController
                 let cell=tableView.dequeueReusableCell(withIdentifier:"SearchCell", for:indexPath)
                 cell.textLabel?.text=searchHistroy[indexPath.row].value(forKey:"title") as? String
                 
+                cell.selectedBackgroundView=SelectedCellView().create()
+                
                 return cell
             }
             else
             {
                 let cell=tableView.dequeueReusableCell(withIdentifier:"ClearCell", for:indexPath)
+                
+                cell.selectedBackgroundView=SelectedCellView().create()
                 
                 return cell
             }
@@ -204,12 +208,16 @@ class SearchViewController: UIViewController
                     cell.dotsButton?.tag=indexPath.row
                     cell.dotsButton?.addTarget(self, action:#selector(dotsButtonTapped), for:.touchUpInside)
                     
+                    cell.selectedBackgroundView=SelectedCellView().create()
+                    
                     return cell
                 }
                 else
                 {
                     let cell=tableView.dequeueReusableCell(withIdentifier:"SeeMoreCell", for:indexPath)
                     cell.textLabel?.text="See all \(sectionTitlesArray[indexPath.section])"
+                    
+                    cell.selectedBackgroundView=SelectedCellView().create()
                     
                     return cell
                 }
@@ -247,12 +255,16 @@ class SearchViewController: UIViewController
                     cell.usernameLabel.text=user.name
                     cell.likesLabel.text="\(user.followers)- FOLLOWERS - \(user.desc!)"
                     
+                    cell.selectedBackgroundView=SelectedCellView().create()
+                    
                     return cell
                 }
                 else
                 {
                     let cell=tableView.dequeueReusableCell(withIdentifier:"SeeMoreCell", for:indexPath)
                     cell.textLabel?.text="See all \(sectionTitlesArray[indexPath.section])"
+                    
+                    cell.selectedBackgroundView=SelectedCellView().create()
                     
                     return cell
                 }

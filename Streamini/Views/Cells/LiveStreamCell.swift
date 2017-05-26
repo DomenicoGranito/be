@@ -8,16 +8,19 @@
 
 import UIKit
 
-class StreamCell: UITableViewCell {
+class StreamCell: UITableViewCell
+{
     var stream: Stream?
     weak var userSelectedDelegate: UserSelecting?    
     
-    func update(_ stream: Stream) {
+    func update(_ stream:Stream)
+    {
         self.stream = stream
     }
 }
 
-class LiveStreamCell: StreamCell {
+class LiveStreamCell: StreamCell
+{
     @IBOutlet weak var streamImageView: UIImageView!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userLabel: UILabel!

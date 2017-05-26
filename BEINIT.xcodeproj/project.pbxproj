@@ -15,6 +15,7 @@
 		3E2A5A581ED8062800133E1D /* AirPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A5A571ED8062700133E1D /* AirPlay.swift */; };
 		3E2A5A5A1ED80CDC00133E1D /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A5A591ED80CDC00133E1D /* DevicesViewController.swift */; };
 		3E2A5A5C1ED81C2000133E1D /* AirPlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E2A5A5B1ED81C2000133E1D /* AirPlay.framework */; };
+		3E2A5A5E1ED8693B00133E1D /* SelectedCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A5A5D1ED8693A00133E1D /* SelectedCellView.swift */; };
 		3E356FA01E843583008FD8B9 /* libCCSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E356F9F1E843580008FD8B9 /* libCCSDK.a */; };
 		3E4B9D461E95E54700B80BA6 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B9D451E95E54700B80BA6 /* FiltersViewController.swift */; };
 		3E4E1A6D1EC5C00E00AE1F0E /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4E1A6C1EC5C00E00AE1F0E /* AboutTableViewController.swift */; };
@@ -225,6 +226,7 @@
 		3E2A5A571ED8062700133E1D /* AirPlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirPlay.swift; sourceTree = "<group>"; };
 		3E2A5A591ED80CDC00133E1D /* DevicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevicesViewController.swift; sourceTree = "<group>"; };
 		3E2A5A5B1ED81C2000133E1D /* AirPlay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AirPlay.framework; sourceTree = "<group>"; };
+		3E2A5A5D1ED8693A00133E1D /* SelectedCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedCellView.swift; sourceTree = "<group>"; };
 		3E356F981E843580008FD8B9 /* DWAdInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWAdInfo.h; path = DWSDK/DWAdInfo.h; sourceTree = "<group>"; };
 		3E356F991E843580008FD8B9 /* DWDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWDownloader.h; path = DWSDK/DWDownloader.h; sourceTree = "<group>"; };
 		3E356F9A1E843580008FD8B9 /* DWLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWLog.h; path = DWSDK/DWLog.h; sourceTree = "<group>"; };
@@ -613,6 +615,7 @@
 			children = (
 				B77AABF01B39AEC2007DE187 /* Cells */,
 				B77AABF61B39B42D007DE187 /* StreamLiveView.swift */,
+				3E2A5A5D1ED8693A00133E1D /* SelectedCellView.swift */,
 				3E7192681E75701F00B7049B /* ActivityIndicatorView.swift */,
 				3E71926A1E768DFD00B7049B /* ErrorView.swift */,
 				B794AD941B58E0160069C2A8 /* CommentLabel.swift */,
@@ -1128,6 +1131,7 @@
 				B70AB1321B73731200BAD62A /* LinkedUsersViewController.swift in Sources */,
 				3E4E1A6D1EC5C00E00AE1F0E /* AboutTableViewController.swift in Sources */,
 				B67448271E2C63CC0049890F /* TabBarController.swift in Sources */,
+				3E2A5A5E1ED8693B00133E1D /* SelectedCellView.swift in Sources */,
 				B714059B1B6235D500EAEC61 /* UIActionSheetExtensions.swift in Sources */,
 				3EF1F02E1D719B110055A372 /* RegisterViewController.swift in Sources */,
 				B7C9BB5D1B4E9FD5005874A9 /* GrowingTextViewHandler.m in Sources */,
