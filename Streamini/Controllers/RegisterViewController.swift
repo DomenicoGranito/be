@@ -85,7 +85,7 @@ class RegisterViewController: BaseViewController
     
     @IBAction func back()
     {
-        navigationController?.popViewController(animated: true)
+        navigationController!.popViewController(animated: true)
     }
     
     func textFieldShouldReturn(_ textField:UITextField)->Bool
