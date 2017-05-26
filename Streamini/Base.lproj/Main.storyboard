@@ -299,10 +299,10 @@
                             <constraint firstAttribute="trailing" secondItem="sKk-q6-o1O" secondAttribute="trailing" id="3hw-WW-mEY"/>
                             <constraint firstItem="v18-rl-7An" firstAttribute="centerY" secondItem="Qc2-bS-Zkb" secondAttribute="centerY" id="5zD-S9-7WF"/>
                             <constraint firstItem="sKk-q6-o1O" firstAttribute="top" secondItem="Qc2-bS-Zkb" secondAttribute="top" id="FtI-0Y-PZR"/>
-                            <constraint firstAttribute="bottom" secondItem="sKk-q6-o1O" secondAttribute="bottom" id="GEv-fO-pjT"/>
                             <constraint firstItem="Rah-33-iIp" firstAttribute="top" secondItem="2Dr-FI-bRg" secondAttribute="bottom" id="GJx-lZ-h7l"/>
                             <constraint firstItem="2Dr-FI-bRg" firstAttribute="top" secondItem="Ql1-5a-hhD" secondAttribute="bottom" id="LNP-Dm-dpp"/>
                             <constraint firstItem="2Dr-FI-bRg" firstAttribute="leading" secondItem="Qc2-bS-Zkb" secondAttribute="leading" id="Nez-5U-axZ"/>
+                            <constraint firstItem="Rah-33-iIp" firstAttribute="top" secondItem="sKk-q6-o1O" secondAttribute="bottom" id="cJs-JF-Psr"/>
                             <constraint firstAttribute="trailing" secondItem="2Dr-FI-bRg" secondAttribute="trailing" id="gdB-oy-nfZ"/>
                             <constraint firstItem="v18-rl-7An" firstAttribute="centerX" secondItem="Qc2-bS-Zkb" secondAttribute="centerX" id="uBs-10-4MY"/>
                             <constraint firstItem="sKk-q6-o1O" firstAttribute="leading" secondItem="Qc2-bS-Zkb" secondAttribute="leading" id="wL8-na-PQ5"/>
@@ -2228,7 +2228,7 @@
                             <constraint firstItem="fNB-wr-8uc" firstAttribute="leading" secondItem="nsv-8k-pla" secondAttribute="trailing" id="OMq-6B-Dsx"/>
                             <constraint firstItem="ucb-22-MpI" firstAttribute="leading" secondItem="ZzX-BT-qHH" secondAttribute="leading" id="RmI-mA-0fZ"/>
                             <constraint firstItem="88s-Da-Hbm" firstAttribute="top" secondItem="y04-ns-huH" secondAttribute="bottom" id="VPZ-cx-IEr"/>
-                            <constraint firstItem="UoT-XY-wjc" firstAttribute="top" secondItem="iAp-qO-BtP" secondAttribute="bottom" id="aV4-dQ-Jgv"/>
+                            <constraint firstItem="UoT-XY-wjc" firstAttribute="top" secondItem="iAp-qO-BtP" secondAttribute="bottom" constant="50" id="aV4-dQ-Jgv"/>
                             <constraint firstItem="FkD-91-gAb" firstAttribute="leading" secondItem="ZzX-BT-qHH" secondAttribute="leading" id="chx-pY-Kvw"/>
                             <constraint firstItem="nsv-8k-pla" firstAttribute="leading" secondItem="88s-Da-Hbm" secondAttribute="trailing" id="dVp-rV-LVU"/>
                             <constraint firstItem="Zu0-3j-f4x" firstAttribute="top" secondItem="ZzX-BT-qHH" secondAttribute="top" id="e3M-6G-41f"/>
@@ -5507,9 +5507,9 @@
                             <constraint firstItem="OI2-k4-J8F" firstAttribute="top" secondItem="fTf-pB-VoN" secondAttribute="bottom" id="mJI-bE-53v"/>
                             <constraint firstItem="fTf-pB-VoN" firstAttribute="leading" secondItem="ZXR-xg-HFQ" secondAttribute="leading" id="oor-Bn-t19"/>
                             <constraint firstAttribute="trailing" secondItem="fTf-pB-VoN" secondAttribute="trailing" id="rFz-CT-anX"/>
+                            <constraint firstItem="OI2-k4-J8F" firstAttribute="top" secondItem="kNM-n7-n2Q" secondAttribute="bottom" id="sdy-ZU-eJj"/>
                             <constraint firstItem="kNM-n7-n2Q" firstAttribute="leading" secondItem="ZXR-xg-HFQ" secondAttribute="leading" id="tcI-bD-6hB"/>
                             <constraint firstItem="Dks-yq-rCq" firstAttribute="centerY" secondItem="ZXR-xg-HFQ" secondAttribute="centerY" id="vGm-bX-Kma"/>
-                            <constraint firstAttribute="bottom" secondItem="kNM-n7-n2Q" secondAttribute="bottom" id="xYi-ew-hvz"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
@@ -6852,7 +6852,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="480"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="8Qu-IC-eCS">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8Qu-IC-eCS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
