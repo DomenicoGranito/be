@@ -134,7 +134,7 @@ open class SongManager
             
             if(getRecentlyPlayed().count>25)
             {
-                let objectToBeDelete=getRecentlyPlayed().first
+                let objectToBeDelete=getRecentlyPlayed().last
                 
                 deleteRecentlyPlayed(objectToBeDelete!)
             }

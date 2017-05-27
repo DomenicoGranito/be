@@ -56,7 +56,7 @@ class RegisterViewController: BaseViewController
         connector.login(loginData, loginSuccess, forgotFailure)
     }
     
-    func loginSuccess(_ session:String)
+    func loginSuccess(session:String)
     {
         A0SimpleKeychain().setString(session, forKey:"PHPSESSID")
         A0SimpleKeychain().setString("0", forKey:"WeChatLogin")
@@ -66,7 +66,7 @@ class RegisterViewController: BaseViewController
         navigationController?.pushViewController(vc, animated:true)
     }
     
-    func forgotFailure(_ error:NSError)
+    func forgotFailure(error:NSError)
     {
         handleError(error)
     }

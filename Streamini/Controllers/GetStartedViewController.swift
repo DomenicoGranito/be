@@ -46,12 +46,12 @@ class GetStartedViewController: BaseViewController
         }
     }
     
-    func successUser(_ user:User)
+    func successUser(user:User)
     {
         UserContainer.shared.setLogged(user)
     }
 
-    func forgotFailure(_ error:NSError)
+    func forgotFailure(error:NSError)
     {
         handleError(error)
     }

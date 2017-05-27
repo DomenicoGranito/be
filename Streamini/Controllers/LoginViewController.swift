@@ -108,7 +108,7 @@ class LoginViewController: BaseViewController
         UserConnector().login(loginData, loginSuccess, signupFailure)
     }
     
-    func signupFailure(_ error:NSError)
+    func signupFailure(error:NSError)
     {
         let errorMessage=error.userInfo[NSLocalizedDescriptionKey] as! String
         
@@ -153,7 +153,7 @@ class LoginViewController: BaseViewController
         loginWithBEINIT()
     }
     
-    func loginSuccess(_ session:String)
+    func loginSuccess(session:String)
     {
         A0SimpleKeychain().setString(session, forKey:"PHPSESSID")
         
@@ -185,7 +185,7 @@ class LoginViewController: BaseViewController
         UIAlertView.notAuthorizedAlert("Password reset").show()
     }
     
-    func forgotFailure(_ error:NSError)
+    func forgotFailure(error:NSError)
     {
         handleError(error)
     }
