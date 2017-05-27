@@ -274,6 +274,8 @@ class SearchViewController: UIViewController
     
     func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:IndexPath)
     {
+        tableView.deselectRow(at:indexPath, animated:true)
+        
         if tableView==historyTbl
         {
             if indexPath.row==searchHistroy.count

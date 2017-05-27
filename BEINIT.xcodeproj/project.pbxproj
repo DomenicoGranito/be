@@ -14,7 +14,7 @@
 		3E2674D61D7453DB00E33DCD /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2674D51D7453DA00E33DCD /* Empty.swift */; };
 		3E2A5A581ED8062800133E1D /* AirPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A5A571ED8062700133E1D /* AirPlay.swift */; };
 		3E2A5A5A1ED80CDC00133E1D /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A5A591ED80CDC00133E1D /* DevicesViewController.swift */; };
-		3E2A5A5C1ED81C2000133E1D /* AirPlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E2A5A5B1ED81C2000133E1D /* AirPlay.framework */; };
+		3E2A5A5C1ED81C2000133E1D /* AirPlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E2A5A5B1ED81C2000133E1D /* AirPlay.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3E2A5A5E1ED8693B00133E1D /* SelectedCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A5A5D1ED8693A00133E1D /* SelectedCellView.swift */; };
 		3E356FA01E843583008FD8B9 /* libCCSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E356F9F1E843580008FD8B9 /* libCCSDK.a */; };
 		3E4B9D461E95E54700B80BA6 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B9D451E95E54700B80BA6 /* FiltersViewController.swift */; };
@@ -1352,6 +1352,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_HEADERS_RUN_UNIFDEF = NO;
 				DEVELOPMENT_TEAM = G88EVHJ24D;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1412,6 +1413,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_HEADERS_RUN_UNIFDEF = NO;
 				DEVELOPMENT_TEAM = G88EVHJ24D;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

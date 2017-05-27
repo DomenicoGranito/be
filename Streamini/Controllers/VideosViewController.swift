@@ -41,6 +41,8 @@ class VideosViewController: UIViewController
         cell.dotsButton?.tag=indexPath.row
         cell.dotsButton?.addTarget(self, action:#selector(dotsButtonTapped), for:.touchUpInside)
         
+        cell.selectedBackgroundView=SelectedCellView().create()
+        
         return cell
     }
     
@@ -54,6 +56,8 @@ class VideosViewController: UIViewController
     
     func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:IndexPath)
     {
+        tableView.deselectRow(at:indexPath, animated:true)
+        
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let modalVC=storyboard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController
         

@@ -48,7 +48,6 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
     var userStatisticsDelegate:UserStatisticsDelegate?
     var userStatusDelegate:UserStatusDelegate?
     var userSelectedDelegate:UserSelecting?
-    //var downloadManager: DownloadManager!
     var selectedImage: UIImage?
     var profileDelegate: ProfileDelegate?
     
@@ -89,13 +88,13 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
             controller.sourceType = .camera
         }
         
-        self.present(controller, animated:true, completion:nil)
+        self.present(controller, animated:true)
     }
 
-    func imagePickerController(_ picker:UIImagePickerController, didFinishPickingImage image:UIImage!, editingInfo:[AnyHashable: Any]!)
+    func imagePickerController(_ picker:UIImagePickerController, didFinishPickingImage image:UIImage!, editingInfo:[AnyHashable:Any]!)
     {
-        picker.dismiss(animated: true, completion:
-            {()->Void in
+        picker.dismiss(animated:true, completion:{()->() in
+            
                 self.selectedImage=image.fixOrientation().imageScaledToFitToSize(CGSize(width:100, height:100))
                 self.uploadImage(self.selectedImage!)
         })

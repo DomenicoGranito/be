@@ -14,6 +14,8 @@ class MyStreamsDataSource: RecentStreamsDataSource
         let stream=streams[indexPath.row]
         cell.updateMyStream(stream)
         
+        cell.selectedBackgroundView=SelectedCellView().create()
+        
         return cell
     }
     

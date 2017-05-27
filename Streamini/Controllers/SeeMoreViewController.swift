@@ -67,6 +67,8 @@ class SeeMoreViewController: UIViewController
             cell.dotsButton?.tag=indexPath.row
             cell.dotsButton?.addTarget(self, action:#selector(dotsButtonTapped), for:.touchUpInside)
             
+            cell.selectedBackgroundView=SelectedCellView().create()
+            
             return cell
         }
         else
@@ -79,12 +81,16 @@ class SeeMoreViewController: UIViewController
             cell.usernameLabel.text=user.name
             cell.likesLabel.text="\(user.followers) FOLLOWERS - \(user.desc!)"
             
+            cell.selectedBackgroundView=SelectedCellView().create()
+            
             return cell
         }
     }
 
     func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:IndexPath)
     {
+        tableView.deselectRow(at:indexPath, animated:true)
+        
         if t=="streams"
         {
             let modalVC=storyBoard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController

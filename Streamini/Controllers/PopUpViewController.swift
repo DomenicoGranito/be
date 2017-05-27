@@ -30,7 +30,7 @@ class PopUpViewController: BaseViewController
     
     @IBAction func closeButtonPressed()
     {
-        dismiss(animated:true, completion:nil)
+        dismiss(animated:true)
     }
     
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
@@ -109,7 +109,7 @@ class PopUpViewController: BaseViewController
         }
         if indexPath.row==6
         {
-            dismiss(animated:true, completion:nil)
+            dismiss(animated:true)
             SocialConnector().block(stream!.user.id, blockSuccess, failureWithoutAction)
             SongManager.deleteBlockedUserVideos(stream!.user.id)
             NotificationCenter.default.post(name:Notification.Name("blockUser"), object:nil)

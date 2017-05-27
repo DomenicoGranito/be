@@ -48,7 +48,7 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
     
     func tableView(_ tableView:UITableView, cellForRowAt indexPath:IndexPath)->UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier:"PeopleCell", for:indexPath) as! PeopleCell
+        let cell=tableView.dequeueReusableCell(withIdentifier:"PeopleCell", for:indexPath) as! PeopleCell
         
         let user: User
         if isSearchMode {
@@ -57,6 +57,7 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
             user = (indexPath.section == 0) ? top[indexPath.row] : featured[indexPath.row]
         }
         
+        cell.selectedBackgroundView=SelectedCellView().create()
         cell.update(user)
         //cell.delegate = self
         return cell
@@ -282,7 +283,7 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         SocialConnector().search(data, searchSuccess, actionFailure)
     }
     
-    func searchMore(_ data: NSDictionary)
+    func searchMore(_ data:NSDictionary)
     {
         SocialConnector().search(data, searchMoreSuccess, actionFailure)
     }

@@ -63,6 +63,8 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         cell.update(user)
         cell.delegate=self
         
+        cell.selectedBackgroundView=SelectedCellView().create()
+        
         return cell
     }
         
