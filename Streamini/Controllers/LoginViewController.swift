@@ -28,8 +28,6 @@ class LoginViewController: BaseViewController
     
     override func viewDidLoad()
     {
-        WXApi.registerApp(appID)
-        
         NotificationCenter.default.addObserver(self, selector:#selector(onResp), name:Notification.Name("getCode"), object:nil)
         
         usernameImageView?.image=usernameImageView?.image?.withRenderingMode(.alwaysTemplate)

@@ -17,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
     var bgTask: UIBackgroundTaskIdentifier?
     var closeStream: Bool = false
     var reachability:Reachability!
-
+    let (appID, appSecret)=Config.shared.weChat()
+    
     //dominicg weixin login wx68aa08d12b601234 dgranito@gmail account
     //wx282a923ebe81d445 demo account
     //AppID：wx5bd67c93b16ab684 marie@cedricm.com account
@@ -171,6 +172,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
     
     func application(_ application:UIApplication, didFinishLaunchingWithOptions launchOptions:[UIApplicationLaunchOptionsKey:Any]?)->Bool
     {
+        WXApi.registerApp(appID)
+        
         reachability=Reachability()
         
         NotificationCenter.default.addObserver(self, selector:#selector(reachabilityChanged), name:ReachabilityChangedNotification, object:nil)
