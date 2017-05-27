@@ -53,7 +53,9 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
     
     override func viewDidLoad()
     {
-        if UserContainer.shared.logged().id==user!.id
+        let WeChatLogin=A0SimpleKeychain().string(forKey:"WeChatLogin")
+        
+        if UserContainer.shared.logged().id==user!.id&&WeChatLogin=="0"
         {
             changeAvatarButton?.isEnabled=true
         }
