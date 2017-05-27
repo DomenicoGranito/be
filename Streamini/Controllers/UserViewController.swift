@@ -84,13 +84,13 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         if buttonIndex==1
         {
             controller.sourceType = .photoLibrary
+            self.present(controller, animated:true)
         }
         if buttonIndex==2
         {
             controller.sourceType = .camera
+            self.present(controller, animated:true)
         }
-        
-        self.present(controller, animated:true)
     }
 
     func imagePickerController(_ picker:UIImagePickerController, didFinishPickingImage image:UIImage!, editingInfo:[AnyHashable:Any]!)
