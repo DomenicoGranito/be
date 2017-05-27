@@ -98,7 +98,7 @@ class HomeViewController: UIViewController
         if section>0
         {
             let headerView=UIView(frame:CGRect(x:0, y:0, width:tableView.frame.size.width, height:60))
-            headerView.backgroundColor=UIColor(colorLiteralRed:18/255, green:19/255, blue:21/255, alpha:1)
+            headerView.backgroundColor=UIColor(red:18/255, green:19/255, blue:21/255, alpha:1)
             
             let titleLbl=UILabel(frame:CGRect(x:10, y:30, width:285, height:20))
             
@@ -108,10 +108,10 @@ class HomeViewController: UIViewController
             }
             
             titleLbl.font=UIFont.systemFont(ofSize: 24)
-            titleLbl.textColor=UIColor(colorLiteralRed:190/255, green:142/255, blue:64/255, alpha:1)
+            titleLbl.textColor=UIColor(red:190/255, green:142/255, blue:64/255, alpha:1)
             
             let lineView=UIView(frame:CGRect(x:10, y:59.5, width:tableView.frame.size.width-20, height:0.5))
-            lineView.backgroundColor=UIColor(colorLiteralRed:37/255, green:36/255, blue:41/255, alpha:1)
+            lineView.backgroundColor=UIColor(red:37/255, green:36/255, blue:41/255, alpha:1)
             
             let tapGesture=UITapGestureRecognizer(target:self, action:#selector(headerTapped))
             headerView.addGestureRecognizer(tapGesture)

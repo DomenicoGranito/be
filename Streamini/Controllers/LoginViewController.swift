@@ -207,16 +207,16 @@ class LoginViewController: BaseViewController
     {
         if(textField==usernameTxt)
         {
-            usernameBackgroundView?.backgroundColor=UIColor(colorLiteralRed:34/255, green:35/255, blue:39/255, alpha:1)
-            passwordBackgroundView?.backgroundColor=UIColor(colorLiteralRed:28/255, green:27/255, blue:32/255, alpha:1)
+            usernameBackgroundView?.backgroundColor=UIColor(red:34/255, green:35/255, blue:39/255, alpha:1)
+            passwordBackgroundView?.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
             
             usernameImageView?.tintColor=UIColor.white
             passwordImageView?.tintColor=UIColor.darkGray
         }
         else
         {
-            passwordBackgroundView?.backgroundColor=UIColor(colorLiteralRed:34/255, green:35/255, blue:39/255, alpha:1)
-            usernameBackgroundView?.backgroundColor=UIColor(colorLiteralRed:28/255, green:27/255, blue:32/255, alpha:1)
+            passwordBackgroundView?.backgroundColor=UIColor(red:34/255, green:35/255, blue:39/255, alpha:1)
+            usernameBackgroundView?.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
             
             usernameImageView?.tintColor=UIColor.darkGray
             passwordImageView?.tintColor=UIColor.white

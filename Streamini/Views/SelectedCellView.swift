@@ -11,7 +11,7 @@ class SelectedCellView: UIView
     func create()->UIView
     {
         let customColorView=UIView()
-        customColorView.backgroundColor=UIColor.lightGray
+        customColorView.backgroundColor=UIColor(red:34/255, green:35/255, blue:39/255, alpha:1)
         return customColorView
     }
 }

@@ -98,9 +98,9 @@ class RegisterViewController: BaseViewController
     {
         if(textField==emailTxt)
         {
-            emailBackgroundView?.backgroundColor=UIColor(colorLiteralRed:34/255, green:35/255, blue:39/255, alpha:1)
-            usernameBackgroundView?.backgroundColor=UIColor(colorLiteralRed:28/255, green:27/255, blue:32/255, alpha:1)
-            passwordBackgroundView?.backgroundColor=UIColor(colorLiteralRed:28/255, green:27/255, blue:32/255, alpha:1)
+            emailBackgroundView?.backgroundColor=UIColor(red:34/255, green:35/255, blue:39/255, alpha:1)
+            usernameBackgroundView?.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
+            passwordBackgroundView?.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
             
             emailImageView?.tintColor=UIColor.white
             usernameImageView?.tintColor=UIColor.darkGray
@@ -108,9 +108,9 @@ class RegisterViewController: BaseViewController
         }
         else if(textField==usernameTxt)
         {
-            usernameBackgroundView?.backgroundColor=UIColor(colorLiteralRed:34/255, green:35/255, blue:39/255, alpha:1)
-            emailBackgroundView?.backgroundColor=UIColor(colorLiteralRed:28/255, green:27/255, blue:32/255, alpha:1)
-            passwordBackgroundView?.backgroundColor=UIColor(colorLiteralRed:28/255, green:27/255, blue:32/255, alpha:1)
+            usernameBackgroundView?.backgroundColor=UIColor(red:34/255, green:35/255, blue:39/255, alpha:1)
+            emailBackgroundView?.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
+            passwordBackgroundView?.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
             
             emailImageView?.tintColor=UIColor.darkGray
             usernameImageView?.tintColor=UIColor.white
@@ -118,9 +118,9 @@ class RegisterViewController: BaseViewController
         }
         else
         {
-            passwordBackgroundView?.backgroundColor=UIColor(colorLiteralRed:34/255, green:35/255, blue:39/255, alpha:1)
-            emailBackgroundView?.backgroundColor=UIColor(colorLiteralRed:28/255, green:27/255, blue:32/255, alpha:1)
-            usernameBackgroundView?.backgroundColor=UIColor(colorLiteralRed:28/255, green:27/255, blue:32/255, alpha:1)
+            passwordBackgroundView?.backgroundColor=UIColor(red:34/255, green:35/255, blue:39/255, alpha:1)
+            emailBackgroundView?.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
+            usernameBackgroundView?.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
             
             emailImageView?.tintColor=UIColor.darkGray
             usernameImageView?.tintColor=UIColor.darkGray
