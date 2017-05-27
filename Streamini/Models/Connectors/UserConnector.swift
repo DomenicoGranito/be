@@ -27,7 +27,7 @@ class UserConnector: Connector
             success(json)
             },
         failure:{(operation, error)->Void in
-            //failure(error)
+            failure(error as! NSError)
         })
     }
     
@@ -49,7 +49,7 @@ class UserConnector: Connector
             success(json)
             },
             failure:{(operation, error)->Void in
-            //failure(error)
+            failure(error as! NSError)
         })
     }
 
@@ -58,14 +58,16 @@ class UserConnector: Connector
         let path = "user/logout"
         
         manager.post(nil, path: path, parameters: nil, success: { (operation, mappingResult) -> Void in
-            let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
+            
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
+            
             if !error.status {
                 failure(error.toNSError())
             } else {
                 success()
             }
             }, failure:{ (operation, error) -> Void in
-                //failure(error)
+                failure(error as! NSError)
         })
     }
     
@@ -87,11 +89,11 @@ class UserConnector: Connector
         }
         
         manager.getObjectsAtPath(path, parameters: params, success: { (operation, mappingResult) -> Void in
-            // success code
-            let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
+            
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
 
             if !error.status {
-                if error.code == Error.kLoginExpiredCode {
+                if error.code == CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.get(id, success, failure)
                     }, failure: { () -> () in
@@ -105,7 +107,7 @@ class UserConnector: Connector
                 success(user)
             }
             }, failure: { (operation, error) -> Void in
-                //failure(error)
+                failure(error as! NSError)
         })
     }
     
@@ -125,9 +127,11 @@ class UserConnector: Connector
         let path = "user/avatar"
         
         manager.post(nil, path: path, parameters: self.sessionParams(), success: { (operation, mappingResult) -> Void in
-            let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
+            
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
+            
             if !error.status {
-                if error.code == Error.kLoginExpiredCode {
+                if error.code==CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.avatar(success, failure)
                         }, failure: { () -> () in
@@ -140,7 +144,7 @@ class UserConnector: Connector
                 success()
             }
             }, failure: { (operation, error) -> Void in
-                //failure(error)
+                failure(error as! NSError)
         })
     }
     
@@ -153,9 +157,10 @@ class UserConnector: Connector
         }
         
         let operation = manager.objectRequestOperation(with: request as URLRequest!, success: { (operation, mappingResult) -> Void in
-            let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
+            
             if !error.status {
-                if error.code == Error.kLoginExpiredCode {
+                if error.code==CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.uploadAvatar(filename, data, success, failure, progress)
                     }, failure: { () -> () in
@@ -168,7 +173,7 @@ class UserConnector: Connector
                 success()
             }
             }) { (operation, error) -> Void in
-                //failure(error)
+                failure(error as! NSError)
         }
         
         operation?.httpRequestOperation.setUploadProgressBlock(progress)
@@ -182,9 +187,10 @@ class UserConnector: Connector
         params!["text"] = text as AnyObject?
         
         manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
-            let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
+            
             if !error.status {
-                if error.code == Error.kLoginExpiredCode {
+                if error.code==CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.userDescription(text, success, failure)
                     }, failure: { () -> () in
@@ -197,7 +203,7 @@ class UserConnector: Connector
                 success()
             }
             }, failure: { (operation, error) -> Void in
-                //failure(error)
+                failure(error as! NSError)
         })
     }
     
@@ -207,9 +213,10 @@ class UserConnector: Connector
         let params: [AnyHashable: Any] = [ "id" : text ]
         
         manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
-            let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
+            
             if !error.status {
-                if error.code == Error.kLoginExpiredCode {
+                if error.code==CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.forgot(text, success, failure)
                         }, failure: { () -> () in
@@ -222,7 +229,7 @@ class UserConnector: Connector
                 success()
             }
             }, failure: { (operation, error) -> Void in
-            //failure(error)
+            failure(error as! NSError)
         })
     }
     
@@ -233,9 +240,11 @@ class UserConnector: Connector
         params!["password"] = text as AnyObject?
         
         manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
-            let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
+            
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
+            
             if !error.status {
-                if error.code == Error.kLoginExpiredCode {
+                if error.code == CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.password(text, success, failure)
                         }, failure: { () -> () in
@@ -248,7 +257,7 @@ class UserConnector: Connector
                 success()
             }
             }, failure: { (operation, error) -> Void in
-            //failure(error)
+            failure(error as! NSError)
         })
     }
     
@@ -275,10 +284,11 @@ class UserConnector: Connector
         }
         
         manager.getObjectsAtPath(path, parameters: params, success: { (operation, mappingResult) -> Void in
-            // success code
-            let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
+            
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
+            
             if !error.status {
-                if error.code == Error.kLoginExpiredCode {
+                if error.code == CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.usersList(path, data, success, failure)
                     }, failure: { () -> () in
@@ -292,7 +302,7 @@ class UserConnector: Connector
                 success(users)
             }
             }, failure:{ (operation, error) -> Void in
-                //failure(error)
+                failure(error as! NSError)
         })
     }
 }

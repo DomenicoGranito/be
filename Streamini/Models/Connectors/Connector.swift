@@ -89,7 +89,7 @@ class Connector: NSObject
                 success(session)
             }
             }, failure:{(operation, error)->Void in
-                //failure(error)
+                failure(error as! NSError)
         })
     }
     
@@ -124,13 +124,13 @@ class Connector: NSObject
         manager.addResponseDescriptor(errorDescriptor)
     }
     
-    func findErrorObject(mappingResult:RKMappingResult)->Error?
+    func findErrorObject(mappingResult:RKMappingResult)->CustomError?
     {
         for obj in mappingResult.array()
         {
-            if obj is Error
+            if obj is CustomError
             {
-                return obj as? Error
+                return obj as? CustomError
             }
         }
         

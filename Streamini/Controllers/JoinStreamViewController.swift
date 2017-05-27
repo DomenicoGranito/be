@@ -296,7 +296,7 @@ UIActionSheetDelegate, SelectFollowersDelegate, ReplayViewDelegate, UserSelectin
         {
             let code=userInfo["code"] as! UInt
             
-            if code==Error.kUserBlocked
+            if code==CustomError.kUserBlocked
             {
                 UIAlertView.userBlockedAlert().show()
                 self.dismiss(animated: true, completion: nil)

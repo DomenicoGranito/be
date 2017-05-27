@@ -20,10 +20,12 @@ class StreamConnector: Connector
         manager.addResponseDescriptor(responseDescriptor)
         
         manager.getObjectsAtPath(path, parameters: self.sessionParams(), success: { (operation, mappingResult) -> Void in
-            let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
+            
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
+            
             if !error.status
             {
-                if error.code == Error.kLoginExpiredCode
+                if error.code == CustomError.kLoginExpiredCode
                 {
                     self.relogin({ () -> () in
                         self.cities(success, failure)
@@ -47,7 +49,7 @@ class StreamConnector: Connector
                 success(cities)
             }
         }, failure:{(operation, error)->Void in
-            //failure(error)
+            failure(error as! NSError)
         })
     }
     
@@ -63,10 +65,11 @@ class StreamConnector: Connector
         manager.addResponseDescriptor(responseDescriptor)
         
         manager.getObjectsAtPath(path, parameters: self.sessionParams(), success: { (operation, mappingResult) -> Void in
-            // success code
-            let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
+            
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
+            
             if !error.status {
-                if error.code == Error.kLoginExpiredCode {
+                if error.code == CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.categories(success, failure)
                         }, failure: { () -> () in
@@ -80,7 +83,7 @@ class StreamConnector: Connector
                 success(cats)
             }
         }, failure:{(operation, error) in
-            //failure(error)
+            failure(error as! NSError)
         })
     }
     
@@ -99,10 +102,11 @@ class StreamConnector: Connector
         manager.addResponseDescriptor(recentStreamResponseDescriptor)
         
         manager.getObjectsAtPath(path, parameters: self.sessionParams(), success: { (operation, mappingResult) -> Void in
-            // success code
-            let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
+            
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
+            
             if !error.status {
-                if error.code == Error.kLoginExpiredCode {
+                if error.code == CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.streams(getGlobal, success, failure)
                     }, failure: { () -> () in
@@ -125,7 +129,7 @@ class StreamConnector: Connector
                 success(live, recent)
             }
             }, failure:{(operation, error) in
-            //failure(error)
+            failure(error as! NSError)
         })
     }
     
@@ -139,7 +143,7 @@ class StreamConnector: Connector
             
             if !error.status
             {
-                if error.code==Error.kLoginExpiredCode
+                if error.code==CustomError.kLoginExpiredCode
                 {
                     self.relogin({()->() in
                         self.discover(success, failure)
@@ -160,7 +164,7 @@ class StreamConnector: Connector
                 success(json)
             }
             }, failure:{(operation, error) in
-            //failure(error)
+            failure(error as! NSError)
         })
     }
     
@@ -174,7 +178,7 @@ class StreamConnector: Connector
             
             if !error.status
             {
-                if error.code==Error.kLoginExpiredCode
+                if error.code==CustomError.kLoginExpiredCode
                 {
                     self.relogin({()->() in
                         self.homeStreams(success, failure)
@@ -196,7 +200,7 @@ class StreamConnector: Connector
             }
             },
             failure:{(operation, error) in
-            //failure(error)
+            failure(error as! NSError)
         })
     }
     
@@ -210,7 +214,7 @@ class StreamConnector: Connector
             
             if !error.status
             {
-                if error.code==Error.kLoginExpiredCode
+                if error.code==CustomError.kLoginExpiredCode
                 {
                     self.relogin({()->() in
                         self.categoryStreams(categoryID, pageID, success, failure)
@@ -232,7 +236,7 @@ class StreamConnector: Connector
             }
             },
         failure:{(operation, error)->Void in
-            //failure(error)
+            failure(error as! NSError)
         })
     }
     
@@ -265,7 +269,7 @@ class StreamConnector: Connector
             
             if !error.status
             {
-                if error.code == Error.kLoginExpiredCode
+                if error.code==CustomError.kLoginExpiredCode
                 {
                     self.relogin({()->() in
                         self.search(query, success, failure)
@@ -292,7 +296,7 @@ class StreamConnector: Connector
             }
             },
         failure:{(operation, error) in
-            //failure(error)
+            failure(error as! NSError)
         })
     }
     
@@ -314,7 +318,7 @@ class StreamConnector: Connector
             
             if !error.status
             {
-                if error.code == Error.kLoginExpiredCode
+                if error.code==CustomError.kLoginExpiredCode
                 {
                     self.relogin({()->() in
                         self.searchMoreStreams(query, success, failure)
@@ -335,7 +339,7 @@ class StreamConnector: Connector
                 success(streams)
             }
             }, failure:{(operation, error)->Void in
-                                    //failure(error)
+                failure(error as! NSError)
         })
     }
 
@@ -357,7 +361,7 @@ class StreamConnector: Connector
             
             if !error.status
             {
-                if error.code == Error.kLoginExpiredCode
+                if error.code==CustomError.kLoginExpiredCode
                 {
                     self.relogin({()->() in
                         self.searchMoreOthers(query, identifier, success, failure)
@@ -379,7 +383,7 @@ class StreamConnector: Connector
             }
             },
         failure:{(operation, error)->Void in
-            //failure(error)
+            failure(error as! NSError)
         })
     }
 
@@ -399,7 +403,7 @@ class StreamConnector: Connector
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
             if !error.status {
-                if error.code == Error.kLoginExpiredCode {
+                if error.code==CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.recent(userId, success, failure)
                     }, failure: { () -> () in
@@ -413,7 +417,7 @@ class StreamConnector: Connector
                 success(streams)
             }
             }, failure:{ (operation, error) -> Void in
-                //failure(error)
+                failure(error as! NSError)
         })
     }
     
@@ -430,9 +434,10 @@ class StreamConnector: Connector
         
         manager.getObjectsAtPath(path, parameters: self.sessionParams(), success: { (operation, mappingResult) -> Void in
             
-            let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
+            
             if !error.status {
-                if error.code == Error.kLoginExpiredCode {
+                if error.code==CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.my(success, failure)
                     }, failure: { () -> () in
@@ -446,7 +451,7 @@ class StreamConnector: Connector
                 success(streams)
             }
             }, failure: { (operation, error) in
-                //failure(error)
+                failure(error as! NSError)
         })
     }
     
@@ -467,9 +472,10 @@ class StreamConnector: Connector
         
         manager.post(data, path: path, parameters: self.sessionParams(), success: { (operation, mappingResult) -> Void in
            
-            let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
+            
             if !error.status {
-                if error.code == Error.kLoginExpiredCode {
+                if error.code==CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.create(data, success, failure)
                     }, failure: { () -> () in
@@ -483,7 +489,7 @@ class StreamConnector: Connector
                 success(stream)
             }
             }, failure:{ (operation, error) -> Void in
-                //failure(error)
+                failure(error as! NSError)
         })
     }
     
@@ -509,9 +515,11 @@ class StreamConnector: Connector
         }
         
         let operation = manager.objectRequestOperation(with: request as URLRequest!, success: { (operation, mappingResult) -> Void in
-            let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
+            
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
+            
             if !error.status {
-                if error.code == Error.kLoginExpiredCode {
+                if error.code==CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.createWithFile(filename, fileData, data, success, failure)
                     }, failure: { () -> () in
@@ -526,7 +534,7 @@ class StreamConnector: Connector
             }
         },
         failure:{(operation, error)->Void in
-            //failure(error)
+            failure(error as! NSError)
         })
         
         manager.enqueue(operation)
@@ -541,9 +549,10 @@ class StreamConnector: Connector
         
         manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
             
-            let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
+            
             if !error.status {
-                if error.code == Error.kLoginExpiredCode {
+                if error.code==CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.del(streamId, success, failure)
                         }, failure: { () -> () in
@@ -555,7 +564,7 @@ class StreamConnector: Connector
                 success()
             }
             }, failure:{ (operation, error) -> Void in
-            //failure(error)
+            failure(error as! NSError)
         })
     }
 
@@ -569,9 +578,10 @@ class StreamConnector: Connector
         
         manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
         
-            let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
+            
             if !error.status {
-                if error.code == Error.kLoginExpiredCode {
+                if error.code==CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.close(streamId, success, failure)
                     }, failure: { () -> () in
@@ -583,7 +593,7 @@ class StreamConnector: Connector
                 success()
             }
             }, failure: { (operation, error) -> Void in
-                //failure(error)
+                failure(error as! NSError)
         })
     }
     
@@ -595,9 +605,11 @@ class StreamConnector: Connector
         params!["id"] = streamId as AnyObject?
         
         manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
-            let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
+            
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
+            
             if !error.status {
-                if error.code == Error.kLoginExpiredCode {
+                if error.code==CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.join(streamId, success, failure)
                     }, failure: { () -> () in
@@ -609,7 +621,7 @@ class StreamConnector: Connector
                 success()
             }
             }, failure:{ (operation, error) -> Void in
-            //failure(error)
+            failure(error as! NSError)
         })
     }
     
@@ -622,9 +634,11 @@ class StreamConnector: Connector
         params!["likes"] = likes as AnyObject?
         
         manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
-            let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
+            
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
+            
             if !error.status {
-                if error.code == Error.kLoginExpiredCode {
+                if error.code==CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.leave(streamId, likes, success, failure)
                     }, failure: { () -> () in
@@ -636,7 +650,7 @@ class StreamConnector: Connector
                 success()
             }
             }, failure: { (operation, error) -> Void in
-                //failure(error)
+                failure(error as! NSError)
         })
     }
     
@@ -658,9 +672,11 @@ class StreamConnector: Connector
         }
         
         manager.getObjectsAtPath(path, parameters: params, success: { (operation, mappingResult) -> Void in
-            let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
+            
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
+            
             if !error.status {
-                if error.code == Error.kLoginExpiredCode {
+                if error.code==CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.viewers(data, success, failure)
                     }, failure: { () -> () in
@@ -676,7 +692,7 @@ class StreamConnector: Connector
                 success(likes, viewers, users)
             }
             }, failure:{ (operation, error) -> Void in
-            //failure(error)
+            failure(error as! NSError)
         })
     }
     
@@ -698,9 +714,11 @@ class StreamConnector: Connector
         }
         
         manager.getObjectsAtPath(path, parameters: params, success: { (operation, mappingResult) -> Void in
-            let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
+            
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
+            
             if !error.status {
-                if error.code == Error.kLoginExpiredCode {
+                if error.code==CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.replayViewers(data, success, failure)
                     }, failure: { () -> () in
@@ -716,7 +734,7 @@ class StreamConnector: Connector
                 success(likes, viewers, users)
             }
             }, failure: { (operation, error) -> Void in
-                //failure(error)
+                failure(error as! NSError)
         })
     }
     
@@ -731,9 +749,11 @@ class StreamConnector: Connector
         manager.addResponseDescriptor(streamResponseDescriptor)
         
         manager.getObjectsAtPath(path, parameters: self.sessionParams(), success: { (operation, mappingResult) -> Void in
-            let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
+            
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
+            
             if !error.status {
-                if error.code == Error.kLoginExpiredCode {
+                if error.code==CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.get(streamId, success, failure)
                     }, failure: { () -> () in
@@ -746,7 +766,7 @@ class StreamConnector: Connector
                 success(stream)
             }
             }, failure: { (operation, error) -> Void in
-                //failure(error)
+                failure(error as! NSError)
         })
     }    
     
@@ -757,9 +777,11 @@ class StreamConnector: Connector
         params!["id"] = streamId as AnyObject?
         
         manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
-            let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
+            
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
+            
             if !error.status {
-                if error.code == Error.kLoginExpiredCode {
+                if error.code==CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.report(streamId, success, failure)
                     }, failure: { () -> () in
@@ -771,11 +793,12 @@ class StreamConnector: Connector
                 success()
             }
             }) { (operation, error) -> Void in
-                //failure(error)
+                failure(error as! NSError)
         }
     }
     
-    func share(_ streamId: UInt, _ usersId: [UInt]?, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func share(_ streamId:UInt, _ usersId:[UInt]?, _ success:@escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         let path = "stream/share"
         
         var params = self.sessionParams()
@@ -786,9 +809,11 @@ class StreamConnector: Connector
         }
         
         manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
-            let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
+            
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
+            
             if !error.status {
-                if error.code == Error.kLoginExpiredCode {
+                if error.code==CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.share(streamId, usersId, success, failure)
                     }, failure: { () -> () in
@@ -801,7 +826,7 @@ class StreamConnector: Connector
                 success()
             }
             }, failure: { (operation, error) -> Void in
-                //failure(error)
+            failure(error as! NSError)
         })
     }
     
@@ -812,9 +837,11 @@ class StreamConnector: Connector
         params!["id"] = streamId as AnyObject?
         
         manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
-            let error:Error = self.findErrorObject(mappingResult: mappingResult!)!
+            
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
+            
             if !error.status {
-                if error.code == Error.kLoginExpiredCode {
+                if error.code==CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.ping(streamId, success, failure)
                     }, failure: { () -> () in
@@ -828,7 +855,7 @@ class StreamConnector: Connector
             }
             },
             failure:{(operation, error)->Void in
-                //failure(error)
+                failure(error as! NSError)
         })
     }
 }

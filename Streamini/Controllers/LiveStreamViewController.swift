@@ -163,7 +163,7 @@ class LiveStreamViewController: BaseViewController, UserSelecting, UserStatusDel
         if let userInfo = error.userInfo as? NSDictionary
         {
             let code=userInfo["code"] as! UInt
-            if code==Error.kUnsuccessfullPing
+            if code==CustomError.kUnsuccessfullPing
             {
                 let message = userInfo[NSLocalizedDescriptionKey] as! String
                 let alertView = UIAlertView.unsuccessfullPingAlert(message, delegate: self)

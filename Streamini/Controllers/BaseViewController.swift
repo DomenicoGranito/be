@@ -14,7 +14,7 @@ class BaseViewController: UIViewController
         {
             let code=userInfo["code"] as! UInt
             
-            if code==Error.kLoginExpiredCode
+            if code == CustomError.kLoginExpiredCode
             {
                 let root=UIApplication.shared.delegate!.window!?.rootViewController as! UINavigationController
                 

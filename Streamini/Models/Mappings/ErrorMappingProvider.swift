@@ -11,7 +11,7 @@ import Foundation
 class ErrorMappingProvider {
     
     class func errorObjectMapping() -> RKObjectMapping {
-        let mapping = RKObjectMapping(for: Error.self)
+        let mapping = RKObjectMapping(for:CustomError.self)
         mapping?.addAttributeMappings(from: [
             "status"        : "status",
             "errCode"       : "code",

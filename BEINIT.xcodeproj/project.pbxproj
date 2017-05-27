@@ -150,7 +150,7 @@
 		B77AABE61B398815007DE187 /* StreamMappingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77AABE51B398815007DE187 /* StreamMappingProvider.swift */; };
 		B77AABE81B398A3C007DE187 /* Connector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77AABE71B398A3C007DE187 /* Connector.swift */; };
 		B77AABEA1B398AEF007DE187 /* ErrorMappingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77AABE91B398AEF007DE187 /* ErrorMappingProvider.swift */; };
-		B77AABEC1B398B03007DE187 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77AABEB1B398B03007DE187 /* Error.swift */; };
+		B77AABEC1B398B03007DE187 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77AABEB1B398B03007DE187 /* CustomError.swift */; };
 		B77AABEE1B398B95007DE187 /* StreamConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77AABED1B398B95007DE187 /* StreamConnector.swift */; };
 		B77AABF21B39AEF4007DE187 /* LiveStreamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77AABF11B39AEF4007DE187 /* LiveStreamCell.swift */; };
 		B77AABF51B39B40E007DE187 /* StreamDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77AABF41B39B40E007DE187 /* StreamDataSource.swift */; };
@@ -376,7 +376,7 @@
 		B77AABE51B398815007DE187 /* StreamMappingProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamMappingProvider.swift; sourceTree = "<group>"; };
 		B77AABE71B398A3C007DE187 /* Connector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connector.swift; sourceTree = "<group>"; };
 		B77AABE91B398AEF007DE187 /* ErrorMappingProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorMappingProvider.swift; sourceTree = "<group>"; };
-		B77AABEB1B398B03007DE187 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		B77AABEB1B398B03007DE187 /* CustomError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		B77AABED1B398B95007DE187 /* StreamConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamConnector.swift; sourceTree = "<group>"; };
 		B77AABF11B39AEF4007DE187 /* LiveStreamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveStreamCell.swift; sourceTree = "<group>"; };
 		B77AABF41B39B40E007DE187 /* StreamDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamDataSource.swift; sourceTree = "<group>"; };
@@ -800,7 +800,7 @@
 		B7B0F0951B397EB7006FDA5D /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				B77AABEB1B398B03007DE187 /* Error.swift */,
+				B77AABEB1B398B03007DE187 /* CustomError.swift */,
 				B77AABD71B398284007DE187 /* User.swift */,
 				B77AABD91B3983B3007DE187 /* Stream.swift */,
 				B77AABDB1B398430007DE187 /* Location.swift */,
@@ -1163,7 +1163,7 @@
 				B6A941CF1E48AB00003E2331 /* SettingsViewController.swift in Sources */,
 				3E20216F1D81AB440058DAAD /* CategoryRow.swift in Sources */,
 				B7763AFF1B6110A600D469E3 /* NSDateExtension.swift in Sources */,
-				B77AABEC1B398B03007DE187 /* Error.swift in Sources */,
+				B77AABEC1B398B03007DE187 /* CustomError.swift in Sources */,
 				B70E04191B74E5B000422AF0 /* LinkedUserCell.swift in Sources */,
 				B7E15E4B1B6A24E5000C8C69 /* UserViewController.swift in Sources */,
 				B746FB0E1B5F93BE00DE3534 /* SensibleButton.swift in Sources */,
