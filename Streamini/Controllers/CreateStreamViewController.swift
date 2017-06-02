@@ -265,12 +265,12 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource
         
         UIApplication.shared.setStatusBarHidden(true, with:.fade)
         
-        user=UserContainer.shared.logged()
-        
-        if user!.subscription=="free"||user!.subscription==""
-        {
-            showModal()
-        }
+//        user=UserContainer.shared.logged()
+//        
+//        if user!.subscription=="free"||user!.subscription==""
+//        {
+//            showModal()
+//        }
     }
     
     override func viewDidAppear(_ animated: Bool)
