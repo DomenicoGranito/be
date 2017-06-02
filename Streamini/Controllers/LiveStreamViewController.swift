@@ -160,9 +160,9 @@ class LiveStreamViewController: BaseViewController, UserSelecting, UserStatusDel
         closeStreamSilentSuccess()
         handleError(error)
         
-        if let userInfo = error.userInfo as? NSDictionary
+        if let userInfo = error.userInfo as? [String:NSObject]
         {
-            let code=userInfo["code"] as! UInt
+            let code=userInfo["code"] as! Int
             if code==CustomError.kUnsuccessfullPing
             {
                 let message = userInfo[NSLocalizedDescriptionKey] as! String

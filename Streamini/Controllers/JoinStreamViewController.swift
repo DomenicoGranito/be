@@ -294,7 +294,7 @@ UIActionSheetDelegate, SelectFollowersDelegate, ReplayViewDelegate, UserSelectin
         
         if let userInfo = error.userInfo as? [String:NSObject]
         {
-            let code=userInfo["code"] as! UInt
+            let code=userInfo["code"] as! Int
             
             if code==CustomError.kUserBlocked
             {

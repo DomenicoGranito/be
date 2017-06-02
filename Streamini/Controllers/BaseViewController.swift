@@ -12,7 +12,7 @@ class BaseViewController: UIViewController
     {
         if let userInfo=error.userInfo as? [String:NSObject]
         {
-            let code=userInfo["code"] as! UInt
+            let code=error.code
             
             if code == CustomError.kLoginExpiredCode
             {

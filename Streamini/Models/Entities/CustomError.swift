@@ -9,12 +9,12 @@
 import Foundation
 
 class CustomError : NSObject {
-    static let kLoginExpiredCode: UInt  = 100
-    static let kUnsuccessfullPing: UInt = 202
-    static let kUserBlocked: UInt       = 201
+    static let kLoginExpiredCode: Int  = 100
+    static let kUnsuccessfullPing: Int = 202
+    static let kUserBlocked: Int       = 201
 
     var status             = false
-    var code: UInt         = 0
+    var code: Int         = 0
     var message: NSString  = ""
 
     func toNSError() -> NSError {
