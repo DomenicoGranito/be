@@ -13,6 +13,8 @@ class CategoryRow: UITableViewCell
     var TBVC:TabBarViewController!
     let (host, _, _, _, _)=Config.shared.wowza()
     var cellIdentifier:String?
+    var sectionTitle:String?
+    let storyboard=UIStoryboard(name:"Main", bundle:nil)
     
     func reloadCollectionView()
     {
@@ -37,9 +39,18 @@ class CategoryRow: UITableViewCell
             cell.followersCountLbl?.text=stream.user.name
             cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream.id).jpg"), placeholderImage:UIImage(named:"videostream"))
             
-            let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
-            cell.tag=indexPath.row
-            cell.addGestureRecognizer(cellRecognizer)
+            if sectionTitle=="live"
+            {
+                let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(liveCellTapped))
+                cell.tag=indexPath.row
+                cell.addGestureRecognizer(cellRecognizer)
+            }
+            else
+            {
+                let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
+                cell.tag=indexPath.row
+                cell.addGestureRecognizer(cellRecognizer)
+            }
         }
         else
         {
@@ -59,9 +70,15 @@ class CategoryRow: UITableViewCell
         return cell
     }
     
+    func liveCellTapped(gestureRecognizer:UITapGestureRecognizer)
+    {
+        let vc=storyboard.instantiateViewController(withIdentifier:"JoinStreamViewController") as! JoinStreamViewController
+        vc.stream=oneCategoryItemsArray[gestureRecognizer.view!.tag] as? Stream
+        TBVC.present(vc, animated:true)
+    }
+    
     func cellTapped(gestureRecognizer:UITapGestureRecognizer)
     {
-        let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let modalVC=storyboard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController
         
         let stream=oneCategoryItemsArray[gestureRecognizer.view!.tag] as! Stream

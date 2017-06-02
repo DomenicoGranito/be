@@ -394,7 +394,7 @@ UIActionSheetDelegate, SelectFollowersDelegate, ReplayViewDelegate, UserSelectin
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController!.setNavigationBarHidden(true, animated: true)
+        //navigationController!.setNavigationBarHidden(true, animated: true)
         keyboardHandler!.register()
         UIApplication.shared.setStatusBarHidden(true, with: .fade)
         

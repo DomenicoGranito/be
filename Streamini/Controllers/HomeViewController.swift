@@ -155,6 +155,7 @@ class HomeViewController: UIViewController
         {
             cell.TBVC=tabBarController as! TabBarViewController
             cell.oneCategoryItemsArray=allCategoryItemsArray[indexPath.section] as! NSArray
+            cell.sectionTitle=categoryNamesArray[indexPath.section] as? String
             
             if indexPath.section==0
             {
