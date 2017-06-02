@@ -328,20 +328,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, UIAlertVie
                 {
                     if let results:NSArray=dict["results"] as? NSArray
                     {
-                        if let version=((results[0] as! NSDictionary).value(forKey:"version")!) as? String
+                        if results.count>0
                         {
-                            if let currentVersion=infoDictionary["CFBundleShortVersionString"] as? String
+                            if let version=((results[0] as! NSDictionary).value(forKey:"version")!) as? String
                             {
-                                if version != currentVersion
+                                if let currentVersion=infoDictionary["CFBundleShortVersionString"] as? String
                                 {
-                                    let alert=UIAlertView()
-                                    alert.title="New version available (\(version))"
-                                    alert.addButton(withTitle:"Download")
-                                    alert.addButton(withTitle:"Remind Me Later")
-                                    alert.addButton(withTitle:"Ignore")
-                                    alert.cancelButtonIndex=2
-                                    alert.delegate=self
-                                    alert.show()
+                                    if version != currentVersion
+                                    {
+                                        let alert=UIAlertView()
+                                        alert.title="New version available (\(version))"
+                                        alert.addButton(withTitle:"Download")
+                                        alert.addButton(withTitle:"Remind Me Later")
+                                        alert.addButton(withTitle:"Ignore")
+                                        alert.cancelButtonIndex=2
+                                        alert.delegate=self
+                                        alert.show()
+                                    }
                                 }
                             }
                         }
