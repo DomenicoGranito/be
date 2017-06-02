@@ -8,7 +8,7 @@
 
 @UIApplicationMain
 
-class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
+class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, UIAlertViewDelegate
 {
     var shouldRotate=false
     var window: UIWindow?
@@ -19,11 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
     var reachability:Reachability!
     let (appID, appSecret)=Config.shared.weChat()
     
-    //dominicg weixin login wx68aa08d12b601234 dgranito@gmail account
-    //wx282a923ebe81d445 demo account
-    //AppID：wx5bd67c93b16ab684 marie@cedricm.com account
-    //wxa0bd27aed1120e15 testing account login
-        
     var documentsDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
     
     var downloadTable:downloadTableViewControllerDelegate?
@@ -172,6 +167,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
     
     func application(_ application:UIApplication, didFinishLaunchingWithOptions launchOptions:[UIApplicationLaunchOptionsKey:Any]?)->Bool
     {
+        appUpdateAvailable()
+        
         WXApi.registerApp(appID)
         
         reachability=Reachability()
@@ -315,5 +312,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
     func errorAlert()
     {
         SCLAlertView().showSuccess("ERROR", subTitle:"Failed to get response")
+    }
+    
+    func appUpdateAvailable()
+    {
+        let storeInfoURL="http://itunes.apple.com/lookup?bundleId=com.uniprogy.dominic"
+        
+        if let infoDictionary=Bundle.main.infoDictionary
+        {
+            let urlOnAppStore=URL(string:storeInfoURL)
+            
+            if let dataInJSON=NSData(contentsOf:urlOnAppStore!)
+            {
+                if let dict=try! JSONSerialization.jsonObject(with:dataInJSON as Data, options:.allowFragments) as! [String:AnyObject] as NSDictionary?
+                {
+                    if let results:NSArray=dict["results"] as? NSArray
+                    {
+                        if let version=((results[0] as! NSDictionary).value(forKey:"version")!) as? String
+                        {
+                            if let currentVersion=infoDictionary["CFBundleShortVersionString"] as? String
+                            {
+                                if version != currentVersion
+                                {
+                                    let alert=UIAlertView()
+                                    alert.title="New version available (\(version))"
+                                    alert.addButton(withTitle:"Download")
+                                    alert.addButton(withTitle:"Remind Me Later")
+                                    alert.addButton(withTitle:"Ignore")
+                                    alert.cancelButtonIndex=2
+                                    alert.delegate=self
+                                    alert.show()
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func alertView(_ alertView:UIAlertView, clickedButtonAt buttonIndex:Int)
+    {
+        if buttonIndex==0
+        {
+            UIApplication.shared.openURL(URL(string:"itms://itunes.apple.com/app/id")!)
+        }
     }
 }
