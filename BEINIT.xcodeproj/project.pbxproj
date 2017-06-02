@@ -12,9 +12,7 @@
 		3E20216F1D81AB440058DAAD /* CategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E20216E1D81AB440058DAAD /* CategoryRow.swift */; };
 		3E2021711D81ACFF0058DAAD /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2021701D81ACFE0058DAAD /* VideoCell.swift */; };
 		3E2674D61D7453DB00E33DCD /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2674D51D7453DA00E33DCD /* Empty.swift */; };
-		3E2A5A581ED8062800133E1D /* AirPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A5A571ED8062700133E1D /* AirPlay.swift */; };
 		3E2A5A5A1ED80CDC00133E1D /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A5A591ED80CDC00133E1D /* DevicesViewController.swift */; };
-		3E2A5A5C1ED81C2000133E1D /* AirPlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E2A5A5B1ED81C2000133E1D /* AirPlay.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3E2A5A5E1ED8693B00133E1D /* SelectedCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A5A5D1ED8693A00133E1D /* SelectedCellView.swift */; };
 		3E356FA01E843583008FD8B9 /* libCCSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E356F9F1E843580008FD8B9 /* libCCSDK.a */; };
 		3E4B9D461E95E54700B80BA6 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B9D451E95E54700B80BA6 /* FiltersViewController.swift */; };
@@ -223,9 +221,7 @@
 		3E20216E1D81AB440058DAAD /* CategoryRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryRow.swift; sourceTree = "<group>"; };
 		3E2021701D81ACFE0058DAAD /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		3E2674D51D7453DA00E33DCD /* Empty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Empty.swift; path = Streamini/Empty.swift; sourceTree = SOURCE_ROOT; };
-		3E2A5A571ED8062700133E1D /* AirPlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirPlay.swift; sourceTree = "<group>"; };
 		3E2A5A591ED80CDC00133E1D /* DevicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevicesViewController.swift; sourceTree = "<group>"; };
-		3E2A5A5B1ED81C2000133E1D /* AirPlay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AirPlay.framework; sourceTree = "<group>"; };
 		3E2A5A5D1ED8693A00133E1D /* SelectedCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedCellView.swift; sourceTree = "<group>"; };
 		3E356F981E843580008FD8B9 /* DWAdInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWAdInfo.h; path = DWSDK/DWAdInfo.h; sourceTree = "<group>"; };
 		3E356F991E843580008FD8B9 /* DWDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWDownloader.h; path = DWSDK/DWDownloader.h; sourceTree = "<group>"; };
@@ -439,7 +435,6 @@
 			files = (
 				868CBDBF1E5746D600BF14C3 /* libz.1.2.8.tbd in Frameworks */,
 				B67448321E2C7FB40049890F /* MobileCoreServices.framework in Frameworks */,
-				3E2A5A5C1ED81C2000133E1D /* AirPlay.framework in Frameworks */,
 				B66561E31E09884100EDA684 /* libWeChatSDK.a in Frameworks */,
 				B66561EB1E09890600EDA684 /* libz.tbd in Frameworks */,
 				3E356FA01E843583008FD8B9 /* libCCSDK.a in Frameworks */,
@@ -502,7 +497,6 @@
 		786304F139CBAD59E4F652FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3E2A5A5B1ED81C2000133E1D /* AirPlay.framework */,
 				868CBDBE1E5746D500BF14C3 /* libz.1.2.8.tbd */,
 				865C333F1E520459008EA556 /* GameKit.framework */,
 				B67448311E2C7FB30049890F /* MobileCoreServices.framework */,
@@ -750,7 +744,6 @@
 				B77AABE31B398627007DE187 /* RestKitObjC.m */,
 				B77AABE11B398606007DE187 /* Streamini-Bridging-Header.h */,
 				3E642D9D1ECB30C600F598DC /* Reachability.swift */,
-				3E2A5A571ED8062700133E1D /* AirPlay.swift */,
 				B7B0F0931B397E92006FDA5D /* Models */,
 				B7D6F0AF1B37F14D0070C36A /* Controllers */,
 				B7AA93231B3172740005972E /* AppDelegate.swift */,
@@ -1178,7 +1171,6 @@
 				3E79060E1E7FBD6A00257C5B /* iCarousel.m in Sources */,
 				B7D5EA921B564BAA003EE25D /* Message.swift in Sources */,
 				B6D4134D1E141DBE001E8108 /* TabBarViewController.swift in Sources */,
-				3E2A5A581ED8062800133E1D /* AirPlay.swift in Sources */,
 				B67448251E2C63CC0049890F /* SongCell.swift in Sources */,
 				B746FB121B5FC27900DE3534 /* FollowerCell.swift in Sources */,
 				B794ADA21B59560B0069C2A8 /* UIEdgeInsets.swift in Sources */,

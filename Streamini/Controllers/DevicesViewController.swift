@@ -6,8 +6,6 @@
 //  Copyright © 2017 Cedricm Video. All rights reserved.
 //
 
-import AirPlay
-
 class DevicesViewController: UIViewController
 {
     override func viewDidLoad()
