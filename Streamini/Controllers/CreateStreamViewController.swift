@@ -101,6 +101,8 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource
     
     @IBAction func closeButtonPressed()
     {
+        UIApplication.shared.setStatusBarHidden(false, with:.fade)
+        
         self.tabBarController?.selectedIndex=UserDefaults.standard.integer(forKey:"previousTab")
         
         LocationManager.shared.stopMonitoringLocation()
