@@ -41,7 +41,7 @@
 	<key>Wowza</key>
 	<dict>
 		<key>host</key>
-		<string>beinit.live</string>
+		<string>mediastream.com.cn</string>
 		<key>port</key>
 		<string>1935</string>
 		<key>application</key>
@@ -59,9 +59,9 @@
 	<key>Legal</key>
 	<dict>
 		<key>termsOfService</key>
-		<string>http://beinit.in</string>
+		<string>http://beinit.in/terms</string>
 		<key>privacyPolicy</key>
-		<string>http://beinit.in</string>
+		<string>http://beinit.in/policy</string>
 	</dict>
 	<key>API</key>
 	<dict>
