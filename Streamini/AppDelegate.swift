@@ -358,7 +358,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, UIAlertVie
     {
         if buttonIndex==0
         {
-            UIApplication.shared.openURL(URL(string:"itms://itunes.apple.com/app/id")!)
+            UIApplication.shared.openURL(URL(string:"itms://itunes.apple.com/app/1172116075")!)
         }
     }
 }
