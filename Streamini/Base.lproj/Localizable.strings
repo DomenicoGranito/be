@@ -59,7 +59,7 @@
 "w_live_notification" = "%@ is live!";
 "user_card_followers" = "FOLLOWERS";
 "user_card_following" = "FOLLOWING";
-"user_card_recent" = "RECENT";
+"user_card_recent" = "VIDEOS";
 "user_card_follow" = "Follow";
 "user_card_unfollow" = "Unfollow";
 "user_card_block" = "Block";
