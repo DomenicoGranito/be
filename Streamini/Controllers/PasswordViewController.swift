@@ -28,13 +28,6 @@ class PasswordViewController: BaseViewController
         imageView3?.tintColor=UIColor.darkGray
     }
     
-    override func viewWillAppear(_ animated:Bool)
-    {
-        currentPassword.text=""
-        newPassword.text=""
-        confirmPassword.text=""
-    }
-    
     @IBAction func doneButtonPressed()
     {
         if let _=A0SimpleKeychain().string(forKey:"password")
@@ -67,6 +60,12 @@ class PasswordViewController: BaseViewController
     func passwordFailure(error:NSError)
     {
         handleError(error)
+    }
+    
+    func textFieldShouldReturn(_ textField:UITextField)->Bool
+    {
+        textField.resignFirstResponder()
+        return true
     }
     
     func textFieldShouldBeginEditing(_ textField:UITextField)->Bool
