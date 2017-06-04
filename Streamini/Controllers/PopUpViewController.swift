@@ -14,7 +14,7 @@ class PopUpViewController: BaseViewController
     let menuItemIconsArray:NSMutableArray=["upload", "upload", "share", "report", "add", "block"]
     
     var stream:Stream?
-    let (host, _, _, _, _)=Config.shared.wowza()
+    let site=Config.shared.site()
     var videoImage:UIImage!
     
     override func viewDidLoad()
@@ -25,7 +25,7 @@ class PopUpViewController: BaseViewController
             menuItemIconsArray.replaceObject(at:4, with:"time.png")
         }
         
-        backgroundImageView?.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream!.id).jpg"))
+        backgroundImageView?.sd_setImage(with:URL(string:"\(site)/thumb/\(stream!.id).jpg"))
     }
     
     @IBAction func closeButtonPressed()
@@ -58,7 +58,7 @@ class PopUpViewController: BaseViewController
             
             cell.videoTitleLbl?.text=stream?.title
             cell.artistNameLbl?.text=stream?.user.name
-            cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream!.id).jpg"))
+            cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"\(site)/thumb/\(stream!.id).jpg"))
             
             videoImage=cell.videoThumbnailImageView?.image
             
