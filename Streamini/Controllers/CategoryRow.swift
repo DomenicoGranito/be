@@ -11,7 +11,7 @@ class CategoryRow: UITableViewCell
     @IBOutlet var collectionView:UICollectionView?
     var oneCategoryItemsArray:NSArray!
     var TBVC:TabBarViewController!
-    let (host, _, _, _, _)=Config.shared.wowza()
+    let site=Config.shared.site()
     var cellIdentifier:String?
     var sectionTitle:String?
     let storyboard=UIStoryboard(name:"Main", bundle:nil)
@@ -37,7 +37,7 @@ class CategoryRow: UITableViewCell
         if cellIdentifier=="videoCell"
         {
             cell.followersCountLbl?.text=stream.user.name
-            cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream.id).jpg"), placeholderImage:UIImage(named:"videostream"))
+            cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"\(site)/thumb/\(stream.id).jpg"), placeholderImage:UIImage(named:"videostream"))
             
             if sectionTitle=="live"
             {
@@ -58,7 +58,7 @@ class CategoryRow: UITableViewCell
             {
                 cell.videoTitleLbl?.isHidden=true
                 cell.followersCountLbl?.isHidden=true
-                cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream.id).jpg"), placeholderImage:UIImage(named:"videostream"))
+                cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"\(site)/thumb/\(stream.id).jpg"), placeholderImage:UIImage(named:"videostream"))
             }
             else
             {

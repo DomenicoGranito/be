@@ -119,7 +119,7 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         else
         {
             let data=UIImageJPEGRepresentation(image, 1.0)!
-            UserConnector().uploadAvatar(filename, data as NSData, uploadAvatarSuccess, uploadAvatarFailure, {(bytesSent, totalBytesSent, totalBytesExpectedToSend)->Void in
+            UserConnector().uploadAvatar(filename, data, uploadAvatarSuccess, uploadAvatarFailure, {(bytesSent, totalBytesSent, totalBytesExpectedToSend)->Void in
                     //let progress: Float = Float(totalBytesSent)/Float(totalBytesExpectedToSend)
                     //self.userHeaderView.progressView.setProgress(progress, animated: true)
             })

@@ -28,7 +28,7 @@ class MyLibViewController: UIViewController
     
     var recentlyPlayed:[NSManagedObject]?
     var TBVC:TabBarViewController!
-    let (host, _, _, _, _)=Config.shared.wowza()
+    let site=Config.shared.site()
     
     override func viewWillAppear(_ animated:Bool)
     {
@@ -99,7 +99,7 @@ class MyLibViewController: UIViewController
             
             cell.videoTitleLbl?.text=recentlyPlayed![indexPath.row-4].value(forKey:"streamTitle") as? String
             cell.artistNameLbl?.text=recentlyPlayed![indexPath.row-4].value(forKey:"streamUserName") as? String
-            cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"http://\(host)/thumb/\(recentlyPlayed![indexPath.row-4].value(forKey:"streamID") as! Int).jpg"), placeholderImage:UIImage(named:"stream"))
+            cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"\(site)/thumb/\(recentlyPlayed![indexPath.row-4].value(forKey:"streamID") as! Int).jpg"), placeholderImage:UIImage(named:"stream"))
             
             cell.selectedBackgroundView=SelectedCellView().create()
             

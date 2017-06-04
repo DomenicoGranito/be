@@ -287,9 +287,9 @@ class DiscoverViewController: UIViewController
     {
         DispatchQueue.global().async
             {
-                let (host, _, _, _, _)=Config.shared.wowza()
+                let site=Config.shared.site()
                 let stream=self.featuredStreamsArray[0] as! Stream
-                let url=URL(string:"http://\(host)/thumb/\(stream.id).jpg")
+                let url=URL(string:"\(site)/thumb/\(stream.id).jpg")
                 let data=try! Data(contentsOf:url!)
                 
                 DispatchQueue.main.async(execute:

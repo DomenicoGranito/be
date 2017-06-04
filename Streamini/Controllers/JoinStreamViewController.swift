@@ -7,7 +7,8 @@
 //
 
 class JoinStreamViewController: BaseViewController, UITextFieldDelegate, UITableViewDelegate, UIAlertViewDelegate,
-UIActionSheetDelegate, SelectFollowersDelegate, ReplayViewDelegate, UserSelecting, CollectionViewPullDelegate {
+UIActionSheetDelegate, SelectFollowersDelegate, ReplayViewDelegate, UserSelecting, CollectionViewPullDelegate
+{
     @IBOutlet weak var infoView: InfoView!
     
     @IBOutlet weak var playerView: PlayerView!
@@ -53,8 +54,6 @@ UIActionSheetDelegate, SelectFollowersDelegate, ReplayViewDelegate, UserSelectin
     var textViewHandler: GrowingTextViewHandler?
     
     var page: UInt = 0
-    
-    // MARK: - Actions
     
     @IBAction func closeButtonPressed(_ sender: AnyObject) {
         closeButton.isEnabled = false
@@ -249,8 +248,6 @@ UIActionSheetDelegate, SelectFollowersDelegate, ReplayViewDelegate, UserSelectin
         viewersDataSource.viewers = users
         
         self.viewersCollectionView.reloadData()
-        
-        
     }
     
     func moreViewersSuccess(_ likes: UInt, viewers: UInt, users: [User]) {
@@ -367,15 +364,13 @@ UIActionSheetDelegate, SelectFollowersDelegate, ReplayViewDelegate, UserSelectin
         }
     }
     
-    // MARK: - UserSelecting protocol
-    
-    func userDidSelected(_ user: User) {
+    func userDidSelected(_ user:User)
+    {
         //self.showUserInfo(user, userStatusDelegate: nil)
     }
     
-    // MARK: - View life cycle
-    
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         configureView()
 

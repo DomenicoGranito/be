@@ -23,6 +23,7 @@ class CategoriesViewController: BaseViewController
     let maxHeaderHeight:CGFloat=220.0
     let minHeaderHeight:CGFloat=100.0
     var previousScrollOffset:CGFloat=0.0
+    let site=Config.shared.site()
     
     override func viewDidLoad()
     {
@@ -36,7 +37,7 @@ class CategoriesViewController: BaseViewController
         
         StreamConnector().categoryStreams(categoryID!, page, successStreams, failureStream)
         
-        topImageView?.sd_setImage(with:URL(string:"http://beinit.live/media/bg_\(categoryID!).png"))
+        topImageView?.sd_setImage(with:URL(string:"\(site)/media/bg_\(categoryID!).png"))
     }
     
     func scrollViewDidScroll(_ scrollView:UIScrollView)

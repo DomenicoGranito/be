@@ -14,7 +14,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     @IBOutlet var itemsTbl:UITableView!
     
     var sectionTitlesArray=NSMutableArray(array:["NOW PLAYING", "UP NEXT ON SHUFFLE"])
-    let (host, _, _, _, _)=Config.shared.wowza()
+    let site=Config.shared.site()
     var selectedStreamsArray=NSMutableArray()
     var upNextStreamsArray=NSMutableArray()
     var streamsArray=NSMutableArray()
@@ -27,7 +27,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         
         streamsArray.removeObject(at:nowPlayingStreamIndex)
         
-        backgroundImageView.sd_setImage(with:URL(string:"http://\(host)/thumb/\(nowPlayingStream.id).jpg"))
+        backgroundImageView.sd_setImage(with:URL(string:"\(site)/thumb/\(nowPlayingStream.id).jpg"))
         
         headerTitleLbl.text=nowPlayingStream.title
         
@@ -95,7 +95,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
             
             cell.streamNameLabel.text=nowPlayingStream.title
             cell.userLabel.text=nowPlayingStream.user.name
-            cell.playImageView.sd_setImage(with:URL(string:"http://\(host)/thumb/\(nowPlayingStream.id).jpg"), placeholderImage:UIImage(named:"stream"))
+            cell.playImageView.sd_setImage(with:URL(string:"\(site)/thumb/\(nowPlayingStream.id).jpg"), placeholderImage:UIImage(named:"stream"))
             cell.dotsButton?.addTarget(self, action:#selector(dotsButtonTapped), for:.touchUpInside)
             
             return cell

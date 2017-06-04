@@ -148,7 +148,7 @@ class UserConnector: Connector
         })
     }
     
-    func uploadAvatar(_ filename: String, _ data: NSData, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> (), _ progress: @escaping ((UInt, Int64, Int64) -> Void)) {
+    func uploadAvatar(_ filename: String, _ data:Data, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> (), _ progress: @escaping ((UInt, Int64, Int64) -> Void)) {
         let path = "user/avatar"
         
         let request =

@@ -21,7 +21,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     
     var animator:ARNTransitionAnimator!
     var modalVC:ModalViewController!
-    let (host, _, _, _, _)=Config.shared.wowza()
+    let site=Config.shared.site()
     
     override func viewDidLoad()
     {
@@ -35,6 +35,10 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         
         NotificationCenter.default.addObserver(self, selector:#selector(goToChannels), name:Notification.Name("goToChannels"), object:nil)
         NotificationCenter.default.addObserver(self, selector:#selector(hideMiniPlayer), name:Notification.Name("hideMiniPlayer"), object:nil)
+        
+        var tabBarItems=self.tabBar.items
+        
+        tabBarItems?[2].isEnabled=false
     }
     
     @IBAction func play()
@@ -82,8 +86,8 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         
         videoTitleLbl.text=stream.title
         videoArtistLbl.text=stream.user.name
-        videoThumbnailImageView.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream.id).jpg"), placeholderImage:UIImage(named:"stream"))
-        backgroundImageView.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream.id).jpg"))
+        videoThumbnailImageView.sd_setImage(with:URL(string:"\(site)/thumb/\(stream.id).jpg"), placeholderImage:UIImage(named:"stream"))
+        backgroundImageView.sd_setImage(with:URL(string:"\(site)/thumb/\(stream.id).jpg"))
     }
     
     func configure(_ stream:Stream)

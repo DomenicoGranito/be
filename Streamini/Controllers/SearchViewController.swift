@@ -96,7 +96,7 @@ class SearchViewController: UIViewController
         {
             let sectionTitle=sectionTitlesArray[indexPath.section] as! String
             
-            if sectionTitle=="streams"
+            if sectionTitle=="videos"
             {
                 return indexPath.row<4 ? 80 : 40
             }
@@ -197,7 +197,7 @@ class SearchViewController: UIViewController
         {
             let sectionTitle=sectionTitlesArray[indexPath.section] as! String
             
-            if sectionTitle=="streams"
+            if sectionTitle=="videos"
             {
                 if indexPath.row<4
                 {
@@ -295,7 +295,7 @@ class SearchViewController: UIViewController
         {
             let sectionTitle=sectionTitlesArray[indexPath.section] as! String
             
-            if sectionTitle=="streams"
+            if sectionTitle=="videos"
             {
                 if indexPath.row<4
                 {
@@ -383,7 +383,7 @@ class SearchViewController: UIViewController
         }
         if streams.count>0
         {
-            sectionTitlesArray.add("streams")
+            sectionTitlesArray.add("videos")
             self.streams=streams
         }
         

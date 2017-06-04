@@ -15,10 +15,10 @@ class RecentStreamCell: StreamCell
     
     override func update(_ stream:Stream)
     {
-        let (host, _, _, _, _)=Config.shared.wowza()
+        let site=Config.shared.site()
         
         super.update(stream)
-        playImageView.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream.id).jpg"), placeholderImage:UIImage(named:"stream"))
+        playImageView.sd_setImage(with:URL(string:"\(site)/thumb/\(stream.id).jpg"), placeholderImage:UIImage(named:"stream"))
         userLabel.text=stream.user.name
         streamNameLabel.text=stream.title
     }

@@ -11,7 +11,7 @@ class VideosViewController: UIViewController
     var vType:Int!
     var TBVC:TabBarViewController!
     var favouriteStreams:[NSManagedObject]?
-    let (host, _, _, _, _)=Config.shared.wowza()
+    let site=Config.shared.site()
     
     override func viewDidLoad()
     {
@@ -36,7 +36,7 @@ class VideosViewController: UIViewController
         
         cell.streamNameLabel?.text=favouriteStreams![indexPath.row].value(forKey: "streamTitle") as? String
         cell.userLabel?.text=favouriteStreams![indexPath.row].value(forKey: "streamUserName") as? String
-        cell.playImageView?.sd_setImage(with:URL(string:"http://\(host)/thumb/\(favouriteStreams![indexPath.row].value(forKey:"streamID") as! Int).jpg"), placeholderImage:UIImage(named:"stream"))
+        cell.playImageView?.sd_setImage(with:URL(string:"\(site)/thumb/\(favouriteStreams![indexPath.row].value(forKey:"streamID") as! Int).jpg"), placeholderImage:UIImage(named:"stream"))
         
         cell.dotsButton?.tag=indexPath.row
         cell.dotsButton?.addTarget(self, action:#selector(dotsButtonTapped), for:.touchUpInside)

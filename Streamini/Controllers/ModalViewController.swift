@@ -32,7 +32,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     var player:DWMoviePlayerController?
     var stream:Stream?
     var streamsArray:NSArray?
-    let (host, port, _, _, _)=Config.shared.wowza()
+    let site=Config.shared.site()
     var videoIDs:[String]=[]
     var timer:Timer?
     var selectedItemIndex=0
@@ -152,7 +152,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     func updatePlayerWithStream()
     {
-        backgroundImageView?.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream!.id).jpg"))
+        backgroundImageView?.sd_setImage(with:URL(string:"\(site)/thumb/\(stream!.id).jpg"))
         
         headerTitleLbl?.text=stream?.title
         videoTitleLbl?.text=stream?.title
@@ -277,7 +277,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         
         let thumbnailView=UIImageView(frame:CGRect(x:0, y:0, width:self.view.frame.size.width, height:self.view.frame.size.width-140))
         thumbnailView.backgroundColor=UIColor.darkGray
-        thumbnailView.sd_setImage(with:URL(string:"http://\(host)/thumb/\(stream!.id).jpg"))
+        thumbnailView.sd_setImage(with:URL(string:"\(site)/thumb/\(stream!.id).jpg"))
         
         return thumbnailView
     }

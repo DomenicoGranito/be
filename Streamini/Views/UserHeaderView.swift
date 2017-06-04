@@ -93,7 +93,8 @@ class UserHeaderView: UIView, UITextViewDelegate {
         }
     }
     
-    func updateAvatar(_ user: User, placeholder: UIImage) {
+    func updateAvatar(_ user: User, placeholder: UIImage)
+    {
         // Change image in UIImageView
         UIView.animate(withDuration: 0.15, animations: { () -> Void in
             self.userImageView.alpha = 0.0

@@ -43,6 +43,6 @@ extension User {
     {
         let site=Config.shared.site()
         
-        return URL(string:"\(site)/uploads/\(self.id)-avatar.png")!
+        return URL(string:"\(site)/uploads/\(self.id)-avatar.jpg")!
     }
 }

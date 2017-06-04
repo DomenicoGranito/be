@@ -1402,7 +1402,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Streamini/Streamini.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_HEADERS_RUN_UNIFDEF = NO;
 				DEVELOPMENT_TEAM = G88EVHJ24D;
 				ENABLE_BITCODE = NO;
@@ -1445,8 +1445,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.uniprogy.dominic;
 				PRODUCT_NAME = Streamini;
-				PROVISIONING_PROFILE = "aae76422-2ef0-4c19-884f-740e038fb033";
-				PROVISIONING_PROFILE_SPECIFIER = "Be Init Development";
+				PROVISIONING_PROFILE = "4e8bcc88-c3df-4c8c-af7e-b591443f7af7";
+				PROVISIONING_PROFILE_SPECIFIER = "XC iOS: com.uniprogy.dominic";
 				SWIFT_OBJC_BRIDGING_HEADER = "Streamini/Streamini-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

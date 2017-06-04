@@ -124,23 +124,18 @@ class LiveStreamViewController: BaseViewController, UserSelecting, UserStatusDel
         }*/
     }
     
-    func viewersFailure(_ error: NSError) {
+    func viewersFailure(_ error:NSError)
+    {
         handleError(error)
     }
-    
-    // MARK: - Handle notifications
     
     func forceClose(_ notification: NSNotification) {
         StreamConnector().close(stream!.id, closeStreamSilentSuccess, closeStreamFailure)
     }
     
-    // MARK: - UserSelecting protocol
-    
     func userDidSelected(_ user: User) {
         //self.showUserInfo(user, userStatusDelegate: self)
     }
-    
-    // MARK: - UserStatusDelegae
     
     func blockStatusDidChange(_ status: Bool, user: User) {
         if status {
@@ -208,7 +203,8 @@ class LiveStreamViewController: BaseViewController, UserSelecting, UserStatusDel
         infoView.userSelectingDelegate = self
     }    
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         configureView()
         

@@ -65,7 +65,8 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource
         }
         
         connectingIndicator.startAnimating()
-        goLiveButton.isHidden = true
+        connectingLabel.isHidden=false
+        goLiveButton.isHidden=true
         
         if AmazonTool.isAmazonSupported() {
             StreamConnector().create(data, createStreamSuccess, createStreamFailure)
@@ -144,9 +145,9 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource
 //            WXApi.sendReq(req)
 //        }
 
-        let twitter = SocialToolFactory.getSocial("Twitter")!
-        let url = "\(Config.shared.twitter().tweetURL)/\(stream.streamHash)/\(stream.id)"
-        twitter.post(user!.name, live: URL(string: url)!)
+        //let twitter = SocialToolFactory.getSocial("Twitter")!
+        //let url = "\(Config.shared.twitter().tweetURL)/\(stream.streamHash)/\(stream.id)"
+        //twitter.post(user!.name, live: URL(string: url)!)
         
         self.performSegue(withIdentifier:"CreateStreamToLiveStream", sender:self)
     }
@@ -155,7 +156,8 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource
     {
         handleError(error)
         connectingIndicator.stopAnimating()
-        goLiveButton.isHidden = false
+        connectingLabel.isHidden=true
+        goLiveButton.isHidden=false
     }
     
     func categoriesSuccess(_ cats:[Category])
@@ -187,9 +189,8 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource
         self.view.layoutIfNeeded()
     }
     
-    // MARK: - View life cycle
-    
-    func configureView() {
+    func configureView()
+    {
         // Configure "go live" button
         let goLiveButtonText = NSLocalizedString("go_live_button", comment: "")
         goLiveButton.setTitle(goLiveButtonText, for: UIControlState.normal)
@@ -250,20 +251,19 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource
         LocationManager.shared.delegate = self
         LocationManager.shared.startMonitoringLocation()
         
-        nameTextView.becomeFirstResponder()
-        
         StreamConnector().categories(categoriesSuccess, categoriesFailure)
     }
     
     override func viewWillAppear(_ animated:Bool)
     {
-        self.tabBarController?.hidesBottomBarWhenPushed = true
-        self.navigationController!.setNavigationBarHidden(true, animated: false)
+        nameTextView.becomeFirstResponder()
+        
+        self.navigationController!.setNavigationBarHidden(true, animated:false)
         (tabBarController as! TabBarViewController).miniPlayerView.isHidden=true
         super.viewWillAppear(animated)
         keyboardHandler!.register()
         
-        UIApplication.shared.setStatusBarHidden(true, with:.fade)
+        UIApplication.shared.setStatusBarHidden(true, with:.none)
         
 //        user=UserContainer.shared.logged()
 //        
@@ -273,24 +273,22 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource
 //        }
     }
     
-    override func viewDidAppear(_ animated: Bool)
+    override func viewDidAppear(_ animated:Bool)
     {
-        super.viewDidAppear(animated)
         camera.setup(previewView)
         darkPreviewView.layer.addDarkGradientLayer()
     }
     
     override func viewWillDisappear(_ animated:Bool)
     {
-        super.viewWillDisappear(animated)
         keyboardHandler!.unregister()
     }
     
     override func viewDidDisappear(_ animated:Bool)
     {
-        super.viewDidDisappear(animated)
         connectingIndicator.stopAnimating()
-        goLiveButton.isHidden = false
+        connectingLabel.isHidden=true
+        goLiveButton.isHidden=false
     }
     
     override func prepare(for segue:UIStoryboardSegue, sender:Any?)
@@ -377,7 +375,7 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource
     
     func categoryTapped(_ sender:UITapGestureRecognizer)
     {
-        self.nameTextView.resignFirstResponder()
+        nameTextView.resignFirstResponder()
         UIView.animate(withDuration: 0.1, animations: { () -> Void in
             self.categoryPickerConstraint.constant = 0.0
             self.goLiveButtonBottom.constant = 216.0 + 10.0

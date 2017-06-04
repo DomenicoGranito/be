@@ -11,6 +11,7 @@ class AllCategoryRow: UITableViewCell
     @IBOutlet var collectionView:UICollectionView?
     var sectionItemsArray:NSArray!
     var navigationControllerReference:UINavigationController?
+    let site=Config.shared.site()
     
     func reloadCollectionView()
     {
@@ -29,8 +30,8 @@ class AllCategoryRow: UITableViewCell
         let category=sectionItemsArray[indexPath.row] as! Category
         
         cell.videoTitleLbl?.text=category.name
-        cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"http://beinit.live/media/bg_\(category.id).png"))
-        cell.iconImageView?.sd_setImage(with:URL(string:"http://beinit.live/media/icon_\(category.id).png"))
+        cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"\(site)/media/bg_\(category.id).png"))
+        cell.iconImageView?.sd_setImage(with:URL(string:"\(site)/media/icon_\(category.id).png"))
         
         let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
         cell.tag=indexPath.row
