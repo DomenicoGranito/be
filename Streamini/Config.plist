@@ -59,9 +59,9 @@
 	<key>Legal</key>
 	<dict>
 		<key>termsOfService</key>
-		<string>http://beinit.in/terms</string>
+		<string>http://beinit.live/terms</string>
 		<key>privacyPolicy</key>
-		<string>http://beinit.in/policy</string>
+		<string>http://beinit.live/privacy</string>
 	</dict>
 	<key>API</key>
 	<dict>
