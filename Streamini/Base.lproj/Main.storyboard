@@ -1989,10 +1989,12 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5M-aN-R91">
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="UJr-rd-nkF"/>
                                             <constraint firstAttribute="height" constant="80" id="d3e-md-9ej"/>
                                         </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <action selector="avatarButtonPressed" destination="1MS-UY-meQ" eventType="touchUpInside" id="RMb-Jl-cdJ"/>
                                         </connections>

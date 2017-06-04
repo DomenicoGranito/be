@@ -9,10 +9,10 @@
 class PeopleViewController: BaseViewController, UserSelecting, ProfileDelegate, UISearchBarDelegate, UserStatusDelegate
 {
     var dataSource: PeopleDataSource?
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var searchBarTop: NSLayoutConstraint!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var emptyLabel: UILabel!
+    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var searchBarTop: NSLayoutConstraint!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var emptyLabel: UILabel!
     
     var isSearchMode=true
     

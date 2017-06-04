@@ -58,18 +58,18 @@ class UserHeaderView: UIView, UITextViewDelegate {
             
             if WeChatLogin=="1"
             {
-                userImageView.sd_setImage(with:URL(string:A0SimpleKeychain().string(forKey:"headimgurl")!))
+                userImageView.sd_setImage(with:URL(string:A0SimpleKeychain().string(forKey:"headimgurl")!), placeholderImage:UIImage(named:"profile"))
                 usernameLabel.text=A0SimpleKeychain().string(forKey:"nickname")
             }
             else
             {
-                userImageView.sd_setImage(with:user.avatarURL())
+                userImageView.sd_setImage(with:user.avatarURL(), placeholderImage:UIImage(named:"profile"))
                 usernameLabel.text=user.name
             }
         }
         else
         {
-            userImageView.sd_setImage(with:user.avatarURL())
+            userImageView.sd_setImage(with:user.avatarURL(), placeholderImage:UIImage(named:"profile"))
             usernameLabel.text=user.name
         }
         

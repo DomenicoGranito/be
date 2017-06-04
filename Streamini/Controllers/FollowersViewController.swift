@@ -61,8 +61,6 @@ class FollowersViewController: BaseViewController, UISearchBarDelegate, UserSele
         navigationController?.pushViewController(vc, animated:true)
     }
     
-    // MARK: - View life cycle
-    
     func configureView() {
         self.navigationController!.navigationBar.tintColor = UIColor.white
         self.title = NSLocalizedString("select_followers_title", comment: "")

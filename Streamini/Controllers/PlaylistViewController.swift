@@ -54,7 +54,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         titleLbl.textColor=UIColor.white
         
         let lineView=UIView(frame:CGRect(x:10, y:29.5, width:tableView.frame.size.width-20, height:0.5))
-        lineView.backgroundColor=UIColor(colorLiteralRed:37/255, green:36/255, blue:41/255, alpha:1)
+        lineView.backgroundColor=UIColor(red:37/255, green:36/255, blue:41/255, alpha:1)
         
         headerView.addSubview(titleLbl)
         headerView.addSubview(lineView)
