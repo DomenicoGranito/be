@@ -1523,9 +1523,6 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="qGe-1L-4Ie">
-                        <barButtonItem key="backBarButtonItem" title=" " id="f3G-hJ-NUj"/>
-                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="480"/>
                     <connections>
@@ -5268,7 +5265,9 @@
                             <constraint firstItem="ATH-NP-Kdb" firstAttribute="leading" secondItem="Az6-iB-UUE" secondAttribute="leading" id="zMI-PY-0Hv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="4E9-WN-2rI"/>
+                    <navigationItem key="navigationItem" id="4E9-WN-2rI">
+                        <barButtonItem key="backBarButtonItem" title=" " id="xhi-Ee-QRa"/>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="480"/>
                     <connections>
