@@ -34,7 +34,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>weixin</string>
@@ -56,13 +56,8 @@
 	<string>Allow user photo </string>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>audio</string>
-		<string>bluetooth-central</string>
-		<string>external-accessory</string>
 		<string>fetch</string>
-		<string>location</string>
 		<string>remote-notification</string>
-		<string>voip</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
