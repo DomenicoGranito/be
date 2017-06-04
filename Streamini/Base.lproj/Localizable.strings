@@ -80,8 +80,8 @@
 "profile_share" = "Share";
 "profile_share_message" = "Streamini is awesome!";
 "profile_feedback" = "Feedback";
-"profile_terms" = "Terms of Service";
-"profile_privacy" = "Privacy Policy";
+"profile_terms" = "TERMS OF SERVICE";
+"profile_privacy" = "PRIVACY POLICY";
 "profile_logout" = "Logout";
 "feedback_title" = "Feedback";
 "mail_unavailable_error_alert_title" = "Can't send emails";

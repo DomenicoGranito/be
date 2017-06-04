@@ -18,6 +18,8 @@ class RegisterViewController: BaseViewController
     @IBOutlet var passwordBackgroundView:UIView?
     @IBOutlet var usernameBackgroundView:UIView?
     
+    let storyBoard=UIStoryboard(name:"Main", bundle:nil)
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -28,6 +30,11 @@ class RegisterViewController: BaseViewController
         usernameImageView?.tintColor=UIColor.darkGray
         passwordImageView?.tintColor=UIColor.darkGray
         emailImageView?.tintColor=UIColor.darkGray
+    }
+    
+    override func viewWillAppear(_ animated:Bool)
+    {
+        navigationController?.isNavigationBarHidden=true
     }
     
     @IBAction func register()
@@ -61,8 +68,7 @@ class RegisterViewController: BaseViewController
         A0SimpleKeychain().setString(session, forKey:"PHPSESSID")
         A0SimpleKeychain().setString("0", forKey:"WeChatLogin")
         
-        let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewController(withIdentifier: "TabBarViewController")
+        let vc=storyBoard.instantiateViewController(withIdentifier: "TabBarViewController")
         navigationController?.pushViewController(vc, animated:true)
     }
     
@@ -73,14 +79,16 @@ class RegisterViewController: BaseViewController
     
     @IBAction func seeTermsAndConditions()
     {
-        let alertView=UIAlertView.notAuthorizedAlert("Terms and Condition text here")
-        alertView.show()
+        let vc=storyBoard.instantiateViewController(withIdentifier:"LegalViewController") as! LegalViewController
+        vc.type=LegalViewControllerType(rawValue:0)!
+        navigationController?.pushViewController(vc, animated:true)
     }
     
     @IBAction func seePrivacyPolicy()
     {
-        let alertView=UIAlertView.notAuthorizedAlert("Privacy Policy text here")
-        alertView.show()
+        let vc=storyBoard.instantiateViewController(withIdentifier:"LegalViewController") as! LegalViewController
+        vc.type=LegalViewControllerType(rawValue:1)!
+        navigationController?.pushViewController(vc, animated:true)
     }
     
     @IBAction func back()

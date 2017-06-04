@@ -20,6 +20,8 @@ class LegalViewController: BaseViewController, UIWebViewDelegate
     
     override func viewDidLoad()
     {
+        navigationController?.isNavigationBarHidden=false
+        
         let urlString:String
         
         switch type!

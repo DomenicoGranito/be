@@ -1478,7 +1478,7 @@
         <!--Legal View Controller-->
         <scene sceneID="9Qh-Ld-wbl">
             <objects>
-                <viewController id="plk-1K-f5C" customClass="LegalViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LegalViewController" id="plk-1K-f5C" customClass="LegalViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fWw-0u-Ihw"/>
                         <viewControllerLayoutGuide type="bottom" id="3dW-Yq-82U"/>
@@ -1489,6 +1489,7 @@
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gq7-CP-bHc">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="delegate" destination="plk-1K-f5C" id="lGX-OW-pzN"/>
                                 </connections>
@@ -1498,7 +1499,7 @@
                         <constraints>
                             <constraint firstItem="3dW-Yq-82U" firstAttribute="top" secondItem="Gq7-CP-bHc" secondAttribute="bottom" id="1ZO-Pq-7SQ"/>
                             <constraint firstItem="Gq7-CP-bHc" firstAttribute="leading" secondItem="GDV-s7-kFy" secondAttribute="leading" id="TdI-US-bS7"/>
-                            <constraint firstItem="Gq7-CP-bHc" firstAttribute="top" secondItem="fWw-0u-Ihw" secondAttribute="bottom" id="dcc-Ph-MD0"/>
+                            <constraint firstItem="Gq7-CP-bHc" firstAttribute="top" secondItem="fWw-0u-Ihw" secondAttribute="bottom" id="dk7-ab-bcR"/>
                             <constraint firstAttribute="trailing" secondItem="Gq7-CP-bHc" secondAttribute="trailing" id="o5m-aA-SUO"/>
                         </constraints>
                         <variation key="default">
@@ -1506,10 +1507,9 @@
                                 <exclude reference="Gq7-CP-bHc"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="1ZO-Pq-7SQ"/>
                                 <exclude reference="TdI-US-bS7"/>
-                                <exclude reference="dcc-Ph-MD0"/>
                                 <exclude reference="o5m-aA-SUO"/>
+                                <exclude reference="1ZO-Pq-7SQ"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1517,13 +1517,15 @@
                                 <include reference="Gq7-CP-bHc"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="1ZO-Pq-7SQ"/>
                                 <include reference="TdI-US-bS7"/>
-                                <include reference="dcc-Ph-MD0"/>
                                 <include reference="o5m-aA-SUO"/>
+                                <include reference="1ZO-Pq-7SQ"/>
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="qGe-1L-4Ie">
+                        <barButtonItem key="backBarButtonItem" title=" " id="f3G-hJ-NUj"/>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="480"/>
                     <connections>
@@ -8089,7 +8091,9 @@
                         </sections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="ABOUT" id="l9h-jO-yE1"/>
+                    <navigationItem key="navigationItem" title="ABOUT" id="l9h-jO-yE1">
+                        <barButtonItem key="backBarButtonItem" title=" " id="zen-tG-wz0"/>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="480"/>
                     <connections>
