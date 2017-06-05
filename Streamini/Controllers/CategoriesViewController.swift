@@ -12,7 +12,6 @@ class CategoriesViewController: BaseViewController
     @IBOutlet var headerLbl:UILabel?
     @IBOutlet var topImageView:UIImageView?
     @IBOutlet var shufflePlayButton:UIButton!
-    @IBOutlet var headerHeightConstraint:NSLayoutConstraint!
     
     var allItemsArray=NSMutableArray()
     var streamsArray=NSMutableArray()
@@ -24,6 +23,7 @@ class CategoriesViewController: BaseViewController
     let minHeaderHeight:CGFloat=100.0
     var previousScrollOffset:CGFloat=0.0
     let site=Config.shared.site()
+    var headerView:UIView!
     
     override func viewDidLoad()
     {
@@ -38,45 +38,33 @@ class CategoriesViewController: BaseViewController
         StreamConnector().categoryStreams(categoryID!, page, successStreams, failureStream)
         
         topImageView?.sd_setImage(with:URL(string:"\(site)/media/bg_\(categoryID!).png"))
+        
+        headerView=itemsTbl?.tableHeaderView
+        itemsTbl?.tableHeaderView=nil
+        itemsTbl?.addSubview(headerView)
+        
+        itemsTbl?.contentInset=UIEdgeInsetsMake(219, 0, 0, 0)
+        itemsTbl?.contentOffset=CGPoint(x:0, y:-219)
+        
+        updateHeaderView()
+    }
+    
+    func updateHeaderView()
+    {
+        var headerRect=CGRect(x:0, y:-219, width:view.bounds.width, height:219)
+        
+        if itemsTbl!.contentOffset.y < -219
+        {
+            headerRect.origin.y=itemsTbl!.contentOffset.y
+            headerRect.size.height = -itemsTbl!.contentOffset.y
+        }
+        
+        headerView.frame=headerRect
     }
     
     func scrollViewDidScroll(_ scrollView:UIScrollView)
     {
-        let scrollDiff=scrollView.contentOffset.y-previousScrollOffset
-        
-        let absoluteTop:CGFloat=0
-        let absoluteBottom:CGFloat=scrollView.contentSize.height-scrollView.frame.size.height
-        
-        let isScrollingDown=scrollDiff>0&&scrollView.contentOffset.y>absoluteTop
-        let isScrollingUp=scrollDiff<0&&scrollView.contentOffset.y<absoluteBottom
-        
-        var newHeight=headerHeightConstraint.constant
-        
-        if isScrollingDown
-        {
-            newHeight=max(minHeaderHeight, newHeight-abs(scrollDiff))
-        }
-        else if isScrollingUp
-        {
-            newHeight=min(maxHeaderHeight, newHeight+abs(scrollDiff))
-        }
-        
-        if newHeight != headerHeightConstraint.constant
-        {
-            headerHeightConstraint.constant=newHeight
-            updateHeader()
-        }
-        
-        previousScrollOffset=scrollView.contentOffset.y
-    }
-    
-    func updateHeader()
-    {
-        let range=maxHeaderHeight-minHeaderHeight
-        let openAmount=headerHeightConstraint.constant-minHeaderHeight
-        let percentage=openAmount/range
-        
-        topImageView?.alpha=percentage
+        updateHeaderView()
     }
     
     func fetchMore()
@@ -91,7 +79,7 @@ class CategoriesViewController: BaseViewController
         
         return width+75
     }
-
+    
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
         return allItemsArray.count
