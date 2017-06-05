@@ -20,6 +20,7 @@
 #import "WXApi.h"
 #import "iCarousel.h"
 #import "DWSDK.h"
+#import "GSKStretchyHeaderView.h"
 
 //#import <SwiftFilePath/SwiftFilePath.h>
 

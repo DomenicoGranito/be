@@ -12,5 +12,5 @@ target "Streamini" do
 	pod 'PubNub', '~> 3.7.11'
 	pod 'MZFormSheetController'
     pod 'DGActivityIndicatorView'
-    
+    pod 'GSKStretchyHeaderView'
 end

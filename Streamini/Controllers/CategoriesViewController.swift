@@ -12,6 +12,7 @@ class CategoriesViewController: BaseViewController
     @IBOutlet var headerLbl:UILabel?
     @IBOutlet var topImageView:UIImageView?
     @IBOutlet var shufflePlayButton:UIButton!
+    @IBOutlet var headerView:GSKStretchyHeaderView!
     
     var allItemsArray=NSMutableArray()
     var streamsArray=NSMutableArray()
@@ -20,7 +21,6 @@ class CategoriesViewController: BaseViewController
     var categoryID:Int?
     var TBVC:TabBarViewController!
     let site=Config.shared.site()
-    var headerView:UIView!
     
     override func viewDidLoad()
     {
@@ -36,27 +36,29 @@ class CategoriesViewController: BaseViewController
         
         topImageView?.sd_setImage(with:URL(string:"\(site)/media/bg_\(categoryID!).png"))
         
-        headerView=itemsTbl?.tableHeaderView
-        itemsTbl?.tableHeaderView=nil
+        //headerView=itemsTbl?.tableHeaderView as! GSKStretchyHeaderView!
+        //itemsTbl?.tableHeaderView=nil
         itemsTbl?.addSubview(headerView)
         
-        itemsTbl?.contentInset=UIEdgeInsetsMake(220, 0, 0, 0)
-        itemsTbl?.contentOffset=CGPoint(x:0, y:-220)
-        headerView.frame=CGRect(x:0, y:-220, width:view.bounds.width, height:220)
+        itemsTbl?.contentInset=UIEdgeInsetsMake(104, 0, 0, 0)
+        //itemsTbl?.contentOffset=CGPoint(x:0, y:-220)
+        //headerView.frame=CGRect(x:0, y:-220, width:view.bounds.width, height:220)
+        headerView.minimumContentHeight=104
+        headerView.maximumContentHeight=220
     }
     
-    func scrollViewDidScroll(_ scrollView:UIScrollView)
-    {
-        var headerRect=CGRect(x:0, y:-220, width:view.bounds.width, height:220)
-        
-        if scrollView.contentOffset.y < -220
-        {
-            headerRect.origin.y=scrollView.contentOffset.y
-            headerRect.size.height = -scrollView.contentOffset.y
-        }
-        
-        headerView.frame=headerRect
-    }
+//    func scrollViewDidScroll(_ scrollView:UIScrollView)
+//    {
+//        var headerRect=CGRect(x:0, y:-220, width:view.bounds.width, height:220)
+//        
+//        if scrollView.contentOffset.y < -220
+//        {
+//            headerRect.origin.y=scrollView.contentOffset.y
+//            headerRect.size.height = -scrollView.contentOffset.y
+//        }
+//        
+//        headerView.frame=headerRect
+//    }
     
     func fetchMore()
     {
