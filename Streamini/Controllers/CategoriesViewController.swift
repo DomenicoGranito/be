@@ -19,9 +19,6 @@ class CategoriesViewController: BaseViewController
     var page=0
     var categoryID:Int?
     var TBVC:TabBarViewController!
-    let maxHeaderHeight:CGFloat=220.0
-    let minHeaderHeight:CGFloat=100.0
-    var previousScrollOffset:CGFloat=0.0
     let site=Config.shared.site()
     var headerView:UIView!
     
@@ -43,10 +40,9 @@ class CategoriesViewController: BaseViewController
         itemsTbl?.tableHeaderView=nil
         itemsTbl?.addSubview(headerView)
         
-        itemsTbl?.contentInset=UIEdgeInsetsMake(219, 0, 0, 0)
-        itemsTbl?.contentOffset=CGPoint(x:0, y:-219)
-        
-        updateHeaderView()
+        itemsTbl?.contentInset=UIEdgeInsetsMake(220, 0, 0, 0)
+        itemsTbl?.contentOffset=CGPoint(x:0, y:-220)
+        headerView.frame=CGRect(x:0, y:-220, width:view.bounds.width, height:220)
     }
     
     func updateHeaderView()
