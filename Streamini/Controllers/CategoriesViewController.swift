@@ -45,22 +45,17 @@ class CategoriesViewController: BaseViewController
         headerView.frame=CGRect(x:0, y:-220, width:view.bounds.width, height:220)
     }
     
-    func updateHeaderView()
+    func scrollViewDidScroll(_ scrollView:UIScrollView)
     {
-        var headerRect=CGRect(x:0, y:-219, width:view.bounds.width, height:219)
+        var headerRect=CGRect(x:0, y:-220, width:view.bounds.width, height:220)
         
-        if itemsTbl!.contentOffset.y < -219
+        if scrollView.contentOffset.y < -220
         {
-            headerRect.origin.y=itemsTbl!.contentOffset.y
-            headerRect.size.height = -itemsTbl!.contentOffset.y
+            headerRect.origin.y=scrollView.contentOffset.y
+            headerRect.size.height = -scrollView.contentOffset.y
         }
         
         headerView.frame=headerRect
-    }
-    
-    func scrollViewDidScroll(_ scrollView:UIScrollView)
-    {
-        updateHeaderView()
     }
     
     func fetchMore()
