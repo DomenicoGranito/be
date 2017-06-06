@@ -214,7 +214,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         videoDurationLbl?.text="-\(secondsToReadableTime(player!.duration))"
         seekBar?.maximumValue=Float(player!.duration)
         
-        player!.view.isHidden=false
+        UIView.animate(withDuration:2, animations:{self.player!.view.alpha=1}, completion:nil)
     }
     
     @IBAction func shuffle()
@@ -342,7 +342,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         addPlayer()
         
         player!.view.frame=CGRect(x:0, y:0, width:view.frame.size.width, height:view.frame.size.width-140)
-        player!.view.isHidden=true
+        player!.view.alpha=0
         carousel!.currentItemView!.addSubview(player!.view)
         
         fullScreenButton=UIButton(frame:CGRect(x:view.frame.size.width-50, y:player!.view.frame.size.width-57, width:50, height:50))
