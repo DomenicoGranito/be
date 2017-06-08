@@ -41,7 +41,11 @@ class CategoriesViewController: BaseViewController
     
     func scrollViewDidScroll(_ scrollView:UIScrollView)
     {
+        let range:CGFloat=116
+        let openAmount=headerView.bounds.height-104
+        let percentage=openAmount/range
         
+        topImageView?.alpha=percentage
     }
     
     func fetchMore()
