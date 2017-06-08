@@ -152,7 +152,9 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     func updatePlayerWithStream()
     {
-        backgroundImageView?.sd_setImage(with:URL(string:"\(site)/thumb/\(stream!.id).jpg"))
+        UIView.transition(with:backgroundImageView!, duration:0.5, options:.transitionCrossDissolve, animations:{
+            self.backgroundImageView?.sd_setImage(with:URL(string:"\(self.site)/thumb/\(self.stream!.id).jpg"))
+            }, completion:nil)
         
         headerTitleLbl?.text=stream?.title
         videoTitleLbl?.text=stream?.title
