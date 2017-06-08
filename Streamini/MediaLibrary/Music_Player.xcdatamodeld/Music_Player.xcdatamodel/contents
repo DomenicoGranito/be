@@ -9,6 +9,23 @@
         <attribute name="streamUserName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="vType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
     </entity>
+    <entity name="Login" syncable="YES">
+        <attribute name="avatar" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="blocked" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="followers" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="following" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="isBlocked" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="isFollowed" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="isLive" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="likes" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="recent" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="sname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="streams" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="subscription" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Playlist" syncable="YES">
         <attribute name="playlistName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="songs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Song" inverseName="playlists" inverseEntity="Song" syncable="YES"/>
@@ -44,8 +61,9 @@
         <element name="Favourites" positionX="-243" positionY="216" width="128" height="150"/>
         <element name="Playlist" positionX="-92" positionY="203" width="128" height="75"/>
         <element name="RecentlyPlayed" positionX="-243" positionY="216" width="128" height="135"/>
+        <element name="SearchHistory" positionX="-243" positionY="216" width="128" height="60"/>
         <element name="Settings" positionX="-234" positionY="81" width="128" height="90"/>
         <element name="Song" positionX="-387" positionY="198" width="128" height="180"/>
-        <element name="SearchHistory" positionX="-243" positionY="216" width="128" height="60"/>
+        <element name="Login" positionX="-243" positionY="216" width="128" height="270"/>
     </elements>
 </model>

@@ -14,6 +14,75 @@ open class SongManager
     static var context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext!
     static var documentsDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
     
+    class func saveLogin(_ user:User)
+    {
+        let newLogin=NSEntityDescription.insertNewObject(forEntityName:"Login", into:context)
+        setLogin(user, newLogin)
+    }
+    
+    class func updateLogin(_ user:User)
+    {
+        let loginRequest:NSFetchRequest<NSFetchRequestResult>=NSFetchRequest(entityName:"Login")
+        let fetchedLogin=try! context.fetch(loginRequest) as NSArray
+        
+        if fetchedLogin.count>0
+        {
+            let objectUpdate=fetchedLogin[0] as! NSManagedObject
+            setLogin(user, objectUpdate)
+        }
+        else
+        {
+            saveLogin(user)
+        }
+    }
+    
+    class func getLogin()->User
+    {
+        let loginRequest:NSFetchRequest<NSFetchRequestResult>=NSFetchRequest(entityName:"Login")
+        let fetchedLogin=try! context.fetch(loginRequest) as NSArray
+        let object=fetchedLogin[0] as! NSManagedObject
+        
+        let user=User()
+        
+        user.id=object.value(forKey:"id") as! UInt
+        user.name=object.value(forKeyPath:"name") as! String
+        user.sname=object.value(forKey:"sname") as! String
+        user.avatar=object.value(forKey:"avatar") as? String
+        user.likes=object.value(forKey:"likes") as! UInt
+        user.recent=object.value(forKey:"recent") as! UInt
+        user.followers=object.value(forKey:"followers") as! UInt
+        user.following=object.value(forKey:"following") as! UInt
+        user.streams=object.value(forKey:"streams") as! UInt
+        user.blocked=object.value(forKey:"blocked") as! UInt
+        user.desc=object.value(forKey:"desc") as? String
+        user.isLive=object.value(forKey:"isLive") as! Bool
+        user.isFollowed=object.value(forKey:"isFollowed") as! Bool
+        user.isBlocked=object.value(forKey:"isBlocked") as! Bool
+        user.subscription=object.value(forKey:"subscription") as! String
+        
+        return user
+    }
+    
+    class func setLogin(_ user:User, _ object:NSManagedObject)
+    {
+        object.setValue(user.id, forKey:"id")
+        object.setValue(user.name, forKey:"name")
+        object.setValue(user.sname, forKey:"sname")
+        object.setValue(user.avatar, forKey:"avatar")
+        object.setValue(user.likes, forKey:"likes")
+        object.setValue(user.recent, forKey:"recent")
+        object.setValue(user.followers, forKey:"followers")
+        object.setValue(user.following, forKey:"following")
+        object.setValue(user.streams, forKey:"streams")
+        object.setValue(user.blocked, forKey:"blocked")
+        object.setValue(user.desc, forKey:"desc")
+        object.setValue(user.isLive, forKey:"isLive")
+        object.setValue(user.isFollowed, forKey:"isFollowed")
+        object.setValue(user.isBlocked, forKey:"isBlocked")
+        object.setValue(user.subscription, forKey:"subscription")
+        save()
+    }
+    
     class func getSong(_ identifier:String)->NSManagedObject
     {
         let songRequest:NSFetchRequest<NSFetchRequestResult>=NSFetchRequest(entityName:"Song")
@@ -62,7 +131,7 @@ open class SongManager
         
         save()
     }
-
+    
     class func getPlaylist(_ playlistName:String)->NSManagedObject
     {
         let playlistRequest:NSFetchRequest<NSFetchRequestResult>=NSFetchRequest(entityName:"Playlist")
