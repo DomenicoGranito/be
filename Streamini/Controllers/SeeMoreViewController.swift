@@ -6,7 +6,7 @@
 //  Copyright © 2017 Cedricm Video. All rights reserved.
 //
 
-class SeeMoreViewController: UIViewController
+class SeeMoreViewController: BaseViewController
 {
     @IBOutlet var tableView:UITableView!
     
@@ -22,7 +22,7 @@ class SeeMoreViewController: UIViewController
         self.title="\"\(q!)\" in \(t!)".uppercased()
         navigationController?.isNavigationBarHidden=false
         
-        if t=="streams"
+        if t=="videos"
         {
             StreamConnector().searchMoreStreams(q, searchMoreStreamsSuccess, searchFailure)
         }
@@ -34,7 +34,7 @@ class SeeMoreViewController: UIViewController
     
     func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
     {
-        if t=="streams"
+        if t=="videos"
         {
             return 80
         }
@@ -46,7 +46,7 @@ class SeeMoreViewController: UIViewController
 
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
-        if t=="streams"
+        if t=="videos"
         {
             return streams.count
         }
@@ -58,7 +58,7 @@ class SeeMoreViewController: UIViewController
 
     func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:IndexPath)->UITableViewCell
     {
-        if t=="streams"
+        if t=="videos"
         {
             let cell=tableView.dequeueReusableCell(withIdentifier:"StreamCell", for:indexPath) as! SearchStreamCell
             let stream=streams[indexPath.row]
@@ -91,7 +91,7 @@ class SeeMoreViewController: UIViewController
     {
         tableView.deselectRow(at:indexPath, animated:true)
         
-        if t=="streams"
+        if t=="videos"
         {
             let modalVC=storyBoard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController
             
@@ -128,7 +128,7 @@ class SeeMoreViewController: UIViewController
     
     func searchFailure(error:NSError)
     {
-        
+        handleError(error)
     }
     
     func dotsButtonTapped(sender:UIButton)
