@@ -22,6 +22,7 @@
 		3E68E8F81E715D3F008AAB9E /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E68E8F71E715D3F008AAB9E /* VideosViewController.swift */; };
 		3E7192691E75701F00B7049B /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7192681E75701F00B7049B /* ActivityIndicatorView.swift */; };
 		3E71926B1E768DFE00B7049B /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E71926A1E768DFD00B7049B /* ErrorView.swift */; };
+		3E7828C11EEA741B00F2B5EF /* OfflineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7828C01EEA741B00F2B5EF /* OfflineViewController.swift */; };
 		3E79060E1E7FBD6A00257C5B /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E79060C1E7FBD6200257C5B /* iCarousel.m */; };
 		3E935BBD1E937BC100065FEC /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E935BBC1E937BC000065FEC /* PlaylistView.swift */; };
 		3E935BBF1E937D0500065FEC /* PlaylistView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E935BBE1E937D0500065FEC /* PlaylistView.xib */; };
@@ -238,6 +239,7 @@
 		3E68E8F71E715D3F008AAB9E /* VideosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosViewController.swift; sourceTree = "<group>"; };
 		3E7192681E75701F00B7049B /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		3E71926A1E768DFD00B7049B /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		3E7828C01EEA741B00F2B5EF /* OfflineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineViewController.swift; sourceTree = "<group>"; };
 		3E79060B1E7FBD6100257C5B /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iCarousel.h; path = iCarousel/iCarousel.h; sourceTree = "<group>"; };
 		3E79060C1E7FBD6200257C5B /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iCarousel.m; path = iCarousel/iCarousel.m; sourceTree = "<group>"; };
 		3E935BBC1E937BC000065FEC /* PlaylistView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistView.swift; sourceTree = "<group>"; };
@@ -867,6 +869,7 @@
 				B71BA5DA1B84A86C0055F427 /* ProfileStatisticsViewController.swift */,
 				3EF0032E1EAC78A70094BE96 /* ChannelsTableViewController.swift */,
 				3EF003301EACB83D0094BE96 /* VideosTableViewController.swift */,
+				3E7828C01EEA741B00F2B5EF /* OfflineViewController.swift */,
 				A631E6311D378D95002C7F78 /* PasswordViewController.swift */,
 				3EC2E2D71EC052FA00E32565 /* SearchViewController.swift */,
 				3EC2E2D91EC19C1300E32565 /* SeeMoreViewController.swift */,
@@ -1167,6 +1170,7 @@
 				B7D6F0B11B37F16C0070C36A /* LoginViewController.swift in Sources */,
 				3EF535B01E0920B90049B2E9 /* TransitionAnimatable.swift in Sources */,
 				86564ECF1E540BA400584405 /* SeriesViewController.swift in Sources */,
+				3E7828C11EEA741B00F2B5EF /* OfflineViewController.swift in Sources */,
 				B71BA5DD1B84A9580055F427 /* BlockedDataSource.swift in Sources */,
 				3E79060E1E7FBD6A00257C5B /* iCarousel.m in Sources */,
 				B7D5EA921B564BAA003EE25D /* Message.swift in Sources */,

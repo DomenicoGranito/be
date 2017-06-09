@@ -36,6 +36,16 @@ class VideosTableViewController: UITableViewController, ProfileDelegate
         
     }
 
+    override func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
+    {
+        if vType==1
+        {
+            return 3
+        }
+        
+        return 2
+    }
+
     override func tableView(_ tableView:UITableView, cellForRowAt indexPath:IndexPath)->UITableViewCell
     {
         let cell=super.tableView(tableView, cellForRowAt:indexPath)
@@ -49,9 +59,18 @@ class VideosTableViewController: UITableViewController, ProfileDelegate
     {
         tableView.deselectRow(at:indexPath, animated:true)
         
-        let identifier=indexPath.row==0 ? "GoToFavourites" : "GoToMy"
+        var identifier:String!
         
-        performSegue(withIdentifier:identifier, sender:nil)
+        if indexPath.row==0
+        {
+            identifier="GoToFavourites"
+            performSegue(withIdentifier:identifier, sender:nil)
+        }
+        else if indexPath.row==1
+        {
+            identifier="GoToMy"
+            performSegue(withIdentifier:identifier, sender:nil)
+        }
     }
     
     override func prepare(for segue:UIStoryboardSegue, sender:Any?)
@@ -61,7 +80,7 @@ class VideosTableViewController: UITableViewController, ProfileDelegate
             let controller=segue.destination as! VideosViewController
             controller.vType=vType
         }
-        else
+        else if segue.identifier=="GoToMy"
         {
             let controller=segue.destination as! ProfileStatisticsViewController
             controller.type=ProfileStatisticsType(rawValue:3)!
