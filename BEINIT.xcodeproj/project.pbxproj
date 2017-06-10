@@ -26,7 +26,6 @@
 		3E79060E1E7FBD6A00257C5B /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E79060C1E7FBD6200257C5B /* iCarousel.m */; };
 		3E82056A1EEA9C3600D3B918 /* DWDownloadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8205691EEA9C3600D3B918 /* DWDownloadItem.m */; };
 		3E82056D1EEA9CC500D3B918 /* DWTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E82056C1EEA9CC500D3B918 /* DWTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3E82056F1EEBCD9C00D3B918 /* OfflineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E82056E1EEBCD9C00D3B918 /* OfflineCell.swift */; };
 		3E935BBD1E937BC100065FEC /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E935BBC1E937BC000065FEC /* PlaylistView.swift */; };
 		3E935BBF1E937D0500065FEC /* PlaylistView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E935BBE1E937D0500065FEC /* PlaylistView.xib */; };
 		3E935BC11E937D6100065FEC /* PlaylistDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E935BC01E937D6100065FEC /* PlaylistDetailView.swift */; };
@@ -56,6 +55,8 @@
 		865C33401E520459008EA556 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865C333F1E520459008EA556 /* GameKit.framework */; };
 		868CBDBF1E5746D600BF14C3 /* libz.1.2.8.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 868CBDBE1E5746D500BF14C3 /* libz.1.2.8.tbd */; };
 		96E9F7207AFA69CAF92AEE58 /* libPods-Streamini.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6302C3C18A0A3B43612D9F59 /* libPods-Streamini.a */; };
+		9AA5A33E1EEC098B0041BD0C /* BETabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA5A33D1EEC098B0041BD0C /* BETabBarController.swift */; };
+		9AA5A3401EEC09B50041BD0C /* BENavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA5A33F1EEC09B50041BD0C /* BENavigationController.swift */; };
 		A60F82E91D490F4D002E2CEA /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60F82E81D490F4D002E2CEA /* Category.swift */; };
 		A60F82EB1D490F70002E2CEA /* CategoryMappingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60F82EA1D490F70002E2CEA /* CategoryMappingProvider.swift */; };
 		A60F82ED1D49168E002E2CEA /* SearchStreamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60F82EC1D49168E002E2CEA /* SearchStreamCell.swift */; };
@@ -249,7 +250,6 @@
 		3E8205691EEA9C3600D3B918 /* DWDownloadItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWDownloadItem.m; path = DWSDK/DWDownloadItem.m; sourceTree = "<group>"; };
 		3E82056B1EEA9CC500D3B918 /* DWTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWTools.h; path = DWSDK/DWTools.h; sourceTree = "<group>"; };
 		3E82056C1EEA9CC500D3B918 /* DWTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWTools.m; path = DWSDK/DWTools.m; sourceTree = "<group>"; };
-		3E82056E1EEBCD9C00D3B918 /* OfflineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineCell.swift; sourceTree = "<group>"; };
 		3E935BBC1E937BC000065FEC /* PlaylistView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistView.swift; sourceTree = "<group>"; };
 		3E935BBE1E937D0500065FEC /* PlaylistView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaylistView.xib; sourceTree = "<group>"; };
 		3E935BC01E937D6100065FEC /* PlaylistDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistDetailView.swift; sourceTree = "<group>"; };
@@ -280,6 +280,8 @@
 		86564ECE1E540BA300584405 /* SeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesViewController.swift; sourceTree = "<group>"; };
 		865C333F1E520459008EA556 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		868CBDBE1E5746D500BF14C3 /* libz.1.2.8.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.8.tbd; path = usr/lib/libz.1.2.8.tbd; sourceTree = SDKROOT; };
+		9AA5A33D1EEC098B0041BD0C /* BETabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BETabBarController.swift; sourceTree = "<group>"; };
+		9AA5A33F1EEC09B50041BD0C /* BENavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BENavigationController.swift; sourceTree = "<group>"; };
 		A60F82E81D490F4D002E2CEA /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		A60F82EA1D490F70002E2CEA /* CategoryMappingProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryMappingProvider.swift; sourceTree = "<group>"; };
 		A60F82EC1D49168E002E2CEA /* SearchStreamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchStreamCell.swift; sourceTree = "<group>"; };
@@ -652,7 +654,6 @@
 				B70E04181B74E5B000422AF0 /* LinkedUserCell.swift */,
 				B733B1F61B78D5A1002FEAB6 /* PeopleCell.swift */,
 				A60F82EC1D49168E002E2CEA /* SearchStreamCell.swift */,
-				3E82056E1EEBCD9C00D3B918 /* OfflineCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -887,6 +888,8 @@
 				3EC2E2D71EC052FA00E32565 /* SearchViewController.swift */,
 				3EC2E2D91EC19C1300E32565 /* SeeMoreViewController.swift */,
 				3E4E1A6C1EC5C00E00AE1F0E /* AboutTableViewController.swift */,
+				9AA5A33D1EEC098B0041BD0C /* BETabBarController.swift */,
+				9AA5A33F1EEC09B50041BD0C /* BENavigationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1149,6 +1152,7 @@
 				B7E15E501B6A59FE000C8C69 /* DefaultInfoViewDelegate.swift in Sources */,
 				3EC2E2D81EC052FA00E32565 /* SearchViewController.swift in Sources */,
 				B77AABF71B39B42D007DE187 /* StreamLiveView.swift in Sources */,
+				9AA5A33E1EEC098B0041BD0C /* BETabBarController.swift in Sources */,
 				B7D5EA981B579CDC003EE25D /* CommentsDataSource.swift in Sources */,
 				B674481E1E2C63CC0049890F /* Player.swift in Sources */,
 				B7A886941B500C7100D37B63 /* LiveStreamViewController.swift in Sources */,
@@ -1169,7 +1173,6 @@
 				B7D6F0B71B37F46A0070C36A /* Config.swift in Sources */,
 				B67448591E2C96B90049890F /* UIViewController+Alert.swift in Sources */,
 				B6EAF8281E28EF6E007038DC /* AllCategoryRow.swift in Sources */,
-				3E82056F1EEBCD9C00D3B918 /* OfflineCell.swift in Sources */,
 				B6D413571E17AC1A001E8108 /* ARNImageTransitionNavigationController.swift in Sources */,
 				B7AA45581B79CAC8001D293A /* RootViewController.swift in Sources */,
 				B6A941CF1E48AB00003E2331 /* SettingsViewController.swift in Sources */,
@@ -1178,6 +1181,7 @@
 				B77AABEC1B398B03007DE187 /* CustomError.swift in Sources */,
 				B70E04191B74E5B000422AF0 /* LinkedUserCell.swift in Sources */,
 				B7E15E4B1B6A24E5000C8C69 /* UserViewController.swift in Sources */,
+				9AA5A3401EEC09B50041BD0C /* BENavigationController.swift in Sources */,
 				B746FB0E1B5F93BE00DE3534 /* SensibleButton.swift in Sources */,
 				B77AABD81B398284007DE187 /* User.swift in Sources */,
 				B7EB82B71B6746500022C76A /* NotificationsDelegate.swift in Sources */,

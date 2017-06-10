@@ -23,6 +23,16 @@ class SeriesViewController: UIViewController
     let storyBoard=UIStoryboard(name:"Main", bundle:nil)
     var shuffleButtonTopSpace:CGFloat!
     
+    // MARK: - Orientation Handling.
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
     override func viewDidLoad()
     {
         shuffleButtonTopSpace=shuffleButtonTopSpaceConstraint.constant

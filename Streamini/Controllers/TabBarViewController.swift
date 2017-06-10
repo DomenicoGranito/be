@@ -8,7 +8,7 @@
 
 import Photos
 
-class TabBarViewController: UITabBarController, UITabBarControllerDelegate
+class TabBarViewController: BETabBarController, UITabBarControllerDelegate
 {
     @IBOutlet var vtabBar:UITabBar!
     @IBOutlet var miniPlayerView:UIView!
@@ -22,6 +22,16 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     var animator:ARNTransitionAnimator!
     var modalVC:ModalViewController!
     let site=Config.shared.site()
+    
+    // MARK: - Orientation Handling.
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
     
     override func viewDidLoad()
     {
@@ -102,7 +112,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let vc=storyboard.instantiateViewController(withIdentifier:"OfflineViewController") as! OfflineViewController
-        vc.stream=notification.object as? Stream
+        //vc.stream=notification.object as? Stream
         
         let navigationController=self.viewControllers![self.selectedIndex] as! UINavigationController
         navigationController.pushViewController(vc, animated:true)

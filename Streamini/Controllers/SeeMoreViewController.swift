@@ -17,6 +17,16 @@ class SeeMoreViewController: BaseViewController
     var users:[User]=[]
     var streams:[Stream]=[]
     
+    // MARK: - Orientation Handling.
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
     override func viewWillAppear(_ animated:Bool)
     {
         self.title="\"\(q!)\" in \(t!)".uppercased()

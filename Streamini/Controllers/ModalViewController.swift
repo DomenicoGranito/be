@@ -40,6 +40,20 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     var fullScreenButton:UIButton!
     let storyBoard=UIStoryboard(name:"Main", bundle:nil)
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        
+        return [UIInterfaceOrientationMask.landscapeLeft,UIInterfaceOrientationMask.landscapeRight,UIInterfaceOrientationMask.portrait]
+        
+    }
+    
+    override var shouldAutorotate: Bool {
+        if supportedInterfaceOrientations == UIInterfaceOrientationMask.portraitUpsideDown {
+            return false
+        }else {
+            return true
+        }
+    }
+    
     override func viewDidLoad()
     {
         seekBar!.setThumbImage(UIImage(), for:.normal)

@@ -46,6 +46,18 @@ class GetStartedViewController: BaseViewController
         }
     }
     
+    // MARK: - Orientation Handling.
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        //print("ViewController supportedInterfaceOrientations")
+        return .portrait
+    }
+    
+    override var shouldAutorotate: Bool {
+        //print("ViewController shouldAutorotate")
+        return false
+    }
+    
     func successUser(user:User)
     {
         UserContainer.shared.setLogged(user)

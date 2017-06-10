@@ -8,7 +8,7 @@
 
 import AVFoundation
 import CoreLocation
-import SCLAlertView
+//import SCLAlertView
 
 class CreateStreamViewController: BaseViewController, UITextFieldDelegate, LocationManagerDelegate,
 UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource
@@ -42,6 +42,17 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource
     var keep = 0
     
     var user: User?
+    
+    // MARK: - Orientation Handling.
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
     
     @IBAction func trashTapped(_ sender: AnyObject) {
         
