@@ -223,11 +223,35 @@ open class SongManager
         save()
     }
     
+    class func updateIsDownloaded(_ streamKey:String)
+    {
+        let downloadsRequest:NSFetchRequest<NSFetchRequestResult>=NSFetchRequest(entityName:"Downloads")
+        downloadsRequest.predicate=NSPredicate(format:"streamKey=%@", streamKey)
+        
+        let fetchedResult=try! context.fetch(downloadsRequest) as NSArray
+        
+        if fetchedResult.count>0
+        {
+            let objectUpdate=fetchedResult[0] as! NSManagedObject
+            objectUpdate.setValue(1, forKey:"isDownloaded")
+            save()
+        }
+    }
+    
     class func getDownloads(_ isDownloaded:Int)->[NSManagedObject]
     {
         let downloadsRequest:NSFetchRequest<NSFetchRequestResult>=NSFetchRequest(entityName:"Downloads")
         downloadsRequest.predicate=NSPredicate(format:"isDownloaded=%d", isDownloaded)
-        return try! context.fetch(downloadsRequest) as! [NSManagedObject]
+        let fetchedDownloads=try! context.fetch(downloadsRequest)
+        
+        let sortedArray=NSMutableArray()
+        
+        for i in stride(from:fetchedDownloads.count-1, through:0, by:-1)
+        {
+            sortedArray.add(fetchedDownloads[i])
+        }
+        
+        return (sortedArray as NSArray) as! [NSManagedObject]
     }
     
     class func isAlreadyDownloaded(_ streamID:UInt)->Bool

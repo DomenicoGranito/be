@@ -8727,7 +8727,7 @@
                                 <color key="separatorColor" red="0.1450980392" green="0.14117647059999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="RecentStreamCell" selectionStyle="blue" indentationWidth="10" reuseIdentifier="DownloadFinishCell" rowHeight="80" id="aJs-t2-9W7" customClass="RecentlyPlayedCell" customModule="Streamini" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="DownloadFinishCell" rowHeight="80" id="aJs-t2-9W7" customClass="RecentlyPlayedCell" customModule="Streamini" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="1" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aJs-t2-9W7" id="vmD-pi-V0C">
@@ -8845,9 +8845,9 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <outlet property="playImageView" destination="sGh-gy-WZj" id="fl8-9F-HkJ"/>
-                                            <outlet property="streamNameLabel" destination="0gP-1b-yLu" id="IU5-1N-p4f"/>
-                                            <outlet property="userLabel" destination="QDO-Ub-yHL" id="eQx-KR-Ipw"/>
+                                            <outlet property="artistNameLbl" destination="QDO-Ub-yHL" id="i7p-EI-Zs3"/>
+                                            <outlet property="videoThumbnailImageView" destination="sGh-gy-WZj" id="HwD-Jy-QPK"/>
+                                            <outlet property="videoTitleLbl" destination="0gP-1b-yLu" id="BLe-sD-6ab"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -8863,7 +8863,7 @@
                                 <color key="separatorColor" red="0.1450980392" green="0.14117647059999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="RecentStreamCell" selectionStyle="blue" indentationWidth="10" reuseIdentifier="DownloadingCell" rowHeight="80" id="dCa-Mg-muT" customClass="OfflineCell" customModule="Streamini" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="DownloadingCell" rowHeight="80" id="dCa-Mg-muT" customClass="OfflineCell" customModule="Streamini" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="1" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dCa-Mg-muT" id="scZ-Zm-beY">
@@ -8945,7 +8945,6 @@
                                                         <constraint firstAttribute="height" constant="20" id="RS3-94-kvU"/>
                                                         <constraint firstAttribute="width" constant="20" id="hj0-0s-b6I"/>
                                                     </constraints>
-                                                    <state key="normal" image="more_icon"/>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -8992,10 +8991,10 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <outlet property="dotsButton" destination="U6k-HM-i4j" id="adi-a2-HFl"/>
-                                            <outlet property="playImageView" destination="zO3-O8-1zZ" id="2pM-Bb-pfw"/>
-                                            <outlet property="streamNameLabel" destination="nBe-0G-GFt" id="E9B-Yl-2dh"/>
-                                            <outlet property="userLabel" destination="cc0-uR-pUL" id="ekD-4u-TfL"/>
+                                            <outlet property="artistNameLbl" destination="cc0-uR-pUL" id="jIi-LX-8bp"/>
+                                            <outlet property="statusButton" destination="U6k-HM-i4j" id="pHs-bU-M7G"/>
+                                            <outlet property="videoThumbnailImageView" destination="zO3-O8-1zZ" id="xRG-ex-vps"/>
+                                            <outlet property="videoTitleLbl" destination="nBe-0G-GFt" id="8j5-YS-jXo"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
