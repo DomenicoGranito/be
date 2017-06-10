@@ -77,6 +77,18 @@ class FollowersViewController: BaseViewController, UISearchBarDelegate, UserSele
         self.searchBar.placeholder = NSLocalizedString("search_followers_placeholder", comment: "")
     }
     
+    
+    // MARK: - Orientation Handling.
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()

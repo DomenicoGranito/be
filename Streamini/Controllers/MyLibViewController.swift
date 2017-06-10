@@ -30,6 +30,16 @@ class MyLibViewController: UIViewController
     var TBVC:TabBarViewController!
     let site=Config.shared.site()
     
+    // MARK: - Orientation Handling.
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
     override func viewWillAppear(_ animated:Bool)
     {
         TBVC=tabBarController as! TabBarViewController

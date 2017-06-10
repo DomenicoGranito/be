@@ -9,27 +9,37 @@
 import UIKit
 
 class BENavigationController: UINavigationController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    
+    // MARK: - Orientation Handling
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        if let supportedOrientations = self.topViewController?.supportedInterfaceOrientations {
+            return supportedOrientations
+        }else{
+            return .portrait
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override var shouldAutorotate: Bool {
+        if let shouldrotate = self.topViewController?.shouldAutorotate {
+            return shouldrotate
+        }else{
+            return false
+        }
     }
-    */
-
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation{
+        if let prefferedOrientation = self.topViewController?.preferredInterfaceOrientationForPresentation {
+            return prefferedOrientation
+        }else{
+            return .portrait
+        }
+    }
+    
+    
 }

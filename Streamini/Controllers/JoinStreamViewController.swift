@@ -369,6 +369,16 @@ UIActionSheetDelegate, SelectFollowersDelegate, ReplayViewDelegate, UserSelectin
         //self.showUserInfo(user, userStatusDelegate: nil)
     }
     
+    // MARK: - Orientation Handling.
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()

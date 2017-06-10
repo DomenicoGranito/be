@@ -6,7 +6,7 @@
 //  Copyright © 2016 Sem. All rights reserved.
 //
 
-class TabBarController: UITabBarController, UITabBarControllerDelegate {
+class TabBarController: BETabBarController, UITabBarControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()

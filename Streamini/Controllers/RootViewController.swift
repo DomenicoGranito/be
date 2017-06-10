@@ -63,7 +63,17 @@ UserSelecting, ProfileDelegate {
         navigationController.navigationBar.tintColor = UIColor.blue
         navigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blue]
     }
-        
+    
+    // MARK: - Orientation Handling.
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()

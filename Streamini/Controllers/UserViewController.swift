@@ -51,6 +51,16 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
     var selectedImage: UIImage?
     var profileDelegate: ProfileDelegate?
     
+    // MARK: - Orientation Handling.
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
     override func viewDidLoad()
     {
         let WeChatLogin=A0SimpleKeychain().string(forKey:"WeChatLogin")

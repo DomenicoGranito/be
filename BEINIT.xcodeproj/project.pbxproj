@@ -53,6 +53,8 @@
 		865C33401E520459008EA556 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865C333F1E520459008EA556 /* GameKit.framework */; };
 		868CBDBF1E5746D600BF14C3 /* libz.1.2.8.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 868CBDBE1E5746D500BF14C3 /* libz.1.2.8.tbd */; };
 		96E9F7207AFA69CAF92AEE58 /* libPods-Streamini.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6302C3C18A0A3B43612D9F59 /* libPods-Streamini.a */; };
+		9AA5A33E1EEC098B0041BD0C /* BETabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA5A33D1EEC098B0041BD0C /* BETabBarController.swift */; };
+		9AA5A3401EEC09B50041BD0C /* BENavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA5A33F1EEC09B50041BD0C /* BENavigationController.swift */; };
 		A60F82E91D490F4D002E2CEA /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60F82E81D490F4D002E2CEA /* Category.swift */; };
 		A60F82EB1D490F70002E2CEA /* CategoryMappingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60F82EA1D490F70002E2CEA /* CategoryMappingProvider.swift */; };
 		A60F82ED1D49168E002E2CEA /* SearchStreamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60F82EC1D49168E002E2CEA /* SearchStreamCell.swift */; };
@@ -272,6 +274,8 @@
 		86564ECE1E540BA300584405 /* SeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesViewController.swift; sourceTree = "<group>"; };
 		865C333F1E520459008EA556 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		868CBDBE1E5746D500BF14C3 /* libz.1.2.8.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.8.tbd; path = usr/lib/libz.1.2.8.tbd; sourceTree = SDKROOT; };
+		9AA5A33D1EEC098B0041BD0C /* BETabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BETabBarController.swift; sourceTree = "<group>"; };
+		9AA5A33F1EEC09B50041BD0C /* BENavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BENavigationController.swift; sourceTree = "<group>"; };
 		A60F82E81D490F4D002E2CEA /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		A60F82EA1D490F70002E2CEA /* CategoryMappingProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryMappingProvider.swift; sourceTree = "<group>"; };
 		A60F82EC1D49168E002E2CEA /* SearchStreamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchStreamCell.swift; sourceTree = "<group>"; };
@@ -874,6 +878,8 @@
 				3EC2E2D71EC052FA00E32565 /* SearchViewController.swift */,
 				3EC2E2D91EC19C1300E32565 /* SeeMoreViewController.swift */,
 				3E4E1A6C1EC5C00E00AE1F0E /* AboutTableViewController.swift */,
+				9AA5A33D1EEC098B0041BD0C /* BETabBarController.swift */,
+				9AA5A33F1EEC09B50041BD0C /* BENavigationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1135,6 +1141,7 @@
 				B7E15E501B6A59FE000C8C69 /* DefaultInfoViewDelegate.swift in Sources */,
 				3EC2E2D81EC052FA00E32565 /* SearchViewController.swift in Sources */,
 				B77AABF71B39B42D007DE187 /* StreamLiveView.swift in Sources */,
+				9AA5A33E1EEC098B0041BD0C /* BETabBarController.swift in Sources */,
 				B7D5EA981B579CDC003EE25D /* CommentsDataSource.swift in Sources */,
 				B674481E1E2C63CC0049890F /* Player.swift in Sources */,
 				B7A886941B500C7100D37B63 /* LiveStreamViewController.swift in Sources */,
@@ -1162,6 +1169,7 @@
 				B77AABEC1B398B03007DE187 /* CustomError.swift in Sources */,
 				B70E04191B74E5B000422AF0 /* LinkedUserCell.swift in Sources */,
 				B7E15E4B1B6A24E5000C8C69 /* UserViewController.swift in Sources */,
+				9AA5A3401EEC09B50041BD0C /* BENavigationController.swift in Sources */,
 				B746FB0E1B5F93BE00DE3534 /* SensibleButton.swift in Sources */,
 				B77AABD81B398284007DE187 /* User.swift in Sources */,
 				B7EB82B71B6746500022C76A /* NotificationsDelegate.swift in Sources */,

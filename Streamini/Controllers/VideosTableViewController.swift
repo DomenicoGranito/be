@@ -14,6 +14,16 @@ class VideosTableViewController: UITableViewController, ProfileDelegate
     
     var vType:Int!
     
+    // MARK: - Orientation Handling.
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
     override func viewDidLoad()
     {
         if vType==1

@@ -8,7 +8,7 @@
 
 import Photos
 
-class TabBarViewController: UITabBarController, UITabBarControllerDelegate
+class TabBarViewController: BETabBarController, UITabBarControllerDelegate
 {
     @IBOutlet var vtabBar:UITabBar!
     @IBOutlet var miniPlayerView:UIView!
@@ -22,6 +22,16 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     var animator:ARNTransitionAnimator!
     var modalVC:ModalViewController!
     let site=Config.shared.site()
+    
+    // MARK: - Orientation Handling.
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
     
     override func viewDidLoad()
     {

@@ -17,6 +17,16 @@ class PopUpViewController: BaseViewController
     let site=Config.shared.site()
     var videoImage:UIImage!
     
+    // MARK: - Orientation Handling.
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
     override func viewDidLoad()
     {
         if SongManager.isAlreadyFavourited(stream!.id)

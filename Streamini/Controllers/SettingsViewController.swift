@@ -8,6 +8,16 @@
 
 class SettingsViewController:UITableViewController, UIActionSheetDelegate
 {
+    // MARK: - Orientation Handling.
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
     func logout()
     {
         let actionSheet=UIActionSheet.confirmLogoutActionSheet(self)

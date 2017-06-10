@@ -39,14 +39,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, UIAlertVie
     
     func application(_ application:UIApplication, supportedInterfaceOrientationsFor window:UIWindow?)->UIInterfaceOrientationMask
     {
-        if shouldRotate
-        {
-            return .allButUpsideDown
-        }
-        else
-        {
-            return .portrait
-        }
+        return .all
+//        
+//        if shouldRotate
+//        {
+//            return .allButUpsideDown
+//        }
+//        else
+//        {
+//            return .portrait
+//        }
     }
     
     func applicationWillResignActive(_ application:UIApplication)

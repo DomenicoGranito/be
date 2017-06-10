@@ -23,6 +23,16 @@ class DiscoverViewController: UIViewController
     var menuItemTitlesArray=["Channels"]
     var menuItemIconsArray=["videochannel"]
     
+    // MARK: - Orientation Handling.
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
     override func viewDidLoad()
     {
         NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:Notification.Name("status"), object:nil)
