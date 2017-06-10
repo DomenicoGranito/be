@@ -35,6 +35,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         
         NotificationCenter.default.addObserver(self, selector:#selector(goToChannels), name:Notification.Name("goToChannels"), object:nil)
         NotificationCenter.default.addObserver(self, selector:#selector(hideMiniPlayer), name:Notification.Name("hideMiniPlayer"), object:nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(goToDownloads), name:Notification.Name("goToDownloads"), object:nil)
         
         var tabBarItems=self.tabBar.items
         
@@ -95,6 +96,16 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         setupAnimator()
         updateMiniPlayerWithStream(stream)
         tapMiniPlayerButton()
+    }
+    
+    func goToDownloads(notification:Notification)
+    {
+        let storyboard=UIStoryboard(name:"Main", bundle:nil)
+        let vc=storyboard.instantiateViewController(withIdentifier:"OfflineViewController") as! OfflineViewController
+        vc.stream=notification.object as? Stream
+        
+        let navigationController=self.viewControllers![self.selectedIndex] as! UINavigationController
+        navigationController.pushViewController(vc, animated:true)
     }
     
     func goToChannels(notification:Notification)
