@@ -102,7 +102,15 @@ class PopUpViewController: BaseViewController
         }
         if indexPath.row==4
         {
-            // GO TO VIDEO DOWNLOAD VIEW
+            if SongManager.isAlreadyDownloaded(stream!.id)
+            {
+                SCLAlertView().showSuccess("MESSAGE", subTitle:"This video has been downloaded already or in progress")
+            }
+            else
+            {
+                view.window?.rootViewController?.dismiss(animated:true, completion:nil)
+                NotificationCenter.default.post(name: Notification.Name("goToDownloads"), object:stream)
+            }
         }
         if indexPath.row==5
         {

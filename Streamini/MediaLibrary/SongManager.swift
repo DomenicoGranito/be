@@ -210,6 +210,40 @@ open class SongManager
         }
     }
     
+    class func addToDownloads(_ streamTitle:String, _ streamHash:String, _ streamID:UInt, _ streamUserName:String, _ streamKey:String, _ streamUserID:UInt)
+    {
+        let newDownload=NSEntityDescription.insertNewObject(forEntityName:"Downloads", into:context)
+        newDownload.setValue(streamTitle, forKey:"streamTitle")
+        newDownload.setValue(streamHash, forKey:"streamHash")
+        newDownload.setValue(streamUserName, forKey:"streamUserName")
+        newDownload.setValue(streamID, forKey:"streamID")
+        newDownload.setValue(streamKey, forKey:"streamKey")
+        newDownload.setValue(streamUserID, forKey:"streamUserID")
+        newDownload.setValue(0, forKey:"isDownloaded")
+        save()
+    }
+    
+    class func getDownloads(_ isDownloaded:Int)->[NSManagedObject]
+    {
+        let downloadsRequest:NSFetchRequest<NSFetchRequestResult>=NSFetchRequest(entityName:"Downloads")
+        downloadsRequest.predicate=NSPredicate(format:"isDownloaded=%d", isDownloaded)
+        return try! context.fetch(downloadsRequest) as! [NSManagedObject]
+    }
+    
+    class func isAlreadyDownloaded(_ streamID:UInt)->Bool
+    {
+        let downloadEntity:NSFetchRequest<NSFetchRequestResult>=NSFetchRequest(entityName:"Downloads")
+        downloadEntity.predicate=NSPredicate(format:"streamID=%d", streamID)
+        let fetchedDownloads=try! context.fetch(downloadEntity)
+        
+        if(fetchedDownloads.count>0)
+        {
+            return true
+        }
+        
+        return false
+    }
+    
     class func deleteRecentlyPlayed(_ objectToBeDelete:NSManagedObject)
     {
         context.delete(objectToBeDelete)

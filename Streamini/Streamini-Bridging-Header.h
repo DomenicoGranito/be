@@ -21,6 +21,7 @@
 #import "iCarousel.h"
 #import "DWSDK.h"
 #import "GSKStretchyHeaderView.h"
+#import "DWDownloadItem.h"
 
 //#import <SwiftFilePath/SwiftFilePath.h>
 
