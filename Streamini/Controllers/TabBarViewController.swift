@@ -112,7 +112,7 @@ class TabBarViewController: BETabBarController, UITabBarControllerDelegate
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let vc=storyboard.instantiateViewController(withIdentifier:"OfflineViewController") as! OfflineViewController
-        //vc.stream=notification.object as? Stream
+        vc.stream=notification.object as? Stream
         
         let navigationController=self.viewControllers![self.selectedIndex] as! UINavigationController
         navigationController.pushViewController(vc, animated:true)
