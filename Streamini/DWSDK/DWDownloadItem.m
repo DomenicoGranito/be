@@ -3,17 +3,24 @@
 
 @implementation DWDownloadItem
 
-- (id)initWithItem:(NSDictionary *)item
+-(id)initWithItem:(NSDictionary *)item
 {
-    self = [super init];
-    if (self) {
-        _videoId = [item objectForKey:@"videoId"];
-        _definition = [item objectForKey:@"definition"];
-        _videoPath = [item objectForKey:@"videoPath"];
-        _videoDownloadProgress = [[item objectForKey:@"videoDownloadProgress"] floatValue];
-        _videoFileSize = (NSInteger)[[item objectForKey:@"videoFileSize"] longLongValue];
-        _videoDownloadedSize = [DWTools getFileSizeWithPath:_videoPath Error:nil];
-        _videoDownloadStatus = [[item objectForKey:@"videoDownloadStatus"] integerValue];
+    self=[super init];
+    
+    if(self)
+    {
+        _videoId=[item objectForKey:@"videoId"];
+        _definition=[item objectForKey:@"definition"];
+        _videoPath=[item objectForKey:@"videoPath"];
+        _videoDownloadProgress=[[item objectForKey:@"videoDownloadProgress"] floatValue];
+        _videoFileSize=(NSInteger)[[item objectForKey:@"videoFileSize"] longLongValue];
+        _videoDownloadedSize=[DWTools getFileSizeWithPath:_videoPath Error:nil];
+        _videoDownloadStatus=[[item objectForKey:@"videoDownloadStatus"] integerValue];
+        _streamID=[[item objectForKey:@"streamID"] integerValue];
+        _streamUserID=[[item objectForKey:@"streamUserID"] integerValue];
+        _streamTitle=[item objectForKey:@"streamTitle"];
+        _streamHash=[item objectForKey:@"streamHash"];
+        _streamUserName=[item objectForKey:@"streamUserName"];
     }
     
     return self;
@@ -24,17 +31,20 @@
     return [[self getItemDictionary] description];
 }
 
-- (NSDictionary *)getItemDictionary
+-(NSDictionary *)getItemDictionary
 {
-    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *dict=[[NSMutableDictionary alloc] init];
     
-    if (self.videoId) {
+    if(self.videoId)
+    {
         [dict setObject:self.videoId forKey:@"videoId"];
     }
-    if (self.videoPath) {
+    if(self.videoPath)
+    {
         [dict setObject:self.videoPath forKey:@"videoPath"];
     }
-    if (self.definition) {
+    if(self.definition)
+    {
         [dict setObject:self.definition forKey:@"quality"];
     }
     
@@ -42,6 +52,11 @@
     [dict setObject:[NSNumber numberWithInteger:self.videoFileSize] forKey:@"videoFileSize"];
     [dict setObject:[NSNumber numberWithInteger:self.videoDownloadedSize] forKey:@"videoDownloadedSize"];
     [dict setObject:[NSNumber numberWithInteger:self.videoDownloadStatus] forKey:@"videoDownloadStatus"];
+    [dict setObject:[NSNumber numberWithInteger:self.streamID] forKey:@"streamID"];
+    [dict setObject:[NSNumber numberWithInteger:self.streamUserID] forKey:@"streamUserID"];
+    [dict setObject:self.streamTitle forKey:@"streamTitle"];
+    [dict setObject:self.streamHash forKey:@"streamHash"];
+    [dict setObject:self.streamUserName forKey:@"streamUserName"];
     
     return dict;
 }
@@ -122,17 +137,23 @@
 
 @implementation DWDownloadItems
 
-- (id)initWithPath:(NSString *)filename
+-(id)initWithPath:(NSString *)filename
 {
-    self = [super init];
-    if (self) {
-        NSArray *array = [self readFromPlistFile:filename];
-        NSMutableArray *items = [[NSMutableArray alloc] init];
-        for (NSDictionary *dict in array) {
-            DWDownloadItem *item = [[DWDownloadItem alloc] initWithItem:dict];
+    self=[super init];
+    
+    if(self)
+    {
+        NSArray *array=[self readFromPlistFile:filename];
+        
+        NSMutableArray *items=[[NSMutableArray alloc] init];
+        
+        for(NSDictionary *dict in array)
+        {
+            DWDownloadItem *item=[[DWDownloadItem alloc] initWithItem:dict];
             [items insertObject:item atIndex:0];
         }
-        _items = items;
+        
+        _items=items;
     }
     
     return self;
@@ -147,34 +168,34 @@
     [self.items removeObjectAtIndex:index];
 }
 
-- (BOOL)writeToPlistFile:(NSString*)filename
+-(BOOL)writeToPlistFile:(NSString*)filename
 {
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    for (DWDownloadItem *item in self.items) {
-        NSDictionary *dict = [item getItemDictionary];
+    NSMutableArray *array=[[NSMutableArray alloc] init];
+    
+    for(DWDownloadItem *item in self.items)
+    {
+        NSDictionary *dict=[item getItemDictionary];
         [array insertObject:dict atIndex:0];
     }
     
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:array];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *path = [documentsDirectory stringByAppendingPathComponent:filename];
+    NSData *data=[NSKeyedArchiver archivedDataWithRootObject:array];
+    NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory=[paths objectAtIndex:0];
+    NSString *path=[documentsDirectory stringByAppendingPathComponent:filename];
     
-    BOOL didWriteSuccessfull = [data writeToFile:path atomically:YES];
-    //logdebug(@"write %ld %@ to %@", (long)array.count, array, path);
+    BOOL didWriteSuccessfull=[data writeToFile:path atomically:YES];
     
     return didWriteSuccessfull;
 }
 
-- (NSArray *)readFromPlistFile:(NSString*)filename
+-(NSArray *)readFromPlistFile:(NSString*)filename
 {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *path = [documentsDirectory stringByAppendingPathComponent:filename];
-    NSData *data = [NSData dataWithContentsOfFile:path];
+    NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory=[paths objectAtIndex:0];
+    NSString *path=[documentsDirectory stringByAppendingPathComponent:filename];
+    NSData *data=[NSData dataWithContentsOfFile:path];
     
-    NSArray *array = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    //logdebug(@"load: %@ count %ld items: %@", path, (long)[array count], array);
+    NSArray *array=[NSKeyedUnarchiver unarchiveObjectWithData:data];
     
     return array;
 }

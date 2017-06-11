@@ -52,6 +52,11 @@ class TabBarViewController: BETabBarController, UITabBarControllerDelegate
         tabBarItems?[2].isEnabled=false
     }
     
+    override func viewWillAppear(_ animated:Bool)
+    {
+        UIApplication.shared.setStatusBarHidden(false, with:.slide)
+    }
+    
     @IBAction func play()
     {
         if modalVC.player?.playbackState == .playing

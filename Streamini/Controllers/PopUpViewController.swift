@@ -16,19 +16,32 @@ class PopUpViewController: BaseViewController
     var stream:Stream?
     let site=Config.shared.site()
     var videoImage:UIImage!
+    var appDelegate:AppDelegate!
+    var isDownloadInProgress=false
     
-    // MARK: - Orientation Handling.
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
+    {
         return .portrait
     }
     
-    override var shouldAutorotate: Bool {
+    override var shouldAutorotate:Bool
+    {
         return false
     }
     
     override func viewDidLoad()
     {
+        appDelegate=UIApplication.shared.delegate as! AppDelegate
+        
+        for item in appDelegate.downloadingItems.items
+        {
+            if (item as AnyObject).videoId==stream!.videoID
+            {
+                isDownloadInProgress=true
+                break
+            }
+        }
+
         if SongManager.isAlreadyFavourited(stream!.id)
         {
             menuItemTitlesArray.replaceObject(at:5, with:"Remove from favourite")
@@ -98,13 +111,17 @@ class PopUpViewController: BaseViewController
         if indexPath.row==3
         {
             view.window?.rootViewController?.dismiss(animated:true, completion:nil)
-            NotificationCenter.default.post(name:Notification.Name("goToChannels"), object:stream?.user)
+            NotificationCenter.default.post(name: Notification.Name("goToChannels"), object:stream?.user)
         }
         if indexPath.row==4
         {
             if SongManager.isAlreadyDownloaded(stream!.id)
             {
-                SCLAlertView().showSuccess("MESSAGE", subTitle:"This video has been downloaded already or in progress")
+                SCLAlertView().showSuccess("MESSAGE", subTitle:"This video has been downloaded already")
+            }
+            else if isDownloadInProgress
+            {
+                SCLAlertView().showSuccess("MESSAGE", subTitle:"Download in progress")
             }
             else
             {
@@ -135,8 +152,8 @@ class PopUpViewController: BaseViewController
             SocialConnector().block(stream!.user.id, blockSuccess, failureWithoutAction)
             SongManager.deleteBlockedUserVideos(stream!.user.id)
             NotificationCenter.default.post(name:Notification.Name("blockUser"), object:nil)
-            NotificationCenter.default.post(name:Notification.Name("hideMiniPlayer"), object:nil)
-            NotificationCenter.default.post(name:Notification.Name("refreshAfterBlock"), object:nil)
+            NotificationCenter.default.post(name: Notification.Name("hideMiniPlayer"), object:nil)
+            NotificationCenter.default.post(name: Notification.Name("refreshAfterBlock"), object:nil)
         }
     }
     

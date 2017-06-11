@@ -210,7 +210,7 @@ open class SongManager
         }
     }
     
-    class func addToDownloads(_ streamTitle:String, _ streamHash:String, _ streamID:UInt, _ streamUserName:String, _ streamKey:String, _ streamUserID:UInt)
+    class func addToDownloads(_ streamTitle:String, _ streamHash:String, _ streamID:Int, _ streamUserName:String, _ streamKey:String, _ streamUserID:Int)
     {
         let newDownload=NSEntityDescription.insertNewObject(forEntityName:"Downloads", into:context)
         newDownload.setValue(streamTitle, forKey:"streamTitle")
@@ -219,29 +219,12 @@ open class SongManager
         newDownload.setValue(streamID, forKey:"streamID")
         newDownload.setValue(streamKey, forKey:"streamKey")
         newDownload.setValue(streamUserID, forKey:"streamUserID")
-        newDownload.setValue(0, forKey:"isDownloaded")
         save()
     }
     
-    class func updateIsDownloaded(_ streamKey:String)
+    class func getDownloads()->[NSManagedObject]
     {
         let downloadsRequest:NSFetchRequest<NSFetchRequestResult>=NSFetchRequest(entityName:"Downloads")
-        downloadsRequest.predicate=NSPredicate(format:"streamKey=%@", streamKey)
-        
-        let fetchedResult=try! context.fetch(downloadsRequest) as NSArray
-        
-        if fetchedResult.count>0
-        {
-            let objectUpdate=fetchedResult[0] as! NSManagedObject
-            objectUpdate.setValue(1, forKey:"isDownloaded")
-            save()
-        }
-    }
-    
-    class func getDownloads(_ isDownloaded:Int)->[NSManagedObject]
-    {
-        let downloadsRequest:NSFetchRequest<NSFetchRequestResult>=NSFetchRequest(entityName:"Downloads")
-        downloadsRequest.predicate=NSPredicate(format:"isDownloaded=%d", isDownloaded)
         let fetchedDownloads=try! context.fetch(downloadsRequest)
         
         let sortedArray=NSMutableArray()

@@ -15,6 +15,11 @@ typedef NSInteger DWDownloadStatus;
 
 @interface DWDownloadItem : NSObject
 
+@property NSInteger streamID;
+@property NSInteger streamUserID;
+@property (strong, nonatomic)NSString *streamTitle;
+@property (strong, nonatomic)NSString *streamUserName;
+@property (strong, nonatomic)NSString *streamHash;
 @property (strong, nonatomic)NSString *definition;
 @property (strong, nonatomic)NSString *videoId;
 @property (strong, nonatomic)NSString *videoPath;

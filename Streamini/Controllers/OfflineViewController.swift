@@ -14,13 +14,15 @@ class OfflineViewController: UIViewController
     
     var timer:Timer!
     var stream:Stream?
-    var downloadingItems=DWDownloadItems(path:"")!
-    var downloadingItemsCD:[NSManagedObject]!
-    var downloadFinishItemsCD:[NSManagedObject]!
+    var downloadingItems:DWDownloadItems!
+    var downloadFinishItems:[NSManagedObject]!
     let site=Config.shared.site()
+    var appDelegate:AppDelegate!
     
     override func viewDidLoad()
     {
+        appDelegate=UIApplication.shared.delegate as! AppDelegate
+        
         loadTableView()
         
         timer=Timer.scheduledTimer(timeInterval:1, target:self, selector:#selector(timerHandler), userInfo:nil, repeats:true)
@@ -35,8 +37,8 @@ class OfflineViewController: UIViewController
     
     func loadTableView()
     {
-        downloadingItemsCD=SongManager.getDownloads(0)
-        downloadFinishItemsCD=SongManager.getDownloads(1)
+        downloadingItems=appDelegate.downloadingItems
+        downloadFinishItems=SongManager.getDownloads()
         
         downloadingTbl.reloadData()
         downloadFinishTbl.reloadData()
@@ -52,12 +54,15 @@ class OfflineViewController: UIViewController
             downloadingTbl.isHidden=false
             
             let item=DWDownloadItem()
-            item.videoId=stream!.videoID
             item.videoDownloadStatus=DWDownloadStatusWait
+            item.videoId=stream!.videoID
+            item.streamID=Int(stream!.id)
+            item.streamUserID=Int(stream!.user.id)
+            item.streamTitle=stream!.title
+            item.streamHash=stream!.streamHash
+            item.streamUserName=stream!.user.name
             
-            downloadingItems.items.add(item)
-            
-            SongManager.addToDownloads(stream!.title, stream!.streamHash, stream!.id, stream!.user.name, stream!.videoID, stream!.user.id)
+            appDelegate.downloadingItems.items.add(item)
             
             loadTableView()
         }
@@ -69,15 +74,11 @@ class OfflineViewController: UIViewController
         {
             downloadFinishTbl.isHidden=false
             downloadingTbl.isHidden=true
-            
-            loadTableView()
         }
         else
         {
             downloadFinishTbl.isHidden=true
             downloadingTbl.isHidden=false
-            
-            loadTableView()
         }
     }
     
@@ -127,10 +128,8 @@ class OfflineViewController: UIViewController
         }
         
         downloader?.finishBlock={()->Void in
-            item.videoDownloadStatus=DWDownloadStatusFinish
-            cell.updateDownloadStatus(item)
-            self.downloadingItems.items.remove(item)
-            SongManager.updateIsDownloaded(item.videoId)
+            SongManager.addToDownloads(item.streamTitle, item.streamHash, item.streamID, item.streamUserName, item.videoId, item.streamUserID)
+            self.appDelegate.downloadingItems.items.remove(item)
             DispatchQueue.main.async(execute:{()->Void in
                 self.loadTableView()
             })
@@ -140,20 +139,18 @@ class OfflineViewController: UIViewController
     func videoDownloadStartWithItem(_ item:DWDownloadItem, _ cell:OfflineCell)
     {
         item.videoDownloadStatus=DWDownloadStatusStart
-        
         cell.updateDownloadStatus(item)
         
         let paths=NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentDirectory=paths[0]
         
-        item.videoPath="\(documentDirectory)/\(item.videoId).mp4"
+        item.videoPath="\(documentDirectory)/\(item.videoId!).mp4"
         
         let downloader=DWDownloader(userId:"D43560320694466A", andVideoId:item.videoId, key:"WGbPBVI3075vGwA0AIW0SR9pDTsQR229", destinationPath:item.videoPath)
         
         item.downloader=downloader
         item.videoDownloadStatus=DWDownloadStatusDownloading
         cell.updateDownloadStatus(item)
-        
         downloader?.timeoutSeconds=20
         
         setDownloaderBlocksWithItem(item, cell)
@@ -163,16 +160,22 @@ class OfflineViewController: UIViewController
     
     func videoDownloadResumeWithItem(_ item:DWDownloadItem, _ cell:OfflineCell)
     {
-        item.videoDownloadStatus=DWDownloadStatusDownloading
-        cell.updateDownloadStatus(item)
-        item.downloader.resume()
+        if let _=item.downloader
+        {
+            item.downloader.resume()
+            item.videoDownloadStatus=DWDownloadStatusDownloading
+            cell.updateDownloadStatus(item)
+        }
     }
     
     func videoDownloadPauseWithItem(_ item:DWDownloadItem, _ cell:OfflineCell)
     {
-        item.downloader.pause()
-        item.videoDownloadStatus=DWDownloadStatusPause
-        cell.updateDownloadStatus(item)
+        if let _=item.downloader
+        {
+            item.downloader.pause()
+            item.videoDownloadStatus=DWDownloadStatusPause
+            cell.updateDownloadStatus(item)
+        }
     }
     
     func timerHandler()
@@ -204,11 +207,11 @@ class OfflineViewController: UIViewController
     {
         if tableView==downloadFinishTbl
         {
-            return downloadFinishItemsCD.count
+            return downloadFinishItems.count
         }
         else
         {
-            return downloadingItemsCD.count
+            return downloadingItems.items.count
         }
     }
     
@@ -218,9 +221,9 @@ class OfflineViewController: UIViewController
         {
             let cell=tableView.dequeueReusableCell(withIdentifier:"DownloadFinishCell") as! RecentlyPlayedCell
             
-            cell.videoTitleLbl?.text=downloadFinishItemsCD[indexPath.row].value(forKey:"streamTitle") as? String
-            cell.artistNameLbl?.text=downloadFinishItemsCD[indexPath.row].value(forKey:"streamUserName") as? String
-            cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"\(site)/thumb/\(downloadFinishItemsCD[indexPath.row].value(forKey:"streamID") as! Int).jpg"), placeholderImage:UIImage(named:"stream"))
+            cell.videoTitleLbl?.text=downloadFinishItems[indexPath.row].value(forKey:"streamTitle") as? String
+            cell.artistNameLbl?.text=downloadFinishItems[indexPath.row].value(forKey:"streamUserName") as? String
+            cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"\(site)/thumb/\(downloadFinishItems[indexPath.row].value(forKey:"streamID") as! Int).jpg"), placeholderImage:UIImage(named:"stream"))
             
             cell.selectedBackgroundView=SelectedCellView().create()
             
@@ -230,14 +233,16 @@ class OfflineViewController: UIViewController
         {
             let cell=tableView.dequeueReusableCell(withIdentifier:"DownloadingCell") as! OfflineCell
             
-            cell.videoTitleLbl?.text = downloadingItemsCD[indexPath.row].value(forKey:"streamTitle") as? String
-            cell.artistNameLbl?.text = downloadingItemsCD[indexPath.row].value(forKey:"streamUserName") as? String
-            cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"\(site)/thumb/\(downloadingItemsCD[indexPath.row].value(forKey:"streamID") as! Int).jpg"), placeholderImage:UIImage(named:"stream"))
+            let item=downloadingItems.items[indexPath.row] as! DWDownloadItem
             
-            cell.statusButton?.tag=indexPath.row
-            cell.statusButton?.addTarget(self, action:#selector(videoDownloadingStatusButtonAction), for:.touchUpInside)
+            cell.videoTitleLbl.text=item.streamTitle
+            cell.artistNameLbl.text=item.streamUserName
+            cell.videoThumbnailImageView.sd_setImage(with:URL(string:"\(site)/thumb/\(item.streamID).jpg"), placeholderImage:UIImage(named:"stream"))
             
-            cell.selectedBackgroundView=SelectedCellView().create()
+            cell.statusButton.tag=indexPath.row
+            cell.statusButton.addTarget(self, action:#selector(videoDownloadingStatusButtonAction), for:.touchUpInside)
+            
+            cell.updateDownloadStatus(item)
             
             return cell
         }

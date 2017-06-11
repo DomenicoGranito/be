@@ -10,6 +10,7 @@
 
 class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, UIAlertViewDelegate
 {
+    var downloadingItems:DWDownloadItems!
     var shouldRotate=false
     var window: UIWindow?
     var deviceToken: String?
@@ -71,6 +72,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, UIAlertVie
                 self.bgTask = UIBackgroundTaskInvalid
             })
         }
+        
+        downloadingItems.write(toPlistFile:"downloadingItems.plist")
     }
     
     func applicationDidEnterBackground(_ application:UIApplication)
@@ -210,15 +213,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, UIAlertVie
 
     func applicationDidBecomeActive(_ application:UIApplication)
     {
-       if let task = self.bgTask {
+        if let task = self.bgTask {
             if (task != UIBackgroundTaskInvalid)
             {
-               UIApplication.shared.endBackgroundTask(task)
+                UIApplication.shared.endBackgroundTask(task)
                 self.bgTask = UIBackgroundTaskInvalid;
             }
         }
         
-       NotificationCenter.default.post(name:Notification.Name("Open"), object:nil)
+        NotificationCenter.default.post(name:Notification.Name("Open"), object:nil)
+        
+        downloadingItems=DWDownloadItems(path:"downloadingItems.plist")
     }
     
     func registerForNotification()
