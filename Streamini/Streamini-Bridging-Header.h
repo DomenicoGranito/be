@@ -22,6 +22,7 @@
 #import "DWSDK.h"
 #import "GSKStretchyHeaderView.h"
 #import "DWDownloadItem.h"
+#import "DWUploadItem.h"
 
 //#import <SwiftFilePath/SwiftFilePath.h>
 

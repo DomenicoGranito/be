@@ -247,4 +247,25 @@ class OfflineViewController: UIViewController
             return cell
         }
     }
+    
+    func tableView(_ tableView:UITableView, canEditRowAtIndexPath indexPath:IndexPath)->Bool
+    {
+        return tableView==downloadFinishTbl ? false : true
+    }
+    
+    func tableView(_ tableView:UITableView, commitEditingStyle editingStyle:UITableViewCellEditingStyle, forRowAtIndexPath indexPath:IndexPath)
+    {
+        if editingStyle == .delete
+        {
+            let item=downloadingItems.items[indexPath.row] as! DWDownloadItem
+            
+            if let _=item.downloader
+            {
+                item.downloader.pause()
+            }
+            
+            appDelegate.downloadingItems.items.remove(item)
+            loadTableView()
+        }
+    }
 }

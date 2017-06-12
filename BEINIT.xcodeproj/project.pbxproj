@@ -27,6 +27,8 @@
 		3E82056A1EEA9C3600D3B918 /* DWDownloadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8205691EEA9C3600D3B918 /* DWDownloadItem.m */; };
 		3E82056D1EEA9CC500D3B918 /* DWTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E82056C1EEA9CC500D3B918 /* DWTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3E8205711EEC4B7100D3B918 /* OfflineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8205701EEC4B7100D3B918 /* OfflineCell.swift */; };
+		3E89BE5D1EEE53320073949E /* DWUploadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E89BE5C1EEE53320073949E /* DWUploadItem.m */; };
+		3E89BE5F1EEE5C540073949E /* UploadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E89BE5E1EEE5C540073949E /* UploadingViewController.swift */; };
 		3E935BBD1E937BC100065FEC /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E935BBC1E937BC000065FEC /* PlaylistView.swift */; };
 		3E935BBF1E937D0500065FEC /* PlaylistView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E935BBE1E937D0500065FEC /* PlaylistView.xib */; };
 		3E935BC11E937D6100065FEC /* PlaylistDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E935BC01E937D6100065FEC /* PlaylistDetailView.swift */; };
@@ -252,6 +254,9 @@
 		3E82056B1EEA9CC500D3B918 /* DWTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWTools.h; path = DWSDK/DWTools.h; sourceTree = "<group>"; };
 		3E82056C1EEA9CC500D3B918 /* DWTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWTools.m; path = DWSDK/DWTools.m; sourceTree = "<group>"; };
 		3E8205701EEC4B7100D3B918 /* OfflineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineCell.swift; sourceTree = "<group>"; };
+		3E89BE5B1EEE53320073949E /* DWUploadItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWUploadItem.h; path = DWSDK/DWUploadItem.h; sourceTree = "<group>"; };
+		3E89BE5C1EEE53320073949E /* DWUploadItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWUploadItem.m; path = DWSDK/DWUploadItem.m; sourceTree = "<group>"; };
+		3E89BE5E1EEE5C540073949E /* UploadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadingViewController.swift; sourceTree = "<group>"; };
 		3E935BBC1E937BC000065FEC /* PlaylistView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistView.swift; sourceTree = "<group>"; };
 		3E935BBE1E937D0500065FEC /* PlaylistView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaylistView.xib; sourceTree = "<group>"; };
 		3E935BC01E937D6100065FEC /* PlaylistDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistDetailView.swift; sourceTree = "<group>"; };
@@ -479,6 +484,8 @@
 				3E356F9E1E843580008FD8B9 /* DWVideoCompressController.h */,
 				3E8205681EEA9C3600D3B918 /* DWDownloadItem.h */,
 				3E8205691EEA9C3600D3B918 /* DWDownloadItem.m */,
+				3E89BE5B1EEE53320073949E /* DWUploadItem.h */,
+				3E89BE5C1EEE53320073949E /* DWUploadItem.m */,
 				3E82056B1EEA9CC500D3B918 /* DWTools.h */,
 				3E82056C1EEA9CC500D3B918 /* DWTools.m */,
 				3E356F9F1E843580008FD8B9 /* libCCSDK.a */,
@@ -887,6 +894,7 @@
 				3EF0032E1EAC78A70094BE96 /* ChannelsTableViewController.swift */,
 				3EF003301EACB83D0094BE96 /* VideosTableViewController.swift */,
 				3E7828C01EEA741B00F2B5EF /* OfflineViewController.swift */,
+				3E89BE5E1EEE5C540073949E /* UploadingViewController.swift */,
 				A631E6311D378D95002C7F78 /* PasswordViewController.swift */,
 				3EC2E2D71EC052FA00E32565 /* SearchViewController.swift */,
 				3EC2E2D91EC19C1300E32565 /* SeeMoreViewController.swift */,
@@ -1163,6 +1171,7 @@
 				3E82056A1EEA9C3600D3B918 /* DWDownloadItem.m in Sources */,
 				B77AABEA1B398AEF007DE187 /* ErrorMappingProvider.swift in Sources */,
 				B77AABF21B39AEF4007DE187 /* LiveStreamCell.swift in Sources */,
+				3E89BE5D1EEE53320073949E /* DWUploadItem.m in Sources */,
 				B71405991B62333B00EAEC61 /* ReplayView.swift in Sources */,
 				B70E041B1B74E92600422AF0 /* RecentStreamsDataSource.swift in Sources */,
 				B74188291B5CDD9400427156 /* ClosedMessageController.swift in Sources */,
@@ -1218,6 +1227,7 @@
 				B77AABDA1B3983B3007DE187 /* Stream.swift in Sources */,
 				3E2674D61D7453DB00E33DCD /* Empty.swift in Sources */,
 				B67448581E2C96B90049890F /* AVAssetAudio.swift in Sources */,
+				3E89BE5F1EEE5C540073949E /* UploadingViewController.swift in Sources */,
 				B72475901B41627E0080BE1B /* StringExtension.swift in Sources */,
 				B6D4134F1E156829001E8108 /* DiscoverViewController.swift in Sources */,
 				3EF1F0321D719F280055A372 /* BackgroundVideo.swift in Sources */,
