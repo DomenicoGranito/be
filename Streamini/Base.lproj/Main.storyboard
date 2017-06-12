@@ -8349,14 +8349,14 @@
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="constraints">
-                                                            <exclude reference="znK-8f-U7d"/>
                                                             <exclude reference="zbr-zb-Lbm"/>
+                                                            <exclude reference="znK-8f-U7d"/>
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
-                                                            <include reference="znK-8f-U7d"/>
                                                             <include reference="zbr-zb-Lbm"/>
+                                                            <include reference="znK-8f-U7d"/>
                                                         </mask>
                                                     </variation>
                                                 </imageView>
@@ -8429,8 +8429,8 @@
                                                     <exclude reference="0cZ-T3-6WU"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="Rzr-4H-PjB"/>
                                                     <exclude reference="CKp-ib-gmT"/>
+                                                    <exclude reference="Rzr-4H-PjB"/>
                                                     <exclude reference="Rrk-KF-Je6"/>
                                                     <exclude reference="be1-wo-wRO"/>
                                                 </mask>
@@ -8442,8 +8442,8 @@
                                                     <include reference="0cZ-T3-6WU"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="Rzr-4H-PjB"/>
                                                     <include reference="CKp-ib-gmT"/>
+                                                    <include reference="Rzr-4H-PjB"/>
                                                     <include reference="Rrk-KF-Je6"/>
                                                     <include reference="be1-wo-wRO"/>
                                                 </mask>
@@ -9111,6 +9111,10 @@
                                                         <constraint firstAttribute="width" constant="20" id="hj0-0s-b6I"/>
                                                     </constraints>
                                                 </button>
+                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Z0-Yq-vBg">
+                                                    <frame key="frameInset" minX="125" minY="70" width="185" height="2"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </progressView>
                                             </subviews>
                                             <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
@@ -9157,6 +9161,7 @@
                                         <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="artistNameLbl" destination="cc0-uR-pUL" id="jIi-LX-8bp"/>
+                                            <outlet property="progressView" destination="5Z0-Yq-vBg" id="DOg-81-xQP"/>
                                             <outlet property="statusButton" destination="U6k-HM-i4j" id="pHs-bU-M7G"/>
                                             <outlet property="videoThumbnailImageView" destination="zO3-O8-1zZ" id="xRG-ex-vps"/>
                                             <outlet property="videoTitleLbl" destination="nBe-0G-GFt" id="8j5-YS-jXo"/>

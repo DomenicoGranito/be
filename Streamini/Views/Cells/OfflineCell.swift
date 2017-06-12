@@ -12,6 +12,7 @@ class OfflineCell: UITableViewCell
     @IBOutlet var artistNameLbl:UILabel!
     @IBOutlet var videoThumbnailImageView:UIImageView!
     @IBOutlet var statusButton:UIButton!
+    @IBOutlet var progressView:UIProgressView!
     
     func updateDownloadStatus(_ item:DWDownloadItem)
     {
@@ -35,5 +36,10 @@ class OfflineCell: UITableViewCell
         {
             statusButton.setBackgroundImage(UIImage(named:"download-status-down"), for:.normal)
         }
+    }
+    
+    func updateCellProgress(_ item:DWDownloadItem)
+    {
+        progressView.progress=item.videoDownloadProgress
     }
 }

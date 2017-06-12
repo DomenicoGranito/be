@@ -119,7 +119,8 @@ class OfflineViewController: UIViewController
         downloader?.progressBlock={(_ progress:Float, _ totalBytesWritten:Int, _ totalBytesExpectedToWrite:Int)->Void in
             item.videoDownloadedSize=totalBytesWritten
             item.videoFileSize=totalBytesExpectedToWrite
-            item.videoDownloadProgress=Float(item.videoDownloadedSize/item.videoFileSize)
+            item.videoDownloadProgress=Float(item.videoDownloadedSize)/Float(item.videoFileSize)
+            cell.updateCellProgress(item)
         }
         
         downloader?.failBlock={(_ error:Error?)->Void in
@@ -270,7 +271,8 @@ class OfflineViewController: UIViewController
             }
             else
             {
-                SongManager.deleteFromDownloads(downloadFinishItems[indexPath.row])
+                SongManager.deleteFromDownloads(
+                    downloadFinishItems[indexPath.row])
             }
             
             loadTableView()
