@@ -250,21 +250,29 @@ class OfflineViewController: UIViewController
     
     func tableView(_ tableView:UITableView, canEditRowAtIndexPath indexPath:IndexPath)->Bool
     {
-        return tableView==downloadFinishTbl ? false : true
+        return true
     }
     
     func tableView(_ tableView:UITableView, commitEditingStyle editingStyle:UITableViewCellEditingStyle, forRowAtIndexPath indexPath:IndexPath)
     {
         if editingStyle == .delete
         {
-            let item=downloadingItems.items[indexPath.row] as! DWDownloadItem
-            
-            if let _=item.downloader
+            if tableView==downloadingItems
             {
-                item.downloader.pause()
+                let item=downloadingItems.items[indexPath.row] as! DWDownloadItem
+                
+                if let _=item.downloader
+                {
+                    item.downloader.pause()
+                }
+                
+                appDelegate.downloadingItems.items.remove(item)
+            }
+            else
+            {
+                SongManager.deleteFromDownloads(downloadFinishItems[indexPath.row])
             }
             
-            appDelegate.downloadingItems.items.remove(item)
             loadTableView()
         }
     }

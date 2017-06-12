@@ -8470,7 +8470,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ZqG-zW-S4M" userLabel="My Profile">
                             <color key="tintColor" red="0.74443717279999999" green="0.55735154870000003" blue="0.25056629460000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="myaccount" destination="88Q-eZ-4eh" id="Ttc-K3-YUp"/>
+                                <action selector="addTapped" destination="KOh-8X-SAc" id="FcW-Fb-wIa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -251,6 +251,12 @@ open class SongManager
         return false
     }
     
+    class func deleteFromDownloads(_ objectToBeDelete:NSManagedObject)
+    {
+        context.delete(objectToBeDelete)
+        save()
+    }
+
     class func deleteRecentlyPlayed(_ objectToBeDelete:NSManagedObject)
     {
         context.delete(objectToBeDelete)
