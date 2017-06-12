@@ -18,9 +18,12 @@ class OfflineViewController: UIViewController
     var downloadFinishItems:[NSManagedObject]!
     let site=Config.shared.site()
     var appDelegate:AppDelegate!
+    var TBVC:TabBarViewController!
     
     override func viewDidLoad()
     {
+        TBVC=tabBarController as! TabBarViewController
+        
         appDelegate=UIApplication.shared.delegate as! AppDelegate
         
         loadTableView()
@@ -271,11 +274,59 @@ class OfflineViewController: UIViewController
             }
             else
             {
+                let videoID=downloadFinishItems[indexPath.row].value(forKey:"streamKey") as! String
+                
+                try! FileManager.default.removeItem(atPath:localVideoPath(videoID))
+                
                 SongManager.deleteFromDownloads(
                     downloadFinishItems[indexPath.row])
             }
             
             loadTableView()
         }
+    }
+    
+    func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:IndexPath)
+    {
+        if tableView==downloadFinishTbl
+        {
+            let storyboard=UIStoryboard(name:"Main", bundle:nil)
+            let modalVC=storyboard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController
+            
+            let streamsArray=NSMutableArray()
+            streamsArray.add(makeStreamClassObject(indexPath.row))
+            
+            modalVC.streamsArray=streamsArray
+            modalVC.TBVC=TBVC
+            
+            TBVC.modalVC=modalVC
+            TBVC.configure(makeStreamClassObject(indexPath.row))
+        }
+    }
+    
+    func makeStreamClassObject(_ row:Int)->Stream
+    {
+        let user=User()
+        
+        user.name=downloadFinishItems[row].value(forKey:"streamUserName") as! String
+        user.id=downloadFinishItems[row].value(forKey:"streamUserID") as! UInt
+        
+        let stream=Stream()
+        
+        stream.id=downloadFinishItems[row].value(forKey:"streamID") as! UInt
+        stream.title=downloadFinishItems[row].value(forKey:"streamTitle") as! String
+        stream.streamHash=downloadFinishItems[row].value(forKey:"streamHash") as! String
+        stream.videoID=downloadFinishItems[row].value(forKey:"streamKey") as! String
+        
+        stream.user=user
+        
+        return stream
+    }
+    
+    func localVideoPath(_ videoID:String)->String
+    {
+        let documentDirectory=NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        
+        return "\(documentDirectory)/\(videoID).mp4"
     }
 }

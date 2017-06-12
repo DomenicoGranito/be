@@ -379,12 +379,26 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
             
             return
         }
+        else if SongManager.isAlreadyDownloaded(stream!.id)
+        {
+            player?.contentURL=URL(fileURLWithPath:localVideoPath())
+        }
+        else
+        {
+            player?.videoId=videoIDs[selectedItemIndex]
+            player?.startRequestPlayInfo()
+        }
         
-        player?.videoId=videoIDs[selectedItemIndex]
-        player?.startRequestPlayInfo()
         player?.play()
         playButton?.isEnabled=true
         playButton?.setImage(UIImage(named:"big_pause_button"), for:.normal)
+    }
+    
+    func localVideoPath()->String
+    {
+        let documentDirectory=NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        
+        return "\(documentDirectory)/\(videoIDs[selectedItemIndex]).mp4"
     }
     
     func rotateScreen()

@@ -24,6 +24,7 @@
 		3E71926B1E768DFE00B7049B /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E71926A1E768DFD00B7049B /* ErrorView.swift */; };
 		3E7828C11EEA741B00F2B5EF /* OfflineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7828C01EEA741B00F2B5EF /* OfflineViewController.swift */; };
 		3E79060E1E7FBD6A00257C5B /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E79060C1E7FBD6200257C5B /* iCarousel.m */; };
+		3E7C66DA1EEECD120014C6BB /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E7C66D91EEECD120014C6BB /* CoreTelephony.framework */; };
 		3E82056A1EEA9C3600D3B918 /* DWDownloadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8205691EEA9C3600D3B918 /* DWDownloadItem.m */; };
 		3E82056D1EEA9CC500D3B918 /* DWTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E82056C1EEA9CC500D3B918 /* DWTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3E8205711EEC4B7100D3B918 /* OfflineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8205701EEC4B7100D3B918 /* OfflineCell.swift */; };
@@ -55,8 +56,6 @@
 		3EF535B81E092A330049B2E9 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF535B71E092A330049B2E9 /* ModalViewController.swift */; };
 		3EFAD8931EB217E900038484 /* GradientTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFAD8921EB217E900038484 /* GradientTableView.swift */; };
 		86564ECF1E540BA400584405 /* SeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86564ECE1E540BA300584405 /* SeriesViewController.swift */; };
-		865C33401E520459008EA556 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865C333F1E520459008EA556 /* GameKit.framework */; };
-		868CBDBF1E5746D600BF14C3 /* libz.1.2.8.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 868CBDBE1E5746D500BF14C3 /* libz.1.2.8.tbd */; };
 		96E9F7207AFA69CAF92AEE58 /* libPods-Streamini.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6302C3C18A0A3B43612D9F59 /* libPods-Streamini.a */; };
 		9AA5A33E1EEC098B0041BD0C /* BETabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA5A33D1EEC098B0041BD0C /* BETabBarController.swift */; };
 		9AA5A3401EEC09B50041BD0C /* BENavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA5A33F1EEC09B50041BD0C /* BENavigationController.swift */; };
@@ -71,12 +70,7 @@
 		B63C1A4C1E2DEA0400EF2F7C /* SCLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63C1A4B1E2DEA0400EF2F7C /* SCLExtensions.swift */; };
 		B63C1A4E1E451AE100EF2F7C /* MyLibViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63C1A4D1E451AE000EF2F7C /* MyLibViewController.swift */; };
 		B64176D31DF4EDE200099A9D /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64176D21DF4EDE200099A9D /* PlayerView.swift */; };
-		B66561E21E09884100EDA684 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = B66561DD1E09884100EDA684 /* README.txt */; };
 		B66561E31E09884100EDA684 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B66561E11E09884100EDA684 /* libWeChatSDK.a */; };
-		B66561E51E0988D900EDA684 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B66561E41E0988D900EDA684 /* libc++.tbd */; };
-		B66561E71E0988E900EDA684 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66561E61E0988E900EDA684 /* CoreTelephony.framework */; };
-		B66561E91E0988F800EDA684 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B66561E81E0988F800EDA684 /* libsqlite3.tbd */; };
-		B66561EB1E09890600EDA684 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B66561EA1E09890600EDA684 /* libz.tbd */; };
 		B67448141E2C63CC0049890F /* DataDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67447FD1E2C63CC0049890F /* DataDownloader.swift */; };
 		B67448151E2C63CC0049890F /* DownloadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67447FE1E2C63CC0049890F /* DownloadCell.swift */; };
 		B67448161E2C63CC0049890F /* DownloadDataStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67447FF1E2C63CC0049890F /* DownloadDataStructures.swift */; };
@@ -94,7 +88,6 @@
 		B67448251E2C63CC0049890F /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B674480F1E2C63CC0049890F /* SongCell.swift */; };
 		B67448261E2C63CC0049890F /* SongManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67448101E2C63CC0049890F /* SongManager.swift */; };
 		B67448271E2C63CC0049890F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67448111E2C63CC0049890F /* TabBarController.swift */; };
-		B67448321E2C7FB40049890F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67448311E2C7FB30049890F /* MobileCoreServices.framework */; };
 		B67448581E2C96B90049890F /* AVAssetAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67448561E2C96B90049890F /* AVAssetAudio.swift */; };
 		B67448591E2C96B90049890F /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67448571E2C96B90049890F /* UIViewController+Alert.swift */; };
 		B6782DDA1E1969F600289D8A /* ARNVTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6782DD91E1969F500289D8A /* ARNVTransitionAnimator.swift */; };
@@ -111,9 +104,6 @@
 		B70AB1381B73839C00BAD62A /* UserHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70AB1371B73839C00BAD62A /* UserHeaderView.swift */; };
 		B70E04191B74E5B000422AF0 /* LinkedUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70E04181B74E5B000422AF0 /* LinkedUserCell.swift */; };
 		B70E041B1B74E92600422AF0 /* RecentStreamsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70E041A1B74E92600422AF0 /* RecentStreamsDataSource.swift */; };
-		B70FAA011B539BB300607EA9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FAA001B539BB300607EA9 /* CFNetwork.framework */; };
-		B70FAA031B539BC000607EA9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FAA021B539BC000607EA9 /* SystemConfiguration.framework */; };
-		B70FAA051B539BCA00607EA9 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B70FAA041B539BCA00607EA9 /* libz.dylib */; };
 		B71405991B62333B00EAEC61 /* ReplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71405981B62333B00EAEC61 /* ReplayView.swift */; };
 		B714059B1B6235D500EAEC61 /* UIActionSheetExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B714059A1B6235D500EAEC61 /* UIActionSheetExtensions.swift */; };
 		B714059D1B62367800EAEC61 /* UIAlertViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B714059C1B62367800EAEC61 /* UIAlertViewExtensions.swift */; };
@@ -204,7 +194,6 @@
 		B7E15E551B6A62B6000C8C69 /* JoinStreamKeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E15E541B6A62B6000C8C69 /* JoinStreamKeyboardHandler.swift */; };
 		B7E15E571B6A6C1B000C8C69 /* DefaultStreamPlayerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E15E561B6A6C1B000C8C69 /* DefaultStreamPlayerDelegate.swift */; };
 		B7EAD9501B4D1F100009C698 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EAD94F1B4D1F100009C698 /* LocationManager.swift */; };
-		B7EAD9531B4D72A40009C698 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7EAD9521B4D72A40009C698 /* QuickLook.framework */; };
 		B7EB82B71B6746500022C76A /* NotificationsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EB82B61B6746500022C76A /* NotificationsDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -249,6 +238,7 @@
 		3E7828C01EEA741B00F2B5EF /* OfflineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineViewController.swift; sourceTree = "<group>"; };
 		3E79060B1E7FBD6100257C5B /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iCarousel.h; path = iCarousel/iCarousel.h; sourceTree = "<group>"; };
 		3E79060C1E7FBD6200257C5B /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iCarousel.m; path = iCarousel/iCarousel.m; sourceTree = "<group>"; };
+		3E7C66D91EEECD120014C6BB /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3E8205681EEA9C3600D3B918 /* DWDownloadItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWDownloadItem.h; path = DWSDK/DWDownloadItem.h; sourceTree = "<group>"; };
 		3E8205691EEA9C3600D3B918 /* DWDownloadItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWDownloadItem.m; path = DWSDK/DWDownloadItem.m; sourceTree = "<group>"; };
 		3E82056B1EEA9CC500D3B918 /* DWTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWTools.h; path = DWSDK/DWTools.h; sourceTree = "<group>"; };
@@ -285,8 +275,6 @@
 		3EFAD8921EB217E900038484 /* GradientTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientTableView.swift; sourceTree = "<group>"; };
 		6302C3C18A0A3B43612D9F59 /* libPods-Streamini.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Streamini.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		86564ECE1E540BA300584405 /* SeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesViewController.swift; sourceTree = "<group>"; };
-		865C333F1E520459008EA556 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		868CBDBE1E5746D500BF14C3 /* libz.1.2.8.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.8.tbd; path = usr/lib/libz.1.2.8.tbd; sourceTree = SDKROOT; };
 		9AA5A33D1EEC098B0041BD0C /* BETabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BETabBarController.swift; sourceTree = "<group>"; };
 		9AA5A33F1EEC09B50041BD0C /* BENavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BENavigationController.swift; sourceTree = "<group>"; };
 		A60F82E81D490F4D002E2CEA /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -300,15 +288,10 @@
 		B63C1A4B1E2DEA0400EF2F7C /* SCLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLExtensions.swift; sourceTree = "<group>"; };
 		B63C1A4D1E451AE000EF2F7C /* MyLibViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLibViewController.swift; sourceTree = "<group>"; };
 		B64176D21DF4EDE200099A9D /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
-		B66561DD1E09884100EDA684 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.txt; path = OpenSDK1.7.5/README.txt; sourceTree = "<group>"; };
 		B66561DE1E09884100EDA684 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WechatAuthSDK.h; path = OpenSDK1.7.5/WechatAuthSDK.h; sourceTree = "<group>"; };
 		B66561DF1E09884100EDA684 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApi.h; path = OpenSDK1.7.5/WXApi.h; sourceTree = "<group>"; };
 		B66561E01E09884100EDA684 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = OpenSDK1.7.5/WXApiObject.h; sourceTree = "<group>"; };
 		B66561E11E09884100EDA684 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = OpenSDK1.7.5/libWeChatSDK.a; sourceTree = "<group>"; };
-		B66561E41E0988D900EDA684 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		B66561E61E0988E900EDA684 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
-		B66561E81E0988F800EDA684 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		B66561EA1E09890600EDA684 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		B67447FD1E2C63CC0049890F /* DataDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataDownloader.swift; path = MediaLibrary/DataDownloader.swift; sourceTree = "<group>"; };
 		B67447FE1E2C63CC0049890F /* DownloadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadCell.swift; path = MediaLibrary/DownloadCell.swift; sourceTree = "<group>"; };
 		B67447FF1E2C63CC0049890F /* DownloadDataStructures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadDataStructures.swift; path = MediaLibrary/DownloadDataStructures.swift; sourceTree = "<group>"; };
@@ -326,7 +309,6 @@
 		B674480F1E2C63CC0049890F /* SongCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SongCell.swift; path = MediaLibrary/SongCell.swift; sourceTree = "<group>"; };
 		B67448101E2C63CC0049890F /* SongManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SongManager.swift; path = MediaLibrary/SongManager.swift; sourceTree = "<group>"; };
 		B67448111E2C63CC0049890F /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = MediaLibrary/TabBarController.swift; sourceTree = "<group>"; };
-		B67448311E2C7FB30049890F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		B67448331E2C81560049890F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		B67448561E2C96B90049890F /* AVAssetAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AVAssetAudio.swift; path = MediaLibrary/helper/extensions/AVAssetAudio.swift; sourceTree = "<group>"; };
 		B67448571E2C96B90049890F /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Alert.swift"; path = "MediaLibrary/helper/extensions/UIViewController+Alert.swift"; sourceTree = "<group>"; };
@@ -344,9 +326,6 @@
 		B70AB1371B73839C00BAD62A /* UserHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHeaderView.swift; sourceTree = "<group>"; };
 		B70E04181B74E5B000422AF0 /* LinkedUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedUserCell.swift; sourceTree = "<group>"; };
 		B70E041A1B74E92600422AF0 /* RecentStreamsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentStreamsDataSource.swift; sourceTree = "<group>"; };
-		B70FAA001B539BB300607EA9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		B70FAA021B539BC000607EA9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		B70FAA041B539BCA00607EA9 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		B71405981B62333B00EAEC61 /* ReplayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplayView.swift; sourceTree = "<group>"; };
 		B714059A1B6235D500EAEC61 /* UIActionSheetExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIActionSheetExtensions.swift; sourceTree = "<group>"; };
 		B714059C1B62367800EAEC61 /* UIAlertViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertViewExtensions.swift; sourceTree = "<group>"; };
@@ -443,7 +422,6 @@
 		B7E15E541B6A62B6000C8C69 /* JoinStreamKeyboardHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinStreamKeyboardHandler.swift; sourceTree = "<group>"; };
 		B7E15E561B6A6C1B000C8C69 /* DefaultStreamPlayerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultStreamPlayerDelegate.swift; sourceTree = "<group>"; };
 		B7EAD94F1B4D1F100009C698 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		B7EAD9521B4D72A40009C698 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 		B7EB82B61B6746500022C76A /* NotificationsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -452,19 +430,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				868CBDBF1E5746D600BF14C3 /* libz.1.2.8.tbd in Frameworks */,
-				B67448321E2C7FB40049890F /* MobileCoreServices.framework in Frameworks */,
+				3E7C66DA1EEECD120014C6BB /* CoreTelephony.framework in Frameworks */,
 				B66561E31E09884100EDA684 /* libWeChatSDK.a in Frameworks */,
-				B66561EB1E09890600EDA684 /* libz.tbd in Frameworks */,
 				3E356FA01E843583008FD8B9 /* libCCSDK.a in Frameworks */,
-				B66561E91E0988F800EDA684 /* libsqlite3.tbd in Frameworks */,
-				B66561E71E0988E900EDA684 /* CoreTelephony.framework in Frameworks */,
-				B66561E51E0988D900EDA684 /* libc++.tbd in Frameworks */,
-				B70FAA051B539BCA00607EA9 /* libz.dylib in Frameworks */,
-				865C33401E520459008EA556 /* GameKit.framework in Frameworks */,
-				B70FAA031B539BC000607EA9 /* SystemConfiguration.framework in Frameworks */,
-				B70FAA011B539BB300607EA9 /* CFNetwork.framework in Frameworks */,
-				B7EAD9531B4D72A40009C698 /* QuickLook.framework in Frameworks */,
 				96E9F7207AFA69CAF92AEE58 /* libPods-Streamini.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,17 +490,7 @@
 		786304F139CBAD59E4F652FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				868CBDBE1E5746D500BF14C3 /* libz.1.2.8.tbd */,
-				865C333F1E520459008EA556 /* GameKit.framework */,
-				B67448311E2C7FB30049890F /* MobileCoreServices.framework */,
-				B66561EA1E09890600EDA684 /* libz.tbd */,
-				B66561E81E0988F800EDA684 /* libsqlite3.tbd */,
-				B66561E61E0988E900EDA684 /* CoreTelephony.framework */,
-				B66561E41E0988D900EDA684 /* libc++.tbd */,
-				B70FAA041B539BCA00607EA9 /* libz.dylib */,
-				B70FAA021B539BC000607EA9 /* SystemConfiguration.framework */,
-				B70FAA001B539BB300607EA9 /* CFNetwork.framework */,
-				B7EAD9521B4D72A40009C698 /* QuickLook.framework */,
+				3E7C66D91EEECD120014C6BB /* CoreTelephony.framework */,
 				6302C3C18A0A3B43612D9F59 /* libPods-Streamini.a */,
 			);
 			name = Frameworks;
@@ -550,7 +508,6 @@
 		B66561DC1E09882C00EDA684 /* WECHAT */ = {
 			isa = PBXGroup;
 			children = (
-				B66561DD1E09884100EDA684 /* README.txt */,
 				B66561DE1E09884100EDA684 /* WechatAuthSDK.h */,
 				B66561DF1E09884100EDA684 /* WXApi.h */,
 				B66561E01E09884100EDA684 /* WXApiObject.h */,
@@ -975,7 +932,7 @@
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Keychain = {
 								enabled = 1;
@@ -1016,7 +973,6 @@
 				B7AA932B1B3172740005972E /* Main.storyboard in Resources */,
 				B7AA93301B3172740005972E /* LaunchScreen.xib in Resources */,
 				B7D6F0B91B37F4D90070C36A /* Config.plist in Resources */,
-				B66561E21E09884100EDA684 /* README.txt in Resources */,
 				3E935BC31E937D8700065FEC /* PlaylistDetailView.xib in Resources */,
 				B7AA932D1B3172740005972E /* Images.xcassets in Resources */,
 			);

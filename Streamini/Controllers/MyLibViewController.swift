@@ -26,7 +26,7 @@ class MyLibViewController: UIViewController
     let menuItemTitlesArray=["Live Streams", "Videos", "Channels"]
     let menuItemIconsArray=["rec-off", "youtube", "videochannel"]
     
-    var recentlyPlayed:[NSManagedObject]?
+    var recentlyPlayed:[NSManagedObject]!
     var TBVC:TabBarViewController!
     let site=Config.shared.site()
     
@@ -48,7 +48,7 @@ class MyLibViewController: UIViewController
         
         recentlyPlayed=SongManager.getRecentlyPlayed()
         
-        messageLbl.isHidden=recentlyPlayed!.count==0 ? false : true
+        messageLbl.isHidden=recentlyPlayed.count==0 ? false : true
         
         itemsTbl?.reloadData()
     }
@@ -79,7 +79,7 @@ class MyLibViewController: UIViewController
     
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
-        return recentlyPlayed!.count+4
+        return recentlyPlayed.count+4
     }
     
     func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:IndexPath)->UITableViewCell
@@ -99,7 +99,7 @@ class MyLibViewController: UIViewController
         {
             let cell=tableView.dequeueReusableCell(withIdentifier:"EditCell") as! EditCell
             
-            cell.editButton?.isHidden=recentlyPlayed!.count==0 ? true : false
+            cell.editButton?.isHidden=recentlyPlayed.count==0 ? true : false
             
             return cell
         }
@@ -107,9 +107,9 @@ class MyLibViewController: UIViewController
         {
             let cell=tableView.dequeueReusableCell(withIdentifier:"RecentlyPlayedCell") as! RecentlyPlayedCell
             
-            cell.videoTitleLbl?.text=recentlyPlayed![indexPath.row-4].value(forKey:"streamTitle") as? String
-            cell.artistNameLbl?.text=recentlyPlayed![indexPath.row-4].value(forKey:"streamUserName") as? String
-            cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"\(site)/thumb/\(recentlyPlayed![indexPath.row-4].value(forKey:"streamID") as! Int).jpg"), placeholderImage:UIImage(named:"stream"))
+            cell.videoTitleLbl?.text=recentlyPlayed[indexPath.row-4].value(forKey:"streamTitle") as? String
+            cell.artistNameLbl?.text=recentlyPlayed[indexPath.row-4].value(forKey:"streamUserName") as? String
+            cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"\(site)/thumb/\(recentlyPlayed[indexPath.row-4].value(forKey:"streamID") as! Int).jpg"), placeholderImage:UIImage(named:"stream"))
             
             cell.selectedBackgroundView=SelectedCellView().create()
             
@@ -127,11 +127,11 @@ class MyLibViewController: UIViewController
         let clearButton=UITableViewRowAction(style:.default, title:"Clear")
         {action, indexPath in
             
-            SongManager.deleteRecentlyPlayed(self.recentlyPlayed![indexPath.row-4])
-            self.recentlyPlayed?.remove(at:indexPath.row-4)
+            SongManager.deleteRecentlyPlayed(self.recentlyPlayed[indexPath.row-4])
+            self.recentlyPlayed.remove(at:indexPath.row-4)
             tableView.deleteRows(at:[indexPath], with:.automatic)
             
-            if self.recentlyPlayed!.count==0
+            if self.recentlyPlayed.count==0
             {
                 let editCellIndexPath=IndexPath(row:3, section:0)
                 let editCell=tableView.cellForRow(at:editCellIndexPath) as! EditCell
@@ -202,15 +202,15 @@ class MyLibViewController: UIViewController
     {
         let user=User()
         
-        user.name=recentlyPlayed![row].value(forKey:"streamUserName") as! String
-        user.id=recentlyPlayed![row].value(forKey:"streamUserID") as! UInt
+        user.name=recentlyPlayed[row].value(forKey:"streamUserName") as! String
+        user.id=recentlyPlayed[row].value(forKey:"streamUserID") as! UInt
         
         let stream=Stream()
         
-        stream.id=recentlyPlayed![row].value(forKey:"streamID") as! UInt
-        stream.title=recentlyPlayed![row].value(forKey:"streamTitle") as! String
-        stream.streamHash=recentlyPlayed![row].value(forKey:"streamHash") as! String
-        stream.videoID=recentlyPlayed![row].value(forKey:"streamKey") as! String
+        stream.id=recentlyPlayed[row].value(forKey:"streamID") as! UInt
+        stream.title=recentlyPlayed[row].value(forKey:"streamTitle") as! String
+        stream.streamHash=recentlyPlayed[row].value(forKey:"streamHash") as! String
+        stream.videoID=recentlyPlayed[row].value(forKey:"streamKey") as! String
         
         stream.user=user
         
