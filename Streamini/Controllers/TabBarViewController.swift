@@ -23,13 +23,13 @@ class TabBarViewController: BETabBarController, UITabBarControllerDelegate
     var modalVC:ModalViewController!
     let site=Config.shared.site()
     
-    // MARK: - Orientation Handling.
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
+    {
         return .portrait
     }
     
-    override var shouldAutorotate: Bool {
+    override var shouldAutorotate:Bool
+    {
         return false
     }
     
@@ -135,6 +135,9 @@ class TabBarViewController: BETabBarController, UITabBarControllerDelegate
     
     @IBAction func tapMiniPlayerButton()
     {
+        let value=UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey:"orientation")
+
         present(modalVC, animated:true)
     }
     
