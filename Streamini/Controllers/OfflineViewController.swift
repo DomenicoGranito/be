@@ -93,7 +93,7 @@ class OfflineViewController: UIViewController
         
         let item=downloadingItems.items[button.tag] as! DWDownloadItem
         
-        switch(item.videoDownloadStatus)
+        switch item.videoDownloadStatus
         {
         case DWDownloadStatusWait:
             videoDownloadStartWithItem(item, cell)
@@ -119,22 +119,22 @@ class OfflineViewController: UIViewController
     {
         let downloader=item.downloader
         
-        downloader?.progressBlock={(_ progress:Float, _ totalBytesWritten:Int, _ totalBytesExpectedToWrite:Int)->Void in
+        downloader?.progressBlock={(progress:Float, totalBytesWritten:Int, totalBytesExpectedToWrite:Int)->() in
             item.videoDownloadedSize=totalBytesWritten
             item.videoFileSize=totalBytesExpectedToWrite
             item.videoDownloadProgress=Float(item.videoDownloadedSize)/Float(item.videoFileSize)
             cell.updateCellProgress(item)
         }
         
-        downloader?.failBlock={(_ error:Error?)->Void in
+        downloader?.failBlock={(error:Error?)->() in
             item.videoDownloadStatus=DWDownloadStatusFail
             cell.updateDownloadStatus(item)
         }
         
-        downloader?.finishBlock={()->Void in
+        downloader?.finishBlock={()->() in
             SongManager.addToDownloads(item.streamTitle, item.streamHash, item.streamID, item.streamUserName, item.videoId, item.streamUserID)
             self.appDelegate.downloadingItems.items.remove(item)
-            DispatchQueue.main.async(execute:{()->Void in
+            DispatchQueue.main.async(execute:{()->() in
                 self.loadTableView()
             })
         }
