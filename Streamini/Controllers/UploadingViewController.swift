@@ -10,14 +10,25 @@ import MobileCoreServices
 
 class UploadingViewController: UIViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
-    override func viewDidLoad()
+    @IBOutlet var tableView:UITableView!
+    
+    var timer:Timer!
+    var videoPath:String!
+    var uploadItems=DWUploadItems(path:"")!
+    var uploadInfoSetupViewController:UploadInfoSetupViewController!
+    
+    override func viewWillAppear(_ animated:Bool)
     {
+        loadUploadItems()
         
+        timer=Timer.scheduledTimer(timeInterval:1, target:self, selector:#selector(timerHandler), userInfo:nil, repeats:true)
+        
+        addVideoFileToUpload()
     }
     
     override func viewWillDisappear(_ animated:Bool)
     {
-        
+        timer.invalidate()
     }
     
     @IBAction func addTapped()
@@ -31,7 +42,7 @@ class UploadingViewController: UIViewController, UIActionSheetDelegate, UIImageP
     {
         if buttonIndex==1
         {
-            let imagePicker=DWVideoCompressController(quality:.medium, andSourceType:.photoLibrary, andMediaType:.movieAndImage)!
+            let imagePicker=DWVideoCompressController(quality:.medium, andSourceType:.photoLibrary, andMediaType:.movie)!
             imagePicker.delegate=self
             present(imagePicker, animated:true)
         }
@@ -39,18 +50,228 @@ class UploadingViewController: UIViewController, UIActionSheetDelegate, UIImageP
     
     func imagePickerController(_ picker:UIImagePickerController, didFinishPickingMediaWithInfo info:[String:Any])
     {
-        let mediaType=info[UIImagePickerControllerMediaType] as! String
+        videoPath=(info[UIImagePickerControllerMediaURL] as AnyObject).path
         
-        if mediaType==kUTTypeMovie as String
+        let storyboard=UIStoryboard(name:"Main", bundle:nil)
+        uploadInfoSetupViewController=storyboard.instantiateViewController(withIdentifier:"UploadInfoSetupViewController") as! UploadInfoSetupViewController
+        
+        navigationController?.pushViewController(uploadInfoSetupViewController, animated:false)
+        
+        picker.dismiss(animated:true)
+    }
+    
+    func addVideoFileToUpload()
+    {
+        if uploadInfoSetupViewController==nil || uploadInfoSetupViewController.isCancel
         {
-            let videoURL=info[UIImagePickerControllerMediaURL]
-            picker.dismiss(animated:true)
+            uploadInfoSetupViewController=nil
+            videoPath=nil
+            
+            return
         }
-        else
+        
+        let item=DWUploadItem()
+        
+        item.videoUploadStatus=DWUploadStatusWait
+        item.videoPath=videoPath
+        item.videoTitle=uploadInfoSetupViewController.videoTitleTxt.text
+        item.videoUploadProgress=0
+        item.videoUploadedSize=0
+        item.videoThumbnailPath="\(SongManager.documentsDir)/\(item.videoTitle!).png"
+        
+        //try! DWTools.saveVideoThumbnail(withVideoPath:videoPath, toFile:item.videoThumbnailPath)
+        
+        item.videoFileSize=DWTools.getFileSize(withPath:videoPath, error:nil)
+        
+        uploadItems.items.add(item)
+        tableView.reloadData()
+        
+        uploadInfoSetupViewController=nil
+        videoPath=nil
+    }
+    
+    func loadUploadItems()
+    {
+        
+    }
+    
+    func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
+    {
+        return uploadItems.items.count
+    }
+    
+    func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:IndexPath)->UITableViewCell
+    {
+        let cell=tableView.dequeueReusableCell(withIdentifier:"UploadingCell") as! UploadCell
+        
+        let item=uploadItems.items[indexPath.row] as! DWUploadItem
+        
+        cell.videoTitleLbl.text=item.videoTitle
+        cell.videoThumbnailImageView.image=item.getVideoThumbnail()
+        
+        cell.statusButton.tag=indexPath.row
+        cell.statusButton.addTarget(self, action:#selector(videoUploadStatusButtonAction), for:.touchUpInside)
+        
+        cell.updateUploadStatus(item)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView:UITableView, canEditRowAtIndexPath indexPath:IndexPath)->Bool
+    {
+        return true
+    }
+    
+    func tableView(_ tableView:UITableView, commitEditingStyle editingStyle:UITableViewCellEditingStyle, forRowAtIndexPath indexPath:IndexPath)
+    {
+        if editingStyle == .delete
         {
-            let alertController=UIAlertController(title:"Message", message:"Please select movie only", preferredStyle:.alert)
-            alertController.addAction(UIAlertAction(title:"OK", style:.cancel, handler:nil))
-            present(alertController, animated:true)
+            uploadItems.removeObject(at:UInt(indexPath.row))
+            
+            tableView.reloadData()
+        }
+    }
+    
+    func videoUploadStatusButtonAction(button:UIButton)
+    {
+        let indexPath=IndexPath(row:button.tag, section:0)
+        
+        let cell=tableView.cellForRow(at:indexPath) as! UploadCell
+        
+        let item=uploadItems.items[button.tag] as! DWUploadItem
+        
+        switch item.videoUploadStatus
+        {
+        case DWUploadStatusWait:
+            videoUploadStartWithItem(item, cell)
+            break
+        case DWUploadStatusStart:
+            videoUploadPauseWithItem(item, cell)
+            break
+        case DWUploadStatusUploading:
+            videoUploadPauseWithItem(item, cell)
+            break
+        case DWUploadStatusPause:
+            videoUploadResumeWithItem(item, cell)
+            break
+        case DWUploadStatusResume:
+            videoUploadPauseWithItem(item, cell)
+            break
+        case DWUploadStatusLoadLocalFileInvalid:
+            videoUploadFailedAlert("The local file does not exist, delete the task to re-add the file")
+            break
+        case DWUploadStatusFail:
+            videoUploadResumeWithItem(item, cell)
+            break
+        default:
+            break
+        }
+    }
+    
+    func videoUploadFailedAlert(_ info:String)
+    {
+        let alertController=UIAlertController(title:"Message", message:info, preferredStyle:.alert)
+        alertController.addAction(UIAlertAction(title:"OK", style:.cancel, handler:nil))
+        present(alertController, animated:true)
+    }
+    
+    func setUploadBlockWithItem(_ item:DWUploadItem, _ cell:UploadCell)
+    {
+        let uploader=item.uploader!
+        
+        uploader.progressBlock={(progress:Float, totalBytesWritten:Int, totalBytesExpectedToWrite:Int)->() in
+            item.videoUploadProgress=progress
+            item.videoUploadedSize=totalBytesWritten
+            cell.updateCellProgress(item)
+        }
+        
+        uploader.finishBlock={()->() in
+            item.videoUploadStatus=DWUploadStatusFinish
+            cell.updateUploadStatus(item)
+        }
+        
+        uploader.failBlock={(error:Error?)->() in
+            item.uploader=nil
+            item.videoUploadStatus=DWUploadStatusFail
+            cell.updateUploadStatus(item)
+        }
+        
+        uploader.pausedBlock={(error:Error?)->() in
+            item.videoUploadStatus=DWUploadStatusPause
+            cell.updateUploadStatus(item)
+        }
+    }
+    
+    func videoUploadStartWithItem(_ item:DWUploadItem, _ cell:UploadCell)
+    {
+        item.uploader=DWUploader(userId:"D43560320694466A", andKey:"WGbPBVI3075vGwA0AIW0SR9pDTsQR229", uploadVideoTitle:item.videoTitle, videoDescription:"", videoTag:"", videoPath:item.videoPath, notifyURL:"http://www.bokecc.com/")
+        
+        item.videoUploadStatus=DWUploadStatusUploading
+        
+        cell.updateUploadStatus(item)
+        
+        item.uploader.timeoutSeconds=20
+        
+        setUploadBlockWithItem(item, cell)
+        
+        item.uploader.start()
+    }
+    
+    func videoUploadResumeWithItem(_ item:DWUploadItem, _ cell:UploadCell)
+    {
+        if let _=item.uploadContext
+        {
+            if item.uploader==nil
+            {
+                item.uploader=DWUploader(videoContext:item.uploadContext)
+            }
+            
+            item.videoUploadStatus=DWUploadStatusUploading
+            cell.updateUploadStatus(item)
+            item.uploader.timeoutSeconds=20
+            setUploadBlockWithItem(item, cell)
+            
+            item.uploader.resume()
+            
+            return
+        }
+        
+        item.uploader=nil
+        videoUploadStartWithItem(item, cell)
+    }
+    
+    func videoUploadPauseWithItem(_ item:DWUploadItem, _ cell:UploadCell)
+    {
+        if let _=item.uploader
+        {
+            item.uploader.pause()
+            item.videoUploadStatus=DWUploadStatusWait
+            cell.updateUploadStatus(item)
+        }
+    }
+    
+    func timerHandler()
+    {
+        var itemVar:DWUploadItem?
+        var index=0
+        
+        for item in uploadItems.items
+        {
+            if (item as AnyObject).videoUploadStatus==DWUploadStatusWait
+            {
+                itemVar=item as? DWUploadItem
+                break
+            }
+            index+=1
+        }
+        
+        if let item=itemVar
+        {
+            let indexPath=IndexPath(row:index, section:0)
+            
+            let cell=tableView.cellForRow(at:indexPath) as! UploadCell
+            
+            videoUploadStartWithItem(item, cell)
         }
     }
 }

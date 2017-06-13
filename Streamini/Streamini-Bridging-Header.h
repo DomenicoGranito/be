@@ -1,6 +1,6 @@
 //
 //  Use this file to import your target's public headers that you would like to expose to Swift.
-////
+//
 
 #import <RestKit.h>
 #import "RestKitObjC.h"
@@ -23,9 +23,6 @@
 #import "GSKStretchyHeaderView.h"
 #import "DWDownloadItem.h"
 #import "DWUploadItem.h"
-
-//#import <SwiftFilePath/SwiftFilePath.h>
-
-//#import <SCLAlertView/SCLAlertView-Swift.h>
+#import "DWTools.h"
 
 
