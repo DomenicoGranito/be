@@ -189,10 +189,9 @@ class OfflineViewController: UIViewController
         
         for item in downloadingItems.items
         {
-            itemVar=item as? DWDownloadItem
-            
-            if itemVar!.videoDownloadStatus==DWDownloadStatusWait
+            if (item as AnyObject).videoDownloadStatus==DWDownloadStatusWait
             {
+                itemVar=item as? DWDownloadItem
                 break
             }
             index+=1

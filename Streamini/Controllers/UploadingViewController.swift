@@ -189,8 +189,7 @@ class UploadingViewController: UIViewController, UIActionSheetDelegate, UIImageP
         }
         
         uploader.finishBlock={()->() in
-            // FIRST GET STREAM KEY OF UPLOADED VIDEO
-            // HIT API TO SAVE THIS VIDEO ON OUR SERVER
+            let videoID=item.uploadContext["videoid"] as! String
             self.appDelegate.uploadItems.items.remove(item)
             DispatchQueue.main.async(execute:{()->() in
                 self.tableView.reloadData()
@@ -206,6 +205,10 @@ class UploadingViewController: UIViewController, UIActionSheetDelegate, UIImageP
         uploader.pausedBlock={(error:Error?)->() in
             item.videoUploadStatus=DWUploadStatusPause
             cell.updateUploadStatus(item)
+        }
+        
+        uploader.videoContextForRetryBlock={(videoContext:[AnyHashable:Any]?)->() in
+            item.uploadContext=videoContext
         }
     }
     
@@ -264,10 +267,9 @@ class UploadingViewController: UIViewController, UIActionSheetDelegate, UIImageP
         
         for item in uploadItems.items
         {
-            itemVar=item as? DWUploadItem
-            
-            if itemVar!.videoUploadStatus==DWUploadStatusWait
+            if (item as AnyObject).videoUploadStatus==DWUploadStatusWait
             {
+                itemVar=item as? DWUploadItem
                 break
             }
             index+=1
