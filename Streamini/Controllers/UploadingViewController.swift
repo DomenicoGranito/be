@@ -207,7 +207,7 @@ class UploadingViewController: UIViewController, UIActionSheetDelegate, UIImageP
     
     func videoUploadStartWithItem(_ item:DWUploadItem, _ cell:UploadCell)
     {
-        item.uploader=DWUploader(userId:"D43560320694466A", andKey:"WGbPBVI3075vGwA0AIW0SR9pDTsQR229", uploadVideoTitle:item.videoTitle, videoDescription:"", videoTag:"", videoPath:item.videoPath, notifyURL:"http://www.bokecc.com/")
+        item.uploader=DWUploader(userId:"D43560320694466A", andKey:"WGbPBVI3075vGwA0AIW0SR9pDTsQR229", uploadVideoTitle:item.videoTitle, videoDescription:"", videoTag:"", videoPath:item.videoPath, notifyURL:"")
         
         item.videoUploadStatus=DWUploadStatusUploading
         
@@ -248,7 +248,7 @@ class UploadingViewController: UIViewController, UIActionSheetDelegate, UIImageP
         if let _=item.uploader
         {
             item.uploader.pause()
-            item.videoUploadStatus=DWUploadStatusWait
+            item.videoUploadStatus=DWUploadStatusPause
             cell.updateUploadStatus(item)
         }
     }

@@ -16,11 +16,7 @@ class UploadCell: UITableViewCell
     
     func updateUploadStatus(_ item:DWUploadItem)
     {
-        if item.videoUploadStatus==DWUploadStatusStart
-        {
-            statusButton.setBackgroundImage(UIImage(named:"download-status-uploading"), for:.normal)
-        }
-        else if item.videoUploadStatus==DWUploadStatusFail
+        if item.videoUploadStatus==DWUploadStatusFail
         {
             statusButton.setBackgroundImage(UIImage(named:"download-status-fail"), for:.normal)
         }
@@ -32,7 +28,7 @@ class UploadCell: UITableViewCell
         {
             statusButton.setBackgroundImage(UIImage(named:"download-status-hold"), for:.normal)
         }
-        else if item.videoUploadStatus==DWUploadStatusUploading||item.videoUploadStatus==DWUploadStatusResume
+        else if item.videoUploadStatus==DWUploadStatusUploading||item.videoUploadStatus==DWUploadStatusResume||item.videoUploadStatus==DWUploadStatusStart
         {
             statusButton.setBackgroundImage(UIImage(named:"upload-status-uploading"), for:.normal)
         }
