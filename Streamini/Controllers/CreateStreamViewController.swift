@@ -8,30 +8,25 @@
 
 import AVFoundation
 import CoreLocation
-//import SCLAlertView
 
-class CreateStreamViewController: BaseViewController, UITextFieldDelegate, LocationManagerDelegate,
-UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource
+class CreateStreamViewController: BaseViewController, UITextFieldDelegate, LocationManagerDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource
 {
-    @IBOutlet weak var previewView: UIView!
-    @IBOutlet weak var darkPreviewView: UIView!
-    @IBOutlet weak var nameTextView: UITextView!
-    @IBOutlet weak var nameTextViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var connectingIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var connectingLabel: UILabel!
-    @IBOutlet weak var goLiveButtonBottom: NSLayoutConstraint! // 240
-    @IBOutlet weak var categoryLabel: UILabel!
-    @IBOutlet weak var categoryPicker: UIPickerView!
-    @IBOutlet weak var categoryLabelWidthConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var locationLabelWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var categoryPickerConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var closeButton: UIButton!
-    
-    @IBOutlet weak var goLiveButton: UIButton!
-    @IBOutlet weak var trashButton: UIButton!
+    @IBOutlet var previewView: UIView!
+    @IBOutlet var darkPreviewView: UIView!
+    @IBOutlet var nameTextView: UITextView!
+    @IBOutlet var nameTextViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var connectingIndicator: UIActivityIndicatorView!
+    @IBOutlet var connectingLabel: UILabel!
+    @IBOutlet var goLiveButtonBottom: NSLayoutConstraint! // 240
+    @IBOutlet var categoryLabel: UILabel!
+    @IBOutlet var categoryPicker: UIPickerView!
+    @IBOutlet var categoryLabelWidthConstraint: NSLayoutConstraint!
+    @IBOutlet var locationLabel: UILabel!
+    @IBOutlet var locationLabelWidthConstraint: NSLayoutConstraint!
+    @IBOutlet var categoryPickerConstraint: NSLayoutConstraint!
+    @IBOutlet var closeButton: UIButton!
+    @IBOutlet var goLiveButton: UIButton!
+    @IBOutlet var trashButton: UIButton!
     
     var stream: Stream?
     let camera = Camera()
@@ -40,22 +35,20 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource
     var categories = [Category]()
     var selectedCategory = Category()
     var keep = 0
-    
     var user: User?
     
-    // MARK: - Orientation Handling.
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
+    {
         return .portrait
     }
     
-    override var shouldAutorotate: Bool {
+    override var shouldAutorotate:Bool
+    {
         return false
     }
     
-    
-    @IBAction func trashTapped(_ sender: AnyObject) {
-        
+    @IBAction func trashTapped(_ sender: AnyObject)
+    {
         if(keep == 0)
         {
             keep = 1;
@@ -184,7 +177,6 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource
     func categoriesFailure(_ error:NSError)
     {
         handleError(error)
-        
     }
     
     // MARK: - LocationManagerDelegate

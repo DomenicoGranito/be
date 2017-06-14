@@ -15,6 +15,7 @@ class UploadingViewController: UIViewController, UIActionSheetDelegate, UIImageP
     var timer:Timer!
     var videoPath:String!
     var uploadItems:DWUploadItems!
+    var selectedCategoryID:UInt!
     var uploadInfoSetupViewController:UploadInfoSetupViewController!
     var appDelegate:AppDelegate!
     
@@ -89,6 +90,7 @@ class UploadingViewController: UIViewController, UIActionSheetDelegate, UIImageP
         uploadItems.items.add(item)
         tableView.reloadData()
         
+        selectedCategoryID=uploadInfoSetupViewController.selectedCategoryID
         uploadInfoSetupViewController=nil
         videoPath=nil
     }
@@ -189,7 +191,9 @@ class UploadingViewController: UIViewController, UIActionSheetDelegate, UIImageP
         }
         
         uploader.finishBlock={()->() in
-            let videoID=item.uploadContext["videoid"] as! String
+            let _=item.uploadContext["videoid"] as! String
+            let _=self.selectedCategoryID!
+            let _=UserContainer.shared.logged().id
             self.appDelegate.uploadItems.items.remove(item)
             DispatchQueue.main.async(execute:{()->() in
                 self.tableView.reloadData()

@@ -74,10 +74,8 @@
 		B64176D31DF4EDE200099A9D /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64176D21DF4EDE200099A9D /* PlayerView.swift */; };
 		B66561E31E09884100EDA684 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B66561E11E09884100EDA684 /* libWeChatSDK.a */; };
 		B67448141E2C63CC0049890F /* DataDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67447FD1E2C63CC0049890F /* DataDownloader.swift */; };
-		B67448151E2C63CC0049890F /* DownloadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67447FE1E2C63CC0049890F /* DownloadCell.swift */; };
 		B67448161E2C63CC0049890F /* DownloadDataStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67447FF1E2C63CC0049890F /* DownloadDataStructures.swift */; };
 		B67448181E2C63CC0049890F /* DownloadProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67448011E2C63CC0049890F /* DownloadProtocols.swift */; };
-		B67448191E2C63CC0049890F /* DownloadTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67448021E2C63CC0049890F /* DownloadTableViewController.swift */; };
 		B674481A1E2C63CC0049890F /* MenuAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67448031E2C63CC0049890F /* MenuAction.swift */; };
 		B674481B1E2C63CC0049890F /* MiscFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67448041E2C63CC0049890F /* MiscFuncs.swift */; };
 		B674481C1E2C63CC0049890F /* Music_Player.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B67448051E2C63CC0049890F /* Music_Player.xcdatamodeld */; };
@@ -296,10 +294,8 @@
 		B66561E01E09884100EDA684 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = OpenSDK1.7.5/WXApiObject.h; sourceTree = "<group>"; };
 		B66561E11E09884100EDA684 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = OpenSDK1.7.5/libWeChatSDK.a; sourceTree = "<group>"; };
 		B67447FD1E2C63CC0049890F /* DataDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataDownloader.swift; path = MediaLibrary/DataDownloader.swift; sourceTree = "<group>"; };
-		B67447FE1E2C63CC0049890F /* DownloadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadCell.swift; path = MediaLibrary/DownloadCell.swift; sourceTree = "<group>"; };
 		B67447FF1E2C63CC0049890F /* DownloadDataStructures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadDataStructures.swift; path = MediaLibrary/DownloadDataStructures.swift; sourceTree = "<group>"; };
 		B67448011E2C63CC0049890F /* DownloadProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadProtocols.swift; path = MediaLibrary/DownloadProtocols.swift; sourceTree = "<group>"; };
-		B67448021E2C63CC0049890F /* DownloadTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadTableViewController.swift; path = MediaLibrary/DownloadTableViewController.swift; sourceTree = "<group>"; };
 		B67448031E2C63CC0049890F /* MenuAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuAction.swift; path = MediaLibrary/MenuAction.swift; sourceTree = "<group>"; };
 		B67448041E2C63CC0049890F /* MiscFuncs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MiscFuncs.swift; path = MediaLibrary/MiscFuncs.swift; sourceTree = "<group>"; };
 		B67448061E2C63CC0049890F /* Music_Player.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Music_Player.xcdatamodel; sourceTree = "<group>"; };
@@ -522,10 +518,8 @@
 			isa = PBXGroup;
 			children = (
 				B67447FD1E2C63CC0049890F /* DataDownloader.swift */,
-				B67447FE1E2C63CC0049890F /* DownloadCell.swift */,
 				B67447FF1E2C63CC0049890F /* DownloadDataStructures.swift */,
 				B67448011E2C63CC0049890F /* DownloadProtocols.swift */,
-				B67448021E2C63CC0049890F /* DownloadTableViewController.swift */,
 				B67448031E2C63CC0049890F /* MenuAction.swift */,
 				B67448041E2C63CC0049890F /* MiscFuncs.swift */,
 				B67448051E2C63CC0049890F /* Music_Player.xcdatamodeld */,
@@ -1076,7 +1070,6 @@
 				B79187981B4437FC002DFAB4 /* AmazonTool.swift in Sources */,
 				3EEF52BF1D83B5AF0015BA92 /* AllCategoriesRow.swift in Sources */,
 				3EF535B41E0921430049B2E9 /* LineView.swift in Sources */,
-				B67448151E2C63CC0049890F /* DownloadCell.swift in Sources */,
 				B77AABEE1B398B95007DE187 /* StreamConnector.swift in Sources */,
 				3EF535B61E0922D40049B2E9 /* MusicPlayerTransitionAnimation.swift in Sources */,
 				A631E6321D378D95002C7F78 /* PasswordViewController.swift in Sources */,
@@ -1085,7 +1078,6 @@
 				3EFAD8931EB217E900038484 /* GradientTableView.swift in Sources */,
 				3E8205711EEC4B7100D3B918 /* OfflineCell.swift in Sources */,
 				B6EAF82A1E28F179007038DC /* CategoryCell.swift in Sources */,
-				B67448191E2C63CC0049890F /* DownloadTableViewController.swift in Sources */,
 				B79469FE1BE1F94B0071CC97 /* StreamExtension.swift in Sources */,
 				3E2A5A5A1ED80CDC00133E1D /* DevicesViewController.swift in Sources */,
 				3EEF52BD1D83127C0015BA92 /* CategoriesViewController.swift in Sources */,
