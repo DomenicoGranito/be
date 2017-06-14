@@ -14,12 +14,15 @@ class UploadingViewController: UIViewController, UIActionSheetDelegate, UIImageP
     
     var timer:Timer!
     var videoPath:String!
-    var uploadItems=DWUploadItems(path:"")!
+    var uploadItems:DWUploadItems!
     var uploadInfoSetupViewController:UploadInfoSetupViewController!
+    var appDelegate:AppDelegate!
     
     override func viewWillAppear(_ animated:Bool)
     {
-        loadUploadItems()
+        appDelegate=UIApplication.shared.delegate as! AppDelegate
+        
+        uploadItems=appDelegate.uploadItems
         
         timer=Timer.scheduledTimer(timeInterval:1, target:self, selector:#selector(timerHandler), userInfo:nil, repeats:true)
         
@@ -50,7 +53,7 @@ class UploadingViewController: UIViewController, UIActionSheetDelegate, UIImageP
     
     func imagePickerController(_ picker:UIImagePickerController, didFinishPickingMediaWithInfo info:[String:Any])
     {
-        videoPath=(info[UIImagePickerControllerMediaURL] as AnyObject).path
+        videoPath=(info[UIImagePickerControllerMediaURL] as! URL).path
         
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         uploadInfoSetupViewController=storyboard.instantiateViewController(withIdentifier:"UploadInfoSetupViewController") as! UploadInfoSetupViewController
@@ -79,7 +82,7 @@ class UploadingViewController: UIViewController, UIActionSheetDelegate, UIImageP
         item.videoUploadedSize=0
         item.videoThumbnailPath="\(SongManager.documentsDir)/\(item.videoTitle!).png"
         
-        //try! DWTools.saveVideoThumbnail(withVideoPath:videoPath, toFile:item.videoThumbnailPath)
+        try? DWTools.saveVideoThumbnail(withVideoPath:videoPath, toFile:item.videoThumbnailPath)
         
         item.videoFileSize=DWTools.getFileSize(withPath:videoPath, error:nil)
         
@@ -88,11 +91,6 @@ class UploadingViewController: UIViewController, UIActionSheetDelegate, UIImageP
         
         uploadInfoSetupViewController=nil
         videoPath=nil
-    }
-    
-    func loadUploadItems()
-    {
-        
     }
     
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
@@ -108,6 +106,11 @@ class UploadingViewController: UIViewController, UIActionSheetDelegate, UIImageP
         
         cell.videoTitleLbl.text=item.videoTitle
         cell.videoThumbnailImageView.image=item.getVideoThumbnail()
+        
+        let uploadedSizeMB=Float(item.videoUploadedSize)/1024.0/1024.0
+        let fileSizeMB=Float(item.videoFileSize)/1024.0/1024.0
+        
+        cell.progressLbl.text=String(format:"%0.1fM/%0.1fM", uploadedSizeMB, fileSizeMB)
         
         cell.statusButton.tag=indexPath.row
         cell.statusButton.addTarget(self, action:#selector(videoUploadStatusButtonAction), for:.touchUpInside)

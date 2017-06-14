@@ -39,13 +39,13 @@ class LinkedUsersViewController: UIViewController, UserStatisticsDelegate, Strea
         }
     }
     
-    // MARK: - Orientation Handling.
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
+    {
         return .portrait
     }
     
-    override var shouldAutorotate: Bool {
+    override var shouldAutorotate:Bool
+    {
         return false
     }
     

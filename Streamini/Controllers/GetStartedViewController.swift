@@ -20,7 +20,7 @@ class GetStartedViewController: BaseViewController
     
     override func viewDidLoad()
     {
-        backgroundPlayer=BackgroundVideo(onViewController:self,withVideoURL:"test.mp4")
+        backgroundPlayer=BackgroundVideo(onViewController:self, withVideoURL:"test.mp4")
         backgroundPlayer?.setUpBackground()
         
         titleLbl?.text=titlesArray[count]
@@ -46,15 +46,13 @@ class GetStartedViewController: BaseViewController
         }
     }
     
-    // MARK: - Orientation Handling.
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        //print("ViewController supportedInterfaceOrientations")
+    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
+    {
         return .portrait
     }
     
-    override var shouldAutorotate: Bool {
-        //print("ViewController shouldAutorotate")
+    override var shouldAutorotate:Bool
+    {
         return false
     }
     

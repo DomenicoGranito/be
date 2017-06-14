@@ -34,7 +34,7 @@ class UploadCell: UITableViewCell
         }
         else if item.videoUploadStatus==DWUploadStatusUploading||item.videoUploadStatus==DWUploadStatusResume
         {
-            statusButton.setBackgroundImage(UIImage(named:"download-status-uploading"), for:.normal)
+            statusButton.setBackgroundImage(UIImage(named:"upload-status-uploading"), for:.normal)
         }
         else if item.videoUploadStatus==DWUploadStatusLoadLocalFileInvalid
         {
@@ -46,9 +46,9 @@ class UploadCell: UITableViewCell
     {
         progressView.progress=item.videoUploadProgress
         
-        let uploadedSizeMB=item.videoUploadedSize/1024/1024
-        let fileSizeMB=item.videoFileSize/1024/1024
+        let uploadedSizeMB=Float(item.videoUploadedSize)/1024.0/1024.0
+        let fileSizeMB=Float(item.videoFileSize)/1024.0/1024.0
         
-        progressLbl.text="\(uploadedSizeMB)M/\(fileSizeMB)M"
+        progressLbl.text=String(format:"%0.1fM/%0.1fM", uploadedSizeMB, fileSizeMB)
     }
 }

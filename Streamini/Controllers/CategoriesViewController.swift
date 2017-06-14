@@ -22,13 +22,13 @@ class CategoriesViewController: BaseViewController
     var TBVC:TabBarViewController!
     let site=Config.shared.site()
     
-    // MARK: - Orientation Handling.
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
+    {
         return .portrait
     }
     
-    override var shouldAutorotate: Bool {
+    override var shouldAutorotate:Bool
+    {
         return false
     }
     

@@ -20,15 +20,13 @@ class RegisterViewController: BaseViewController
     
     let storyBoard=UIStoryboard(name:"Main", bundle:nil)
     
-    // MARK: - Orientation Handling.
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        //print("ViewController supportedInterfaceOrientations")
+    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
+    {
         return .portrait
     }
     
-    override var shouldAutorotate: Bool {
-        //print("ViewController shouldAutorotate")
+    override var shouldAutorotate:Bool
+    {
         return false
     }
     

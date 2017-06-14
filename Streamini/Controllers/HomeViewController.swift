@@ -17,14 +17,13 @@ class HomeViewController: UIViewController
     var allCategoryItemsArray=NSMutableArray()
     var timer:Timer?
     
-    
-    // MARK: - Orientation Handling.
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
+    {
         return .portrait
     }
     
-    override var shouldAutorotate: Bool {
+    override var shouldAutorotate:Bool
+    {
         return false
     }
     

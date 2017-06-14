@@ -10,6 +10,7 @@
 
 class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, UIAlertViewDelegate
 {
+    var uploadItems:DWUploadItems!
     var downloadingItems:DWDownloadItems!
     var shouldRotate=false
     var window: UIWindow?
@@ -74,16 +75,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, UIAlertVie
         }
         
         downloadingItems.write(toPlistFile:"downloadingItems.plist")
+        
+        uploadItems.write(toPlistFile:"uploadItems.plist")
+        
+        for item in uploadItems.items
+        {
+            let item=item as! DWUploadItem
+            
+            if let _=item.uploader
+            {
+                item.uploader.pause()
+            }
+        }
     }
     
     func applicationDidEnterBackground(_ application:UIApplication)
     {
-        NotificationCenter.default.post(name:Notification.Name("enteredBackgroundID"), object:nil)
+        NotificationCenter.default.post(name: Notification.Name("enteredBackgroundID"), object:nil)
     }
     
     func applicationWillEnterForeground(_ application:UIApplication)
     {
-        NotificationCenter.default.post(name:Notification.Name("enteredForegroundID"), object:nil)
+        NotificationCenter.default.post(name: Notification.Name("enteredForegroundID"), object:nil)
     }
     
     func applicationWillTerminate(_ application:UIApplication)
@@ -224,6 +237,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, UIAlertVie
         NotificationCenter.default.post(name:Notification.Name("Open"), object:nil)
         
         downloadingItems=DWDownloadItems(path:"downloadingItems.plist")
+        
+        uploadItems=DWUploadItems(path:"uploadItems.plist")
+        
+        for item in uploadItems.items
+        {
+            let item=item as! DWUploadItem
+            
+            switch item.videoUploadStatus
+            {
+            case DWUploadStatusStart:
+                item.videoUploadStatus=DWUploadStatusWait
+                break
+            case DWUploadStatusUploading:
+                item.videoUploadStatus=DWUploadStatusWait
+                break
+            default:
+                break
+            }
+        }
     }
     
     func registerForNotification()

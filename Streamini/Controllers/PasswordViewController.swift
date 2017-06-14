@@ -18,13 +18,13 @@ class PasswordViewController: BaseViewController
     @IBOutlet var view2:UIView!
     @IBOutlet var view3:UIView!
     
-    // MARK: - Orientation Handling.
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
+    {
         return .portrait
     }
     
-    override var shouldAutorotate: Bool {
+    override var shouldAutorotate:Bool
+    {
         return false
     }
     

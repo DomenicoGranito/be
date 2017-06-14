@@ -21,17 +21,15 @@ class LoginViewController: BaseViewController
     var email:String!
     let (appID, appSecret)=Config.shared.weChat()
     
-    
-    // MARK: - Orientation Handling.
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
+    {
         return .portrait
     }
     
-    override var shouldAutorotate: Bool {
+    override var shouldAutorotate:Bool
+    {
         return false
     }
-    
     
     func buildAccessTokenLink(_ code:String)->String
     {

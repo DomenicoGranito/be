@@ -18,13 +18,13 @@ class ChannelsTableViewController: UITableViewController, ProfileDelegate
     @IBOutlet var followersValueLabel:UILabel!
     @IBOutlet var blockedValueLabel:UILabel!
     
-    // MARK: - Orientation Handling.
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
+    {
         return .portrait
     }
     
-    override var shouldAutorotate: Bool {
+    override var shouldAutorotate:Bool
+    {
         return false
     }
     

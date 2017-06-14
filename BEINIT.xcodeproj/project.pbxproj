@@ -76,7 +76,6 @@
 		B67448141E2C63CC0049890F /* DataDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67447FD1E2C63CC0049890F /* DataDownloader.swift */; };
 		B67448151E2C63CC0049890F /* DownloadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67447FE1E2C63CC0049890F /* DownloadCell.swift */; };
 		B67448161E2C63CC0049890F /* DownloadDataStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67447FF1E2C63CC0049890F /* DownloadDataStructures.swift */; };
-		B67448171E2C63CC0049890F /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67448001E2C63CC0049890F /* DownloadManager.swift */; };
 		B67448181E2C63CC0049890F /* DownloadProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67448011E2C63CC0049890F /* DownloadProtocols.swift */; };
 		B67448191E2C63CC0049890F /* DownloadTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67448021E2C63CC0049890F /* DownloadTableViewController.swift */; };
 		B674481A1E2C63CC0049890F /* MenuAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67448031E2C63CC0049890F /* MenuAction.swift */; };
@@ -299,7 +298,6 @@
 		B67447FD1E2C63CC0049890F /* DataDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataDownloader.swift; path = MediaLibrary/DataDownloader.swift; sourceTree = "<group>"; };
 		B67447FE1E2C63CC0049890F /* DownloadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadCell.swift; path = MediaLibrary/DownloadCell.swift; sourceTree = "<group>"; };
 		B67447FF1E2C63CC0049890F /* DownloadDataStructures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadDataStructures.swift; path = MediaLibrary/DownloadDataStructures.swift; sourceTree = "<group>"; };
-		B67448001E2C63CC0049890F /* DownloadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadManager.swift; path = MediaLibrary/DownloadManager.swift; sourceTree = "<group>"; };
 		B67448011E2C63CC0049890F /* DownloadProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadProtocols.swift; path = MediaLibrary/DownloadProtocols.swift; sourceTree = "<group>"; };
 		B67448021E2C63CC0049890F /* DownloadTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadTableViewController.swift; path = MediaLibrary/DownloadTableViewController.swift; sourceTree = "<group>"; };
 		B67448031E2C63CC0049890F /* MenuAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuAction.swift; path = MediaLibrary/MenuAction.swift; sourceTree = "<group>"; };
@@ -526,7 +524,6 @@
 				B67447FD1E2C63CC0049890F /* DataDownloader.swift */,
 				B67447FE1E2C63CC0049890F /* DownloadCell.swift */,
 				B67447FF1E2C63CC0049890F /* DownloadDataStructures.swift */,
-				B67448001E2C63CC0049890F /* DownloadManager.swift */,
 				B67448011E2C63CC0049890F /* DownloadProtocols.swift */,
 				B67448021E2C63CC0049890F /* DownloadTableViewController.swift */,
 				B67448031E2C63CC0049890F /* MenuAction.swift */,
@@ -1206,7 +1203,6 @@
 				3E71926B1E768DFE00B7049B /* ErrorView.swift in Sources */,
 				A68B73191BB2859800695C80 /* NSLayoutConstraint+preciseConstant.swift in Sources */,
 				A60F82EB1D490F70002E2CEA /* CategoryMappingProvider.swift in Sources */,
-				B67448171E2C63CC0049890F /* DownloadManager.swift in Sources */,
 				B77E0BD71B8B52B3007C3107 /* MyStreamsDataSource.swift in Sources */,
 				B733B1F91B78DBD2002FEAB6 /* PeopleDataSource.swift in Sources */,
 				B77AABE41B398627007DE187 /* RestKitObjC.m in Sources */,
