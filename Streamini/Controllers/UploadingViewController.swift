@@ -189,8 +189,12 @@ class UploadingViewController: UIViewController, UIActionSheetDelegate, UIImageP
         }
         
         uploader.finishBlock={()->() in
-            item.videoUploadStatus=DWUploadStatusFinish
-            cell.updateUploadStatus(item)
+            // FIRST GET STREAM KEY OF UPLOADED VIDEO
+            // HIT API TO SAVE THIS VIDEO ON OUR SERVER
+            self.appDelegate.uploadItems.items.remove(item)
+            DispatchQueue.main.async(execute:{()->() in
+                self.tableView.reloadData()
+            })
         }
         
         uploader.failBlock={(error:Error?)->() in
@@ -260,9 +264,10 @@ class UploadingViewController: UIViewController, UIActionSheetDelegate, UIImageP
         
         for item in uploadItems.items
         {
-            if (item as AnyObject).videoUploadStatus==DWUploadStatusWait
+            itemVar=item as? DWUploadItem
+            
+            if itemVar!.videoUploadStatus==DWUploadStatusWait
             {
-                itemVar=item as? DWUploadItem
                 break
             }
             index+=1

@@ -189,9 +189,10 @@ class OfflineViewController: UIViewController
         
         for item in downloadingItems.items
         {
-            if (item as AnyObject).videoDownloadStatus==DWDownloadStatusWait
+            itemVar=item as? DWDownloadItem
+            
+            if itemVar!.videoDownloadStatus==DWDownloadStatusWait
             {
-                itemVar=item as? DWDownloadItem
                 break
             }
             index+=1
@@ -276,7 +277,7 @@ class OfflineViewController: UIViewController
             {
                 let videoID=downloadFinishItems[indexPath.row].value(forKey:"streamKey") as! String
                 
-                try! FileManager.default.removeItem(atPath:localVideoPath(videoID))
+                try! FileManager.default.removeItem(atPath:"\(SongManager.documentsDir)/\(videoID).mp4")
                 
                 SongManager.deleteFromDownloads(
                     downloadFinishItems[indexPath.row])
@@ -321,12 +322,5 @@ class OfflineViewController: UIViewController
         stream.user=user
         
         return stream
-    }
-    
-    func localVideoPath(_ videoID:String)->String
-    {
-        let documentDirectory=NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        
-        return "\(documentDirectory)/\(videoID).mp4"
     }
 }
