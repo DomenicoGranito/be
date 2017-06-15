@@ -111,8 +111,7 @@ class TabBarViewController: BETabBarController, UITabBarControllerDelegate
     
     func goToDownloads(notification:Notification)
     {
-        let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewController(withIdentifier:"OfflineViewController") as! OfflineViewController
+        let vc=storyBoard.instantiateViewController(withIdentifier:"OfflineViewController") as! OfflineViewController
         vc.stream=notification.object as? Stream
         
         let navigationController=self.viewControllers![self.selectedIndex] as! UINavigationController
@@ -121,8 +120,7 @@ class TabBarViewController: BETabBarController, UITabBarControllerDelegate
     
     func goToChannels(notification:Notification)
     {
-        let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewController(withIdentifier:"UserViewControllerId") as! UserViewController
+        let vc=storyBoard.instantiateViewController(withIdentifier:"UserViewControllerId") as! UserViewController
         vc.user=notification.object as? User
         
         let navigationController=self.viewControllers![self.selectedIndex] as! UINavigationController

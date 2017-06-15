@@ -8,6 +8,8 @@
 
 class BETabBarController: UITabBarController
 {
+    let storyBoard=UIStoryboard(name:"Main", bundle:nil)
+    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         
         if let _ = self.viewControllers?[selectedIndex], let supportedOrientations = self.selectedViewController?.supportedInterfaceOrientations{
