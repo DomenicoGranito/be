@@ -58,7 +58,7 @@ class Connector: NSObject
         return data.count==4 ? data : nil
     }
     
-    func login(_ loginData:NSDictionary, _ success:@escaping(_ session:String)->(), _ failure:@escaping(_ error:NSError)->())
+    func login(_ loginData:NSDictionary, _ success:@escaping(_ session:String, _ user:User)->(), _ failure:@escaping(_ error:NSError)->())
     {
         let path="user/login"
         
@@ -86,7 +86,8 @@ class Connector: NSObject
             {
                 let data=mappingResult?.dictionary()["data"] as! NSDictionary
                 let session=data["session"] as! String
-                success(session)
+                let user=data["user"] as! User
+                success(session, user)
             }
             }, failure:{(operation, error)->Void in
                 failure(error as! NSError)
@@ -95,7 +96,7 @@ class Connector: NSObject
     
     func relogin(_ success:@escaping()->(), failure:@escaping()->())
     {
-        func loginSuccess(_ session:String)
+        func loginSuccess(session:String, user:User)
         {
             success()
         }

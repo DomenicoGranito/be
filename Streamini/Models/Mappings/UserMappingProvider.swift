@@ -21,6 +21,10 @@ class UserMappingProvider: NSObject
         let mapping=RKObjectMapping(for:NSMutableDictionary.self)
         mapping?.addAttributeMappings(from: ["session"])
         
+        let userMapping=UserMappingProvider.userResponseMapping()
+        let userRelationshipMapping=RKRelationshipMapping(fromKeyPath:"user", toKeyPath:"user", with:userMapping)
+        mapping?.addPropertyMapping(userRelationshipMapping)
+        
         return mapping!
     }
     
