@@ -46,10 +46,6 @@ class TabBarViewController: BETabBarController, UITabBarControllerDelegate
         NotificationCenter.default.addObserver(self, selector:#selector(goToChannels), name:Notification.Name("goToChannels"), object:nil)
         NotificationCenter.default.addObserver(self, selector:#selector(hideMiniPlayer), name:Notification.Name("hideMiniPlayer"), object:nil)
         NotificationCenter.default.addObserver(self, selector:#selector(goToDownloads), name:Notification.Name("goToDownloads"), object:nil)
-        
-        var tabBarItems=self.tabBar.items
-        
-        tabBarItems?[2].isEnabled=false
     }
     
     override func viewWillAppear(_ animated:Bool)
@@ -182,19 +178,28 @@ class TabBarViewController: BETabBarController, UITabBarControllerDelegate
     
     func getPermissions()
     {
-        if AVCaptureDevice.responds(to:#selector(AVCaptureDevice.requestAccess(forMediaType:completionHandler:)))
-        {
-            AVCaptureDevice.requestAccess(forMediaType:AVMediaTypeVideo, completionHandler:{(granted)->Void in})
-        }
-        
-        if(AVAudioSession.sharedInstance().responds(to:#selector(AVAudioSession.requestRecordPermission(_:))))
-        {
-            AVAudioSession.sharedInstance().requestRecordPermission({(granted:Bool)->Void in})
-        }
-        
         if NSClassFromString("PHPhotoLibrary") != nil
         {
             PHPhotoLibrary.requestAuthorization{(status)->Void in}
+        }
+        
+        if UserContainer.shared.logged().subscription==""||UserContainer.shared.logged().subscription=="free"
+        {
+            var tabBarItems=self.tabBar.items
+            
+            tabBarItems?[2].isEnabled=false
+        }
+        else
+        {
+            if AVCaptureDevice.responds(to:#selector(AVCaptureDevice.requestAccess(forMediaType:completionHandler:)))
+            {
+                AVCaptureDevice.requestAccess(forMediaType:AVMediaTypeVideo, completionHandler:{(granted)->Void in})
+            }
+            
+            if(AVAudioSession.sharedInstance().responds(to:#selector(AVAudioSession.requestRecordPermission(_:))))
+            {
+                AVAudioSession.sharedInstance().requestRecordPermission({(granted:Bool)->Void in})
+            }
         }
     }
 }
