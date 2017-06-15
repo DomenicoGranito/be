@@ -194,8 +194,7 @@ class CategoriesViewController: BaseViewController
     
     @IBAction func shufflePlay()
     {
-        let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let modalVC=storyboard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController
+        let modalVC=storyBoard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController
         
         let random=Int(arc4random_uniform(UInt32(streamsArray.count)))
         let stream=streamsArray[random] as! Stream

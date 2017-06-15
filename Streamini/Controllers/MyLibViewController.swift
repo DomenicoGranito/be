@@ -18,7 +18,7 @@ class EditCell:UITableViewCell
     @IBOutlet var editButton:UIButton?
 }
 
-class MyLibViewController: UIViewController
+class MyLibViewController: BaseViewController
 {
     @IBOutlet var messageLbl:UILabel!
     @IBOutlet var itemsTbl:UITableView?
@@ -55,8 +55,7 @@ class MyLibViewController: UIViewController
     
     @IBAction func myaccount()
     {
-        let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewController(withIdentifier:"UserViewControllerId") as! UserViewController
+        let vc=storyBoard.instantiateViewController(withIdentifier:"UserViewControllerId") as! UserViewController
         vc.user=UserContainer.shared.logged()
         navigationController?.pushViewController(vc, animated:true)
     }
@@ -150,8 +149,7 @@ class MyLibViewController: UIViewController
     {
         if indexPath.row>3
         {
-            let storyboard=UIStoryboard(name:"Main", bundle:nil)
-            let modalVC=storyboard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController
+            let modalVC=storyBoard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController
             
             let streamsArray=NSMutableArray()
             streamsArray.add(makeStreamClassObject(indexPath.row-4))

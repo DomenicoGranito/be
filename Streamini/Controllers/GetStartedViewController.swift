@@ -39,8 +39,8 @@ class GetStartedViewController: BaseViewController
         if let _=A0SimpleKeychain().string(forKey:"PHPSESSID")
         {
             UserConnector().get(nil, successUser, forgotFailure)
+            UserContainer.shared.setLogged(SongManager.getLogin())
             
-            let storyBoard=UIStoryboard(name:"Main", bundle:nil)
             let vc=storyBoard.instantiateViewController(withIdentifier: "TabBarViewController")
             navigationController?.pushViewController(vc, animated:false)
         }
@@ -64,7 +64,6 @@ class GetStartedViewController: BaseViewController
 
     func forgotFailure(error:NSError)
     {
-        UserContainer.shared.setLogged(SongManager.getLogin())
         handleError(error)
     }
 

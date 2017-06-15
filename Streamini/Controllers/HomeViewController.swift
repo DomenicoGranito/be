@@ -6,7 +6,7 @@
 //  Copyright © 2016 UniProgy s.r.o. All rights reserved.
 //
 
-class HomeViewController: UIViewController
+class HomeViewController: BaseViewController
 {
     @IBOutlet var itemsTbl:UITableView?
     @IBOutlet var errorView:ErrorView!
@@ -140,8 +140,7 @@ class HomeViewController: UIViewController
     
     func headerTapped(gestureRecognizer:UITapGestureRecognizer)
     {
-        let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewController(withIdentifier:"CategoriesViewController") as! CategoriesViewController
+        let vc=storyBoard.instantiateViewController(withIdentifier:"CategoriesViewController") as! CategoriesViewController
         vc.categoryName=categoryNamesArray[gestureRecognizer.view!.tag] as? String
         vc.categoryID=categoryIDsArray[gestureRecognizer.view!.tag] as? Int
         navigationController?.pushViewController(vc, animated:true)

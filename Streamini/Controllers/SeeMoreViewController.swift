@@ -10,7 +10,6 @@ class SeeMoreViewController: BaseViewController
 {
     @IBOutlet var tableView:UITableView!
     
-    let storyBoard=UIStoryboard(name:"Main", bundle:nil)
     var TBVC:TabBarViewController!
     var t:String!
     var q:String!

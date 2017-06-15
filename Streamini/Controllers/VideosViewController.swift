@@ -6,7 +6,7 @@
 //  Copyright © 2017 Cedricm Video. All rights reserved.
 //
 
-class VideosViewController: UIViewController
+class VideosViewController: BaseViewController
 {
     var vType:Int!
     var TBVC:TabBarViewController!
@@ -58,8 +58,7 @@ class VideosViewController: UIViewController
     
     func dotsButtonTapped(sender:UIButton)
     {
-        let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewController(withIdentifier:"PopUpViewController") as! PopUpViewController
+        let vc=storyBoard.instantiateViewController(withIdentifier:"PopUpViewController") as! PopUpViewController
         vc.stream=makeStreamClassObject(sender.tag)
         present(vc, animated:true)
     }
@@ -68,8 +67,7 @@ class VideosViewController: UIViewController
     {
         tableView.deselectRow(at:indexPath, animated:true)
         
-        let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let modalVC=storyboard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController
+        let modalVC=storyBoard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController
         
         let streamsArray=NSMutableArray()
         streamsArray.add(makeStreamClassObject(indexPath.row))

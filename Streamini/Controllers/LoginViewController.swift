@@ -15,7 +15,6 @@ class LoginViewController: BaseViewController
     @IBOutlet var usernameBackgroundView:UIView?
     @IBOutlet var passwordBackgroundView:UIView?
     
-    let storyBoard=UIStoryboard(name:"Main", bundle:nil)
     var username:String!
     var password:String!
     var email:String!

@@ -89,13 +89,13 @@ class PeopleViewController: BaseViewController, UserSelecting, ProfileDelegate, 
         hideSearch(false)
     }
     
-    // MARK: - Orientation Handling.
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
+    {
         return .portrait
     }
     
-    override var shouldAutorotate: Bool {
+    override var shouldAutorotate:Bool
+    {
         return false
     }
     
@@ -133,8 +133,7 @@ class PeopleViewController: BaseViewController, UserSelecting, ProfileDelegate, 
     
     func userDidSelected(_ user:User)
     {
-        let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewController(withIdentifier:"UserViewControllerId") as! UserViewController
+        let vc=storyBoard.instantiateViewController(withIdentifier:"UserViewControllerId") as! UserViewController
         vc.user=user
         navigationController?.pushViewController(vc, animated:true)
         

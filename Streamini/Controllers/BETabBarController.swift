@@ -6,12 +6,8 @@
 //  Copyright © 2017 Cedricm Video. All rights reserved.
 //
 
-import UIKit
-
-class BETabBarController: UITabBarController {
-    
-    // MARK: - Orientation Handling
-    
+class BETabBarController: UITabBarController
+{
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         
         if let _ = self.viewControllers?[selectedIndex], let supportedOrientations = self.selectedViewController?.supportedInterfaceOrientations{
@@ -41,5 +37,4 @@ class BETabBarController: UITabBarController {
             return .portrait
         }
     }
-    
 }

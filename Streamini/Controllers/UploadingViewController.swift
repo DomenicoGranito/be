@@ -8,7 +8,7 @@
 
 import MobileCoreServices
 
-class UploadingViewController: UIViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate
+class UploadingViewController: BaseViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
     @IBOutlet var tableView:UITableView!
     
@@ -56,8 +56,7 @@ class UploadingViewController: UIViewController, UIActionSheetDelegate, UIImageP
     {
         videoPath=(info[UIImagePickerControllerMediaURL] as! URL).path
         
-        let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        uploadInfoSetupViewController=storyboard.instantiateViewController(withIdentifier:"UploadInfoSetupViewController") as! UploadInfoSetupViewController
+        uploadInfoSetupViewController=storyBoard.instantiateViewController(withIdentifier:"UploadInfoSetupViewController") as! UploadInfoSetupViewController
         
         navigationController?.pushViewController(uploadInfoSetupViewController, animated:false)
         

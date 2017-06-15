@@ -6,7 +6,7 @@
 //  Copyright © 2017 Cedricm Video. All rights reserved.
 //
 
-class OfflineViewController: UIViewController
+class OfflineViewController: BaseViewController
 {
     @IBOutlet var downloadFinishTbl:UITableView!
     @IBOutlet var downloadingTbl:UITableView!
@@ -301,8 +301,7 @@ class OfflineViewController: UIViewController
     {
         if tableView==downloadFinishTbl
         {
-            let storyboard=UIStoryboard(name:"Main", bundle:nil)
-            let modalVC=storyboard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController
+            let modalVC=storyBoard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController
             
             let streamsArray=NSMutableArray()
             streamsArray.add(makeStreamClassObject(indexPath.row))

@@ -8,6 +8,8 @@
 
 class BaseViewController: UIViewController
 {
+    let storyBoard=UIStoryboard(name:"Main", bundle:nil)
+    
     func handleError(_ error:NSError)
     {
         if let userInfo=error.userInfo as? [String:NSObject]

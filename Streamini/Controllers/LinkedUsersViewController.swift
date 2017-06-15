@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-class LinkedUsersViewController: UIViewController, UserStatisticsDelegate, StreamSelecting,UserSelecting {
+class LinkedUsersViewController: BaseViewController, UserStatisticsDelegate, StreamSelecting,UserSelecting {
     @IBOutlet weak var selectorView: SelectorView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var emptyLabel: UILabel!
@@ -17,8 +17,7 @@ class LinkedUsersViewController: UIViewController, UserStatisticsDelegate, Strea
     
     func userDidSelected(_ user:User)
     {
-        let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewController(withIdentifier: "UserViewControllerId") as! UserViewController
+        let vc=storyBoard.instantiateViewController(withIdentifier: "UserViewControllerId") as! UserViewController
         vc.user=user
         navigationController?.pushViewController(vc, animated:true)
     }
@@ -56,8 +55,7 @@ class LinkedUsersViewController: UIViewController, UserStatisticsDelegate, Strea
     
     func streamDidSelected(_ stream:Stream)
     {
-        let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let modalVC=storyboard.instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
+        let modalVC=storyBoard.instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
         
         let streamsArray=NSMutableArray()
         streamsArray.add(stream)
@@ -71,8 +69,7 @@ class LinkedUsersViewController: UIViewController, UserStatisticsDelegate, Strea
     
     func openPopUpForSelectedStream(_ stream:Stream)
     {
-        let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewController(withIdentifier: "PopUpViewController") as! PopUpViewController
+        let vc=storyBoard.instantiateViewController(withIdentifier:"PopUpViewController") as! PopUpViewController
         vc.stream=stream
         present(vc, animated:true, completion:nil)
     }

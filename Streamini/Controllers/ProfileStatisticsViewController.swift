@@ -14,7 +14,7 @@ enum ProfileStatisticsType:Int
     case streams
 }
 
-class ProfileStatisticsViewController: UIViewController, UserSelecting, UserStatusDelegate
+class ProfileStatisticsViewController: BaseViewController, UserSelecting, UserStatusDelegate
 {
     @IBOutlet var tableView:UITableView!
     @IBOutlet var emptyLabel:UILabel!
@@ -95,8 +95,7 @@ class ProfileStatisticsViewController: UIViewController, UserSelecting, UserStat
     
     func userDidSelected(_ user:User)
     {
-        let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewController(withIdentifier:"UserViewControllerId") as! UserViewController
+        let vc=storyBoard.instantiateViewController(withIdentifier:"UserViewControllerId") as! UserViewController
         vc.user=user
         navigationController!.pushViewController(vc, animated:true)
     }

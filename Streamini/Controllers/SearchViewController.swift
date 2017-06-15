@@ -6,13 +6,12 @@
 //  Copyright © 2017 Cedricm Video. All rights reserved.
 //
 
-class SearchViewController: UIViewController
+class SearchViewController: BaseViewController
 {
     @IBOutlet var searchBar:UISearchBar!
     @IBOutlet var tableView:UITableView!
     @IBOutlet var historyTbl:UITableView!
     
-    let storyBoard=UIStoryboard(name:"Main", bundle:nil)
     var sectionTitlesArray=NSMutableArray()
     var TBVC:TabBarViewController!
     var searchHistroy:[NSManagedObject]!

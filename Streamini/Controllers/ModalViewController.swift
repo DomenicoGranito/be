@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 xxxAIRINxxx. All rights reserved.
 //
 
-class ModalViewController: UIViewController, ARNImageTransitionZoomable
+class ModalViewController: BaseViewController, ARNImageTransitionZoomable
 {
     @IBOutlet var carousel:iCarousel?
     @IBOutlet var backgroundImageView:UIImageView?
@@ -38,7 +38,6 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     var selectedItemIndex=0
     var appDelegate:AppDelegate!
     var fullScreenButton:UIButton!
-    let storyBoard=UIStoryboard(name:"Main", bundle:nil)
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         

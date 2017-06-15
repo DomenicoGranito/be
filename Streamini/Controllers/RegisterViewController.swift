@@ -18,8 +18,6 @@ class RegisterViewController: BaseViewController
     @IBOutlet var passwordBackgroundView:UIView?
     @IBOutlet var usernameBackgroundView:UIView?
     
-    let storyBoard=UIStoryboard(name:"Main", bundle:nil)
-    
     override var supportedInterfaceOrientations:UIInterfaceOrientationMask
     {
         return .portrait

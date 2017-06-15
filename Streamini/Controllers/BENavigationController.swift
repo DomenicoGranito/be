@@ -6,13 +6,8 @@
 //  Copyright © 2017 Cedricm Video. All rights reserved.
 //
 
-import UIKit
-
-class BENavigationController: UINavigationController {
-    
-    
-    // MARK: - Orientation Handling
-    
+class BENavigationController: UINavigationController
+{
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if let supportedOrientations = self.topViewController?.supportedInterfaceOrientations {
             return supportedOrientations
@@ -40,6 +35,4 @@ class BENavigationController: UINavigationController {
             return .portrait
         }
     }
-    
-    
 }
