@@ -10,7 +10,9 @@ class OfflineViewController: UIViewController
 {
     @IBOutlet var downloadFinishTbl:UITableView!
     @IBOutlet var downloadingTbl:UITableView!
-    @IBOutlet var segmentedControl:UISegmentedControl!
+    @IBOutlet var selectionView:UIView!
+    @IBOutlet var completedButton:UIButton!
+    @IBOutlet var downloadingButton:UIButton!
     
     var timer:Timer!
     var stream:Stream?
@@ -51,10 +53,7 @@ class OfflineViewController: UIViewController
     {
         if let _=stream
         {
-            segmentedControl.selectedSegmentIndex=1
-            
-            downloadFinishTbl.isHidden=true
-            downloadingTbl.isHidden=false
+            downloading()
             
             let item=DWDownloadItem()
             item.videoDownloadStatus=DWDownloadStatusWait
@@ -71,18 +70,30 @@ class OfflineViewController: UIViewController
         }
     }
     
-    @IBAction func segmentedControlValueChanged()
+    @IBAction func completed()
     {
-        if segmentedControl.selectedSegmentIndex==0
-        {
-            downloadFinishTbl.isHidden=false
-            downloadingTbl.isHidden=true
-        }
-        else
-        {
-            downloadFinishTbl.isHidden=true
-            downloadingTbl.isHidden=false
-        }
+        completedButton.setTitleColor(UIColor.white, for:.normal)
+        downloadingButton.setTitleColor(UIColor.darkGray, for:.normal)
+        
+        downloadFinishTbl.isHidden=false
+        downloadingTbl.isHidden=true
+        
+        UIView.animate(withDuration:0.2, animations:{
+            self.selectionView.frame=CGRect(x:10, y:45, width:(self.view.frame.size.width-40)/2, height:5)
+            }, completion:nil)
+    }
+    
+    @IBAction func downloading()
+    {
+        downloadingButton.setTitleColor(UIColor.white, for:.normal)
+        completedButton.setTitleColor(UIColor.darkGray, for:.normal)
+        
+        downloadFinishTbl.isHidden=true
+        downloadingTbl.isHidden=false
+        
+        UIView.animate(withDuration:0.2, animations:{
+            self.selectionView.frame=CGRect(x:self.view.frame.size.width-self.selectionView.frame.size.width-10, y:45, width:(self.view.frame.size.width-40)/2, height:5)
+            }, completion:nil)
     }
     
     func videoDownloadingStatusButtonAction(button:UIButton)
