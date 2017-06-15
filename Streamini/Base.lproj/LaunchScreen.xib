@@ -12,16 +12,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="h6B-pU-bHx">
-                    <constraints>
-                        <constraint firstAttribute="width" constant="80" id="3Th-NI-9SJ"/>
-                    </constraints>
-                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="Krn-fT-j39"/>
             </subviews>
-            <color key="backgroundColor" red="0.062745098039215685" green="0.066666666666666666" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="h6B-pU-bHx" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="6fS-zQ-3ow"/>
-                <constraint firstItem="h6B-pU-bHx" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ktt-4m-mXD"/>
+                <constraint firstItem="Krn-fT-j39" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6PC-Mc-uTa"/>
+                <constraint firstAttribute="trailing" secondItem="Krn-fT-j39" secondAttribute="trailing" id="90J-z5-sRr"/>
+                <constraint firstItem="Krn-fT-j39" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="A7A-PX-wZL"/>
+                <constraint firstAttribute="bottom" secondItem="Krn-fT-j39" secondAttribute="bottom" id="sfS-gV-rOL"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -29,6 +27,6 @@
         </view>
     </objects>
     <resources>
-        <image name="logo" width="75" height="30"/>
+        <image name="launch" width="674" height="1200"/>
     </resources>
 </document>
