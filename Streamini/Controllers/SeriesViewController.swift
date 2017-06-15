@@ -6,7 +6,7 @@
 //  Copyright © 2017 Cedricm Video. All rights reserved.
 //
 
-class SeriesViewController: UIViewController
+class SeriesViewController: BaseViewController
 {
     @IBOutlet var tableView:UITableView!
     @IBOutlet var pageControl:UIPageControl!
@@ -20,7 +20,6 @@ class SeriesViewController: UIViewController
     
     var blockingView:UIView!
     var navigationBarBackgroundImage:UIImage!
-    let storyBoard=UIStoryboard(name:"Main", bundle:nil)
     var shuffleButtonTopSpace:CGFloat!
     
     override var supportedInterfaceOrientations:UIInterfaceOrientationMask
