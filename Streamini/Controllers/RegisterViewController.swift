@@ -73,12 +73,16 @@ class RegisterViewController: BaseViewController
         connector.login(loginData, loginSuccess, forgotFailure)
     }
     
-    func loginSuccess(session:String)
+    func loginSuccess(session:String, user:User)
     {
+        SongManager.updateLogin(user)
+        UserContainer.shared.setLogged(user)
+        
         A0SimpleKeychain().setString(session, forKey:"PHPSESSID")
         A0SimpleKeychain().setString("0", forKey:"WeChatLogin")
         
-        let vc=storyBoard.instantiateViewController(withIdentifier: "TabBarViewController")
+        let vc=storyBoard.instantiateViewController(withIdentifier:
+            "TabBarViewController")
         navigationController?.pushViewController(vc, animated:true)
     }
     

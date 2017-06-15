@@ -163,19 +163,15 @@ class LoginViewController: BaseViewController
         loginWithBEINIT()
     }
     
-    func loginSuccess(session:String)
+    func loginSuccess(session:String, user:User)
     {
-        A0SimpleKeychain().setString(session, forKey:"PHPSESSID")
+        SongManager.updateLogin(user)
+        UserContainer.shared.setLogged(user)
         
-        UserConnector().get(nil, successUser, forgotFailure)
+        A0SimpleKeychain().setString(session, forKey:"PHPSESSID")
         
         let vc=storyBoard.instantiateViewController(withIdentifier:"TabBarViewController")
         navigationController?.pushViewController(vc, animated:true)
-    }
-    
-    func successUser(user:User)
-    {
-        UserContainer.shared.setLogged(user)
     }
     
     @IBAction func forgotPassword()

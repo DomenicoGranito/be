@@ -58,11 +58,13 @@ class GetStartedViewController: BaseViewController
     
     func successUser(user:User)
     {
+        SongManager.updateLogin(user)
         UserContainer.shared.setLogged(user)
     }
 
     func forgotFailure(error:NSError)
     {
+        UserContainer.shared.setLogged(SongManager.getLogin())
         handleError(error)
     }
 
