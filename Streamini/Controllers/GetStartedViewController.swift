@@ -41,7 +41,7 @@ class GetStartedViewController: BaseViewController
             UserConnector().get(nil, successUser, forgotFailure)
             UserContainer.shared.setLogged(SongManager.getLogin())
             
-            let vc=storyBoard.instantiateViewController(withIdentifier: "TabBarViewController")
+            let vc=storyBoard.instantiateViewController(withIdentifier:"TabBarViewController")
             navigationController?.pushViewController(vc, animated:false)
         }
     }

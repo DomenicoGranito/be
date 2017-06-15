@@ -81,7 +81,7 @@ class HomeViewController: BaseViewController
     
     override func viewWillDisappear(_ animated:Bool)
     {
-        timer!.invalidate()
+        //timer!.invalidate()
     }
     
     func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
