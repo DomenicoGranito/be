@@ -50,7 +50,7 @@ class VideosTableViewController: UITableViewController, ProfileDelegate
     {
         if vType==1
         {
-            return 4
+            return 2
         }
         
         return 2
