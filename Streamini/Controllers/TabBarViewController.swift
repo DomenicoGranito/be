@@ -183,9 +183,7 @@ class TabBarViewController: BETabBarController, UITabBarControllerDelegate
         
         if UserContainer.shared.logged().subscription==""||UserContainer.shared.logged().subscription=="free"
         {
-            var tabBarItems=self.tabBar.items
-            
-            tabBarItems?[2].isEnabled=false
+            viewControllers?.remove(at:2)
         }
         else
         {
