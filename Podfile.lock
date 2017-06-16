@@ -23,12 +23,7 @@ PODS:
   - GSKStretchyHeaderView (0.12.2)
   - ISO8601DateFormatterValueTransformer (0.6.1):
     - RKValueTransformers (~> 1.1.0)
-  - MZAppearance (1.1.6)
-  - MZFormSheetController (3.1.2):
-    - MZAppearance
-    - MZFormSheetController/Core (= 3.1.2)
-  - MZFormSheetController/Core (3.1.2):
-    - MZAppearance
+  - Masonry (1.0.2)
   - PubNub (3.7.11)
   - RestKit (0.24.1):
     - RestKit/Core (= 0.24.1)
@@ -69,7 +64,7 @@ DEPENDENCIES:
   - DGActivityIndicatorView
   - glm (from `https://github.com/peiweichen/glm`)
   - GSKStretchyHeaderView
-  - MZFormSheetController
+  - Masonry
   - PubNub (~> 3.7.11)
   - RestKit (~> 0.24.0)
   - SDWebImage (~> 3.7)
@@ -101,8 +96,7 @@ SPEC CHECKSUMS:
   glm: e83c95e7a6359bdaeb23e6089ac826dd62c5c09f
   GSKStretchyHeaderView: affdd9f3ae6d6f3cea31dccf604367c617d037ad
   ISO8601DateFormatterValueTransformer: 52da467d6ec899d6aedda8e48280ac92e8ee97e6
-  MZAppearance: 0c06d3fa9cc55142f1da14bc8631fbe8fd6e19d5
-  MZFormSheetController: 7909e75056fe18366ce00ef8756ce6181414c36c
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   PubNub: a2fbe9e35c0e2797f5ce4945dcd529ea7216befa
   RestKit: 1987b5efef289c6b27bd980714d6ca48d3871b78
   RKValueTransformers: 66ac5e4f077fdbe3496e792d89eeff4c3eb67701
@@ -114,6 +108,6 @@ SPEC CHECKSUMS:
   UriParser-cpp: cbbe00080ee432ec4833dca863a7fc83adc9b01a
   VideoCore: 5d8ea99d900089ee016bb87485912b0286e07650
 
-PODFILE CHECKSUM: 7ef90edfcfb6daa5c3afe64125d216a59479c65b
+PODFILE CHECKSUM: 2cc317db53dcf65f6b4995a2291d00a4b0b8f5e7
 
 COCOAPODS: 1.1.1

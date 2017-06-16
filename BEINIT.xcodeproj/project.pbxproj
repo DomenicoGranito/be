@@ -57,8 +57,8 @@
 		3EF535B61E0922D40049B2E9 /* MusicPlayerTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF535B51E0922D40049B2E9 /* MusicPlayerTransitionAnimation.swift */; };
 		3EF535B81E092A330049B2E9 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF535B71E092A330049B2E9 /* ModalViewController.swift */; };
 		3EFAD8931EB217E900038484 /* GradientTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFAD8921EB217E900038484 /* GradientTableView.swift */; };
+		81D2DEA1E80CF2C7CEE48ADD /* libPods-Streamini.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A0E4CF9B94458CAC7E167D /* libPods-Streamini.a */; };
 		86564ECF1E540BA400584405 /* SeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86564ECE1E540BA300584405 /* SeriesViewController.swift */; };
-		96E9F7207AFA69CAF92AEE58 /* libPods-Streamini.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6302C3C18A0A3B43612D9F59 /* libPods-Streamini.a */; };
 		9AA5A33E1EEC098B0041BD0C /* BETabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA5A33D1EEC098B0041BD0C /* BETabBarController.swift */; };
 		9AA5A3401EEC09B50041BD0C /* BENavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA5A33F1EEC09B50041BD0C /* BENavigationController.swift */; };
 		A60F82E91D490F4D002E2CEA /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60F82E81D490F4D002E2CEA /* Category.swift */; };
@@ -211,6 +211,7 @@
 
 /* Begin PBXFileReference section */
 		27BA8F7BE253BA8E13E1AD0C /* Pods-Streamini.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Streamini.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Streamini/Pods-Streamini.debug.xcconfig"; sourceTree = "<group>"; };
+		37A0E4CF9B94458CAC7E167D /* libPods-Streamini.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Streamini.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D0F6E64AA65AD195559CE8B /* Pods-Streamini.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Streamini.release.xcconfig"; path = "Pods/Target Support Files/Pods-Streamini/Pods-Streamini.release.xcconfig"; sourceTree = "<group>"; };
 		3E03D5031E67F5F30056D275 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		3E20216C1D81A6530058DAAD /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -274,7 +275,6 @@
 		3EF535B51E0922D40049B2E9 /* MusicPlayerTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerTransitionAnimation.swift; sourceTree = "<group>"; };
 		3EF535B71E092A330049B2E9 /* ModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		3EFAD8921EB217E900038484 /* GradientTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientTableView.swift; sourceTree = "<group>"; };
-		6302C3C18A0A3B43612D9F59 /* libPods-Streamini.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Streamini.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		86564ECE1E540BA300584405 /* SeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesViewController.swift; sourceTree = "<group>"; };
 		9AA5A33D1EEC098B0041BD0C /* BETabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BETabBarController.swift; sourceTree = "<group>"; };
 		9AA5A33F1EEC09B50041BD0C /* BENavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BENavigationController.swift; sourceTree = "<group>"; };
@@ -431,7 +431,7 @@
 				3E7C66DA1EEECD120014C6BB /* CoreTelephony.framework in Frameworks */,
 				B66561E31E09884100EDA684 /* libWeChatSDK.a in Frameworks */,
 				3E356FA01E843583008FD8B9 /* libCCSDK.a in Frameworks */,
-				96E9F7207AFA69CAF92AEE58 /* libPods-Streamini.a in Frameworks */,
+				81D2DEA1E80CF2C7CEE48ADD /* libPods-Streamini.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,7 +489,7 @@
 			isa = PBXGroup;
 			children = (
 				3E7C66D91EEECD120014C6BB /* CoreTelephony.framework */,
-				6302C3C18A0A3B43612D9F59 /* libPods-Streamini.a */,
+				37A0E4CF9B94458CAC7E167D /* libPods-Streamini.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
