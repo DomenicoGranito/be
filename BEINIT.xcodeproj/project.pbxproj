@@ -307,7 +307,6 @@
 		B674480F1E2C63CC0049890F /* SongCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SongCell.swift; path = MediaLibrary/SongCell.swift; sourceTree = "<group>"; };
 		B67448101E2C63CC0049890F /* SongManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SongManager.swift; path = MediaLibrary/SongManager.swift; sourceTree = "<group>"; };
 		B67448111E2C63CC0049890F /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = MediaLibrary/TabBarController.swift; sourceTree = "<group>"; };
-		B67448331E2C81560049890F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		B67448561E2C96B90049890F /* AVAssetAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AVAssetAudio.swift; path = MediaLibrary/helper/extensions/AVAssetAudio.swift; sourceTree = "<group>"; };
 		B67448571E2C96B90049890F /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Alert.swift"; path = "MediaLibrary/helper/extensions/UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		B6782DD91E1969F500289D8A /* ARNVTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARNVTransitionAnimator.swift; path = ARNTransitionAnimator/ARNVTransitionAnimator.swift; sourceTree = "<group>"; };
@@ -742,7 +741,6 @@
 				B7763B001B6110DA00D469E3 /* NSDateTimeAgo.bundle */,
 				B7AA93221B3172740005972E /* Info.plist */,
 				B724758B1B4133F50080BE1B /* Localizable.strings */,
-				B67448331E2C81560049890F /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

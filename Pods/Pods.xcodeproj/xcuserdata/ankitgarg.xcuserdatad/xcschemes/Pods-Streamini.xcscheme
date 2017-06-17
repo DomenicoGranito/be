@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'C97987340356D78D594479B6D8318774'
+               BlueprintIdentifier = '2465B947587128A1C705D5DF443226DC'
                BlueprintName = 'Pods-Streamini'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-Streamini.a'>

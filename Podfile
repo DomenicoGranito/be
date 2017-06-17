@@ -12,5 +12,4 @@ target "Streamini" do
 	pod 'PubNub', '~> 3.7.11'
     pod 'DGActivityIndicatorView'
     pod 'GSKStretchyHeaderView'
-    pod 'Masonry'
 end
