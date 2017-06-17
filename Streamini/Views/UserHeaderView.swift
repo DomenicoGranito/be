@@ -52,6 +52,14 @@ class UserHeaderView: UIView, UITextViewDelegate {
     
     func update(_ user:User)
     {
+        likeCountLabel.text="\(user.likes)"
+        usernameLabel.text=user.name
+        
+        if let live=liveLabel
+        {
+            live.isHidden = !user.isLive
+        }
+
         if UserContainer.shared.logged().id==user.id
         {
             let WeChatLogin=A0SimpleKeychain().string(forKey:"WeChatLogin")
@@ -59,19 +67,12 @@ class UserHeaderView: UIView, UITextViewDelegate {
             if WeChatLogin=="1"
             {
                 userImageView.sd_setImage(with:URL(string:A0SimpleKeychain().string(forKey:"headimgurl")!), placeholderImage:UIImage(named:"profile"))
-                usernameLabel.text=A0SimpleKeychain().string(forKey:"nickname")
-            }
-            else
-            {
-                userImageView.sd_setImage(with:user.avatarURL(), placeholderImage:UIImage(named:"profile"))
-                usernameLabel.text=user.name
+                
+                return
             }
         }
-        else
-        {
-            userImageView.sd_setImage(with:user.avatarURL(), placeholderImage:UIImage(named:"profile"))
-            usernameLabel.text=user.name
-        }
+
+        userImageView.sd_setImage(with:user.avatarURL(), placeholderImage:UIImage(named:"profile"))
         
 //        if let label = userDescriptionLabel {
 //            userDescriptionLabel.text   = user.desc
@@ -84,13 +85,6 @@ class UserHeaderView: UIView, UITextViewDelegate {
 //                }
 //            }
 //        }
-        
-        likeCountLabel.text="\(user.likes)"
-        
-        if let live=liveLabel
-        {
-            live.isHidden = !user.isLive
-        }
     }
     
     func updateAvatar(_ user: User, placeholder: UIImage)

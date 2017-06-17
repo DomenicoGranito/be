@@ -84,7 +84,6 @@ class LoginViewController: BaseViewController
         password="beinitpass"
         email="\(data["openid"] as! String)@WeChat.com"
         
-        A0SimpleKeychain().setString(data["nickname"] as! String, forKey:"nickname")
         A0SimpleKeychain().setString(data["headimgurl"] as! String, forKey:"headimgurl")
         
         signupWithBEINIT()
