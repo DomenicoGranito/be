@@ -5678,7 +5678,7 @@
         <!--Data Source-->
         <scene sceneID="Jb4-I4-xN6">
             <objects>
-                <viewController storyboardIdentifier="ModalViewController" id="4Kk-WS-jGZ" customClass="ModalViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ModalViewController" modalPresentationStyle="overFullScreen" id="4Kk-WS-jGZ" customClass="ModalViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vHi-4R-j3w"/>
                         <viewControllerLayoutGuide type="bottom" id="czk-H8-WWA"/>
