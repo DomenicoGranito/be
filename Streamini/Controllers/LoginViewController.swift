@@ -82,7 +82,7 @@ class LoginViewController: BaseViewController
     {
         username=data["nickname"] as! String
         password="beinitpass"
-        email=username+"@WeChat.com"
+        email="\(data["openid"] as! String)@WeChat.com"
         
         A0SimpleKeychain().setString(data["nickname"] as! String, forKey:"nickname")
         A0SimpleKeychain().setString(data["headimgurl"] as! String, forKey:"headimgurl")
