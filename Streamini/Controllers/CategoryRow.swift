@@ -62,6 +62,7 @@ class CategoryRow: UITableViewCell
             }
             else
             {
+                cell.videoThumbnailImageView?.isHidden=true
                 cell.backgroundColor=UIColor.clear
                 cell.followersCountLbl?.text=stream.user.name
             }
