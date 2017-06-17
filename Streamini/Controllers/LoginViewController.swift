@@ -80,7 +80,7 @@ class LoginViewController: BaseViewController
     
     func successUserProfile(_ data:NSDictionary)
     {
-        username=data["openid"] as! String
+        username=data["nickname"] as! String
         password="beinitpass"
         email=username+"@WeChat.com"
         
