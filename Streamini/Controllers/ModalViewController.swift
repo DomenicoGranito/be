@@ -410,6 +410,11 @@ class ModalViewController: BaseViewController, ARNImageTransitionZoomable
         view.bringSubview(toFront:topView!)
         playlistButton?.isHidden=true
         closeButton?.setImage(UIImage(named:"nonfullscreen"), for:.normal)
+        
+        for gesture in view.gestureRecognizers!
+        {
+            gesture.isEnabled=false
+        }
     }
     
     func showPortrait()
@@ -425,6 +430,11 @@ class ModalViewController: BaseViewController, ARNImageTransitionZoomable
         if streamsArray!.count>1
         {
             carousel?.isScrollEnabled=true
+        }
+        
+        for gesture in view.gestureRecognizers!
+        {
+            gesture.isEnabled=true
         }
     }
     
