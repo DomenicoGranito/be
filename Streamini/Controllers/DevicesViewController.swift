@@ -7,17 +7,7 @@
 //
 
 class DevicesViewController: UIViewController
-{
-    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
-    {
-        return .portrait
-    }
-    
-    override var shouldAutorotate:Bool
-    {
-        return false
-    }
-    
+{    
     override func viewDidLoad()
     {
         let volumeView=MPVolumeView(frame:CGRect(x:20, y:view.frame.size.height-30, width:view.frame.size.width-40, height:view.frame.size.height))

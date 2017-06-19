@@ -16,17 +16,7 @@ class HomeViewController: BaseViewController
     var categoryIDsArray=NSMutableArray()
     var allCategoryItemsArray=NSMutableArray()
     var timer:Timer?
-    
-    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
-    {
-        return .portrait
-    }
-    
-    override var shouldAutorotate:Bool
-    {
-        return false
-    }
-    
+        
     override func viewDidLoad()
     {
         NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:Notification.Name("refreshAfterBlock"), object:nil)

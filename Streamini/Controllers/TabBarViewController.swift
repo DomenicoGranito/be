@@ -8,7 +8,7 @@
 
 import Photos
 
-class TabBarViewController: BETabBarController, UITabBarControllerDelegate
+class TabBarViewController: UITabBarController, UITabBarControllerDelegate
 {
     @IBOutlet var vtabBar:UITabBar!
     @IBOutlet var miniPlayerView:UIView!
@@ -22,16 +22,7 @@ class TabBarViewController: BETabBarController, UITabBarControllerDelegate
     var animator:ARNTransitionAnimator!
     var modalVC:ModalViewController!
     let site=Config.shared.site()
-    
-    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
-    {
-        return .portrait
-    }
-    
-    override var shouldAutorotate:Bool
-    {
-        return false
-    }
+    let storyBoard=UIStoryboard(name:"Main", bundle:nil)
     
     override func viewDidLoad()
     {

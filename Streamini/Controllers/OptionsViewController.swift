@@ -7,17 +7,7 @@
 //
 
 class OptionsViewController: UIViewController
-{
-    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
-    {
-        return .portrait
-    }
-    
-    override var shouldAutorotate:Bool
-    {
-        return false
-    }
-    
+{    
     @IBOutlet var backgroundImageView:UIImageView?
     
     let menuItemTitlesArray:NSMutableArray=["Custom", "Title", "Artist", "Recently Added"]

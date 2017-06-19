@@ -63,16 +63,6 @@ UserSelecting, ProfileDelegate {
         navigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blue]
     }
     
-    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
-    {
-        return .portrait
-    }
-    
-    override var shouldAutorotate:Bool
-    {
-        return false
-    }
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()

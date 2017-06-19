@@ -20,17 +20,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     var streamsArray=NSMutableArray()
     var nowPlayingStream:Stream!
     var nowPlayingStreamIndex:Int!
-    
-    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
-    {
-        return .portrait
-    }
-    
-    override var shouldAutorotate:Bool
-    {
-        return false
-    }
-    
+        
     override func viewDidLoad()
     {
         nowPlayingStream=streamsArray.object(at:nowPlayingStreamIndex) as! Stream

@@ -38,21 +38,7 @@ class ModalViewController: BaseViewController, ARNImageTransitionZoomable
     var selectedItemIndex=0
     var appDelegate:AppDelegate!
     var fullScreenButton:UIButton!
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         
-        return [UIInterfaceOrientationMask.landscapeLeft,UIInterfaceOrientationMask.landscapeRight,UIInterfaceOrientationMask.portrait]
-        
-    }
-    
-    override var shouldAutorotate: Bool {
-        if supportedInterfaceOrientations == UIInterfaceOrientationMask.portraitUpsideDown {
-            return false
-        }else {
-            return true
-        }
-    }
-    
     override func viewDidLoad()
     {
         seekBar!.setThumbImage(UIImage(), for:.normal)
@@ -380,7 +366,7 @@ class ModalViewController: BaseViewController, ARNImageTransitionZoomable
         }
         else if SongManager.isAlreadyDownloaded(stream!.id)
         {
-            player?.contentURL=URL(fileURLWithPath:localVideoPath())
+            player?.contentURL=URL(fileURLWithPath:"\(SongManager.documentsDir)/\(videoIDs[selectedItemIndex]).mp4")
         }
         else
         {
@@ -391,13 +377,6 @@ class ModalViewController: BaseViewController, ARNImageTransitionZoomable
         player?.play()
         playButton?.isEnabled=true
         playButton?.setImage(UIImage(named:"big_pause_button"), for:.normal)
-    }
-    
-    func localVideoPath()->String
-    {
-        let documentDirectory=NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        
-        return "\(documentDirectory)/\(videoIDs[selectedItemIndex]).mp4"
     }
     
     func rotateScreen()

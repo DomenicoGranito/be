@@ -18,17 +18,7 @@ class PopUpViewController: BaseViewController
     var videoImage:UIImage!
     var appDelegate:AppDelegate!
     var isDownloadInProgress=false
-    
-    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
-    {
-        return .portrait
-    }
-    
-    override var shouldAutorotate:Bool
-    {
-        return false
-    }
-    
+        
     override func viewDidLoad()
     {
         appDelegate=UIApplication.shared.delegate as! AppDelegate

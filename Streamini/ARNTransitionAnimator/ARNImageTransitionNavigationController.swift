@@ -9,7 +9,7 @@
 import UIKit
 //import ARNVTransitionAnimator
 
-class ARNImageTransitionNavigationController: BENavigationController, UINavigationControllerDelegate {
+class ARNImageTransitionNavigationController: UINavigationController, UINavigationControllerDelegate {
     
     
     //let interactiveAnimator : ARNVTransitionAnimator

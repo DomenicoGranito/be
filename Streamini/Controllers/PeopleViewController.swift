@@ -89,16 +89,6 @@ class PeopleViewController: BaseViewController, UserSelecting, ProfileDelegate, 
         hideSearch(false)
     }
     
-    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
-    {
-        return .portrait
-    }
-    
-    override var shouldAutorotate:Bool
-    {
-        return false
-    }
-    
     override func viewDidLoad()
     {
         configureView()

@@ -21,17 +21,7 @@ class SeriesViewController: BaseViewController
     var blockingView:UIView!
     var navigationBarBackgroundImage:UIImage!
     var shuffleButtonTopSpace:CGFloat!
-    
-    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
-    {
-        return .portrait
-    }
-    
-    override var shouldAutorotate:Bool
-    {
-        return false
-    }
-    
+        
     override func viewDidLoad()
     {
         shuffleButtonTopSpace=shuffleButtonTopSpaceConstraint.constant

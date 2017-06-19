@@ -29,17 +29,7 @@ class MyLibViewController: BaseViewController
     var recentlyPlayed:[NSManagedObject]!
     var TBVC:TabBarViewController!
     let site=Config.shared.site()
-    
-    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
-    {
-        return .portrait
-    }
-    
-    override var shouldAutorotate:Bool
-    {
-        return false
-    }
-    
+        
     override func viewWillAppear(_ animated:Bool)
     {
         TBVC=tabBarController as! TabBarViewController

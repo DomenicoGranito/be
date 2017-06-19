@@ -12,17 +12,7 @@ class VideosViewController: BaseViewController
     var TBVC:TabBarViewController!
     var favouriteStreams:[NSManagedObject]?
     let site=Config.shared.site()
-    
-    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
-    {
-        return .portrait
-    }
-    
-    override var shouldAutorotate:Bool
-    {
-        return false
-    }
-    
+        
     override func viewDidLoad()
     {
         if vType==1

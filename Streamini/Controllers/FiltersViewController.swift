@@ -13,17 +13,7 @@ class FiltersViewController: UIViewController
     let menuItemTitlesArray:NSMutableArray=["Custom", "Title", "Artist", "Recently Added"]
 
     var backgroundImage:UIImage!
-    
-    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
-    {
-        return .portrait
-    }
-    
-    override var shouldAutorotate:Bool
-    {
-        return false
-    }
-    
+        
     override func viewDidLoad()
     {
         backgroundImageView?.image=backgroundImage

@@ -17,17 +17,7 @@ class LegalViewController: BaseViewController, UIWebViewDelegate
     @IBOutlet var webView:UIWebView!
     
     var type:LegalViewControllerType?
-    
-    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
-    {
-        return .portrait
-    }
-    
-    override var shouldAutorotate:Bool
-    {
-        return false
-    }
-    
+        
     override func viewDidLoad()
     {
         navigationController?.isNavigationBarHidden=false

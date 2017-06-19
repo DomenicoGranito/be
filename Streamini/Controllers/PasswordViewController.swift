@@ -17,17 +17,7 @@ class PasswordViewController: BaseViewController
     @IBOutlet var view1:UIView!
     @IBOutlet var view2:UIView!
     @IBOutlet var view3:UIView!
-    
-    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
-    {
-        return .portrait
-    }
-    
-    override var shouldAutorotate:Bool
-    {
-        return false
-    }
-    
+        
     override func viewDidLoad()
     {
         imageView1?.image=imageView1?.image?.withRenderingMode(.alwaysTemplate)

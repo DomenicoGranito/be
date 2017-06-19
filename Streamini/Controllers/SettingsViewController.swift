@@ -7,17 +7,7 @@
 //
 
 class SettingsViewController:UITableViewController, UIActionSheetDelegate
-{
-    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
-    {
-        return .portrait
-    }
-    
-    override var shouldAutorotate:Bool
-    {
-        return false
-    }
-    
+{    
     func logout()
     {
         let actionSheet=UIActionSheet.confirmLogoutActionSheet(self)

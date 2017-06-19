@@ -17,17 +17,7 @@ class RegisterViewController: BaseViewController
     @IBOutlet var emailBackgroundView:UIView?
     @IBOutlet var passwordBackgroundView:UIView?
     @IBOutlet var usernameBackgroundView:UIView?
-    
-    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
-    {
-        return .portrait
-    }
-    
-    override var shouldAutorotate:Bool
-    {
-        return false
-    }
-    
+        
     override func viewDidLoad()
     {
         super.viewDidLoad()

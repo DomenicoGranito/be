@@ -21,17 +21,7 @@ class SearchViewController: BaseViewController
     var talents:[User]=[]
     var profiles:[User]=[]
     var streams:[Stream]=[]
-    
-    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
-    {
-        return .portrait
-    }
-    
-    override var shouldAutorotate:Bool
-    {
-        return false
-    }
-    
+        
     override func viewDidLoad()
     {
         searchBar.backgroundImage=UIImage()

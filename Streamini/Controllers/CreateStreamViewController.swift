@@ -36,17 +36,7 @@ class CreateStreamViewController: BaseViewController, UITextFieldDelegate, Locat
     var selectedCategory = Category()
     var keep = 0
     var user: User?
-    
-    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
-    {
-        return .portrait
-    }
-    
-    override var shouldAutorotate:Bool
-    {
-        return false
-    }
-    
+        
     @IBAction func trashTapped(_ sender: AnyObject)
     {
         if(keep == 0)

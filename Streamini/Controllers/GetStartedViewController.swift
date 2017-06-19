@@ -46,16 +46,6 @@ class GetStartedViewController: BaseViewController
         }
     }
     
-    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
-    {
-        return .portrait
-    }
-    
-    override var shouldAutorotate:Bool
-    {
-        return false
-    }
-    
     func successUser(user:User)
     {
         SongManager.updateLogin(user)
