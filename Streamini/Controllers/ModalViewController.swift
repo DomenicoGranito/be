@@ -11,7 +11,7 @@ class ModalViewController: BaseViewController, ARNImageTransitionZoomable
     @IBOutlet var carousel:iCarousel?
     @IBOutlet var backgroundImageView:UIImageView?
     @IBOutlet var headerTitleLbl:UILabel?
-    @IBOutlet var videoTitleLbl:UILabel?
+    @IBOutlet var videoTitleLbl:MarqueeLabel?
     @IBOutlet var videoArtistNameLbl:UILabel?
     @IBOutlet var videoProgressDurationLbl:UILabel?
     @IBOutlet var videoDurationLbl:UILabel?

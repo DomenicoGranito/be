@@ -12,7 +12,7 @@ class TabBarViewController: BETabBarController, UITabBarControllerDelegate
 {
     @IBOutlet var vtabBar:UITabBar!
     @IBOutlet var miniPlayerView:UIView!
-    @IBOutlet var videoTitleLbl:UILabel!
+    @IBOutlet var videoTitleLbl:MarqueeLabel!
     @IBOutlet var videoArtistLbl:UILabel!
     @IBOutlet var videoThumbnailImageView:UIImageView!
     @IBOutlet var backgroundImageView:UIImageView!

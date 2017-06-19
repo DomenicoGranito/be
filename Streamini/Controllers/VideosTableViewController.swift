@@ -50,7 +50,14 @@ class VideosTableViewController: UITableViewController, ProfileDelegate
     {
         if vType==1
         {
-            return 2
+            if UserContainer.shared.logged().subscription=="pro"
+            {
+                return 4
+            }
+            else
+            {
+                return 2
+            }
         }
         
         return 2

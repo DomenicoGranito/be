@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3E03D5041E67F5F30056D275 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E03D5031E67F5F30056D275 /* PopUpViewController.swift */; };
+		3E1DEB101EF7A4470001756B /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1DEB0F1EF7A4470001756B /* MarqueeLabel.swift */; };
 		3E20216D1D81A6530058DAAD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E20216C1D81A6530058DAAD /* HomeViewController.swift */; };
 		3E20216F1D81AB440058DAAD /* CategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E20216E1D81AB440058DAAD /* CategoryRow.swift */; };
 		3E2021711D81ACFF0058DAAD /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2021701D81ACFE0058DAAD /* VideoCell.swift */; };
@@ -215,6 +216,7 @@
 		37A0E4CF9B94458CAC7E167D /* libPods-Streamini.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Streamini.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D0F6E64AA65AD195559CE8B /* Pods-Streamini.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Streamini.release.xcconfig"; path = "Pods/Target Support Files/Pods-Streamini/Pods-Streamini.release.xcconfig"; sourceTree = "<group>"; };
 		3E03D5031E67F5F30056D275 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		3E1DEB0F1EF7A4470001756B /* MarqueeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarqueeLabel.swift; path = MarqueeLabel/MarqueeLabel.swift; sourceTree = "<group>"; };
 		3E20216C1D81A6530058DAAD /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3E20216E1D81AB440058DAAD /* CategoryRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryRow.swift; sourceTree = "<group>"; };
 		3E2021701D81ACFE0058DAAD /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
@@ -439,6 +441,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E1DEB0E1EF7A2DE0001756B /* MarqueeLabel */ = {
+			isa = PBXGroup;
+			children = (
+				3E1DEB0F1EF7A4470001756B /* MarqueeLabel.swift */,
+			);
+			name = MarqueeLabel;
+			sourceTree = "<group>";
+		};
 		3E356F971E843525008FD8B9 /* DWSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -702,6 +712,7 @@
 		B7AA93201B3172740005972E /* Streamini */ = {
 			isa = PBXGroup;
 			children = (
+				3E1DEB0E1EF7A2DE0001756B /* MarqueeLabel */,
 				3E356F971E843525008FD8B9 /* DWSDK */,
 				3E79060A1E7FBC8E00257C5B /* iCarousel */,
 				B63C1A481E2DE98C00EF2F7C /* SCLAlertView */,
@@ -1188,6 +1199,7 @@
 				3EF1F0321D719F280055A372 /* BackgroundVideo.swift in Sources */,
 				B67448211E2C63CC0049890F /* PlaylistsTableViewController.swift in Sources */,
 				B67448201E2C63CC0049890F /* PlaylistProtocols.swift in Sources */,
+				3E1DEB101EF7A4470001756B /* MarqueeLabel.swift in Sources */,
 				B72815381B5E38D00005BBC6 /* ViewersCollectionViewCell.swift in Sources */,
 				3E935BC11E937D6100065FEC /* PlaylistDetailView.swift in Sources */,
 				3EF535B21E0920B90049B2E9 /* TransitionGestureHandler.swift in Sources */,
