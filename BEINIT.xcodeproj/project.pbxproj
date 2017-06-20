@@ -24,6 +24,9 @@
 		3E7192691E75701F00B7049B /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7192681E75701F00B7049B /* ActivityIndicatorView.swift */; };
 		3E71926B1E768DFE00B7049B /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E71926A1E768DFD00B7049B /* ErrorView.swift */; };
 		3E7828C11EEA741B00F2B5EF /* OfflineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7828C01EEA741B00F2B5EF /* OfflineViewController.swift */; };
+		3E78AFB11EF900D2003FA581 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E78AFAF1EF900D2003FA581 /* SCLAlertView.swift */; };
+		3E78AFB21EF900D2003FA581 /* SCLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E78AFB01EF900D2003FA581 /* SCLExtensions.swift */; };
+		3E78AFB71EF90736003FA581 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E78AFB31EF90736003FA581 /* libWeChatSDK.a */; };
 		3E79060E1E7FBD6A00257C5B /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E79060C1E7FBD6200257C5B /* iCarousel.m */; };
 		3E7C66DA1EEECD120014C6BB /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E7C66D91EEECD120014C6BB /* CoreTelephony.framework */; };
 		3E7C66DC1EEF9B310014C6BB /* UploadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7C66DB1EEF9B310014C6BB /* UploadCell.swift */; };
@@ -55,7 +58,6 @@
 		3EF535B01E0920B90049B2E9 /* TransitionAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF535AA1E0920B90049B2E9 /* TransitionAnimatable.swift */; };
 		3EF535B11E0920B90049B2E9 /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF535AB1E0920B90049B2E9 /* TransitionAnimator.swift */; };
 		3EF535B21E0920B90049B2E9 /* TransitionGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF535AC1E0920B90049B2E9 /* TransitionGestureHandler.swift */; };
-		3EF535B41E0921430049B2E9 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF535B31E0921430049B2E9 /* LineView.swift */; };
 		3EF535B61E0922D40049B2E9 /* MusicPlayerTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF535B51E0922D40049B2E9 /* MusicPlayerTransitionAnimation.swift */; };
 		3EF535B81E092A330049B2E9 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF535B71E092A330049B2E9 /* ModalViewController.swift */; };
 		3EFAD8931EB217E900038484 /* GradientTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFAD8921EB217E900038484 /* GradientTableView.swift */; };
@@ -68,11 +70,8 @@
 		A68B73191BB2859800695C80 /* NSLayoutConstraint+preciseConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68B73181BB2859800695C80 /* NSLayoutConstraint+preciseConstant.swift */; };
 		A68B731D1BB28DBB00695C80 /* UIImage+imageWithColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68B731C1BB28DBB00695C80 /* UIImage+imageWithColor.swift */; };
 		A6F80F1F1BBC13B800A376CD /* UINavigationBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F80F1E1BBC13B800A376CD /* UINavigationBarExtension.swift */; };
-		B63C1A4A1E2DE9EE00EF2F7C /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63C1A491E2DE9EE00EF2F7C /* SCLAlertView.swift */; };
-		B63C1A4C1E2DEA0400EF2F7C /* SCLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63C1A4B1E2DEA0400EF2F7C /* SCLExtensions.swift */; };
 		B63C1A4E1E451AE100EF2F7C /* MyLibViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63C1A4D1E451AE000EF2F7C /* MyLibViewController.swift */; };
 		B64176D31DF4EDE200099A9D /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64176D21DF4EDE200099A9D /* PlayerView.swift */; };
-		B66561E31E09884100EDA684 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B66561E11E09884100EDA684 /* libWeChatSDK.a */; };
 		B67448141E2C63CC0049890F /* DataDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67447FD1E2C63CC0049890F /* DataDownloader.swift */; };
 		B67448161E2C63CC0049890F /* DownloadDataStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67447FF1E2C63CC0049890F /* DownloadDataStructures.swift */; };
 		B67448181E2C63CC0049890F /* DownloadProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67448011E2C63CC0049890F /* DownloadProtocols.swift */; };
@@ -237,6 +236,12 @@
 		3E7192681E75701F00B7049B /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		3E71926A1E768DFD00B7049B /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		3E7828C01EEA741B00F2B5EF /* OfflineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineViewController.swift; sourceTree = "<group>"; };
+		3E78AFAF1EF900D2003FA581 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SCLAlertView.swift; path = SCLAlertView/SCLAlertView.swift; sourceTree = "<group>"; };
+		3E78AFB01EF900D2003FA581 /* SCLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SCLExtensions.swift; path = SCLAlertView/SCLExtensions.swift; sourceTree = "<group>"; };
+		3E78AFB31EF90736003FA581 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = WeChat/libWeChatSDK.a; sourceTree = "<group>"; };
+		3E78AFB41EF90736003FA581 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WechatAuthSDK.h; path = WeChat/WechatAuthSDK.h; sourceTree = "<group>"; };
+		3E78AFB51EF90736003FA581 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApi.h; path = WeChat/WXApi.h; sourceTree = "<group>"; };
+		3E78AFB61EF90736003FA581 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = WeChat/WXApiObject.h; sourceTree = "<group>"; };
 		3E79060B1E7FBD6100257C5B /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iCarousel.h; path = iCarousel/iCarousel.h; sourceTree = "<group>"; };
 		3E79060C1E7FBD6200257C5B /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iCarousel.m; path = iCarousel/iCarousel.m; sourceTree = "<group>"; };
 		3E7C66D91EEECD120014C6BB /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -273,7 +278,6 @@
 		3EF535AA1E0920B90049B2E9 /* TransitionAnimatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransitionAnimatable.swift; path = ARNTransitionAnimator/TransitionAnimatable.swift; sourceTree = "<group>"; };
 		3EF535AB1E0920B90049B2E9 /* TransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransitionAnimator.swift; path = ARNTransitionAnimator/TransitionAnimator.swift; sourceTree = "<group>"; };
 		3EF535AC1E0920B90049B2E9 /* TransitionGestureHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransitionGestureHandler.swift; path = ARNTransitionAnimator/TransitionGestureHandler.swift; sourceTree = "<group>"; };
-		3EF535B31E0921430049B2E9 /* LineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		3EF535B51E0922D40049B2E9 /* MusicPlayerTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerTransitionAnimation.swift; sourceTree = "<group>"; };
 		3EF535B71E092A330049B2E9 /* ModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		3EFAD8921EB217E900038484 /* GradientTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientTableView.swift; sourceTree = "<group>"; };
@@ -285,14 +289,8 @@
 		A68B73181BB2859800695C80 /* NSLayoutConstraint+preciseConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+preciseConstant.swift"; sourceTree = "<group>"; };
 		A68B731C1BB28DBB00695C80 /* UIImage+imageWithColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+imageWithColor.swift"; sourceTree = "<group>"; };
 		A6F80F1E1BBC13B800A376CD /* UINavigationBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBarExtension.swift; sourceTree = "<group>"; };
-		B63C1A491E2DE9EE00EF2F7C /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
-		B63C1A4B1E2DEA0400EF2F7C /* SCLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLExtensions.swift; sourceTree = "<group>"; };
 		B63C1A4D1E451AE000EF2F7C /* MyLibViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLibViewController.swift; sourceTree = "<group>"; };
 		B64176D21DF4EDE200099A9D /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
-		B66561DE1E09884100EDA684 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WechatAuthSDK.h; path = OpenSDK1.7.5/WechatAuthSDK.h; sourceTree = "<group>"; };
-		B66561DF1E09884100EDA684 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApi.h; path = OpenSDK1.7.5/WXApi.h; sourceTree = "<group>"; };
-		B66561E01E09884100EDA684 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = OpenSDK1.7.5/WXApiObject.h; sourceTree = "<group>"; };
-		B66561E11E09884100EDA684 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = OpenSDK1.7.5/libWeChatSDK.a; sourceTree = "<group>"; };
 		B67447FD1E2C63CC0049890F /* DataDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataDownloader.swift; path = MediaLibrary/DataDownloader.swift; sourceTree = "<group>"; };
 		B67447FF1E2C63CC0049890F /* DownloadDataStructures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadDataStructures.swift; path = MediaLibrary/DownloadDataStructures.swift; sourceTree = "<group>"; };
 		B67448011E2C63CC0049890F /* DownloadProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadProtocols.swift; path = MediaLibrary/DownloadProtocols.swift; sourceTree = "<group>"; };
@@ -428,8 +426,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E7C66DA1EEECD120014C6BB /* CoreTelephony.framework in Frameworks */,
-				B66561E31E09884100EDA684 /* libWeChatSDK.a in Frameworks */,
 				3E356FA01E843583008FD8B9 /* libCCSDK.a in Frameworks */,
+				3E78AFB71EF90736003FA581 /* libWeChatSDK.a in Frameworks */,
 				81D2DEA1E80CF2C7CEE48ADD /* libPods-Streamini.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -504,21 +502,21 @@
 		B63C1A481E2DE98C00EF2F7C /* SCLAlertView */ = {
 			isa = PBXGroup;
 			children = (
-				B63C1A491E2DE9EE00EF2F7C /* SCLAlertView.swift */,
-				B63C1A4B1E2DEA0400EF2F7C /* SCLExtensions.swift */,
+				3E78AFAF1EF900D2003FA581 /* SCLAlertView.swift */,
+				3E78AFB01EF900D2003FA581 /* SCLExtensions.swift */,
 			);
 			name = SCLAlertView;
 			sourceTree = "<group>";
 		};
-		B66561DC1E09882C00EDA684 /* WECHAT */ = {
+		B66561DC1E09882C00EDA684 /* WeChat */ = {
 			isa = PBXGroup;
 			children = (
-				B66561DE1E09884100EDA684 /* WechatAuthSDK.h */,
-				B66561DF1E09884100EDA684 /* WXApi.h */,
-				B66561E01E09884100EDA684 /* WXApiObject.h */,
-				B66561E11E09884100EDA684 /* libWeChatSDK.a */,
+				3E78AFB31EF90736003FA581 /* libWeChatSDK.a */,
+				3E78AFB41EF90736003FA581 /* WechatAuthSDK.h */,
+				3E78AFB51EF90736003FA581 /* WXApi.h */,
+				3E78AFB61EF90736003FA581 /* WXApiObject.h */,
 			);
-			name = WECHAT;
+			name = WeChat;
 			sourceTree = "<group>";
 		};
 		B67447C61E2BD8710049890F /* Mylibrary */ = {
@@ -714,10 +712,9 @@
 				B63C1A481E2DE98C00EF2F7C /* SCLAlertView */,
 				B67447C71E2BD89C0049890F /* New Group */,
 				3EF535A61E0920920049B2E9 /* ARNTransitionAnimator */,
-				B66561DC1E09882C00EDA684 /* WECHAT */,
+				B66561DC1E09882C00EDA684 /* WeChat */,
 				3EB1AB3F1DBBCFBB0047726D /* Streamini.entitlements */,
 				3EF1F0311D719F280055A372 /* BackgroundVideo.swift */,
-				3EF535B31E0921430049B2E9 /* LineView.swift */,
 				3EF535B51E0922D40049B2E9 /* MusicPlayerTransitionAnimation.swift */,
 				3EF1F02F1D719DE40055A372 /* test.mp4 */,
 				B7E15E511B6A6277000C8C69 /* Keyboard */,
@@ -1042,7 +1039,6 @@
 				B7E15E531B6A629B000C8C69 /* CreateStreamKeyboardHandler.swift in Sources */,
 				B791879A1B4437FC002DFAB4 /* SocialTool.swift in Sources */,
 				B7DA8EA91B8349EE0082ED5C /* SelectorView.swift in Sources */,
-				B63C1A4C1E2DEA0400EF2F7C /* SCLExtensions.swift in Sources */,
 				B7316E061B552FBD0079D387 /* StreamPlayer.swift in Sources */,
 				B674481B1E2C63CC0049890F /* MiscFuncs.swift in Sources */,
 				B674481A1E2C63CC0049890F /* MenuAction.swift in Sources */,
@@ -1068,14 +1064,12 @@
 				B794AD9E1B59305B0069C2A8 /* CommentMessageController.swift in Sources */,
 				B794AD951B58E0160069C2A8 /* CommentLabel.swift in Sources */,
 				B794AD9A1B592F930069C2A8 /* MessageController.swift in Sources */,
-				B63C1A4A1E2DE9EE00EF2F7C /* SCLAlertView.swift in Sources */,
 				B728153A1B5E4C400005BBC6 /* ViewersDataSource.swift in Sources */,
 				B7D5EA941B565B0B003EE25D /* MessageExtension.swift in Sources */,
 				3E5CB4541E9529CF007EB28D /* OptionsViewController.swift in Sources */,
 				B71BA5DB1B84A86C0055F427 /* ProfileStatisticsViewController.swift in Sources */,
 				B79187981B4437FC002DFAB4 /* AmazonTool.swift in Sources */,
 				3EEF52BF1D83B5AF0015BA92 /* AllCategoriesRow.swift in Sources */,
-				3EF535B41E0921430049B2E9 /* LineView.swift in Sources */,
 				B77AABEE1B398B95007DE187 /* StreamConnector.swift in Sources */,
 				3EF535B61E0922D40049B2E9 /* MusicPlayerTransitionAnimation.swift in Sources */,
 				A631E6321D378D95002C7F78 /* PasswordViewController.swift in Sources */,
@@ -1109,6 +1103,7 @@
 				B746FB141B5FC7B300DE3534 /* SocialConnector.swift in Sources */,
 				3E7192691E75701F00B7049B /* ActivityIndicatorView.swift in Sources */,
 				B674481C1E2C63CC0049890F /* Music_Player.xcdatamodeld in Sources */,
+				3E78AFB11EF900D2003FA581 /* SCLAlertView.swift in Sources */,
 				A60F82ED1D49168E002E2CEA /* SearchStreamCell.swift in Sources */,
 				B6D198A51E23883F008B8604 /* ChartsViewController.swift in Sources */,
 				B70AB1321B73731200BAD62A /* LinkedUsersViewController.swift in Sources */,
@@ -1200,6 +1195,7 @@
 				3EF535AE1E0920B90049B2E9 /* ARNTransitionAnimator.swift in Sources */,
 				3E71926B1E768DFE00B7049B /* ErrorView.swift in Sources */,
 				A68B73191BB2859800695C80 /* NSLayoutConstraint+preciseConstant.swift in Sources */,
+				3E78AFB21EF900D2003FA581 /* SCLExtensions.swift in Sources */,
 				A60F82EB1D490F70002E2CEA /* CategoryMappingProvider.swift in Sources */,
 				B77E0BD71B8B52B3007C3107 /* MyStreamsDataSource.swift in Sources */,
 				B733B1F91B78DBD2002FEAB6 /* PeopleDataSource.swift in Sources */,
@@ -1378,6 +1374,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Streamini/OpenSDK1.7.5",
 					"$(PROJECT_DIR)/Streamini/DWSDK",
+					"$(PROJECT_DIR)/Streamini/WeChat",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.uniprogy.dominic;
@@ -1438,6 +1435,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Streamini/OpenSDK1.7.5",
 					"$(PROJECT_DIR)/Streamini/DWSDK",
+					"$(PROJECT_DIR)/Streamini/WeChat",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.uniprogy.dominic;
 				PRODUCT_NAME = Streamini;
