@@ -134,7 +134,6 @@
 		B76635F11B4BC1710013FCE2 /* Messenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76635F01B4BC1710013FCE2 /* Messenger.swift */; };
 		B76635F31B4BC47E0013FCE2 /* PubNubMessenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76635F21B4BC47E0013FCE2 /* PubNubMessenger.swift */; };
 		B7763AFF1B6110A600D469E3 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7763AFE1B6110A600D469E3 /* NSDateExtension.swift */; };
-		B7763B011B6110DA00D469E3 /* NSDateTimeAgo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B7763B001B6110DA00D469E3 /* NSDateTimeAgo.bundle */; };
 		B77AABD81B398284007DE187 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77AABD71B398284007DE187 /* User.swift */; };
 		B77AABDA1B3983B3007DE187 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77AABD91B3983B3007DE187 /* Stream.swift */; };
 		B77AABDC1B398430007DE187 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77AABDB1B398430007DE187 /* Location.swift */; };
@@ -353,7 +352,6 @@
 		B76635F01B4BC1710013FCE2 /* Messenger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Messenger.swift; sourceTree = "<group>"; };
 		B76635F21B4BC47E0013FCE2 /* PubNubMessenger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubNubMessenger.swift; sourceTree = "<group>"; };
 		B7763AFE1B6110A600D469E3 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
-		B7763B001B6110DA00D469E3 /* NSDateTimeAgo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NSDateTimeAgo.bundle; sourceTree = "<group>"; };
 		B77AABD71B398284007DE187 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B77AABD91B3983B3007DE187 /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
 		B77AABDB1B398430007DE187 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -744,7 +742,6 @@
 		B7AA93211B3172740005972E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B7763B001B6110DA00D469E3 /* NSDateTimeAgo.bundle */,
 				B7AA93221B3172740005972E /* Info.plist */,
 				B724758B1B4133F50080BE1B /* Localizable.strings */,
 			);
@@ -966,7 +963,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7763B011B6110DA00D469E3 /* NSDateTimeAgo.bundle in Resources */,
 				B72475891B4133F50080BE1B /* Localizable.strings in Resources */,
 				3EF1F0301D719DE40055A372 /* test.mp4 in Resources */,
 				3E935BBF1E937D0500065FEC /* PlaylistView.xib in Resources */,
