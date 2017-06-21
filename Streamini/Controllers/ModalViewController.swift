@@ -217,6 +217,7 @@ class ModalViewController: BaseViewController, ARNImageTransitionZoomable
         if player!.playbackState == .playing
         {
             activityIndicator.stopAnimating()
+            UIView.animate(withDuration:1, animations:{self.player!.view.alpha=1}, completion:nil)
         }
     }
     
@@ -224,8 +225,6 @@ class ModalViewController: BaseViewController, ARNImageTransitionZoomable
     {
         videoDurationLbl?.text="-\(secondsToReadableTime(player!.duration))"
         seekBar?.maximumValue=Float(player!.duration)
-        
-        UIView.animate(withDuration:2, animations:{self.player!.view.alpha=1}, completion:nil)
     }
     
     @IBAction func shuffle()
