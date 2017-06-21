@@ -10,8 +10,8 @@ class PopUpViewController: BaseViewController
 {
     @IBOutlet var backgroundImageView:UIImageView?
     
-    let menuItemTitlesArray:NSMutableArray=["Share to friends", "Share on timeline", "Go to channels", "Download this video", "Report this video", "Add to favourite", "Block content from this channel"]
-    let menuItemIconsArray:NSMutableArray=["upload", "upload", "add", "share", "report", "add", "block"]
+    let menuItemTitlesArray:NSMutableArray=["Share to friends", "Share on timeline", "Go to channels", "Report this video", "Add to favourite", "Block content from this channel"]
+    let menuItemIconsArray:NSMutableArray=["upload", "upload", "add", "share", "report", "add"]
     
     var stream:Stream?
     let site=Config.shared.site()
@@ -21,6 +21,12 @@ class PopUpViewController: BaseViewController
         
     override func viewDidLoad()
     {
+        if UserContainer.shared.logged().subscription=="pro"
+        {
+            menuItemTitlesArray.add("Download this video")
+            menuItemIconsArray.add("block")
+        }
+        
         appDelegate=UIApplication.shared.delegate as! AppDelegate
         
         for item in appDelegate.downloadingItems.items
@@ -34,8 +40,8 @@ class PopUpViewController: BaseViewController
 
         if SongManager.isAlreadyFavourited(stream!.id)
         {
-            menuItemTitlesArray.replaceObject(at:5, with:"Remove from favourite")
-            menuItemIconsArray.replaceObject(at:5, with:"time.png")
+            menuItemTitlesArray.replaceObject(at:4, with:"Remove from favourite")
+            menuItemIconsArray.replaceObject(at:4, with:"time.png")
         }
         
         backgroundImageView?.sd_setImage(with:URL(string:"\(site)/thumb/\(stream!.id).jpg"))
@@ -48,7 +54,7 @@ class PopUpViewController: BaseViewController
     
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
-        return 8
+        return menuItemTitlesArray.count+1
     }
     
     func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
@@ -105,6 +111,32 @@ class PopUpViewController: BaseViewController
         }
         if indexPath.row==4
         {
+            StreamConnector().report(stream!.id, reportSuccess, failureWithoutAction)
+        }
+        if indexPath.row==5
+        {
+            dismiss(animated:true, completion:nil)
+            
+            if SongManager.isAlreadyFavourited(stream!.id)
+            {
+                SongManager.removeFromFavourite(stream!.id)
+            }
+            else
+            {
+                SongManager.addToFavourite(stream!.title, stream!.streamHash, stream!.id, stream!.user.name, stream!.vType, stream!.videoID, stream!.user.id)
+            }
+        }
+        if indexPath.row==6
+        {
+            dismiss(animated:true)
+            SocialConnector().block(stream!.user.id, blockSuccess, failureWithoutAction)
+            SongManager.deleteBlockedUserVideos(stream!.user.id)
+            NotificationCenter.default.post(name:Notification.Name("blockUser"), object:nil)
+            NotificationCenter.default.post(name: Notification.Name("hideMiniPlayer"), object:nil)
+            NotificationCenter.default.post(name: Notification.Name("refreshAfterBlock"), object:nil)
+        }
+        if indexPath.row==7
+        {
             if SongManager.isAlreadyDownloaded(stream!.id)
             {
                 SCLAlertView().showSuccess("MESSAGE", subTitle:"This video has been downloaded already")
@@ -118,32 +150,6 @@ class PopUpViewController: BaseViewController
                 view.window?.rootViewController?.dismiss(animated:true, completion:nil)
                 NotificationCenter.default.post(name: Notification.Name("goToDownloads"), object:stream)
             }
-        }
-        if indexPath.row==5
-        {
-            StreamConnector().report(stream!.id, reportSuccess, failureWithoutAction)
-        }
-        if indexPath.row==6
-        {
-            dismiss(animated:true, completion:nil)
-            
-            if SongManager.isAlreadyFavourited(stream!.id)
-            {
-                SongManager.removeFromFavourite(stream!.id)
-            }
-            else
-            {
-                SongManager.addToFavourite(stream!.title, stream!.streamHash, stream!.id, stream!.user.name, stream!.vType, stream!.videoID, stream!.user.id)
-            }
-        }
-        if indexPath.row==7
-        {
-            dismiss(animated:true)
-            SocialConnector().block(stream!.user.id, blockSuccess, failureWithoutAction)
-            SongManager.deleteBlockedUserVideos(stream!.user.id)
-            NotificationCenter.default.post(name:Notification.Name("blockUser"), object:nil)
-            NotificationCenter.default.post(name: Notification.Name("hideMiniPlayer"), object:nil)
-            NotificationCenter.default.post(name: Notification.Name("refreshAfterBlock"), object:nil)
         }
     }
     
