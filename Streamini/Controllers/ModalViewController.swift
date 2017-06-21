@@ -423,6 +423,7 @@ class ModalViewController: BaseViewController, ARNImageTransitionZoomable
         view.bringSubview(toFront:topView!)
         playlistButton?.isHidden=true
         closeButton?.setImage(UIImage(named:"nonfullscreen"), for:.normal)
+        activityIndicator.center=view.center
         
         for gesture in view.gestureRecognizers!
         {
@@ -439,6 +440,7 @@ class ModalViewController: BaseViewController, ARNImageTransitionZoomable
         player?.scalingMode = .aspectFit
         playlistButton?.isHidden=false
         closeButton?.setImage(UIImage(named:"arrow_down"), for:.normal)
+        activityIndicator.center=carousel!.center
         
         if streamsArray!.count>1
         {
