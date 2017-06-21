@@ -38,7 +38,8 @@ class ModalViewController: BaseViewController, ARNImageTransitionZoomable
     var selectedItemIndex=0
     var appDelegate:AppDelegate!
     var fullScreenButton:UIButton!
-        
+    let activityIndicator=UIActivityIndicatorView(activityIndicatorStyle:.whiteLarge)
+    
     override func viewDidLoad()
     {
         seekBar!.setThumbImage(UIImage(), for:.normal)
@@ -48,6 +49,7 @@ class ModalViewController: BaseViewController, ARNImageTransitionZoomable
         stream=streamsArray!.object(at:selectedItemIndex) as? Stream
         
         NotificationCenter.default.addObserver(self, selector:#selector(onDeviceOrientationChange), name:.UIDeviceOrientationDidChange, object:nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(moviePlayerPlaybackStateDidChange), name:.MPMoviePlayerPlaybackStateDidChange, object:nil)
         NotificationCenter.default.addObserver(self, selector:#selector(deleteBlockUserVideos), name:Notification.Name("blockUser"), object:nil)
         NotificationCenter.default.addObserver(self, selector:#selector(closePlaylist), name:Notification.Name("closePlaylist"), object:nil)
         NotificationCenter.default.addObserver(self, selector:#selector(closePlayer), name:Notification.Name("closePlayer"), object:nil)
@@ -208,6 +210,14 @@ class ModalViewController: BaseViewController, ARNImageTransitionZoomable
         seekBar?.value=Float(player!.currentPlaybackTime)
         
         TBVC.updateSeekBar()
+    }
+    
+    func moviePlayerPlaybackStateDidChange()
+    {
+        if player!.playbackState == .playing
+        {
+            activityIndicator.stopAnimating()
+        }
     }
     
     func moviePlayerDurationAvailable()
@@ -375,6 +385,9 @@ class ModalViewController: BaseViewController, ARNImageTransitionZoomable
         }
         
         player?.play()
+        activityIndicator.center=carousel!.center
+        view.insertSubview(activityIndicator, aboveSubview:player!.view)
+        activityIndicator.startAnimating()
         playButton?.isEnabled=true
         playButton?.setImage(UIImage(named:"big_pause_button"), for:.normal)
     }
