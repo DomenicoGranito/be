@@ -21,7 +21,8 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
     var isSearchMode = false
     var searchData = NSMutableDictionary()
     
-    init(tableView: UITableView) {
+    init(tableView: UITableView)
+    {
         self.tableView   = tableView
         super.init()
         tableView.dataSource = self
@@ -32,17 +33,20 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         l.lineBreakMode = .byWordWrapping
     }
 
-    // MARK: - UITableViewDatasource
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return (isSearchMode) ? 1 : 2
+    func numberOfSections(in tableView:UITableView)->Int
+    {
+        return isSearchMode ? 1 : 2
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSearchMode {
+    func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
+    {
+        if isSearchMode
+        {
             return foundUsers.count
-        } else {
-            return (section == 0) ? top.count : featured.count
+        }
+        else
+        {
+            return section==0 ? top.count : featured.count
         }
     }
     
@@ -50,11 +54,15 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
     {
         let cell=tableView.dequeueReusableCell(withIdentifier:"PeopleCell", for:indexPath) as! PeopleCell
         
-        let user: User
-        if isSearchMode {
-            user = foundUsers[indexPath.row]
-        } else {
-            user = (indexPath.section == 0) ? top[indexPath.row] : featured[indexPath.row]
+        let user:User
+        
+        if isSearchMode
+        {
+            user=foundUsers[indexPath.row]
+        }
+        else
+        {
+            user=indexPath.section==0 ? top[indexPath.row] : featured[indexPath.row]
         }
         
         cell.selectedBackgroundView=SelectedCellView().create()
@@ -63,15 +71,17 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         return cell
     }
     
-    func tableView(_ tableView:UITableView, heightForHeaderIn section:Int)->CGFloat
+    func tableView(_ tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
     {
-        if (section == 0 && top.isEmpty) || (section == 1 && featured.isEmpty) || isSearchMode {
+        if (section == 0 && top.isEmpty) || (section == 1 && featured.isEmpty) || isSearchMode
+        {
             return 0.0
         }
-        return 35.0
+        
+        return 0.0
     }
     
-    func tableView(_ tableView:UITableView, viewForHeaderInIn section:Int)->UIView?
+    func tableView(_ tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
     {
         if (section == 0 && top.isEmpty) || (section == 1 && featured.isEmpty) || isSearchMode {
             return nil
