@@ -61,12 +61,7 @@ class LinkedUsersViewController: BaseViewController, UserStatisticsDelegate, Str
     {
         let vc=storyBoard.instantiateViewController(withIdentifier:"PopUpViewController") as! PopUpViewController
         vc.stream=stream
-        present(vc, animated:true, completion:nil)
-    }
-
-    func reload()
-    {
-        
+        present(vc, animated:true)
     }
 
     func recentStreamsDidSelected(_ userId:UInt)
