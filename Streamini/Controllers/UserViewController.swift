@@ -30,8 +30,10 @@ protocol UserStatusDelegate:class
     func blockStatusDidChange(_ status:Bool, user:User)
 }
 
-class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AmazonToolDelegate
+class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AmazonToolDelegate, UserSelecting, StreamSelecting
 {
+    @IBOutlet var tableView:UITableView!
+    @IBOutlet var emptyLabel:UILabel!
     @IBOutlet var backgroundImageView:UIImageView?
     @IBOutlet var changeAvatarButton:UIButton?
     @IBOutlet var userHeaderView:UserHeaderView!
@@ -48,11 +50,14 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
     var userStatisticsDelegate:UserStatisticsDelegate?
     var userStatusDelegate:UserStatusDelegate?
     var userSelectedDelegate:UserSelecting?
-    var selectedImage: UIImage?
-    var profileDelegate: ProfileDelegate?
-        
+    var selectedImage:UIImage?
+    var profileDelegate:ProfileDelegate?
+    var dataSource:UserStatisticsDataSource?
+    var TBVC:TabBarViewController!
+    
     override func viewDidLoad()
     {
+        TBVC=tabBarController as! TabBarViewController
         let WeChatLogin=A0SimpleKeychain().string(forKey:"WeChatLogin")
         
         if UserContainer.shared.logged().id==user!.id&&WeChatLogin=="0"
@@ -163,30 +168,49 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         followingLabel.text=followingLabelText
         
         followButton.isHidden=UserContainer.shared.logged().id==user!.id
+        
+        emptyLabel.text=NSLocalizedString("table_no_data", comment:"")
+        
+        tableView.showsPullToRefresh=true
+        tableView.showsInfiniteScrolling=true
+        
+        tableView.addPullToRefresh
+            {()->() in
+                self.dataSource!.reload()
+        }
+        
+        tableView.addInfiniteScrolling
+            {()->() in
+                self.dataSource!.fetchMore()
+        }
     }
     
     @IBAction func recentButtonPressed()
     {
-        if let del=userStatisticsDelegate
-        {
-            del.recentStreamsDidSelected(user!.id)
-        }
+        dataSource=RecentStreamsDataSource(user!.id, tableView)
+        dataSource!.streamSelectedDelegate=self
+        helper()
     }
     
     @IBAction func followersButtonPressed()
     {
-        if let del=userStatisticsDelegate
-        {
-            del.followersDidSelected(user!.id)
-        }
+        dataSource=FollowersDataSource(user!.id, tableView)
+        dataSource!.userSelectedDelegate=self
+        helper()
     }
     
     @IBAction func followingButtonPressed()
     {
-        if let del=userStatisticsDelegate
-        {
-            del.followingDidSelected(user!.id)
-        }
+        dataSource=FollowingDataSource(user!.id, tableView)
+        dataSource!.userSelectedDelegate=self
+        helper()
+    }
+    
+    func helper()
+    {
+        dataSource!.profileDelegate=self
+        dataSource!.clean()
+        dataSource!.reload()
     }
     
     @IBAction func followButtonPressed()
@@ -206,20 +230,6 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
     func reload()
     {
         update(user!.id)
-    }
-        
-    override func prepare(for segue:UIStoryboardSegue, sender:Any?)
-    {
-        if let sid=segue.identifier
-        {
-            if sid=="UserToLinkedUsers"
-            {
-                let controller=segue.destination as! LinkedUsersViewController
-                controller.profileDelegate=self
-                controller.TBVC=tabBarController as! TabBarViewController
-                self.userStatisticsDelegate=controller
-            }
-        }
     }
     
     func followSuccess()
@@ -319,5 +329,33 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         UIGraphicsEndImageContext()
         
         return renderedImage
+    }
+    
+    func streamDidSelected(_ stream:Stream)
+    {
+        let modalVC=storyBoard.instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
+        
+        let streamsArray=NSMutableArray()
+        streamsArray.add(stream)
+        
+        modalVC.streamsArray=streamsArray
+        modalVC.TBVC=TBVC
+        
+        TBVC.modalVC=modalVC
+        TBVC.configure(stream)
+    }
+    
+    func openPopUpForSelectedStream(_ stream:Stream)
+    {
+        let vc=storyBoard.instantiateViewController(withIdentifier:"PopUpViewController") as! PopUpViewController
+        vc.stream=stream
+        present(vc, animated:true)
+    }
+    
+    func userDidSelected(_ user:User)
+    {
+        let vc=storyBoard.instantiateViewController(withIdentifier: "UserViewControllerId") as! UserViewController
+        vc.user=user
+        navigationController?.pushViewController(vc, animated:true)
     }
 }

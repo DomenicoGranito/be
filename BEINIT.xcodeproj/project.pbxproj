@@ -98,7 +98,6 @@
 		B6D413591E17AC1A001E8108 /* ARNModalImageTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D413561E17AC1A001E8108 /* ARNModalImageTransitionViewController.swift */; };
 		B6EAF8281E28EF6E007038DC /* AllCategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EAF8271E28EF6E007038DC /* AllCategoryRow.swift */; };
 		B6EAF82A1E28F179007038DC /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EAF8291E28F179007038DC /* CategoryCell.swift */; };
-		B70AB1321B73731200BAD62A /* LinkedUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70AB1311B73731200BAD62A /* LinkedUsersViewController.swift */; };
 		B70AB1381B73839C00BAD62A /* UserHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70AB1371B73839C00BAD62A /* UserHeaderView.swift */; };
 		B70E04191B74E5B000422AF0 /* LinkedUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70E04181B74E5B000422AF0 /* LinkedUserCell.swift */; };
 		B70E041B1B74E92600422AF0 /* RecentStreamsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70E041A1B74E92600422AF0 /* RecentStreamsDataSource.swift */; };
@@ -166,7 +165,6 @@
 		B79669851B821C5D0071AF91 /* LegalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79669841B821C5D0071AF91 /* LegalViewController.swift */; };
 		B796A4921BB1520E0018B085 /* ViewersDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B796A4911BB1520E0018B085 /* ViewersDelegate.swift */; };
 		B7A886941B500C7100D37B63 /* LiveStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A886931B500C7100D37B63 /* LiveStreamViewController.swift */; };
-		B7AA45581B79CAC8001D293A /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AA45571B79CAC8001D293A /* RootViewController.swift */; };
 		B7AA93241B3172740005972E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AA93231B3172740005972E /* AppDelegate.swift */; };
 		B7AA932B1B3172740005972E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7AA93291B3172740005972E /* Main.storyboard */; };
 		B7AA932D1B3172740005972E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7AA932C1B3172740005972E /* Images.xcassets */; };
@@ -315,7 +313,6 @@
 		B6D413561E17AC1A001E8108 /* ARNModalImageTransitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARNModalImageTransitionViewController.swift; path = ARNTransitionAnimator/ARNModalImageTransitionViewController.swift; sourceTree = "<group>"; };
 		B6EAF8271E28EF6E007038DC /* AllCategoryRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCategoryRow.swift; sourceTree = "<group>"; };
 		B6EAF8291E28F179007038DC /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
-		B70AB1311B73731200BAD62A /* LinkedUsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedUsersViewController.swift; sourceTree = "<group>"; };
 		B70AB1371B73839C00BAD62A /* UserHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHeaderView.swift; sourceTree = "<group>"; };
 		B70E04181B74E5B000422AF0 /* LinkedUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedUserCell.swift; sourceTree = "<group>"; };
 		B70E041A1B74E92600422AF0 /* RecentStreamsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentStreamsDataSource.swift; sourceTree = "<group>"; };
@@ -385,7 +382,6 @@
 		B79669841B821C5D0071AF91 /* LegalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalViewController.swift; sourceTree = "<group>"; };
 		B796A4911BB1520E0018B085 /* ViewersDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewersDelegate.swift; sourceTree = "<group>"; };
 		B7A886931B500C7100D37B63 /* LiveStreamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveStreamViewController.swift; sourceTree = "<group>"; };
-		B7AA45571B79CAC8001D293A /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		B7AA931E1B3172740005972E /* Streamini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streamini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7AA93221B3172740005972E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7AA93231B3172740005972E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -825,12 +821,10 @@
 				B7316E071B55342F0079D387 /* JoinStreamViewController.swift */,
 				B746FB0F1B5FC23100DE3534 /* FollowersViewController.swift */,
 				B7E15E4A1B6A24E5000C8C69 /* UserViewController.swift */,
-				B70AB1311B73731200BAD62A /* LinkedUsersViewController.swift */,
 				B6D4134C1E141DBE001E8108 /* TabBarViewController.swift */,
 				B63C1A4D1E451AE000EF2F7C /* MyLibViewController.swift */,
 				3E68E8F71E715D3F008AAB9E /* VideosViewController.swift */,
 				B733B1F41B78CF04002FEAB6 /* PeopleViewController.swift */,
-				B7AA45571B79CAC8001D293A /* RootViewController.swift */,
 				3EF535B71E092A330049B2E9 /* ModalViewController.swift */,
 				3E2A5A591ED80CDC00133E1D /* DevicesViewController.swift */,
 				3ECEC44C1EA22F8A006A00F7 /* PlaylistViewController.swift */,
@@ -1098,7 +1092,6 @@
 				3E78AFB11EF900D2003FA581 /* SCLAlertView.swift in Sources */,
 				A60F82ED1D49168E002E2CEA /* SearchStreamCell.swift in Sources */,
 				B6D198A51E23883F008B8604 /* ChartsViewController.swift in Sources */,
-				B70AB1321B73731200BAD62A /* LinkedUsersViewController.swift in Sources */,
 				3E4E1A6D1EC5C00E00AE1F0E /* AboutTableViewController.swift in Sources */,
 				B67448271E2C63CC0049890F /* TabBarController.swift in Sources */,
 				3E2A5A5E1ED8693B00133E1D /* SelectedCellView.swift in Sources */,
@@ -1132,7 +1125,6 @@
 				B67448591E2C96B90049890F /* UIViewController+Alert.swift in Sources */,
 				B6EAF8281E28EF6E007038DC /* AllCategoryRow.swift in Sources */,
 				B6D413571E17AC1A001E8108 /* ARNImageTransitionNavigationController.swift in Sources */,
-				B7AA45581B79CAC8001D293A /* RootViewController.swift in Sources */,
 				B6A941CF1E48AB00003E2331 /* SettingsViewController.swift in Sources */,
 				3E20216F1D81AB440058DAAD /* CategoryRow.swift in Sources */,
 				B7763AFF1B6110A600D469E3 /* NSDateExtension.swift in Sources */,
