@@ -207,12 +207,7 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
     {
         update(user!.id)
     }
-    
-    func close()
-    {
         
-    }
-    
     override func prepare(for segue:UIStoryboardSegue, sender:Any?)
     {
         if let sid=segue.identifier

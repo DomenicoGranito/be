@@ -105,12 +105,7 @@ class PeopleViewController: BaseViewController, UserSelecting, ProfileDelegate, 
     {
         dataSource!.reload()
     }
-    
-    func close()
-    {
         
-    }    
-    
     func followStatusDidChange(_ status:Bool, user:User)
     {
         dataSource!.updateUser(user, isFollowed:status, isBlocked:user.isBlocked)

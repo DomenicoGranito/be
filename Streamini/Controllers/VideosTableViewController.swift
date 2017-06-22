@@ -99,10 +99,5 @@ class VideosTableViewController: UITableViewController, ProfileDelegate
     func reload()
     {
         UserConnector().get(nil, userSuccess, userFailure)
-    }
-    
-    func close()
-    {
-        
-    }
+    }    
 }

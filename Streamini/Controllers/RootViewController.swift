@@ -142,10 +142,7 @@ UserSelecting, ProfileDelegate {
     func reload() {
         UserConnector().get(nil, successGetUser, successFailure)
     }
-    
-    func close() {
-    }
-    
+        
     func usernameLabelPressed()
     {
         

@@ -9,7 +9,6 @@
 protocol ProfileDelegate:class
 {
     func reload()
-    func close()
 }
 
 class ChannelsTableViewController: UITableViewController, ProfileDelegate
@@ -68,10 +67,5 @@ class ChannelsTableViewController: UITableViewController, ProfileDelegate
     func reload()
     {
         UserConnector().get(nil, userSuccess, userFailure)
-    }
-    
-    func close()
-    {
-        
     }
 }
