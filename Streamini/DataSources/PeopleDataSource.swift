@@ -21,7 +21,7 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
     var isSearchMode = false
     var searchData = NSMutableDictionary()
     
-    init(tableView: UITableView)
+    init(tableView:UITableView)
     {
         self.tableView   = tableView
         super.init()
@@ -33,6 +33,11 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         l.lineBreakMode = .byWordWrapping
     }
 
+    func sectionIndexTitles(for tableView:UITableView)->[String]?
+    {
+        return ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    }
+    
     func numberOfSections(in tableView:UITableView)->Int
     {
         return isSearchMode ? 1 : 2
@@ -83,7 +88,8 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
     
     func tableView(_ tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
     {
-        if (section == 0 && top.isEmpty) || (section == 1 && featured.isEmpty) || isSearchMode {
+        if (section == 0 && top.isEmpty) || (section == 1 && featured.isEmpty) || isSearchMode
+        {
             return nil
         }
         
@@ -92,9 +98,12 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         
         let label = UILabel()
         
-        if section == 0 {
+        if section == 0
+        {
             label.text = NSLocalizedString("people_top", comment: "")
-        } else {
+        }
+        else
+        {
             label.text = NSLocalizedString("people_featured", comment: "")
         }
         
@@ -132,9 +141,12 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         tableView.deselectRow(at:indexPath, animated:true)
         
         let user: User
-        if isSearchMode {
+        if isSearchMode
+        {
             user = foundUsers[indexPath.row]
-        } else {
+        }
+        else
+        {
             user = (indexPath.section == 0) ? top[indexPath.row] : featured[indexPath.row]
         }
         
@@ -144,16 +156,20 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         }
     }
     
-    func willStatusChanged(_ cell: UITableViewCell) {
+    func willStatusChanged(_ cell: UITableViewCell)
+    {
         let selectedCell = cell as! PeopleCell
         self.selectedCells.append(selectedCell)
         
         let indexPath = tableView.indexPath(for: cell)!
         
         let userId: UInt
-        if isSearchMode {
+        if isSearchMode
+        {
             userId = foundUsers[indexPath.row].id
-        } else {
+        }
+        else
+        {
             userId = (indexPath.section == 0) ? top[indexPath.row].id : featured[indexPath.row].id
         }
         
@@ -189,7 +205,8 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
 //        selectedCells.remove(at: 0)
 //    }
     
-    func peopleSuccess(_ top: [User], featured: [User]) {
+    func peopleSuccess(_ top: [User], featured: [User])
+    {
         tableView.pullToRefreshView.stopAnimating()
         self.top        = top
         self.featured   = featured
@@ -198,7 +215,8 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         self.tableView.reloadData()
     }
     
-    func fetchMoreSuccess(_ top: [User], featured: [User]) {
+    func fetchMoreSuccess(_ top: [User], featured: [User])
+    {
         tableView.infiniteScrollingView.stopAnimating()
         self.top        = self.top + top
         self.featured   = self.featured + featured
@@ -207,25 +225,30 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         self.tableView.reloadData()
     }
     
-    func searchSuccess(_ users: [User]) {
+    func searchSuccess(users:[User])
+    {
         self.foundUsers = users
         
         tableView.isHidden = self.foundUsers.isEmpty
         
         let range = NSMakeRange(0, tableView.numberOfSections)
         
-        if range.length == 2 {
+        if range.length == 2
+        {
             UIView.transition(with: tableView, duration:TimeInterval(0.4), options:.transitionCrossDissolve, animations: { () -> Void in
                 self.tableView.reloadData()
             }, completion: nil)
-        } else {
+        }
+        else
+        {
             let range = NSMakeRange(0, tableView.numberOfSections)
             let indexSet = NSIndexSet(indexesIn: range)
             tableView.reloadSections(indexSet as IndexSet, with: UITableViewRowAnimation.automatic)
         }
     }
     
-    func searchMoreSuccess(_ users: [User]) {
+    func searchMoreSuccess(_ users: [User])
+    {
         tableView.infiniteScrollingView.stopAnimating()
         
         self.foundUsers = self.foundUsers + users
@@ -234,15 +257,18 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         self.tableView.reloadData()
     }
     
-    func actionFailure(_ error: NSError) {
+    func actionFailure(error:NSError)
+    {
         tableView.pullToRefreshView.stopAnimating()
-        print("get user failed: \(error.localizedDescription)")
     }
     
-    func updateUser(_ user: User, isFollowed: Bool, isBlocked: Bool) {
-        if isSearchMode {
+    func updateUser(_ user: User, isFollowed: Bool, isBlocked: Bool)
+    {
+        if isSearchMode
+        {
             var updateObject = foundUsers.filter({ $0.id == user.id })
-            if updateObject.count > 0 {
+            if updateObject.count > 0
+            {
                 updateObject[0].isBlocked = isBlocked
                 updateObject[0].isFollowed = isFollowed
                 let index = (foundUsers as NSArray).index(of: updateObject[0])
@@ -253,7 +279,8 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         }
         
         var updateObject = top.filter({ $0.id == user.id })
-        if updateObject.count > 0 {
+        if updateObject.count > 0
+        {
             updateObject[0].isBlocked = isBlocked
             updateObject[0].isFollowed = isFollowed
             let index = (top as NSArray).index(of: updateObject[0])
@@ -262,7 +289,8 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
             return
         }
         updateObject = featured.filter({ $0.id == user.id })
-        if updateObject.count > 0 {
+        if updateObject.count > 0
+        {
             updateObject[0].isBlocked = isBlocked
             updateObject[0].isFollowed = isFollowed
             let index = (featured as NSArray).index(of: updateObject[0])
@@ -272,15 +300,20 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         }
     }
     
-    func reload() {
+    func reload()
+    {
         SocialConnector().users(NSDictionary(), peopleSuccess, actionFailure)
     }
     
-    func fetchMore() {
-        if isSearchMode {
+    func fetchMore()
+    {
+        if isSearchMode
+        {
             searchData["p"] = searchPage+=1
             searchMore(searchData)
-        } else {
+        }
+        else
+        {
             page += 1
             SocialConnector().users(NSDictionary(object: page, forKey: "p" as NSCopying), fetchMoreSuccess, actionFailure)
         }
