@@ -47,7 +47,6 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
     @IBOutlet var activityIndicator:UIActivityIndicatorView!
     
     var user:User?
-    var userStatisticsDelegate:UserStatisticsDelegate?
     var userStatusDelegate:UserStatusDelegate?
     var userSelectedDelegate:UserSelecting?
     var selectedImage:UIImage?
