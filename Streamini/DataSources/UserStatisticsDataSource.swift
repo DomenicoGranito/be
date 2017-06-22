@@ -24,17 +24,17 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         switch type
         {
         case .following:
-            return FollowingDataSource(userId:userId, tableView:tableView)
+            return FollowingDataSource(userId, tableView)
         case .followers:
-            return FollowersDataSource(userId:userId, tableView:tableView)
+            return FollowersDataSource(userId, tableView)
         case .blocked:
-            return BlockedDataSource(userId:userId, tableView:tableView)
+            return BlockedDataSource(userId, tableView)
         case .streams:
-            return MyStreamsDataSource(userId:userId, tableView:tableView)
+            return MyStreamsDataSource(userId, tableView)
         }
     }
     
-    init(userId:UInt, tableView:UITableView)
+    init(_ userId:UInt, _ tableView:UITableView)
     {
         self.userId      = userId
         self.tableView   = tableView
