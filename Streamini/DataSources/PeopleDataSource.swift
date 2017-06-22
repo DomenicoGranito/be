@@ -23,10 +23,13 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
     
     init(tableView:UITableView)
     {
-        self.tableView   = tableView
+        self.tableView=tableView
+        
         super.init()
-        tableView.dataSource = self
-        tableView.delegate   = self
+        
+        tableView.dataSource=self
+        tableView.delegate=self
+        tableView.sectionIndexBackgroundColor=UIColor.clear
         
         l.font = UIFont(name: "HelveticNeue", size: 15.0)
         l.numberOfLines = 0
