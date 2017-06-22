@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-class LinkedUsersViewController: BaseViewController, UserStatisticsDelegate, StreamSelecting,UserSelecting {
-    @IBOutlet weak var selectorView: SelectorView!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var emptyLabel: UILabel!
+class LinkedUsersViewController: BaseViewController, UserStatisticsDelegate, StreamSelecting, UserSelecting
+{
+    @IBOutlet var tableView:UITableView!
+    @IBOutlet var emptyLabel:UILabel!
     
-    var dataSource: UserStatisticsDataSource?
-    var profileDelegate: ProfileDelegate?
+    var dataSource:UserStatisticsDataSource?
+    var profileDelegate:ProfileDelegate?
     var TBVC:TabBarViewController!
     
     func userDidSelected(_ user:User)
@@ -69,10 +69,10 @@ class LinkedUsersViewController: BaseViewController, UserStatisticsDelegate, Str
         
     }
 
-    func recentStreamsDidSelected(_ userId: UInt) {
+    func recentStreamsDidSelected(_ userId:UInt)
+    {
         tableView.showsPullToRefresh     = false
         tableView.showsInfiniteScrolling = false
-        selectorView.selectSection(0)
         self.dataSource = RecentStreamsDataSource(userId: userId, tableView: tableView)
         dataSource!.streamSelectedDelegate = self
         dataSource!.profileDelegate = profileDelegate
@@ -80,10 +80,10 @@ class LinkedUsersViewController: BaseViewController, UserStatisticsDelegate, Str
         dataSource!.reload()
     }
     
-    func followersDidSelected(_ userId: UInt) {
+    func followersDidSelected(_ userId:UInt)
+    {
         tableView.showsPullToRefresh     = true
         tableView.showsInfiniteScrolling = true
-        selectorView.selectSection(1)
         self.dataSource = FollowersDataSource(userId: userId, tableView: tableView)
         dataSource!.profileDelegate = profileDelegate
         dataSource!.userSelectedDelegate=self
@@ -95,7 +95,6 @@ class LinkedUsersViewController: BaseViewController, UserStatisticsDelegate, Str
     {
         tableView.showsPullToRefresh     = true
         tableView.showsInfiniteScrolling = true
-        selectorView.selectSection(2)
         self.dataSource = FollowingDataSource(userId: userId, tableView: tableView)
         dataSource!.profileDelegate = profileDelegate
         dataSource!.userSelectedDelegate=self

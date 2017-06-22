@@ -183,7 +183,6 @@
 		B7D6F0B51B37F41F0070C36A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6F0B41B37F41F0070C36A /* BaseViewController.swift */; };
 		B7D6F0B71B37F46A0070C36A /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6F0B61B37F46A0070C36A /* Config.swift */; };
 		B7D6F0B91B37F4D90070C36A /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7D6F0B81B37F4D90070C36A /* Config.plist */; };
-		B7DA8EA91B8349EE0082ED5C /* SelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DA8EA81B8349EE0082ED5C /* SelectorView.swift */; };
 		B7E15E4B1B6A24E5000C8C69 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E15E4A1B6A24E5000C8C69 /* UserViewController.swift */; };
 		B7E15E4D1B6A3255000C8C69 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E15E4C1B6A3255000C8C69 /* UIViewControllerExtension.swift */; };
 		B7E15E501B6A59FE000C8C69 /* DefaultInfoViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E15E4F1B6A59FE000C8C69 /* DefaultInfoViewDelegate.swift */; };
@@ -407,7 +406,6 @@
 		B7D6F0B41B37F41F0070C36A /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		B7D6F0B61B37F46A0070C36A /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		B7D6F0B81B37F4D90070C36A /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
-		B7DA8EA81B8349EE0082ED5C /* SelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectorView.swift; sourceTree = "<group>"; };
 		B7E15E4A1B6A24E5000C8C69 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		B7E15E4C1B6A3255000C8C69 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		B7E15E4F1B6A59FE000C8C69 /* DefaultInfoViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultInfoViewDelegate.swift; sourceTree = "<group>"; };
@@ -598,7 +596,6 @@
 				B746FB0D1B5F93BE00DE3534 /* SensibleButton.swift */,
 				B71405981B62333B00EAEC61 /* ReplayView.swift */,
 				B70AB1371B73839C00BAD62A /* UserHeaderView.swift */,
-				B7DA8EA81B8349EE0082ED5C /* SelectorView.swift */,
 				3E935BBC1E937BC000065FEC /* PlaylistView.swift */,
 				3E935BBE1E937D0500065FEC /* PlaylistView.xib */,
 				3E935BC01E937D6100065FEC /* PlaylistDetailView.swift */,
@@ -1034,7 +1031,6 @@
 				B794AD9C1B5930200069C2A8 /* DisconnectedMessageController.swift in Sources */,
 				B7E15E531B6A629B000C8C69 /* CreateStreamKeyboardHandler.swift in Sources */,
 				B791879A1B4437FC002DFAB4 /* SocialTool.swift in Sources */,
-				B7DA8EA91B8349EE0082ED5C /* SelectorView.swift in Sources */,
 				B7316E061B552FBD0079D387 /* StreamPlayer.swift in Sources */,
 				B674481B1E2C63CC0049890F /* MiscFuncs.swift in Sources */,
 				B674481A1E2C63CC0049890F /* MenuAction.swift in Sources */,
