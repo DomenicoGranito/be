@@ -45,6 +45,7 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
     @IBOutlet var followingLabel:UILabel!
     @IBOutlet var followButton:UIButton!
     @IBOutlet var activityIndicator:UIActivityIndicatorView!
+    @IBOutlet var headerView:GSKStretchyHeaderView!
     
     var user:User?
     var userStatusDelegate:UserStatusDelegate?
@@ -57,6 +58,7 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
     override func viewDidLoad()
     {
         TBVC=tabBarController as! TabBarViewController
+        
         let WeChatLogin=A0SimpleKeychain().string(forKey:"WeChatLogin")
         
         if UserContainer.shared.logged().id==user!.id&&WeChatLogin=="0"
@@ -71,6 +73,8 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         recentButtonPressed()
         
         navigationController?.isNavigationBarHidden=true
+        
+        tableView.addSubview(headerView)
     }
     
     @IBAction func avatarButtonPressed()
