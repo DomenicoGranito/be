@@ -137,7 +137,7 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
             pullToRefreshView.stopAnimating()
         }
         self.users = users        
-        tableView.isHidden = self.users.isEmpty
+        //tableView.isHidden = self.users.isEmpty
         
         let range = NSMakeRange(0, tableView.numberOfSections)
         let indexSet = NSIndexSet(indexesIn:range)

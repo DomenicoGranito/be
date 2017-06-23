@@ -84,7 +84,7 @@ class RecentStreamsDataSource:UserStatisticsDataSource
         
         self.streams=streams
         
-        tableView.isHidden=self.streams.isEmpty
+        //tableView.isHidden=self.streams.isEmpty
         let range=NSMakeRange(0, tableView.numberOfSections)
         let indexSet=NSIndexSet(indexesIn:range)
         tableView.reloadSections(indexSet as IndexSet, with:.automatic)

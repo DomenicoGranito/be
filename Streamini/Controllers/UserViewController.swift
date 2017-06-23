@@ -174,18 +174,18 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         
         emptyLabel.text=NSLocalizedString("table_no_data", comment:"")
         
-        tableView.showsPullToRefresh=true
-        tableView.showsInfiniteScrolling=true
+        //        tableView.showsPullToRefresh=true
+        //        tableView.showsInfiniteScrolling=true
         
-        tableView.addPullToRefresh
-            {()->() in
-                self.dataSource!.reload()
-        }
-        
-        tableView.addInfiniteScrolling
-            {()->() in
-                self.dataSource!.fetchMore()
-        }
+        //        tableView.addPullToRefresh
+        //            {()->() in
+        //                self.dataSource!.reload()
+        //        }
+        //
+        //        tableView.addInfiniteScrolling
+        //            {()->() in
+        //                self.dataSource!.fetchMore()
+        //        }
     }
     
     @IBAction func recentButtonPressed()
