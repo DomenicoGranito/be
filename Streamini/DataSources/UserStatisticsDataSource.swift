@@ -48,6 +48,11 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         return 1
     }
     
+    func tableView(_ tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
+    {
+        return 1
+    }
+
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
         return users.count

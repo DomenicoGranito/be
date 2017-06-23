@@ -1,6 +1,6 @@
 //
 //  RecentUsersDataSource.swift
-// Streamini
+//  Streamini
 //
 //  Created by Vasily Evreinov on 07/08/15.
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
@@ -15,14 +15,19 @@ class RecentStreamsDataSource:UserStatisticsDataSource
         return 1
     }
     
+    override func tableView(_ tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
+    {
+        return 40
+    }
+
     func tableView(_ tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
     {
-        let headerView=UIView(frame:CGRect(x:0, y:0, width:40, height:tableView.frame.size.width))
+        let headerView=UIView(frame:CGRect(x:0, y:0, width:tableView.frame.size.width, height:40))
         headerView.backgroundColor=UIColor(colorLiteralRed:18/255, green:19/255, blue:21/255, alpha:1)
         
         let titleLbl=UILabel(frame:CGRect(x:5, y:10, width:150, height:20))
         titleLbl.text="ALL VIDEOS"
-        titleLbl.font=UIFont.systemFont(ofSize: 14)
+        titleLbl.font=UIFont.systemFont(ofSize:14)
         titleLbl.textColor=UIColor.lightGray
         
         let filterButton=UIButton(frame:CGRect(x:tableView.frame.size.width-25, y:10, width:20, height:20))
@@ -90,7 +95,7 @@ class RecentStreamsDataSource:UserStatisticsDataSource
         tableView.reloadSections(indexSet as IndexSet, with:.automatic)
     }
 
-    func recentFailure(_ error:NSError)
+    func recentFailure(error:NSError)
     {
         if let pullToRefreshView=tableView.pullToRefreshView
         {
