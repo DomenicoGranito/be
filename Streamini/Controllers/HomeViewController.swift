@@ -12,6 +12,11 @@ class HomeViewController: BaseViewController
     @IBOutlet var errorView:ErrorView!
     @IBOutlet var activityView:ActivityIndicatorView!
     @IBOutlet var headerView:GSKStretchyHeaderView!
+    @IBOutlet var scrollView:UIScrollView!
+    @IBOutlet var videoThumbnailImageView:UIImageView!
+    @IBOutlet var videoTitleLbl:UILabel!
+    @IBOutlet var artistNameLbl:UILabel!
+    @IBOutlet var pageControl:UIPageControl!
     
     var categoryNamesArray=NSMutableArray()
     var categoryIDsArray=NSMutableArray()
