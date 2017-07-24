@@ -45,7 +45,6 @@
 		3ECEC44D1EA22F8B006A00F7 /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECEC44C1EA22F8A006A00F7 /* PlaylistViewController.swift */; };
 		3ED8DF6E1EF50A2700485B25 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED8DF6D1EF50A2700485B25 /* AccountViewController.swift */; };
 		3EEF52BD1D83127C0015BA92 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF52BC1D83127B0015BA92 /* CategoriesViewController.swift */; };
-		3EEF52BF1D83B5AF0015BA92 /* AllCategoriesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF52BE1D83B5AF0015BA92 /* AllCategoriesRow.swift */; };
 		3EF0032F1EAC78A70094BE96 /* ChannelsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF0032E1EAC78A70094BE96 /* ChannelsTableViewController.swift */; };
 		3EF003311EACB83D0094BE96 /* VideosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF003301EACB83D0094BE96 /* VideosTableViewController.swift */; };
 		3EF1F02C1D7197310055A372 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1F02B1D7197300055A372 /* GetStartedViewController.swift */; };
@@ -261,7 +260,6 @@
 		3ECEC44C1EA22F8A006A00F7 /* PlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		3ED8DF6D1EF50A2700485B25 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		3EEF52BC1D83127B0015BA92 /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
-		3EEF52BE1D83B5AF0015BA92 /* AllCategoriesRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCategoriesRow.swift; sourceTree = "<group>"; };
 		3EF0032E1EAC78A70094BE96 /* ChannelsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsTableViewController.swift; sourceTree = "<group>"; };
 		3EF003301EACB83D0094BE96 /* VideosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosTableViewController.swift; sourceTree = "<group>"; };
 		3EF1F02B1D7197300055A372 /* GetStartedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
@@ -813,7 +811,6 @@
 				B6EAF8291E28F179007038DC /* CategoryCell.swift */,
 				3EEF52BC1D83127B0015BA92 /* CategoriesViewController.swift */,
 				B6D198A41E23883F008B8604 /* ChartsViewController.swift */,
-				3EEF52BE1D83B5AF0015BA92 /* AllCategoriesRow.swift */,
 				B6EAF8271E28EF6E007038DC /* AllCategoryRow.swift */,
 				B72475821B411D910080BE1B /* CreateStreamViewController.swift */,
 				3E03D5031E67F5F30056D275 /* PopUpViewController.swift */,
@@ -1055,7 +1052,6 @@
 				3E5CB4541E9529CF007EB28D /* OptionsViewController.swift in Sources */,
 				B71BA5DB1B84A86C0055F427 /* ProfileStatisticsViewController.swift in Sources */,
 				B79187981B4437FC002DFAB4 /* AmazonTool.swift in Sources */,
-				3EEF52BF1D83B5AF0015BA92 /* AllCategoriesRow.swift in Sources */,
 				B77AABEE1B398B95007DE187 /* StreamConnector.swift in Sources */,
 				3EF535B61E0922D40049B2E9 /* MusicPlayerTransitionAnimation.swift in Sources */,
 				A631E6321D378D95002C7F78 /* PasswordViewController.swift in Sources */,

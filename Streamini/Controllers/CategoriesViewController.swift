@@ -15,13 +15,12 @@ class CategoriesViewController: BaseViewController
     @IBOutlet var headerView:GSKStretchyHeaderView!
     
     var allItemsArray=NSMutableArray()
-    var streamsArray=NSMutableArray()
     var categoryName:String?
     var page=0
     var categoryID:Int?
     var TBVC:TabBarViewController!
     let site=Config.shared.site()
-        
+    
     override func viewDidLoad()
     {
         TBVC=tabBarController as! TabBarViewController
@@ -54,13 +53,6 @@ class CategoriesViewController: BaseViewController
         StreamConnector().categoryStreams(categoryID!, page, fetchMoreSuccess, failureStream)
     }
     
-    func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
-    {
-        let width=(view.frame.size.width-30)/2
-        
-        return width+75
-    }
-    
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
         return allItemsArray.count
@@ -68,19 +60,36 @@ class CategoriesViewController: BaseViewController
     
     func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:IndexPath)->UITableViewCell
     {
-        let cell=tableView.dequeueReusableCell(withIdentifier:"cell") as! AllCategoriesRow
+        let cell=tableView.dequeueReusableCell(withIdentifier:"cell") as! RecentlyPlayedCell
         
-        cell.sectionItemsArray=allItemsArray[indexPath.row] as! NSArray
-        cell.TBVC=TBVC
+        let video=allItemsArray[indexPath.row] as! Stream
+        
+        cell.videoTitleLbl?.text=video.title
+        cell.artistNameLbl?.text=video.user.name
+        cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"\(site)/thumb/\(video.id).jpg"), placeholderImage:UIImage(named:"videostream"))
+        
+        let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
+        cell.tag=indexPath.row
+        cell.addGestureRecognizer(cellRecognizer)
         
         return cell
     }
     
-    func tableView(_ tableView:UITableView, willDisplayCell cell:UITableViewCell, forRowAtIndexPath indexPath:IndexPath)
+    func cellTapped(gestureRecognizer:UITapGestureRecognizer)
     {
-        let cell=cell as! AllCategoriesRow
+        let storyboard=UIStoryboard(name:"Main", bundle:nil)
+        let modalVC=storyboard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController
         
-        cell.reloadCollectionView()
+        let stream=allItemsArray[gestureRecognizer.view!.tag] as! Stream
+        
+        let streamsArray=NSMutableArray()
+        streamsArray.add(stream)
+        
+        modalVC.streamsArray=streamsArray
+        modalVC.TBVC=TBVC
+        
+        TBVC.modalVC=modalVC
+        TBVC.configure(stream)
     }
     
     @IBAction func back()
@@ -106,9 +115,7 @@ class CategoriesViewController: BaseViewController
     {
         let videos=data["data"] as! NSArray
         
-        var sectionItemsArray=NSMutableArray()
         let allItemsArray=NSMutableArray()
-        var count=0
         
         for i in 0 ..< videos.count
         {
@@ -162,16 +169,7 @@ class CategoriesViewController: BaseViewController
             oneVideo.rlikes=UInt(rlikes)
             oneVideo.user=oneUser
             
-            sectionItemsArray.add(oneVideo)
-            streamsArray.add(oneVideo)
-            count+=1
-            
-            if(count==2||(count==1&&i==videos.count-1))
-            {
-                count=0
-                allItemsArray.add(sectionItemsArray)
-                sectionItemsArray=NSMutableArray()
-            }
+            allItemsArray.add(oneVideo)
         }
         
         return allItemsArray
@@ -186,11 +184,11 @@ class CategoriesViewController: BaseViewController
     {
         let modalVC=storyBoard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController
         
-        let random=Int(arc4random_uniform(UInt32(streamsArray.count)))
-        let stream=streamsArray[random] as! Stream
+        let random=Int(arc4random_uniform(UInt32(allItemsArray.count)))
+        let stream=allItemsArray[random] as! Stream
         
         modalVC.selectedItemIndex=random
-        modalVC.streamsArray=streamsArray
+        modalVC.streamsArray=allItemsArray
         modalVC.TBVC=TBVC
         
         TBVC.modalVC=modalVC
