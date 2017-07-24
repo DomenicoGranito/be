@@ -9,10 +9,10 @@
 class CategoryRow: UITableViewCell
 {
     @IBOutlet var collectionView:UICollectionView?
+    
     var oneCategoryItemsArray:NSArray!
     var TBVC:TabBarViewController!
     let site=Config.shared.site()
-    var cellIdentifier:String?
     var sectionTitle:String?
     let storyboard=UIStoryboard(name:"Main", bundle:nil)
     
@@ -28,44 +28,25 @@ class CategoryRow: UITableViewCell
     
     func collectionView(_ collectionView:UICollectionView, cellForItemAtIndexPath indexPath:IndexPath)->UICollectionViewCell
     {
-        let cell=collectionView.dequeueReusableCell(withReuseIdentifier:cellIdentifier!, for:indexPath) as! VideoCell
+        let cell=collectionView.dequeueReusableCell(withReuseIdentifier:"videoCell", for:indexPath) as! VideoCell
         
         let stream=oneCategoryItemsArray[indexPath.row] as! Stream
         
         cell.videoTitleLbl?.text=stream.title
+        cell.followersCountLbl?.text=stream.user.name
+        cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"\(site)/thumb/\(stream.id).jpg"), placeholderImage:UIImage(named:"videostream"))
         
-        if cellIdentifier=="videoCell"
+        if sectionTitle=="live"
         {
-            cell.followersCountLbl?.text=stream.user.name
-            cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"\(site)/thumb/\(stream.id).jpg"), placeholderImage:UIImage(named:"videostream"))
-            
-            if sectionTitle=="live"
-            {
-                let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(liveCellTapped))
-                cell.tag=indexPath.row
-                cell.addGestureRecognizer(cellRecognizer)
-            }
-            else
-            {
-                let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
-                cell.tag=indexPath.row
-                cell.addGestureRecognizer(cellRecognizer)
-            }
+            let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(liveCellTapped))
+            cell.tag=indexPath.row
+            cell.addGestureRecognizer(cellRecognizer)
         }
         else
         {
-            if indexPath.row==0
-            {
-                cell.videoTitleLbl?.isHidden=true
-                cell.followersCountLbl?.isHidden=true
-                cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"\(site)/thumb/\(stream.id).jpg"), placeholderImage:UIImage(named:"videostream"))
-            }
-            else
-            {
-                cell.videoThumbnailImageView?.isHidden=true
-                cell.backgroundColor=UIColor.clear
-                cell.followersCountLbl?.text=stream.user.name
-            }
+            let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
+            cell.tag=indexPath.row
+            cell.addGestureRecognizer(cellRecognizer)
         }
         
         return cell
@@ -98,13 +79,6 @@ class CategoryRow: UITableViewCell
     {
         let width=(collectionView.frame.size.width-25)/2
         
-        if cellIdentifier=="weeklyCell"
-        {
-            return CGSize(width:width, height:width)
-        }
-        else
-        {
-            return CGSize(width:220, height:width+65)
-        }
+        return CGSize(width:220, height:width+65)
     }
 }

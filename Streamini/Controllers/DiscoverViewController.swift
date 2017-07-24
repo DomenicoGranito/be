@@ -130,7 +130,6 @@ class DiscoverViewController: UIViewController
             
             cell.oneCategoryItemsArray=featuredStreamsArray
             cell.TBVC=tabBarController as! TabBarViewController
-            cell.cellIdentifier="videoCell"
             
             return cell
         }

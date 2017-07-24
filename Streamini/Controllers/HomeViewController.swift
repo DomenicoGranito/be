@@ -80,59 +80,43 @@ class HomeViewController: BaseViewController
     
     func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
     {
-        let width=(view.frame.size.width-25)/2
-        
-        if indexPath.section==0
-        {
-            return width+20
-        }
-        else
-        {
-            return width+85
-        }
+        return (view.frame.size.width-25)/2+85
     }
 
     func tableView(_ tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
     {
-        return section==0 ? 1 : 200
+        return 200
     }
     
     func tableView(_ tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
     {
-        if section>0
+        let headerView=UIView(frame:CGRect(x:0, y:0, width:tableView.frame.size.width, height:60))
+        headerView.backgroundColor=UIColor(red:18/255, green:19/255, blue:21/255, alpha:1)
+        
+        let titleLbl=UILabel(frame:CGRect(x:10, y:10, width:view.frame.size.width-20, height:180))
+        
+        if(allCategoryItemsArray.count>0)
         {
-            let headerView=UIView(frame:CGRect(x:0, y:0, width:tableView.frame.size.width, height:60))
-            headerView.backgroundColor=UIColor(red:18/255, green:19/255, blue:21/255, alpha:1)
-            
-            let titleLbl=UILabel(frame:CGRect(x:10, y:10, width:view.frame.size.width-20, height:180))
-            
-            if(allCategoryItemsArray.count>0)
-            {
-                titleLbl.text=(categoryNamesArray[section] as AnyObject).uppercased
-            }
-            
-            titleLbl.font=UIFont.systemFont(ofSize:24)
-            titleLbl.textColor=UIColor(red:190/255, green:142/255, blue:64/255, alpha:1)
-            titleLbl.layer.borderColor=UIColor(red:190/255, green:142/255, blue:64/255, alpha:1).cgColor
-            titleLbl.layer.borderWidth=1
-            titleLbl.textAlignment = .center
-            
-            let categoryImageView=UIImageView(frame:CGRect(x:0, y:0, width:view.frame.size.width, height:200))
-            categoryImageView.sd_setImage(with:URL(string:"\(site)/media/bg_\(categoryIDsArray[section]).png"))
-            
-            let tapGesture=UITapGestureRecognizer(target:self, action:#selector(headerTapped))
-            headerView.addGestureRecognizer(tapGesture)
-            headerView.tag=section
-            
-            headerView.addSubview(categoryImageView)
-            headerView.addSubview(titleLbl)
-            
-            return headerView
+            titleLbl.text=(categoryNamesArray[section] as AnyObject).uppercased
         }
-        else
-        {
-            return nil
-        }
+        
+        titleLbl.font=UIFont.systemFont(ofSize:24)
+        titleLbl.textColor=UIColor(red:190/255, green:142/255, blue:64/255, alpha:1)
+        titleLbl.layer.borderColor=UIColor(red:190/255, green:142/255, blue:64/255, alpha:1).cgColor
+        titleLbl.layer.borderWidth=1
+        titleLbl.textAlignment = .center
+        
+        let categoryImageView=UIImageView(frame:CGRect(x:0, y:0, width:view.frame.size.width, height:200))
+        categoryImageView.sd_setImage(with:URL(string:"\(site)/media/bg_\(categoryIDsArray[section]).png"))
+        
+        let tapGesture=UITapGestureRecognizer(target:self, action:#selector(headerTapped))
+        headerView.addGestureRecognizer(tapGesture)
+        headerView.tag=section
+        
+        headerView.addSubview(categoryImageView)
+        headerView.addSubview(titleLbl)
+        
+        return headerView
     }
     
     func headerTapped(gestureRecognizer:UITapGestureRecognizer)
@@ -162,15 +146,6 @@ class HomeViewController: BaseViewController
             cell.TBVC=tabBarController as! TabBarViewController
             cell.oneCategoryItemsArray=allCategoryItemsArray[indexPath.section] as! NSArray
             cell.sectionTitle=categoryNamesArray[indexPath.section] as? String
-            
-            if indexPath.section==0
-            {
-                cell.cellIdentifier="weeklyCell"
-            }
-            else
-            {
-                cell.cellIdentifier="videoCell"
-            }
         }
         
         return cell
