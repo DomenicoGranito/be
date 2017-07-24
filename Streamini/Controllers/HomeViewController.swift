@@ -11,6 +11,7 @@ class HomeViewController: BaseViewController
     @IBOutlet var itemsTbl:UITableView?
     @IBOutlet var errorView:ErrorView!
     @IBOutlet var activityView:ActivityIndicatorView!
+    @IBOutlet var headerView:GSKStretchyHeaderView!
     
     var categoryNamesArray=NSMutableArray()
     var categoryIDsArray=NSMutableArray()
@@ -22,6 +23,8 @@ class HomeViewController: BaseViewController
     {
         NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:Notification.Name("refreshAfterBlock"), object:nil)
         NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:Notification.Name("status"), object:nil)
+        
+        itemsTbl?.addSubview(headerView)
         
         updateUI()
     }
