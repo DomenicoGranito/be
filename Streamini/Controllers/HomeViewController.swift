@@ -64,7 +64,7 @@ class HomeViewController: BaseViewController
     
     override func viewWillAppear(_ animated:Bool)
     {
-        navigationController?.isNavigationBarHidden=false
+        navigationController?.isNavigationBarHidden=true
         
         timer=Timer.scheduledTimer(timeInterval:15, target:self, selector:#selector(reload), userInfo:nil, repeats:true)
     }
