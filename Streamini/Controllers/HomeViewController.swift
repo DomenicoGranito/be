@@ -16,7 +16,8 @@ class HomeViewController: BaseViewController
     var categoryIDsArray=NSMutableArray()
     var allCategoryItemsArray=NSMutableArray()
     var timer:Timer?
-        
+    let site=Config.shared.site()
+    
     override func viewDidLoad()
     {
         NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:Notification.Name("refreshAfterBlock"), object:nil)
@@ -90,7 +91,7 @@ class HomeViewController: BaseViewController
 
     func tableView(_ tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
     {
-        return section==0 ? 1 : 60
+        return section==0 ? 1 : 200
     }
     
     func tableView(_ tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
@@ -100,24 +101,27 @@ class HomeViewController: BaseViewController
             let headerView=UIView(frame:CGRect(x:0, y:0, width:tableView.frame.size.width, height:60))
             headerView.backgroundColor=UIColor(red:18/255, green:19/255, blue:21/255, alpha:1)
             
-            let titleLbl=UILabel(frame:CGRect(x:10, y:30, width:285, height:20))
+            let titleLbl=UILabel(frame:CGRect(x:10, y:10, width:view.frame.size.width-20, height:180))
             
             if(allCategoryItemsArray.count>0)
             {
                 titleLbl.text=(categoryNamesArray[section] as AnyObject).uppercased
             }
             
-            titleLbl.font=UIFont.systemFont(ofSize: 24)
+            titleLbl.font=UIFont.systemFont(ofSize:24)
             titleLbl.textColor=UIColor(red:190/255, green:142/255, blue:64/255, alpha:1)
+            titleLbl.layer.borderColor=UIColor(red:190/255, green:142/255, blue:64/255, alpha:1).cgColor
+            titleLbl.layer.borderWidth=1
+            titleLbl.textAlignment = .center
             
-            let lineView=UIView(frame:CGRect(x:10, y:59.5, width:tableView.frame.size.width-20, height:0.5))
-            lineView.backgroundColor=UIColor(red:37/255, green:36/255, blue:41/255, alpha:1)
+            let categoryImageView=UIImageView(frame:CGRect(x:0, y:0, width:view.frame.size.width, height:200))
+            categoryImageView.sd_setImage(with:URL(string:"\(site)/media/bg_\(categoryIDsArray[section]).png"))
             
             let tapGesture=UITapGestureRecognizer(target:self, action:#selector(headerTapped))
             headerView.addGestureRecognizer(tapGesture)
             headerView.tag=section
             
-            headerView.addSubview(lineView)
+            headerView.addSubview(categoryImageView)
             headerView.addSubview(titleLbl)
             
             return headerView
