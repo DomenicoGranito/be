@@ -104,7 +104,7 @@ class CategoryRow: UITableViewCell
         }
         else
         {
-            return CGSize(width:width, height:width+65)
+            return CGSize(width:220, height:width+65)
         }
     }
 }
