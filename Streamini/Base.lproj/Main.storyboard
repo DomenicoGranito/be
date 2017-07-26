@@ -37,7 +37,7 @@
                                             <color key="titleColor" red="0.74509803919999995" green="0.5568627451" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="completed" destination="JwS-PR-JbD" eventType="touchUpInside" id="8rC-34-HuJ"/>
+                                            <action selector="channels" destination="YQS-np-9E3" eventType="touchUpInside" id="eoa-2G-cz3"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MbC-Io-t7V">
@@ -48,7 +48,7 @@
                                             <color key="titleColor" red="0.74509803919999995" green="0.5568627451" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="downloading" destination="JwS-PR-JbD" eventType="touchUpInside" id="jaB-ND-r6c"/>
+                                            <action selector="categories" destination="YQS-np-9E3" eventType="touchUpInside" id="rLn-MJ-G2R"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nop-CK-IAm">
@@ -231,6 +231,7 @@
                     <connections>
                         <outlet property="activityView" destination="2Dr-FI-bRg" id="sZa-XO-9LG"/>
                         <outlet property="errorView" destination="v18-rl-7An" id="VJg-yp-9ZU"/>
+                        <outlet property="selectionView" destination="Nop-CK-IAm" id="3xS-4V-GnR"/>
                         <outlet property="tableView" destination="sKk-q6-o1O" id="zgZ-jX-tsR"/>
                         <segue destination="aek-ff-zgE" kind="show" identifier="Channels" id="9Y5-eH-QDA"/>
                     </connections>

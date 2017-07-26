@@ -17,6 +17,7 @@ class DiscoverViewController: UIViewController
     @IBOutlet var tableView:UITableView!
     @IBOutlet var errorView:ErrorView!
     @IBOutlet var activityView:ActivityIndicatorView!
+    @IBOutlet var selectionView:UIView!
     
     var allCategoriesArray=NSMutableArray()
     
@@ -49,6 +50,20 @@ class DiscoverViewController: UIViewController
             activityView.isHidden=true
             errorView.update("No Internet Connection", "user")
         }
+    }
+    
+    @IBAction func channels()
+    {
+        UIView.animate(withDuration:0.2, animations:{
+            self.selectionView.frame=CGRect(x:10, y:45, width:(self.view.frame.size.width-40)/2, height:5)
+            }, completion:nil)
+    }
+    
+    @IBAction func categories()
+    {
+        UIView.animate(withDuration:0.2, animations:{
+            self.selectionView.frame=CGRect(x:self.view.frame.size.width-self.selectionView.frame.size.width-10, y:45, width:(self.view.frame.size.width-40)/2, height:5)
+            }, completion:nil)
     }
     
     func tableView(_ tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
