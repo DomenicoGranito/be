@@ -52,7 +52,7 @@ class AllCategoryRow: UITableViewCell
     
     func collectionView(_ collectionView:UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAtIndexPath indexPath:IndexPath)->CGSize
     {
-        let width=(collectionView.frame.size.width-30)/2
+        let width=(collectionView.frame.size.width-6)/2
         
         return CGSize(width:width, height:width)
     }
