@@ -66,6 +66,7 @@ class CategoriesViewController: BaseViewController
         
         cell.videoTitleLbl?.text=video.title
         cell.artistNameLbl?.text=video.user.name
+        cell.userImageView?.sd_setImage(with:URL(string:"\(site)/uploads/\(video.user.id)-avatar.jpg"), placeholderImage:UIImage(named:"profile"))
         cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"\(site)/thumb/\(video.id).jpg"), placeholderImage:UIImage(named:"videostream"))
         
         let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))

@@ -11,6 +11,7 @@ class RecentlyPlayedCell:UITableViewCell
     @IBOutlet var videoTitleLbl:UILabel?
     @IBOutlet var artistNameLbl:UILabel?
     @IBOutlet var videoThumbnailImageView:UIImageView?
+    @IBOutlet var userImageView:UIImageView?
 }
 
 class EditCell:UITableViewCell
