@@ -27,6 +27,56 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DOp-j3-4ex">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNj-Jd-0iR">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="qt4-Db-Eij"/>
+                                        </constraints>
+                                        <state key="normal" title="CHANNELS">
+                                            <color key="titleColor" red="0.74509803919999995" green="0.5568627451" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="completed" destination="JwS-PR-JbD" eventType="touchUpInside" id="8rC-34-HuJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MbC-Io-t7V">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="a7F-gp-5HE"/>
+                                        </constraints>
+                                        <state key="normal" title="CATEGORIES">
+                                            <color key="titleColor" red="0.74509803919999995" green="0.5568627451" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="downloading" destination="JwS-PR-JbD" eventType="touchUpInside" id="jaB-ND-r6c"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nop-CK-IAm">
+                                        <frame key="frameInset" minX="10" minY="45" width="140" height="5"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.74509803919999995" green="0.5568627451" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbp-6A-a5M">
+                                        <color key="backgroundColor" red="0.14901960780000001" green="0.1450980392" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="rdh-RC-W4t"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.10980392160000001" green="0.1058823529" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="MbC-Io-t7V" firstAttribute="leading" secondItem="XNj-Jd-0iR" secondAttribute="trailing" id="0hI-gJ-YfF"/>
+                                    <constraint firstItem="dbp-6A-a5M" firstAttribute="leading" secondItem="DOp-j3-4ex" secondAttribute="leading" id="4gH-eT-gaO"/>
+                                    <constraint firstItem="XNj-Jd-0iR" firstAttribute="leading" secondItem="DOp-j3-4ex" secondAttribute="leading" id="8jg-0F-bgs"/>
+                                    <constraint firstItem="MbC-Io-t7V" firstAttribute="top" secondItem="DOp-j3-4ex" secondAttribute="top" id="Bkf-GC-u7k"/>
+                                    <constraint firstAttribute="height" constant="50" id="Eld-PE-ZA2"/>
+                                    <constraint firstAttribute="trailing" secondItem="MbC-Io-t7V" secondAttribute="trailing" id="FgF-fF-qg7"/>
+                                    <constraint firstItem="XNj-Jd-0iR" firstAttribute="top" secondItem="DOp-j3-4ex" secondAttribute="top" id="leK-vW-Jwv"/>
+                                    <constraint firstAttribute="bottom" secondItem="dbp-6A-a5M" secondAttribute="bottom" id="sfD-s8-fMJ"/>
+                                    <constraint firstItem="MbC-Io-t7V" firstAttribute="width" secondItem="XNj-Jd-0iR" secondAttribute="width" id="tAQ-OP-tcz"/>
+                                    <constraint firstAttribute="trailing" secondItem="dbp-6A-a5M" secondAttribute="trailing" id="zUt-LL-0fm"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v18-rl-7An" customClass="ErrorView" customModule="Streamini" customModuleProvider="target">
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qUd-OD-PJG">
@@ -161,14 +211,17 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="sKk-q6-o1O" secondAttribute="trailing" id="3hw-WW-mEY"/>
                             <constraint firstItem="v18-rl-7An" firstAttribute="centerY" secondItem="Qc2-bS-Zkb" secondAttribute="centerY" id="5zD-S9-7WF"/>
-                            <constraint firstItem="sKk-q6-o1O" firstAttribute="top" secondItem="Qc2-bS-Zkb" secondAttribute="top" id="FtI-0Y-PZR"/>
                             <constraint firstItem="Rah-33-iIp" firstAttribute="top" secondItem="2Dr-FI-bRg" secondAttribute="bottom" id="GJx-lZ-h7l"/>
                             <constraint firstItem="2Dr-FI-bRg" firstAttribute="top" secondItem="Ql1-5a-hhD" secondAttribute="bottom" id="LNP-Dm-dpp"/>
                             <constraint firstItem="2Dr-FI-bRg" firstAttribute="leading" secondItem="Qc2-bS-Zkb" secondAttribute="leading" id="Nez-5U-axZ"/>
+                            <constraint firstItem="sKk-q6-o1O" firstAttribute="top" secondItem="DOp-j3-4ex" secondAttribute="bottom" id="az1-zB-cR2"/>
                             <constraint firstItem="Rah-33-iIp" firstAttribute="top" secondItem="sKk-q6-o1O" secondAttribute="bottom" id="cJs-JF-Psr"/>
                             <constraint firstAttribute="trailing" secondItem="2Dr-FI-bRg" secondAttribute="trailing" id="gdB-oy-nfZ"/>
+                            <constraint firstItem="DOp-j3-4ex" firstAttribute="leading" secondItem="Qc2-bS-Zkb" secondAttribute="leading" id="ihf-G7-RSu"/>
+                            <constraint firstAttribute="trailing" secondItem="DOp-j3-4ex" secondAttribute="trailing" id="oR9-kp-O6f"/>
                             <constraint firstItem="v18-rl-7An" firstAttribute="centerX" secondItem="Qc2-bS-Zkb" secondAttribute="centerX" id="uBs-10-4MY"/>
                             <constraint firstItem="sKk-q6-o1O" firstAttribute="leading" secondItem="Qc2-bS-Zkb" secondAttribute="leading" id="wL8-na-PQ5"/>
+                            <constraint firstItem="DOp-j3-4ex" firstAttribute="top" secondItem="Ql1-5a-hhD" secondAttribute="bottom" id="wYf-vd-WzA"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
@@ -224,7 +277,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bay-YI-Dzs">
-                                <color key="backgroundColor" red="0.74443717279999999" green="0.55735154870000003" blue="0.25056629460000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.74509803921568629" green="0.55686274509803924" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="SIGN UP">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -9354,7 +9407,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7Qu-7p-ztG"/>
-        <segue reference="ybU-Cf-XEH"/>
+        <segue reference="AcD-60-gNs"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
