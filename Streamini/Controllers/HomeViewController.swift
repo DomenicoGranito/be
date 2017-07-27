@@ -26,7 +26,7 @@ class HomeViewController: BaseViewController
     
     override func viewDidLoad()
     {
-        //Timer.scheduledTimer(timeInterval:3, target:self, selector:#selector(moveToNextPage), userInfo:nil, repeats:true)
+        Timer.scheduledTimer(timeInterval:3, target:self, selector:#selector(moveToNextPage), userInfo:nil, repeats:true)
         
         NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:Notification.Name("refreshAfterBlock"), object:nil)
         NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:Notification.Name("status"), object:nil)
@@ -42,19 +42,19 @@ class HomeViewController: BaseViewController
     {
         scrollView.frame=CGRect(x:0, y:0, width:pageWidth, height:220)
         
-        let imgOne=UIImageView(frame:CGRect(x:320, y:0, width:pageWidth, height:220))
+        let imgOne=UIImageView(frame:CGRect(x:pageWidth, y:0, width:pageWidth, height:220))
         imgOne.image=UIImage(named:"slide1")
         
-        let imgTwo=UIImageView(frame:CGRect(x:640, y:0, width:pageWidth, height:220))
+        let imgTwo=UIImageView(frame:CGRect(x:2*pageWidth, y:0, width:pageWidth, height:220))
         imgTwo.image=UIImage(named:"slide2")
         
         let imgThree=UIImageView(frame:CGRect(x:0, y:0, width:pageWidth, height:220))
         imgThree.image=UIImage(named:"slide3")
         
-        let imgFour=UIImageView(frame:CGRect(x:960, y:0, width:320, height:220))
+        let imgFour=UIImageView(frame:CGRect(x:3*pageWidth, y:0, width:pageWidth, height:220))
         imgFour.image=UIImage(named:"slide3")
         
-        let imgFive=UIImageView(frame:CGRect(x:1280, y:0, width:320, height:220))
+        let imgFive=UIImageView(frame:CGRect(x:4*pageWidth, y:0, width:pageWidth, height:220))
         imgFive.image=UIImage(named:"slide1")
         
         scrollView.addSubview(imgThree)
@@ -64,7 +64,7 @@ class HomeViewController: BaseViewController
         scrollView.addSubview(imgFive)
         
         scrollView.contentSize=CGSize(width:pageWidth*5, height:220)
-        scrollView.scrollRectToVisible(CGRect(x:320, y:0, width:320, height:220), animated:false)
+        scrollView.scrollRectToVisible(CGRect(x:pageWidth, y:0, width:pageWidth, height:220), animated:false)
         pageControl.currentPage=0
     }
     
@@ -72,32 +72,36 @@ class HomeViewController: BaseViewController
     {
         if scrollView.contentOffset.x==0
         {
-            scrollView.scrollRectToVisible(CGRect(x:960, y:0, width:320, height:220), animated:false)
+            scrollView.scrollRectToVisible(CGRect(x:3*pageWidth, y:0, width:pageWidth, height:220), animated:false)
         }
         else if scrollView.contentOffset.x==1280
         {
-            scrollView.scrollRectToVisible(CGRect(x:320, y:0, width:320, height:220), animated:false)
+            scrollView.scrollRectToVisible(CGRect(x:pageWidth, y:0, width:pageWidth, height:220), animated:false)
         }
         
-        let currentPage=floor((scrollView.contentOffset.x-pageWidth/2)/pageWidth)+1
+        let currentPage=floor((scrollView.contentOffset.x-pageWidth/2)/pageWidth)
         
         pageControl.currentPage=Int(currentPage)
     }
     
     func moveToNextPage()
     {
-        var slideToX=scrollView.contentOffset.x+pageWidth
+        let slideToX=scrollView.contentOffset.x+pageWidth
         
-        if slideToX==pageWidth*3
+        if scrollView.contentOffset.x==1280
         {
-            slideToX=0
+            scrollView.scrollRectToVisible(CGRect(x:pageWidth, y:0, width:pageWidth, height:220), animated:false)
+            
+            pageControl.currentPage=0
         }
-        
-        scrollView.scrollRectToVisible(CGRect(x:slideToX, y:0, width:pageWidth, height:220), animated:true)
-        
-        let currentPage=floor((scrollView.contentOffset.x-pageWidth/2)/pageWidth)+1
-        
-        pageControl.currentPage=Int(currentPage)
+        else
+        {
+            scrollView.scrollRectToVisible(CGRect(x:slideToX, y:0, width:pageWidth, height:220), animated:true)
+            
+            let currentPage=floor((scrollView.contentOffset.x-pageWidth/2)/pageWidth)+1
+            
+            pageControl.currentPage=Int(currentPage)
+        }
     }
     
     func updateUI()
