@@ -84,6 +84,23 @@ class HomeViewController: BaseViewController
         pageControl.currentPage=Int(currentPage)
     }
     
+    func scrollViewDidScroll(_ scrollView:UIScrollView)
+    {
+        if scrollView==itemsTbl
+        {
+            headerView?.alpha = -scrollView.contentOffset.y/220
+            
+            if scrollView.contentOffset.y >= -64
+            {
+                navigationController?.isNavigationBarHidden=false
+            }
+            else
+            {
+                navigationController?.isNavigationBarHidden=true
+            }
+        }
+    }
+    
     func moveToNextPage()
     {
         let slideToX=scrollView.contentOffset.x+pageWidth

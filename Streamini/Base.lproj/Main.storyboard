@@ -5187,7 +5187,7 @@
             </objects>
             <point key="canvasLocation" x="-2254" y="-7145"/>
         </scene>
-        <!--Home View Controller-->
+        <!--BEINIT-->
         <scene sceneID="vc0-al-M5g">
             <objects>
                 <viewController id="aIF-hk-ASP" customClass="HomeViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
@@ -5196,7 +5196,7 @@
                         <viewControllerLayoutGuide type="bottom" id="OI2-k4-J8F"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZXR-xg-HFQ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dks-yq-rCq" customClass="ErrorView" customModule="Streamini" customModuleProvider="target">
@@ -5356,7 +5356,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" id="1wg-aa-cOt"/>
+                    <navigationItem key="navigationItem" title="BEINIT" id="1wg-aa-cOt"/>
                     <connections>
                         <outlet property="activityView" destination="fTf-pB-VoN" id="SyS-MN-kgS"/>
                         <outlet property="errorView" destination="Dks-yq-rCq" id="YeL-rM-jEO"/>
@@ -6724,7 +6724,7 @@
         <!--Home-->
         <scene sceneID="guV-pj-qQ6">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Ctm-DR-aZS" propertyAccessControl="none" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ctm-DR-aZS" propertyAccessControl="none" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="home" id="5mN-Lk-m3p"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RuR-3E-7qf">
