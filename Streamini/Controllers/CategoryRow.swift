@@ -79,6 +79,6 @@ class CategoryRow: UITableViewCell
     {
         let width=(collectionView.frame.size.width-25)/2
         
-        return CGSize(width:220, height:width+65)
+        return CGSize(width:220, height:222)
     }
 }

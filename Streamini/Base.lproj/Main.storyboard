@@ -890,11 +890,11 @@
                                 <exclude reference="Ad9-xm-a5N"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="iEv-Ne-l6i"/>
                                 <exclude reference="6lo-rN-lKZ"/>
                                 <exclude reference="SXZ-Ac-gSO"/>
                                 <exclude reference="9So-KO-zqQ"/>
                                 <exclude reference="TuC-Tg-5qE"/>
-                                <exclude reference="iEv-Ne-l6i"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -903,11 +903,11 @@
                                 <include reference="Ad9-xm-a5N"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="iEv-Ne-l6i"/>
                                 <include reference="6lo-rN-lKZ"/>
                                 <include reference="SXZ-Ac-gSO"/>
                                 <include reference="9So-KO-zqQ"/>
                                 <include reference="TuC-Tg-5qE"/>
-                                <include reference="iEv-Ne-l6i"/>
                             </mask>
                         </variation>
                     </view>
@@ -5240,7 +5240,7 @@
                                     <outlet property="activityIndicatorView" destination="BkU-br-Nz8" id="vLA-4t-BaJ"/>
                                 </connections>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="242" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="kNM-n7-n2Q">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="222" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="kNM-n7-n2Q">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="bdu-lg-VSZ" propertyAccessControl="none">
                                     <rect key="frame" x="0.0" y="279" width="320" height="50"/>
@@ -5248,7 +5248,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="222" id="UP8-ew-ec6" customClass="CategoryRow" customModule="Streamini" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" id="UP8-ew-ec6" customClass="CategoryRow" customModule="Streamini" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="56" width="320" height="222"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UP8-ew-ec6" id="9jj-rM-7pS">

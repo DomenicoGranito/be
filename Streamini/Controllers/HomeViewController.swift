@@ -155,7 +155,7 @@ class HomeViewController: BaseViewController
     
     func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
     {
-        return (view.frame.size.width-25)/2+85
+        return 222
     }
 
     func tableView(_ tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
