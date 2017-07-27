@@ -5362,7 +5362,6 @@
                         <outlet property="headerView" destination="XpK-mE-EL4" id="2Oy-vY-yth"/>
                         <outlet property="itemsTbl" destination="kNM-n7-n2Q" id="RA4-rD-EIW"/>
                         <outlet property="pageControl" destination="xOy-Yx-v3U" id="C44-Vu-5tb"/>
-                        <outlet property="scrollView" destination="eDK-ie-Upq" id="39V-UB-GzE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O5h-cg-dE9" sceneMemberID="firstResponder"/>
@@ -5370,11 +5369,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDK-ie-Upq">
-                            <connections>
-                                <outlet property="delegate" destination="aIF-hk-ASP" id="D8z-3R-Toe"/>
-                            </connections>
-                        </scrollView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slide2" translatesAutoresizingMaskIntoConstraints="NO" id="dZ1-uz-GOA"/>
                         <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="xOy-Yx-v3U">
                             <frame key="frameInset" minX="135" minY="185" width="50" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -5382,10 +5377,10 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="eDK-ie-Upq" secondAttribute="bottom" id="Bdj-3G-j0M"/>
-                        <constraint firstAttribute="trailing" secondItem="eDK-ie-Upq" secondAttribute="trailing" id="hYC-px-wXT"/>
-                        <constraint firstItem="eDK-ie-Upq" firstAttribute="top" secondItem="XpK-mE-EL4" secondAttribute="top" id="nX9-iQ-qDZ"/>
-                        <constraint firstItem="eDK-ie-Upq" firstAttribute="leading" secondItem="XpK-mE-EL4" secondAttribute="leading" id="wSs-ZZ-4Gd"/>
+                        <constraint firstAttribute="bottom" secondItem="dZ1-uz-GOA" secondAttribute="bottom" id="0sr-Ug-tex"/>
+                        <constraint firstItem="dZ1-uz-GOA" firstAttribute="leading" secondItem="XpK-mE-EL4" secondAttribute="leading" id="7Zb-g4-Fnr"/>
+                        <constraint firstAttribute="trailing" secondItem="dZ1-uz-GOA" secondAttribute="trailing" id="Tqq-io-VAN"/>
+                        <constraint firstItem="dZ1-uz-GOA" firstAttribute="top" secondItem="XpK-mE-EL4" secondAttribute="top" id="zKs-q0-3u2"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="maximumContentHeight">
@@ -5394,6 +5389,7 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="minimumContentHeight">
                             <real key="value" value="0.0"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="contentShrinks" value="NO"/>
                     </userDefinedRuntimeAttributes>
                 </view>
             </objects>
@@ -9440,6 +9436,7 @@
         <image name="rotate" width="27" height="27"/>
         <image name="search" width="25" height="25"/>
         <image name="shuffle_icon" width="17" height="14"/>
+        <image name="slide2" width="633" height="633"/>
         <image name="time" width="56" height="56"/>
         <image name="trash" width="30" height="30"/>
         <image name="user" width="20" height="20"/>
