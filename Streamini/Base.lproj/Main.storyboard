@@ -5196,7 +5196,7 @@
                         <viewControllerLayoutGuide type="bottom" id="OI2-k4-J8F"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZXR-xg-HFQ">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dks-yq-rCq" customClass="ErrorView" customModule="Streamini" customModuleProvider="target">
@@ -5343,6 +5343,7 @@
                         <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="kNM-n7-n2Q" secondAttribute="bottom" id="2B2-Fe-4ce"/>
                             <constraint firstItem="kNM-n7-n2Q" firstAttribute="top" secondItem="ZXR-xg-HFQ" secondAttribute="top" id="7ZD-Cs-74B"/>
                             <constraint firstAttribute="trailing" secondItem="kNM-n7-n2Q" secondAttribute="trailing" id="YWZ-U5-M3U"/>
                             <constraint firstItem="fTf-pB-VoN" firstAttribute="top" secondItem="NNx-TW-Max" secondAttribute="bottom" id="cuv-6o-MgT"/>
@@ -5350,12 +5351,10 @@
                             <constraint firstItem="OI2-k4-J8F" firstAttribute="top" secondItem="fTf-pB-VoN" secondAttribute="bottom" id="mJI-bE-53v"/>
                             <constraint firstItem="fTf-pB-VoN" firstAttribute="leading" secondItem="ZXR-xg-HFQ" secondAttribute="leading" id="oor-Bn-t19"/>
                             <constraint firstAttribute="trailing" secondItem="fTf-pB-VoN" secondAttribute="trailing" id="rFz-CT-anX"/>
-                            <constraint firstItem="OI2-k4-J8F" firstAttribute="top" secondItem="kNM-n7-n2Q" secondAttribute="bottom" id="sdy-ZU-eJj"/>
                             <constraint firstItem="kNM-n7-n2Q" firstAttribute="leading" secondItem="ZXR-xg-HFQ" secondAttribute="leading" id="tcI-bD-6hB"/>
                             <constraint firstItem="Dks-yq-rCq" firstAttribute="centerY" secondItem="ZXR-xg-HFQ" secondAttribute="centerY" id="vGm-bX-Kma"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="BEINIT" id="1wg-aa-cOt"/>
                     <connections>
                         <outlet property="activityView" destination="fTf-pB-VoN" id="SyS-MN-kgS"/>
