@@ -5362,6 +5362,7 @@
                         <outlet property="headerView" destination="XpK-mE-EL4" id="2Oy-vY-yth"/>
                         <outlet property="itemsTbl" destination="kNM-n7-n2Q" id="RA4-rD-EIW"/>
                         <outlet property="pageControl" destination="xOy-Yx-v3U" id="C44-Vu-5tb"/>
+                        <outlet property="scrollView" destination="SIr-Mo-x1z" id="8gf-gx-6i0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O5h-cg-dE9" sceneMemberID="firstResponder"/>
@@ -5369,7 +5370,12 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slide2" translatesAutoresizingMaskIntoConstraints="NO" id="dZ1-uz-GOA"/>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIr-Mo-x1z">
+                            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <outlet property="delegate" destination="aIF-hk-ASP" id="O8P-NX-17C"/>
+                            </connections>
+                        </scrollView>
                         <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="xOy-Yx-v3U">
                             <frame key="frameInset" minX="135" minY="185" width="50" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -5377,10 +5383,10 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="dZ1-uz-GOA" secondAttribute="bottom" id="0sr-Ug-tex"/>
-                        <constraint firstItem="dZ1-uz-GOA" firstAttribute="leading" secondItem="XpK-mE-EL4" secondAttribute="leading" id="7Zb-g4-Fnr"/>
-                        <constraint firstAttribute="trailing" secondItem="dZ1-uz-GOA" secondAttribute="trailing" id="Tqq-io-VAN"/>
-                        <constraint firstItem="dZ1-uz-GOA" firstAttribute="top" secondItem="XpK-mE-EL4" secondAttribute="top" id="zKs-q0-3u2"/>
+                        <constraint firstAttribute="trailing" secondItem="SIr-Mo-x1z" secondAttribute="trailing" id="1bL-Gw-6a5"/>
+                        <constraint firstItem="SIr-Mo-x1z" firstAttribute="top" secondItem="XpK-mE-EL4" secondAttribute="top" id="Dwb-og-UiU"/>
+                        <constraint firstItem="SIr-Mo-x1z" firstAttribute="leading" secondItem="XpK-mE-EL4" secondAttribute="leading" id="Vc8-vh-5aK"/>
+                        <constraint firstAttribute="bottom" secondItem="SIr-Mo-x1z" secondAttribute="bottom" id="nUB-EI-ceQ"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="maximumContentHeight">
@@ -9436,14 +9442,13 @@
         <image name="rotate" width="27" height="27"/>
         <image name="search" width="25" height="25"/>
         <image name="shuffle_icon" width="17" height="14"/>
-        <image name="slide2" width="633" height="633"/>
         <image name="time" width="56" height="56"/>
         <image name="trash" width="30" height="30"/>
         <image name="user" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7Qu-7p-ztG"/>
         <segue reference="ybU-Cf-XEH"/>
+        <segue reference="7Qu-7p-ztG"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

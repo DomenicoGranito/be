@@ -26,14 +26,14 @@ class HomeViewController: BaseViewController
     
     override func viewDidLoad()
     {
-        //Timer.scheduledTimer(timeInterval:3, target:self, selector:#selector(moveToNextPage), userInfo:nil, repeats:true)
+        Timer.scheduledTimer(timeInterval:3, target:self, selector:#selector(moveToNextPage), userInfo:nil, repeats:true)
         
         NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:Notification.Name("refreshAfterBlock"), object:nil)
         NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:Notification.Name("status"), object:nil)
         
         itemsTbl?.addSubview(headerView)
         
-        //setUPHeader()
+        setUPHeader()
         
         updateUI()
     }
@@ -43,18 +43,23 @@ class HomeViewController: BaseViewController
         scrollView.frame=CGRect(x:0, y:0, width:pageWidth, height:220)
         
         let imgOne=UIImageView(frame:CGRect(x:pageWidth, y:0, width:pageWidth, height:220))
+        imgOne.autoresizingMask=[.flexibleHeight]
         imgOne.image=UIImage(named:"slide1")
         
         let imgTwo=UIImageView(frame:CGRect(x:2*pageWidth, y:0, width:pageWidth, height:220))
+        imgTwo.autoresizingMask=[.flexibleHeight]
         imgTwo.image=UIImage(named:"slide2")
         
         let imgThree=UIImageView(frame:CGRect(x:0, y:0, width:pageWidth, height:220))
+        imgThree.autoresizingMask=[.flexibleHeight]
         imgThree.image=UIImage(named:"slide3")
         
         let imgFour=UIImageView(frame:CGRect(x:3*pageWidth, y:0, width:pageWidth, height:220))
+        imgFour.autoresizingMask=[.flexibleHeight]
         imgFour.image=UIImage(named:"slide3")
         
         let imgFive=UIImageView(frame:CGRect(x:4*pageWidth, y:0, width:pageWidth, height:220))
+        imgFive.autoresizingMask=[.flexibleHeight]
         imgFive.image=UIImage(named:"slide1")
         
         scrollView.addSubview(imgThree)
@@ -70,18 +75,18 @@ class HomeViewController: BaseViewController
     
     func scrollViewDidEndDecelerating(_ scrollView:UIScrollView)
     {
-//        if scrollView.contentOffset.x==0
-//        {
-//            scrollView.scrollRectToVisible(CGRect(x:3*pageWidth, y:0, width:pageWidth, height:220), animated:false)
-//        }
-//        else if scrollView.contentOffset.x==1280
-//        {
-//            scrollView.scrollRectToVisible(CGRect(x:pageWidth, y:0, width:pageWidth, height:220), animated:false)
-//        }
-//        
-//        let currentPage=floor((scrollView.contentOffset.x-pageWidth/2)/pageWidth)
-//        
-//        pageControl.currentPage=Int(currentPage)
+        if scrollView.contentOffset.x==0
+        {
+            scrollView.scrollRectToVisible(CGRect(x:3*pageWidth, y:0, width:pageWidth, height:220), animated:false)
+        }
+        else if scrollView.contentOffset.x==1280
+        {
+            scrollView.scrollRectToVisible(CGRect(x:pageWidth, y:0, width:pageWidth, height:220), animated:false)
+        }
+        
+        let currentPage=floor((scrollView.contentOffset.x-pageWidth/2)/pageWidth)
+        
+        pageControl.currentPage=Int(currentPage)
     }
     
     func scrollViewDidScroll(_ scrollView:UIScrollView)
