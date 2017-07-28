@@ -26,7 +26,7 @@ class HomeViewController: BaseViewController
     
     override func viewDidLoad()
     {
-        Timer.scheduledTimer(timeInterval:3, target:self, selector:#selector(moveToNextPage), userInfo:nil, repeats:true)
+        Timer.scheduledTimer(timeInterval:5, target:self, selector:#selector(moveToNextPage), userInfo:nil, repeats:true)
         
         NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:Notification.Name("refreshAfterBlock"), object:nil)
         NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:Notification.Name("status"), object:nil)
@@ -110,20 +110,20 @@ class HomeViewController: BaseViewController
     {
         let slideToX=scrollView.contentOffset.x+pageWidth
         
-        if scrollView.contentOffset.x==1280
+        if scrollView.contentOffset.x>640
         {
             scrollView.scrollRectToVisible(CGRect(x:pageWidth, y:0, width:pageWidth, height:220), animated:false)
             
             pageControl.currentPage=0
-        }
-        else
-        {
-            scrollView.scrollRectToVisible(CGRect(x:slideToX, y:0, width:pageWidth, height:220), animated:true)
             
-            let currentPage=floor((scrollView.contentOffset.x-pageWidth/2)/pageWidth)+1
-            
-            pageControl.currentPage=Int(currentPage)
+            return
         }
+        
+        scrollView.scrollRectToVisible(CGRect(x:slideToX, y:0, width:pageWidth, height:220), animated:true)
+        
+        let currentPage=scrollView.contentOffset.x/pageWidth
+        
+        pageControl.currentPage=Int(currentPage)
     }
     
     func updateUI()
@@ -179,7 +179,7 @@ class HomeViewController: BaseViewController
     {
         return 222
     }
-
+    
     func tableView(_ tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
     {
         return 200

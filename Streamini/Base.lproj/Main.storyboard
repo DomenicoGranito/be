@@ -5371,22 +5371,47 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIr-Mo-x1z">
-                            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <connections>
                                 <outlet property="delegate" destination="aIF-hk-ASP" id="O8P-NX-17C"/>
                             </connections>
                         </scrollView>
-                        <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="xOy-Yx-v3U">
-                            <frame key="frameInset" minX="135" minY="185" width="50" height="37"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TT5-sy-XDg">
+                            <constraints>
+                                <constraint firstAttribute="width" constant="320" id="4V2-yQ-BWU"/>
+                                <constraint firstAttribute="height" constant="25" id="Xqh-Wt-95C"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="muF-J1-bFO">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="7K7-nE-PbI"/>
+                                <constraint firstAttribute="width" constant="320" id="oxp-Le-8wx"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="xOy-Yx-v3U">
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="x6g-3N-nOr"/>
+                            </constraints>
                         </pageControl>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="SIr-Mo-x1z" secondAttribute="trailing" id="1bL-Gw-6a5"/>
+                        <constraint firstItem="xOy-Yx-v3U" firstAttribute="centerX" secondItem="XpK-mE-EL4" secondAttribute="centerX" id="4mA-ue-58Q"/>
+                        <constraint firstItem="muF-J1-bFO" firstAttribute="centerX" secondItem="XpK-mE-EL4" secondAttribute="centerX" id="9ly-O0-tII"/>
                         <constraint firstItem="SIr-Mo-x1z" firstAttribute="top" secondItem="XpK-mE-EL4" secondAttribute="top" id="Dwb-og-UiU"/>
+                        <constraint firstItem="muF-J1-bFO" firstAttribute="top" secondItem="TT5-sy-XDg" secondAttribute="bottom" id="RNz-df-Ocx"/>
                         <constraint firstItem="SIr-Mo-x1z" firstAttribute="leading" secondItem="XpK-mE-EL4" secondAttribute="leading" id="Vc8-vh-5aK"/>
+                        <constraint firstAttribute="bottom" secondItem="xOy-Yx-v3U" secondAttribute="bottom" constant="5" id="d8p-5k-hNg"/>
                         <constraint firstAttribute="bottom" secondItem="SIr-Mo-x1z" secondAttribute="bottom" id="nUB-EI-ceQ"/>
+                        <constraint firstItem="xOy-Yx-v3U" firstAttribute="top" secondItem="muF-J1-bFO" secondAttribute="bottom" id="rf6-bE-bml"/>
+                        <constraint firstItem="TT5-sy-XDg" firstAttribute="centerX" secondItem="XpK-mE-EL4" secondAttribute="centerX" id="upw-V4-DbF"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="maximumContentHeight">
