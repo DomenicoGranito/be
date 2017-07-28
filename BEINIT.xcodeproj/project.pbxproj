@@ -21,6 +21,8 @@
 		3E5CB4541E9529CF007EB28D /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CB4531E9529CF007EB28D /* OptionsViewController.swift */; };
 		3E642D9E1ECB30C600F598DC /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E642D9D1ECB30C600F598DC /* Reachability.swift */; };
 		3E68E8F81E715D3F008AAB9E /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E68E8F71E715D3F008AAB9E /* VideosViewController.swift */; };
+		3E6DDCE71F2B55D000DFCC0F /* ChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6DDCE61F2B55D000DFCC0F /* ChannelsViewController.swift */; };
+		3E6DDCE91F2B580100DFCC0F /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6DDCE81F2B580100DFCC0F /* ChannelCell.swift */; };
 		3E7192691E75701F00B7049B /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7192681E75701F00B7049B /* ActivityIndicatorView.swift */; };
 		3E71926B1E768DFE00B7049B /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E71926A1E768DFD00B7049B /* ErrorView.swift */; };
 		3E7828C11EEA741B00F2B5EF /* OfflineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7828C01EEA741B00F2B5EF /* OfflineViewController.swift */; };
@@ -227,6 +229,8 @@
 		3E5CB4531E9529CF007EB28D /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		3E642D9D1ECB30C600F598DC /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		3E68E8F71E715D3F008AAB9E /* VideosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosViewController.swift; sourceTree = "<group>"; };
+		3E6DDCE61F2B55D000DFCC0F /* ChannelsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsViewController.swift; sourceTree = "<group>"; };
+		3E6DDCE81F2B580100DFCC0F /* ChannelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
 		3E7192681E75701F00B7049B /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		3E71926A1E768DFD00B7049B /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		3E7828C01EEA741B00F2B5EF /* OfflineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineViewController.swift; sourceTree = "<group>"; };
@@ -805,6 +809,7 @@
 				B7D6F0B01B37F16C0070C36A /* LoginViewController.swift */,
 				3E20216C1D81A6530058DAAD /* HomeViewController.swift */,
 				3E20216E1D81AB440058DAAD /* CategoryRow.swift */,
+				3E6DDCE81F2B580100DFCC0F /* ChannelCell.swift */,
 				3E2021701D81ACFE0058DAAD /* VideoCell.swift */,
 				B6EAF8291E28F179007038DC /* CategoryCell.swift */,
 				3EEF52BC1D83127B0015BA92 /* CategoriesViewController.swift */,
@@ -820,6 +825,7 @@
 				B63C1A4D1E451AE000EF2F7C /* MyLibViewController.swift */,
 				3E68E8F71E715D3F008AAB9E /* VideosViewController.swift */,
 				B733B1F41B78CF04002FEAB6 /* PeopleViewController.swift */,
+				3E6DDCE61F2B55D000DFCC0F /* ChannelsViewController.swift */,
 				3EF535B71E092A330049B2E9 /* ModalViewController.swift */,
 				3E2A5A591ED80CDC00133E1D /* DevicesViewController.swift */,
 				3ECEC44C1EA22F8A006A00F7 /* PlaylistViewController.swift */,
@@ -1043,6 +1049,7 @@
 				B795ACCF1B98949100ACFDE1 /* BlockedMessageController.swift in Sources */,
 				B794AD9E1B59305B0069C2A8 /* CommentMessageController.swift in Sources */,
 				B794AD951B58E0160069C2A8 /* CommentLabel.swift in Sources */,
+				3E6DDCE91F2B580100DFCC0F /* ChannelCell.swift in Sources */,
 				B794AD9A1B592F930069C2A8 /* MessageController.swift in Sources */,
 				B728153A1B5E4C400005BBC6 /* ViewersDataSource.swift in Sources */,
 				B7D5EA941B565B0B003EE25D /* MessageExtension.swift in Sources */,
@@ -1167,6 +1174,7 @@
 				3E935BC11E937D6100065FEC /* PlaylistDetailView.swift in Sources */,
 				3EF535B21E0920B90049B2E9 /* TransitionGestureHandler.swift in Sources */,
 				B77AABE61B398815007DE187 /* StreamMappingProvider.swift in Sources */,
+				3E6DDCE71F2B55D000DFCC0F /* ChannelsViewController.swift in Sources */,
 				3E935BBD1E937BC100065FEC /* PlaylistView.swift in Sources */,
 				3EF535AE1E0920B90049B2E9 /* ARNTransitionAnimator.swift in Sources */,
 				3E71926B1E768DFE00B7049B /* ErrorView.swift in Sources */,
