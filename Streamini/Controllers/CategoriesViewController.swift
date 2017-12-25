@@ -33,7 +33,7 @@ class CategoriesViewController: BaseViewController
         
         StreamConnector().categoryStreams(categoryID!, page, successStreams, failureStream)
         
-        topImageView?.sd_setImage(with:URL(string:"\(site)/media/bg_\(categoryID!).png"))
+        topImageView?.sd_setImage(with:URL(string:"\(site)/media/sub-categories/\(categoryID!).jpg"))
         
         itemsTbl?.addSubview(headerView)
     }
