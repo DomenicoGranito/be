@@ -204,7 +204,7 @@ class HomeViewController: BaseViewController
         titleLbl.textAlignment = .center
         
         let categoryImageView=UIImageView(frame:CGRect(x:0, y:0, width:view.frame.size.width, height:200))
-        categoryImageView.sd_setImage(with:URL(string:"\(site)/media/bg_\(categoryIDsArray[section]).png"))
+        categoryImageView.sd_setImage(with:URL(string:"\(site)/media/categories/\(categoryIDsArray[section]).jpg"))
         
         let tapGesture=UITapGestureRecognizer(target:self, action:#selector(headerTapped))
         headerView.addGestureRecognizer(tapGesture)
