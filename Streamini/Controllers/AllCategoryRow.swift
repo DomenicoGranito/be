@@ -46,7 +46,7 @@ class AllCategoryRow: UITableViewCell
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let vc=storyboard.instantiateViewController(withIdentifier:"CategoriesViewController") as! CategoriesViewController
         vc.categoryName=category.name
-        vc.categoryID=Int(category.id)
+        vc.categoryID=category.id
         navigationControllerReference?.pushViewController(vc, animated:true)
     }
     

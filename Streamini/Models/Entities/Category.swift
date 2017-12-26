@@ -8,7 +8,7 @@
 
 class Category: NSObject
 {
-    var id: UInt = 0
+    var id: Int = 0
     var name = ""
     var subCategories:NSArray!
 }
