@@ -106,7 +106,7 @@ class DiscoverViewController: UIViewController
         
         let data=data["data"] as! NSDictionary
         
-        let categories=data["cat"] as! NSArray
+        let categories=data["categories"] as! NSArray
         
         allCategoriesArray.removeAllObjects()
         
