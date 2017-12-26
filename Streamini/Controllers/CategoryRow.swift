@@ -77,8 +77,6 @@ class CategoryRow: UITableViewCell
     
     func collectionView(_ collectionView:UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAtIndexPath indexPath:IndexPath)->CGSize
     {
-        let width=(collectionView.frame.size.width-25)/2
-        
         return CGSize(width:220, height:222)
     }
 }
