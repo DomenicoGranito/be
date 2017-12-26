@@ -15,7 +15,7 @@ class UploadingViewController: BaseViewController, UIActionSheetDelegate, UIImag
     var timer:Timer!
     var videoPath:String!
     var uploadItems:DWUploadItems!
-    var selectedCategoryID:UInt!
+    var selectedCategoryID:Int!
     var uploadInfoSetupViewController:UploadInfoSetupViewController!
     var appDelegate:AppDelegate!
     

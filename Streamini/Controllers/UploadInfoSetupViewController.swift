@@ -14,7 +14,7 @@ class UploadInfoSetupViewController: BaseViewController, UIPickerViewDelegate, U
     var isCancel=false
     var categories=[Category]()
     let categoriesPicker=UIPickerView()
-    var selectedCategoryID:UInt!
+    var selectedCategoryID:Int!
     
     override func viewDidLoad()
     {
