@@ -6,7 +6,9 @@
 //  Copyright © 2016 UniProgy s.r.o. All rights reserved.
 //
 
-class Category: NSObject {
+class Category: NSObject
+{
     var id: UInt = 0
     var name = ""
+    var subCategories:NSArray!
 }
