@@ -71,6 +71,22 @@ class DiscoverViewController: UIViewController
         return 40
     }
 
+    func tableView(_ tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
+    {
+        let headerView=UIView(frame:CGRect(x:0, y:0, width:tableView.frame.size.width, height:40))
+        headerView.backgroundColor=UIColor(colorLiteralRed:34/255, green:34/255, blue:34/255, alpha:1)
+        
+        let titleLbl=UILabel(frame:CGRect(x:0, y:0, width:tableView.frame.size.width, height:40))
+        titleLbl.text=(categoriesArray[section] as! Category).name
+        titleLbl.textAlignment = .center
+        titleLbl.font=UIFont.systemFont(ofSize:16)
+        titleLbl.textColor=UIColor(colorLiteralRed:205/255, green:158/255, blue:93/255, alpha:1)
+        
+        headerView.addSubview(titleLbl)
+        
+        return headerView
+    }
+
     func numberOfSectionsInTableView(_ tableView:UITableView)->Int
     {
         return categoriesArray.count
