@@ -19,7 +19,7 @@ class DiscoverViewController: UIViewController
     @IBOutlet var activityView:ActivityIndicatorView!
     @IBOutlet var selectionView:UIView!
     
-    var allCategoriesArray=NSMutableArray()
+    var categoriesArray=NSMutableArray()
     
     override func viewDidLoad()
     {
@@ -68,12 +68,19 @@ class DiscoverViewController: UIViewController
     
     func tableView(_ tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
     {
-        return 1
+        return 40
+    }
+
+    func numberOfSectionsInTableView(_ tableView:UITableView)->Int
+    {
+        return categoriesArray.count
     }
 
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
-        return allCategoriesArray.count
+        let category=categoriesArray[section] as! Category
+        
+        return category.subCategories.count
     }
     
     func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
@@ -85,7 +92,9 @@ class DiscoverViewController: UIViewController
     {
         let cell=tableView.dequeueReusableCell(withIdentifier:"Category") as! AllCategoryRow
         
-        cell.sectionItemsArray=allCategoriesArray[indexPath.row] as! NSArray
+        let category=categoriesArray[indexPath.section] as! Category
+        
+        cell.sectionItemsArray=category.subCategories[indexPath.row] as! NSArray
         cell.navigationControllerReference=navigationController
         
         return cell
@@ -108,7 +117,7 @@ class DiscoverViewController: UIViewController
         
         let categories=data["categories"] as! NSArray
         
-        allCategoriesArray.removeAllObjects()
+        categoriesArray.removeAllObjects()
         
         parseCategories(categories)
         
@@ -116,32 +125,45 @@ class DiscoverViewController: UIViewController
         tableView.reloadData()
     }
     
-    func parseCategories(_ cats:NSArray)
+    func parseCategories(_ categories:NSArray)
     {
-        var sectionItemsArray=NSMutableArray()
-        var count=0
-        
-        for i in 0 ..< cats.count
+        for i in 0 ..< categories.count
         {
-            let cat=cats[i] as! NSDictionary
+            let category=categories[i] as! NSDictionary
             
-            let categoryID=cat["id"] as! Int
-            let categoryName=cat["name"] as! String
+            let categoryObject=Category()
+            categoryObject.id=category["id"] as! Int
+            categoryObject.name=category["name"] as! String
             
-            let category=Category()
-            category.id=UInt(categoryID)
-            category.name=categoryName
+            let subCategories=category["sub-categories"] as! NSArray
             
-            sectionItemsArray.add(category)
+            var twoSubCategoriesArray=NSMutableArray()
+            let allSubCategoriesArray=NSMutableArray()
+            var count=0
             
-            count+=1
-            
-            if count==2||(count==1&&i==cats.count-1)
+            for j in 0 ..< subCategories.count
             {
-                count=0
-                allCategoriesArray.add(sectionItemsArray)
-                sectionItemsArray=NSMutableArray()
+                let subCategory=subCategories[j] as! NSDictionary
+                
+                let subCategoryObject=Category()
+                subCategoryObject.id=subCategory["id"] as! Int
+                subCategoryObject.name=subCategory["name"] as! String
+                
+                twoSubCategoriesArray.add(subCategoryObject)
+                
+                count+=1
+                
+                if count==2||(count==1&&j==subCategories.count-1)
+                {
+                    count=0
+                    allSubCategoriesArray.add(twoSubCategoriesArray)
+                    twoSubCategoriesArray=NSMutableArray()
+                }
             }
+            
+            categoryObject.subCategories=allSubCategoriesArray
+            
+            categoriesArray.add(categoryObject)
         }
     }
     
