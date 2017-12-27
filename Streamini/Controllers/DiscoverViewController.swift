@@ -12,7 +12,7 @@ class MenuCell: UITableViewCell
     @IBOutlet var menuItemIconImageView:UIImageView?
 }
 
-class DiscoverViewController: UIViewController
+class DiscoverViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
     @IBOutlet var tableView:UITableView!
     @IBOutlet var errorView:ErrorView!
@@ -20,6 +20,8 @@ class DiscoverViewController: UIViewController
     @IBOutlet var selectionView:UIView!
     
     var categoriesArray=NSMutableArray()
+    var channelsArray=NSMutableArray()
+    var selectedTab=0
     
     override func viewDidLoad()
     {
@@ -54,6 +56,9 @@ class DiscoverViewController: UIViewController
     
     @IBAction func channels()
     {
+        selectedTab=0
+        tableView.reloadData()
+        
         UIView.animate(withDuration:0.2, animations:{
             self.selectionView.frame=CGRect(x:10, y:45, width:(self.view.frame.size.width-40)/2, height:5)
             }, completion:nil)
@@ -61,6 +66,9 @@ class DiscoverViewController: UIViewController
     
     @IBAction func categories()
     {
+        selectedTab=1
+        tableView.reloadData()
+        
         UIView.animate(withDuration:0.2, animations:{
             self.selectionView.frame=CGRect(x:self.view.frame.size.width-self.selectionView.frame.size.width-10, y:45, width:(self.view.frame.size.width-40)/2, height:5)
             }, completion:nil)
@@ -68,55 +76,70 @@ class DiscoverViewController: UIViewController
     
     func tableView(_ tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
     {
-        return 40
+        return selectedTab==0 ? 1 : 40
     }
-
+    
     func tableView(_ tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
     {
-        let headerView=UIView(frame:CGRect(x:0, y:0, width:tableView.frame.size.width, height:40))
-        headerView.backgroundColor=UIColor(colorLiteralRed:34/255, green:34/255, blue:34/255, alpha:1)
-        
-        let titleLbl=UILabel(frame:CGRect(x:0, y:0, width:tableView.frame.size.width, height:40))
-        titleLbl.text=(categoriesArray[section] as! Category).name
-        titleLbl.textAlignment = .center
-        titleLbl.font=UIFont.systemFont(ofSize:16)
-        titleLbl.textColor=UIColor(colorLiteralRed:205/255, green:158/255, blue:93/255, alpha:1)
-        
-        headerView.addSubview(titleLbl)
-        
-        return headerView
+        if selectedTab==0
+        {
+            return nil
+        }
+        else
+        {
+            let headerView=UIView(frame:CGRect(x:0, y:0, width:tableView.frame.size.width, height:40))
+            headerView.backgroundColor=UIColor(colorLiteralRed:34/255, green:34/255, blue:34/255, alpha:1)
+            
+            let titleLbl=UILabel(frame:CGRect(x:0, y:0, width:tableView.frame.size.width, height:40))
+            titleLbl.text=(categoriesArray[section] as! Category).name
+            titleLbl.textAlignment = .center
+            titleLbl.font=UIFont.systemFont(ofSize:16)
+            titleLbl.textColor=UIColor(colorLiteralRed:205/255, green:158/255, blue:93/255, alpha:1)
+            
+            headerView.addSubview(titleLbl)
+            
+            return headerView
+        }
     }
-
-    func numberOfSectionsInTableView(_ tableView:UITableView)->Int
+    
+    func numberOfSections(in tableView:UITableView)->Int
     {
-        return categoriesArray.count
+        return selectedTab==0 ? 1 : categoriesArray.count
     }
-
+    
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
         let category=categoriesArray[section] as! Category
         
-        return category.subCategories.count
+        return selectedTab==0 ? channelsArray.count : category.subCategories.count
     }
     
-    func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
+    func tableView(_ tableView:UITableView, heightForRowAt indexPath:IndexPath)->CGFloat
     {
         return (view.frame.size.width-30)/2
     }
     
-    func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:IndexPath)->UITableViewCell
+    func tableView(_ tableView:UITableView, cellForRowAt indexPath:IndexPath)->UITableViewCell
     {
         let cell=tableView.dequeueReusableCell(withIdentifier:"Category") as! AllCategoryRow
         
-        let category=categoriesArray[indexPath.section] as! Category
+        if selectedTab==1
+        {
+            let category=categoriesArray[indexPath.section] as! Category
+            
+            cell.sectionItemsArray=category.subCategories[indexPath.row] as! NSArray
+        }
+        else
+        {
+            cell.sectionItemsArray=channelsArray[indexPath.row] as! NSArray
+        }
         
-        cell.sectionItemsArray=category.subCategories[indexPath.row] as! NSArray
         cell.navigationControllerReference=navigationController
         
         return cell
     }
     
-    func tableView(_ tableView:UITableView, willDisplayCell cell:UITableViewCell, forRowAtIndexPath indexPath:IndexPath)
+    func tableView(_ tableView:UITableView, willDisplay cell:UITableViewCell, forRowAt indexPath:IndexPath)
     {
         if cell is AllCategoryRow
         {
@@ -132,13 +155,44 @@ class DiscoverViewController: UIViewController
         let data=data["data"] as! NSDictionary
         
         let categories=data["categories"] as! NSArray
+        let channels=data["channel"] as! NSArray
         
         categoriesArray.removeAllObjects()
+        channelsArray.removeAllObjects()
         
         parseCategories(categories)
+        parseChannels(channels)
         
         tableView.isHidden=false
+        tableView.delegate=self
+        tableView.dataSource=self
         tableView.reloadData()
+    }
+    
+    func parseChannels(_ channels:NSArray)
+    {
+        var twoChannelsArray=NSMutableArray()
+        var count=0
+        
+        for i in 0 ..< channels.count
+        {
+            let channel=channels[i] as! NSDictionary
+            
+            let channelObject=Category()
+            channelObject.id=channel["id"] as! Int
+            channelObject.name=channel["name"] as! String
+            
+            twoChannelsArray.add(channelObject)
+            
+            count+=1
+            
+            if count==2||(count==1&&i==channels.count-1)
+            {
+                count=0
+                channelsArray.add(twoChannelsArray)
+                twoChannelsArray=NSMutableArray()
+            }
+        }
     }
     
     func parseCategories(_ categories:NSArray)
