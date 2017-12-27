@@ -44,23 +44,23 @@ class HomeViewController: BaseViewController
         
         let imgOne=UIImageView(frame:CGRect(x:pageWidth, y:0, width:pageWidth, height:220))
         imgOne.autoresizingMask=[.flexibleHeight]
-        imgOne.image=UIImage(named:"slide1")
+        imgOne.sd_setImage(with:URL(string:"\(site)/media/featured/1.jpg"))
         
         let imgTwo=UIImageView(frame:CGRect(x:2*pageWidth, y:0, width:pageWidth, height:220))
         imgTwo.autoresizingMask=[.flexibleHeight]
-        imgTwo.image=UIImage(named:"slide2")
+        imgTwo.sd_setImage(with:URL(string:"\(site)/media/featured/2.jpg"))
         
         let imgThree=UIImageView(frame:CGRect(x:0, y:0, width:pageWidth, height:220))
         imgThree.autoresizingMask=[.flexibleHeight]
-        imgThree.image=UIImage(named:"slide3")
+        imgThree.sd_setImage(with:URL(string:"\(site)/media/featured/3.jpg"))
         
         let imgFour=UIImageView(frame:CGRect(x:3*pageWidth, y:0, width:pageWidth, height:220))
         imgFour.autoresizingMask=[.flexibleHeight]
-        imgFour.image=UIImage(named:"slide3")
+        imgFour.sd_setImage(with:URL(string:"\(site)/media/featured/3.jpg"))
         
         let imgFive=UIImageView(frame:CGRect(x:4*pageWidth, y:0, width:pageWidth, height:220))
         imgFive.autoresizingMask=[.flexibleHeight]
-        imgFive.image=UIImage(named:"slide1")
+        imgFive.sd_setImage(with:URL(string:"\(site)/media/featured/1.jpg"))
         
         scrollView.addSubview(imgThree)
         scrollView.addSubview(imgOne)
