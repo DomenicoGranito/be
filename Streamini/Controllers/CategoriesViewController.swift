@@ -17,6 +17,7 @@ class CategoriesViewController: BaseViewController
     var allItemsArray=NSMutableArray()
     var categoryName:String?
     var page=0
+    var isSubCategory=false
     var categoryID:Int?
     var TBVC:TabBarViewController!
     let site=Config.shared.site()
@@ -31,7 +32,7 @@ class CategoriesViewController: BaseViewController
             self.fetchMore()
         }
         
-        StreamConnector().categoryStreams(categoryID!, page, successStreams, failureStream)
+        StreamConnector().categoryStreams(isSubCategory, categoryID!, page, successStreams, failureStream)
         
         topImageView?.sd_setImage(with:URL(string:"\(site)/media/sub-categories/\(categoryID!).jpg"))
         
@@ -50,7 +51,7 @@ class CategoriesViewController: BaseViewController
     func fetchMore()
     {
         page+=1
-        StreamConnector().categoryStreams(categoryID!, page, fetchMoreSuccess, failureStream)
+        StreamConnector().categoryStreams(isSubCategory, categoryID!, page, fetchMoreSuccess, failureStream)
     }
     
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int

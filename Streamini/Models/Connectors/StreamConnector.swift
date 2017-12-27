@@ -204,9 +204,18 @@ class StreamConnector: Connector
         })
     }
     
-    func categoryStreams(_ categoryID:Int, _ pageID:Int, _ success:@escaping (_ data:NSDictionary)->(), _ failure:@escaping (_ error:NSError)->())
+    func categoryStreams(_ isSubCategory:Bool, _ categoryID:Int, _ pageID:Int, _ success:@escaping (_ data:NSDictionary)->(), _ failure:@escaping (_ error:NSError)->())
     {
-        let path="category/streamscategory?c=\(categoryID)&p=\(pageID)"
+        var path=""
+        
+        if isSubCategory
+        {
+            path="category/streamssubcategory?c=\(categoryID)&p=\(pageID)"
+        }
+        else
+        {
+            path="category/streamscategory?c=\(categoryID)&p=\(pageID)"
+        }
         
         manager.getObjectsAtPath(path, parameters:sessionParams(), success:{ (operation, mappingResult)->Void in
             
@@ -217,7 +226,7 @@ class StreamConnector: Connector
                 if error.code==CustomError.kLoginExpiredCode
                 {
                     self.relogin({()->() in
-                        self.categoryStreams(categoryID, pageID, success, failure)
+                        self.categoryStreams(isSubCategory, categoryID, pageID, success, failure)
                         },
                         failure:{()->() in
                             failure(error.toNSError())
