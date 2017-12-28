@@ -198,9 +198,7 @@ class HomeViewController: BaseViewController
         }
         
         titleLbl.font=UIFont.systemFont(ofSize:24)
-        titleLbl.textColor=UIColor(red:190/255, green:142/255, blue:64/255, alpha:1)
-        titleLbl.layer.borderColor=UIColor(red:190/255, green:142/255, blue:64/255, alpha:1).cgColor
-        titleLbl.layer.borderWidth=1
+        titleLbl.textColor=UIColor.white
         titleLbl.textAlignment = .center
         
         let categoryImageView=UIImageView(frame:CGRect(x:0, y:0, width:view.frame.size.width, height:200))

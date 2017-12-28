@@ -317,7 +317,7 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
     
     @IBAction func back()
     {
-        navigationController!.popViewController(animated: true)
+        navigationController!.popViewController(animated:true)
     }
     
     func renderImageFromView()->UIImage?

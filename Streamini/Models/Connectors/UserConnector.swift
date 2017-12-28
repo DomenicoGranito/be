@@ -61,9 +61,12 @@ class UserConnector: Connector
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
-            if !error.status {
+            if !error.status
+            {
                 failure(error.toNSError())
-            } else {
+            }
+            else
+            {
                 success()
             }
             }, failure:{ (operation, error) -> Void in
@@ -71,7 +74,8 @@ class UserConnector: Connector
         })
     }
     
-    func get(_ id: UInt?, _ success: @escaping (_ user: User) -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func get(_ id: UInt?, _ success: @escaping (_ user: User) -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         let path = "user"
         
         let responseMapping = UserMappingProvider.userResponseMapping()
@@ -92,17 +96,23 @@ class UserConnector: Connector
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
 
-            if !error.status {
-                if error.code == CustomError.kLoginExpiredCode {
+            if !error.status
+            {
+                if error.code == CustomError.kLoginExpiredCode
+                {
                     self.relogin({ () -> () in
                         self.get(id, success, failure)
                     }, failure: { () -> () in
                         failure(error.toNSError())
                     })
-                } else {
+                }
+                else
+                {
                     failure(error.toNSError())
                 }
-            } else {
+            }
+            else
+            {
                 let user = mappingResult?.dictionary()["data"] as! User
                 success(user)
             }
@@ -111,36 +121,46 @@ class UserConnector: Connector
         })
     }
     
-    func followers(_ data: NSDictionary, _ success: @escaping (_ users: [User]) -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func followers(_ data: NSDictionary, _ success: @escaping (_ users: [User]) -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         usersList("user/followers", data, success, failure)
     }
     
-    func following(_ data: NSDictionary, _ success: @escaping (_ users: [User]) -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func following(_ data: NSDictionary, _ success: @escaping (_ users: [User]) -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         usersList("user/following", data, success, failure)
     }
     
-    func blocked(_ data: NSDictionary, _ success: @escaping (_ users: [User]) -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func blocked(_ data: NSDictionary, _ success: @escaping (_ users: [User]) -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         usersList("user/blocked", data, success, failure)
     }
     
-    func avatar(_ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func avatar(_ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         let path = "user/avatar"
         
         manager.post(nil, path: path, parameters: self.sessionParams(), success: { (operation, mappingResult) -> Void in
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
-            if !error.status {
-                if error.code==CustomError.kLoginExpiredCode {
+            if !error.status
+            {
+                if error.code==CustomError.kLoginExpiredCode
+                {
                     self.relogin({ () -> () in
                         self.avatar(success, failure)
                         }, failure: { () -> () in
                             failure(error.toNSError())
                     })
-                } else {
+                }
+                else
+                {
                     failure(error.toNSError())
                 }
-            } else {
+            }
+            else
+            {
                 success()
             }
             }, failure: { (operation, error) -> Void in
@@ -148,7 +168,8 @@ class UserConnector: Connector
         })
     }
     
-    func uploadAvatar(_ filename: String, _ data:Data, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> (), _ progress: @escaping ((UInt, Int64, Int64) -> Void)) {
+    func uploadAvatar(_ filename: String, _ data:Data, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> (), _ progress: @escaping ((UInt, Int64, Int64) -> Void))
+    {
         let path = "user/avatar"
         
         let request =
@@ -159,17 +180,23 @@ class UserConnector: Connector
         let operation = manager.objectRequestOperation(with: request as URLRequest!, success: { (operation, mappingResult) -> Void in
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
-            if !error.status {
-                if error.code==CustomError.kLoginExpiredCode {
+            if !error.status
+            {
+                if error.code==CustomError.kLoginExpiredCode
+                {
                     self.relogin({ () -> () in
                         self.uploadAvatar(filename, data, success, failure, progress)
                     }, failure: { () -> () in
                         failure(error.toNSError())
                     })
-                } else {
+                }
+                else
+                {
                     failure(error.toNSError())
                 }
-            } else {
+            }
+            else
+            {
                 success()
             }
             }) { (operation, error) -> Void in
@@ -180,26 +207,33 @@ class UserConnector: Connector
         manager.enqueue(operation)
     }
     
-    func userDescription(_ text: String, _ success:@escaping () -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func userDescription(_ text: String, _ success:@escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         let path = "user/description"
         
         var params = self.sessionParams()
         params!["text"] = text as AnyObject?
         
-        manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
+        manager.post(nil, path:path, parameters:params, success:{(operation, mappingResult)->Void in
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
-            if !error.status {
-                if error.code==CustomError.kLoginExpiredCode {
+            if !error.status
+            {
+                if error.code==CustomError.kLoginExpiredCode
+                {
                     self.relogin({ () -> () in
                         self.userDescription(text, success, failure)
                     }, failure: { () -> () in
                         failure(error.toNSError())
                     })
-                } else {
+                }
+                else
+                {
                     failure(error.toNSError())
                 }
-            } else {
+            }
+            else
+            {
                 success()
             }
             }, failure: { (operation, error) -> Void in
@@ -207,25 +241,32 @@ class UserConnector: Connector
         })
     }
     
-    func forgot(_ text: String, _ success:@escaping () -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func forgot(_ text: String, _ success:@escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         let path = "user/forgot"
         
         let params: [AnyHashable: Any] = [ "id" : text ]
         
-        manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
+        manager.post(nil, path:path, parameters:params, success:{(operation, mappingResult)->Void in
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
-            if !error.status {
-                if error.code==CustomError.kLoginExpiredCode {
+            if !error.status
+            {
+                if error.code==CustomError.kLoginExpiredCode
+                {
                     self.relogin({ () -> () in
                         self.forgot(text, success, failure)
                         }, failure: { () -> () in
                             failure(error.toNSError())
                     })
-                } else {
+                }
+                else
+                {
                     failure(error.toNSError())
                 }
-            } else {
+            }
+            else
+            {
                 success()
             }
             }, failure: { (operation, error) -> Void in
@@ -233,27 +274,34 @@ class UserConnector: Connector
         })
     }
     
-    func password(_ text: String, _ success:@escaping () -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func password(_ text: String, _ success:@escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         let path = "user/password"
         
         var params = self.sessionParams()
         params!["password"] = text as AnyObject?
         
-        manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
+        manager.post(nil, path:path, parameters:params, success:{(operation, mappingResult)->Void in
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
-            if !error.status {
-                if error.code == CustomError.kLoginExpiredCode {
+            if !error.status
+            {
+                if error.code == CustomError.kLoginExpiredCode
+                {
                     self.relogin({ () -> () in
                         self.password(text, success, failure)
                         }, failure: { () -> () in
                             failure(error.toNSError())
                     })
-                } else {
+                }
+                else
+                {
                     failure(error.toNSError())
                 }
-            } else {
+            }
+            else
+            {
                 success()
             }
             }, failure: { (operation, error) -> Void in
@@ -261,7 +309,8 @@ class UserConnector: Connector
         })
     }
     
-    fileprivate func usersList(_ path: String, _ data: NSDictionary, _ success: @escaping (_ users: [User]) -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    fileprivate func usersList(_ path: String, _ data: NSDictionary, _ success: @escaping (_ users: [User]) -> (), _ failure: @escaping (_ error: NSError) -> ())
+    {
         let responseMapping = UserMappingProvider.userResponseMapping()
         let statusCode = RKStatusCodeIndexSetForClass(.successful)
         
@@ -283,21 +332,27 @@ class UserConnector: Connector
             params!["q"]=query as AnyObject
         }
         
-        manager.getObjectsAtPath(path, parameters: params, success: { (operation, mappingResult) -> Void in
+        manager.getObjectsAtPath(path, parameters:params, success:{(operation, mappingResult)->Void in
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
-            if !error.status {
-                if error.code == CustomError.kLoginExpiredCode {
+            if !error.status
+            {
+                if error.code == CustomError.kLoginExpiredCode
+                {
                     self.relogin({ () -> () in
                         self.usersList(path, data, success, failure)
                     }, failure: { () -> () in
                         failure(error.toNSError())
                     })
-                } else {
+                }
+                else
+                {
                     failure(error.toNSError())
                 }
-            } else {
+            }
+            else
+            {
                 let users = mappingResult?.dictionary()["data.users"] as! [User]
                 success(users)
             }
