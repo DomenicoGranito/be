@@ -26,6 +26,11 @@ class ChannelsViewController: BaseViewController
         StreamConnector().channelStreams(channelID, page, successStreams, failureStream)
     }
     
+    override func viewWillAppear(_ animated:Bool)
+    {
+        navigationController?.isNavigationBarHidden=false
+    }
+    
     func fetchMore()
     {
         page+=1
@@ -49,6 +54,14 @@ class ChannelsViewController: BaseViewController
         cell.userVideosArray=userVideosArray
         
         return cell
+    }
+    
+    func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:IndexPath)
+    {
+        let vc=storyBoard.instantiateViewController(withIdentifier:"UserViewControllerId") as! UserViewController
+        let userVideosArray=channelUsersVideosArray[indexPath.row] as! NSArray
+        vc.user=(userVideosArray[0] as! Stream).user
+        navigationController?.pushViewController(vc, animated:true)
     }
     
     func tableView(_ tableView:UITableView, willDisplayCell cell:UITableViewCell, forRowAtIndexPath indexPath:IndexPath)
