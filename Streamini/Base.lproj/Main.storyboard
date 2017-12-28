@@ -5519,7 +5519,6 @@
                         <outlet property="headerLbl" destination="zCS-TP-Ai0" id="OdF-nN-r59"/>
                         <outlet property="headerView" destination="vMO-Sk-Prh" id="mUJ-Q6-HP1"/>
                         <outlet property="itemsTbl" destination="ZtH-TU-uzt" id="Z6S-42-iBY"/>
-                        <outlet property="shufflePlayButton" destination="zWr-nK-6MD" id="cmU-zF-fua"/>
                         <outlet property="topImageView" destination="iPH-lM-YEZ" id="bwn-rD-tZI"/>
                     </connections>
                 </viewController>
@@ -5560,25 +5559,6 @@
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zWr-nK-6MD" propertyAccessControl="none">
-                            <color key="backgroundColor" red="0.78039215689999997" green="0.6588235294" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="150" id="Bgn-qy-ItQ"/>
-                                <constraint firstAttribute="height" constant="40" id="rh6-DG-btG"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                            <state key="normal" title="Shuffle Play">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="20"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="shufflePlay" destination="0CM-fX-swN" eventType="touchUpInside" id="NQS-CG-evy"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -5588,19 +5568,17 @@
                         <constraint firstItem="V4s-ub-ENy" firstAttribute="top" secondItem="vMO-Sk-Prh" secondAttribute="top" id="QZs-HB-Zfy"/>
                         <constraint firstItem="V4s-ub-ENy" firstAttribute="leading" secondItem="vMO-Sk-Prh" secondAttribute="leading" id="TOM-Wm-kha"/>
                         <constraint firstItem="zCS-TP-Ai0" firstAttribute="top" secondItem="vMO-Sk-Prh" secondAttribute="top" constant="32" id="UPW-ba-hPW"/>
-                        <constraint firstAttribute="bottom" secondItem="zWr-nK-6MD" secondAttribute="bottom" id="Yjc-Ce-nol"/>
-                        <constraint firstItem="zWr-nK-6MD" firstAttribute="centerX" secondItem="vMO-Sk-Prh" secondAttribute="centerX" id="ZTc-J5-Yhi"/>
                         <constraint firstItem="iPH-lM-YEZ" firstAttribute="top" secondItem="vMO-Sk-Prh" secondAttribute="top" id="rOY-RZ-5uz"/>
                         <constraint firstAttribute="trailing" secondItem="iPH-lM-YEZ" secondAttribute="trailing" id="sS1-pL-17o"/>
-                        <constraint firstAttribute="bottom" secondItem="iPH-lM-YEZ" secondAttribute="bottom" constant="20" id="tKE-Nb-ehm"/>
+                        <constraint firstAttribute="bottom" secondItem="iPH-lM-YEZ" secondAttribute="bottom" id="tKE-Nb-ehm"/>
                         <constraint firstItem="PhT-hk-hh4" firstAttribute="top" secondItem="vMO-Sk-Prh" secondAttribute="top" constant="30" id="tM2-IC-XV6"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="maximumContentHeight">
-                            <real key="value" value="220"/>
+                            <real key="value" value="200"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="minimumContentHeight">
-                            <real key="value" value="104"/>
+                            <real key="value" value="64"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>

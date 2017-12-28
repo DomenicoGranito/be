@@ -32,17 +32,23 @@ class SocialConnector: Connector
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
-            if !error.status {
-                if error.code==CustomError.kLoginExpiredCode {
+            if !error.status
+            {
+                if error.code==CustomError.kLoginExpiredCode
+                {
                     self.relogin({ () -> () in
                         self.users(data, success, failure)
                     }, failure: { () -> () in
                         failure(error.toNSError())
                     })
-                } else {
+                }
+                else
+                {
                     failure(error.toNSError())
                 }
-            } else {
+            }
+            else
+            {
                 let top         = mappingResult?.dictionary()["data.top"] as! [User]
                 let featured    = mappingResult?.dictionary()["data.featured"] as! [User]
                 success(top, featured)
@@ -78,17 +84,23 @@ class SocialConnector: Connector
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
-            if !error.status {
-                if error.code==CustomError.kLoginExpiredCode {
+            if !error.status
+            {
+                if error.code==CustomError.kLoginExpiredCode
+                {
                     self.relogin({ () -> () in
                         self.search(data, success, failure)
                     }, failure: { () -> () in
                         failure(error.toNSError())
                     })
-                } else {
+                }
+                else
+                {
                     failure(error.toNSError())
                 }
-            } else {
+            }
+            else
+            {
                 let users = mappingResult?.dictionary()["data.users"] as! [User]
                 success(users)
             }
@@ -144,17 +156,23 @@ class SocialConnector: Connector
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
-            if !error.status {
-                if error.code==CustomError.kLoginExpiredCode {
+            if !error.status
+            {
+                if error.code==CustomError.kLoginExpiredCode
+                {
                     self.relogin({ () -> () in
                         self.unfollow(userId, success, failure)
                     }, failure: { () -> () in
                         failure(error.toNSError())
                     })
-                } else {
+                }
+                else
+                {
                     failure(error.toNSError())
                 }
-            } else {
+            }
+            else
+            {
                 success()
             }
             }, failure: { (operation, error) -> Void in
@@ -173,17 +191,23 @@ class SocialConnector: Connector
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
-            if !error.status {
-                if error.code==CustomError.kLoginExpiredCode {
+            if !error.status
+            {
+                if error.code==CustomError.kLoginExpiredCode
+                {
                     self.relogin({ () -> () in
                         self.block(userId, success, failure)
                     }, failure: { () -> () in
                         failure(error.toNSError())
                     })
-                } else {
+                }
+                else
+                {
                     failure(error.toNSError())
                 }
-            } else {
+            }
+            else
+            {
                 success()
             }
             }, failure:{ (operation, error) -> Void in
@@ -198,21 +222,27 @@ class SocialConnector: Connector
         var params = self.sessionParams()
         params!["id"] = userId as AnyObject?
         
-        manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
+        manager.post(nil, path:path, parameters:params, success:{(operation, mappingResult)->Void in
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
-            if !error.status {
-                if error.code == CustomError.kLoginExpiredCode {
+            if !error.status
+            {
+                if error.code == CustomError.kLoginExpiredCode
+                {
                     self.relogin({ () -> () in
                         self.unblock(userId, success, failure)
                     }, failure: { () -> () in
                         failure(error.toNSError())
                     })
-                } else {
+                }
+                else
+                {
                     failure(error.toNSError())
                 }
-            } else {
+            }
+            else
+            {
                 success()
             }
             }, failure: { (operation, error) -> Void in

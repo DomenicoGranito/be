@@ -11,14 +11,13 @@ class CategoriesViewController: BaseViewController
     @IBOutlet var itemsTbl:UITableView?
     @IBOutlet var headerLbl:UILabel?
     @IBOutlet var topImageView:UIImageView?
-    @IBOutlet var shufflePlayButton:UIButton!
     @IBOutlet var headerView:GSKStretchyHeaderView!
     
     var allItemsArray=NSMutableArray()
-    var categoryName:String?
+    var categoryName:String!
     var page=0
     var isSubCategory=false
-    var categoryID:Int?
+    var categoryID:Int!
     var TBVC:TabBarViewController!
     let site=Config.shared.site()
     
@@ -26,13 +25,13 @@ class CategoriesViewController: BaseViewController
     {
         TBVC=tabBarController as! TabBarViewController
         
-        headerLbl?.text=categoryName?.uppercased()
+        headerLbl?.text=categoryName.uppercased()
         navigationController?.isNavigationBarHidden=true
         itemsTbl?.addInfiniteScrolling{()->() in
             self.fetchMore()
         }
         
-        StreamConnector().categoryStreams(isSubCategory, categoryID!, page, successStreams, failureStream)
+        StreamConnector().categoryStreams(isSubCategory, categoryID, page, successStreams, failureStream)
         
         if isSubCategory
         {
@@ -48,8 +47,8 @@ class CategoriesViewController: BaseViewController
     
     func scrollViewDidScroll(_ scrollView:UIScrollView)
     {
-        let range:CGFloat=116
-        let openAmount=headerView.frame.size.height-104
+        let range:CGFloat=136
+        let openAmount=headerView.frame.size.height-64
         let percentage=openAmount/range
         
         topImageView?.alpha=percentage
@@ -58,7 +57,7 @@ class CategoriesViewController: BaseViewController
     func fetchMore()
     {
         page+=1
-        StreamConnector().categoryStreams(isSubCategory, categoryID!, page, fetchMoreSuccess, failureStream)
+        StreamConnector().categoryStreams(isSubCategory, categoryID, page, fetchMoreSuccess, failureStream)
     }
     
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
@@ -108,7 +107,6 @@ class CategoriesViewController: BaseViewController
     
     func successStreams(data:NSDictionary)
     {
-        shufflePlayButton.isEnabled=true
         allItemsArray.addObjects(from:getData(data) as [AnyObject])
         itemsTbl?.reloadData()
     }
@@ -187,20 +185,5 @@ class CategoriesViewController: BaseViewController
     func failureStream(error:NSError)
     {
         handleError(error)
-    }
-    
-    @IBAction func shufflePlay()
-    {
-        let modalVC=storyBoard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController
-        
-        let random=Int(arc4random_uniform(UInt32(allItemsArray.count)))
-        let stream=allItemsArray[random] as! Stream
-        
-        modalVC.selectedItemIndex=random
-        modalVC.streamsArray=allItemsArray
-        modalVC.TBVC=TBVC
-        
-        TBVC.modalVC=modalVC
-        TBVC.configure(stream)
     }
 }
