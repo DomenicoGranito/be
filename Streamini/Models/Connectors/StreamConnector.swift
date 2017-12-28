@@ -43,12 +43,14 @@ class StreamConnector: Connector
             {
                 let cs = mappingResult?.dictionary()["data.cities"] as! [NSDictionary]
                 var cities: [String] = []
-                for c in cs {
+                for c in cs
+                {
                     cities.append(c["name"] as! String)
                 }
                 success(cities)
             }
-        }, failure:{(operation, error)->Void in
+        },
+                                 failure:{(operation, error)->Void in
             failure(error as! NSError)
         })
     }
@@ -68,21 +70,28 @@ class StreamConnector: Connector
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
-            if !error.status {
-                if error.code == CustomError.kLoginExpiredCode {
+            if !error.status
+            {
+                if error.code == CustomError.kLoginExpiredCode
+                {
                     self.relogin({ () -> () in
                         self.categories(success, failure)
                         }, failure: { () -> () in
                             failure(error.toNSError())
                     })
-                } else {
+                }
+                else
+                {
                     failure(error.toNSError())
                 }
-            } else {
+            }
+            else
+            {
                 let cats = mappingResult?.dictionary()["data.categories"] as! [Category]
                 success(cats)
             }
-        }, failure:{(operation, error) in
+        },
+                                 failure:{(operation, error) in
             failure(error as! NSError)
         })
     }
@@ -109,13 +118,15 @@ class StreamConnector: Connector
                 if error.code == CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.streams(getGlobal, success, failure)
-                    }, failure: { () -> () in
-                        failure(error.toNSError())
+                        }, failure: { () -> () in
+                            failure(error.toNSError())
                     })
                 } else {
                     failure(error.toNSError())
                 }
-            } else {
+            }
+            else
+            {
                 var live: [Stream] = []
                 if let l: AnyObject = mappingResult?.dictionary()["data.live"] as AnyObject? {
                     live = l as! [Stream]
@@ -125,11 +136,12 @@ class StreamConnector: Connector
                 if let r: AnyObject = mappingResult?.dictionary()["data.recent"] as AnyObject? {
                     recent = r as! [Stream]
                 }
-
+                
                 success(live, recent)
             }
-            }, failure:{(operation, error) in
-            failure(error as! NSError)
+            },
+                                 failure:{(operation, error) in
+                                    failure(error as! NSError)
         })
     }
     
@@ -148,8 +160,8 @@ class StreamConnector: Connector
                     self.relogin({()->() in
                         self.discover(success, failure)
                         },
-                        failure:{()->() in
-                            failure(error.toNSError())
+                                 failure:{()->() in
+                                    failure(error.toNSError())
                     })
                 }
                 else
@@ -163,8 +175,9 @@ class StreamConnector: Connector
                 
                 success(json)
             }
-            }, failure:{(operation, error) in
-            failure(error as! NSError)
+            },
+                                 failure:{(operation, error) in
+                                    failure(error as! NSError)
         })
     }
     
@@ -183,8 +196,8 @@ class StreamConnector: Connector
                     self.relogin({()->() in
                         self.homeStreams(success, failure)
                         },
-                        failure:{()->() in
-                            failure(error.toNSError())
+                                 failure:{()->() in
+                                    failure(error.toNSError())
                     })
                 }
                 else
@@ -199,11 +212,47 @@ class StreamConnector: Connector
                 success(json)
             }
             },
-            failure:{(operation, error) in
-            failure(error as! NSError)
+                                 failure:{(operation, error) in
+                                    failure(error as! NSError)
         })
     }
     
+    func channelStreams(_ channelID:Int, _ pageID:Int, _ success:@escaping (_ data:NSDictionary)->(), _ failure:@escaping (_ error:NSError)->())
+    {
+        let path="category/streamschannels?c=\(channelID)&p=\(pageID)"
+        
+        manager.getObjectsAtPath(path, parameters:sessionParams(), success:{ (operation, mappingResult)->Void in
+            
+            let error=self.findErrorObject(mappingResult:mappingResult!)!
+            
+            if !error.status
+            {
+                if error.code==CustomError.kLoginExpiredCode
+                {
+                    self.relogin({()->() in
+                        self.channelStreams(channelID, pageID, success, failure)
+                        },
+                                 failure:{()->() in
+                                    failure(error.toNSError())
+                    })
+                }
+                else
+                {
+                    failure(error.toNSError())
+                }
+            }
+            else
+            {
+                let json=try! JSONSerialization.jsonObject(with: (operation?.httpRequestOperation.responseData)!, options:.mutableLeaves) as! NSDictionary
+                
+                success(json)
+            }
+            },
+                                 failure:{(operation, error) in
+                                    failure(error as! NSError)
+        })
+    }
+
     func categoryStreams(_ isSubCategory:Bool, _ categoryID:Int, _ pageID:Int, _ success:@escaping (_ data:NSDictionary)->(), _ failure:@escaping (_ error:NSError)->())
     {
         var path=""
@@ -228,8 +277,8 @@ class StreamConnector: Connector
                     self.relogin({()->() in
                         self.categoryStreams(isSubCategory, categoryID, pageID, success, failure)
                         },
-                        failure:{()->() in
-                            failure(error.toNSError())
+                                 failure:{()->() in
+                                    failure(error.toNSError())
                     })
                 }
                 else
@@ -244,8 +293,8 @@ class StreamConnector: Connector
                 success(json)
             }
             },
-        failure:{(operation, error)->Void in
-            failure(error as! NSError)
+                                 failure:{(operation, error)->Void in
+                                    failure(error as! NSError)
         })
     }
     
@@ -283,8 +332,8 @@ class StreamConnector: Connector
                     self.relogin({()->() in
                         self.search(query, success, failure)
                         },
-                        failure:{()->() in
-                            failure(error.toNSError())
+                                 failure:{()->() in
+                                    failure(error.toNSError())
                     })
                 }
                 else
@@ -304,8 +353,8 @@ class StreamConnector: Connector
                 success(brands, agencies, venues, talents, profiles, streams)
             }
             },
-        failure:{(operation, error) in
-            failure(error as! NSError)
+                                 failure:{(operation, error) in
+                                    failure(error as! NSError)
         })
     }
     
@@ -332,8 +381,8 @@ class StreamConnector: Connector
                     self.relogin({()->() in
                         self.searchMoreStreams(query, success, failure)
                         },
-                        failure:{()->() in
-                            failure(error.toNSError())
+                                 failure:{()->() in
+                                    failure(error.toNSError())
                     })
                 }
                 else
@@ -347,8 +396,9 @@ class StreamConnector: Connector
                 
                 success(streams)
             }
-            }, failure:{(operation, error)->Void in
-                failure(error as! NSError)
+            },
+                                 failure:{(operation, error)->Void in
+                                    failure(error as! NSError)
         })
     }
 
@@ -375,8 +425,8 @@ class StreamConnector: Connector
                     self.relogin({()->() in
                         self.searchMoreOthers(query, identifier, success, failure)
                         },
-                        failure:{()->() in
-                            failure(error.toNSError())
+                                 failure:{()->() in
+                                    failure(error.toNSError())
                     })
                 }
                 else
@@ -391,8 +441,8 @@ class StreamConnector: Connector
                 success(users)
             }
             },
-        failure:{(operation, error)->Void in
-            failure(error as! NSError)
+                                 failure:{(operation, error)->Void in
+                                    failure(error as! NSError)
         })
     }
 
@@ -415,18 +465,19 @@ class StreamConnector: Connector
                 if error.code==CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.recent(userId, success, failure)
-                    }, failure: { () -> () in
-                        failure(error.toNSError())
+                        }, failure: { () -> () in
+                            failure(error.toNSError())
                     })
                 } else {
                     failure(error.toNSError())
                 }
             } else {
-                let streams = mappingResult?.dictionary()["data.recent"] as! [Stream]                
+                let streams = mappingResult?.dictionary()["data.recent"] as! [Stream]
                 success(streams)
             }
-            }, failure:{ (operation, error) -> Void in
-                failure(error as! NSError)
+            },
+                                 failure:{ (operation, error) -> Void in
+                                    failure(error as! NSError)
         })
     }
     
@@ -449,8 +500,8 @@ class StreamConnector: Connector
                 if error.code==CustomError.kLoginExpiredCode {
                     self.relogin({ () -> () in
                         self.my(success, failure)
-                    }, failure: { () -> () in
-                        failure(error.toNSError())
+                        }, failure: { () -> () in
+                            failure(error.toNSError())
                     })
                 } else {
                     failure(error.toNSError())
@@ -459,8 +510,9 @@ class StreamConnector: Connector
                 let streams = mappingResult?.dictionary()["data.streams"] as! [Stream]
                 success(streams)
             }
-            }, failure: { (operation, error) in
-                failure(error as! NSError)
+            },
+                                 failure: { (operation, error) in
+                                    failure(error as! NSError)
         })
     }
     
@@ -473,32 +525,39 @@ class StreamConnector: Connector
         
         let requestDescriptor = RKRequestDescriptor(mapping: requestMapping, objectClass: NSDictionary.self, rootKeyPath: nil, method:.POST)
         manager.addRequestDescriptor(requestDescriptor)
-
+        
         let statusCode = RKStatusCodeIndexSetForClass(.successful)
         let streamResponseDescriptor = RKResponseDescriptor(mapping: streamMapping, method:.POST, pathPattern: nil, keyPath: "data", statusCodes: statusCode)
         
         manager.addResponseDescriptor(streamResponseDescriptor)
         
         manager.post(data, path: path, parameters: self.sessionParams(), success: { (operation, mappingResult) -> Void in
-           
+            
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
-            if !error.status {
-                if error.code==CustomError.kLoginExpiredCode {
+            if !error.status
+            {
+                if error.code==CustomError.kLoginExpiredCode
+                {
                     self.relogin({ () -> () in
                         self.create(data, success, failure)
-                    }, failure: { () -> () in
-                        failure(error.toNSError())
+                        }, failure: { () -> () in
+                            failure(error.toNSError())
                     })
-                } else {
+                }
+                else
+                {
                     failure(error.toNSError())
                 }
-            } else {
+            }
+            else
+            {
                 let stream = mappingResult?.dictionary()["data"] as! Stream
                 success(stream)
             }
-            }, failure:{ (operation, error) -> Void in
-                failure(error as! NSError)
+            },
+                     failure:{ (operation, error) -> Void in
+                        failure(error as! NSError)
         })
     }
     
@@ -527,17 +586,23 @@ class StreamConnector: Connector
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
-            if !error.status {
-                if error.code==CustomError.kLoginExpiredCode {
+            if !error.status
+            {
+                if error.code==CustomError.kLoginExpiredCode
+                {
                     self.relogin({ () -> () in
                         self.createWithFile(filename, fileData, data, success, failure)
                     }, failure: { () -> () in
                         failure(error.toNSError())
                     })
-                } else {
+                }
+                else
+                {
                     failure(error.toNSError())
                 }
-            } else {
+            }
+            else
+            {
                 let stream = mappingResult?.dictionary()["data"] as! Stream
                 success(stream)
             }
@@ -560,20 +625,28 @@ class StreamConnector: Connector
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
-            if !error.status {
-                if error.code==CustomError.kLoginExpiredCode {
+            if !error.status
+            {
+                if error.code==CustomError.kLoginExpiredCode
+                {
                     self.relogin({ () -> () in
                         self.del(streamId, success, failure)
                         }, failure: { () -> () in
                             failure(error.toNSError())
                     })
-                } else {
+                }
+                else
+                {
                     failure(error.toNSError())
-                }            } else {
+                }
+            }
+            else
+            {
                 success()
             }
-            }, failure:{ (operation, error) -> Void in
-            failure(error as! NSError)
+            },
+                     failure:{ (operation, error) -> Void in
+                        failure(error as! NSError)
         })
     }
 
@@ -586,23 +659,31 @@ class StreamConnector: Connector
         params!["id"] = streamId as AnyObject?
         
         manager.post(nil, path: path, parameters: params, success: { (operation, mappingResult) -> Void in
-        
+            
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
-            if !error.status {
-                if error.code==CustomError.kLoginExpiredCode {
+            if !error.status
+            {
+                if error.code==CustomError.kLoginExpiredCode
+                {
                     self.relogin({ () -> () in
                         self.close(streamId, success, failure)
-                    }, failure: { () -> () in
-                        failure(error.toNSError())
+                        }, failure: { () -> () in
+                            failure(error.toNSError())
                     })
-                } else {
+                }
+                else
+                {
                     failure(error.toNSError())
-                }            } else {
+                }
+            }
+            else
+            {
                 success()
             }
-            }, failure: { (operation, error) -> Void in
-                failure(error as! NSError)
+            },
+                     failure: { (operation, error) -> Void in
+                        failure(error as! NSError)
         })
     }
     
@@ -617,20 +698,28 @@ class StreamConnector: Connector
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
-            if !error.status {
-                if error.code==CustomError.kLoginExpiredCode {
+            if !error.status
+            {
+                if error.code==CustomError.kLoginExpiredCode
+                {
                     self.relogin({ () -> () in
                         self.join(streamId, success, failure)
-                    }, failure: { () -> () in
-                        failure(error.toNSError())
+                        }, failure: { () -> () in
+                            failure(error.toNSError())
                     })
-                } else {
+                }
+                else
+                {
                     failure(error.toNSError())
-                }            } else {
+                }
+            }
+            else
+            {
                 success()
             }
-            }, failure:{ (operation, error) -> Void in
-            failure(error as! NSError)
+            },
+                     failure:{ (operation, error) -> Void in
+                        failure(error as! NSError)
         })
     }
     
@@ -646,20 +735,28 @@ class StreamConnector: Connector
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
-            if !error.status {
-                if error.code==CustomError.kLoginExpiredCode {
+            if !error.status
+            {
+                if error.code==CustomError.kLoginExpiredCode
+                {
                     self.relogin({ () -> () in
                         self.leave(streamId, likes, success, failure)
-                    }, failure: { () -> () in
-                        failure(error.toNSError())
+                        }, failure: { () -> () in
+                            failure(error.toNSError())
                     })
-                } else {
+                }
+                else
+                {
                     failure(error.toNSError())
-                }            } else {
+                }
+            }
+            else
+            {
                 success()
             }
-            }, failure: { (operation, error) -> Void in
-                failure(error as! NSError)
+            },
+                     failure: { (operation, error) -> Void in
+                        failure(error as! NSError)
         })
     }
     
@@ -684,24 +781,32 @@ class StreamConnector: Connector
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
-            if !error.status {
-                if error.code==CustomError.kLoginExpiredCode {
+            if !error.status
+            {
+                if error.code==CustomError.kLoginExpiredCode
+                {
                     self.relogin({ () -> () in
                         self.viewers(data, success, failure)
-                    }, failure: { () -> () in
-                        failure(error.toNSError())
+                        }, failure: { () -> () in
+                            failure(error.toNSError())
                     })
-                } else {
+                }
+                else
+                {
                     failure(error.toNSError())
-                }            } else {
+                }
+            }
+            else
+            {
                 let data = mappingResult?.dictionary()["data"] as! NSDictionary
                 let likes: UInt     = data["likes"] as! UInt
                 let viewers: UInt   = data["viewers"] as! UInt
                 let users:[User]    = data["users"] as! [User]
                 success(likes, viewers, users)
             }
-            }, failure:{ (operation, error) -> Void in
-            failure(error as! NSError)
+            },
+                                 failure:{ (operation, error) -> Void in
+                                    failure(error as! NSError)
         })
     }
     
@@ -726,24 +831,32 @@ class StreamConnector: Connector
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
-            if !error.status {
-                if error.code==CustomError.kLoginExpiredCode {
+            if !error.status
+            {
+                if error.code==CustomError.kLoginExpiredCode
+                {
                     self.relogin({ () -> () in
                         self.replayViewers(data, success, failure)
-                    }, failure: { () -> () in
-                        failure(error.toNSError())
+                        }, failure: { () -> () in
+                            failure(error.toNSError())
                     })
-                } else {
+                }
+                else
+                {
                     failure(error.toNSError())
-                }            } else {
+                }
+            }
+            else
+            {
                 let data = mappingResult?.dictionary()["data"] as! NSDictionary
                 let likes: UInt     = data["likes"] as! UInt
                 let viewers: UInt   = data["viewers"] as! UInt
                 let users:[User]    = data["users"] as! [User]
                 success(likes, viewers, users)
             }
-            }, failure: { (operation, error) -> Void in
-                failure(error as! NSError)
+            },
+                                 failure: { (operation, error) -> Void in
+                                    failure(error as! NSError)
         })
     }
     
@@ -761,23 +874,31 @@ class StreamConnector: Connector
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
-            if !error.status {
-                if error.code==CustomError.kLoginExpiredCode {
+            if !error.status
+            {
+                if error.code==CustomError.kLoginExpiredCode
+                {
                     self.relogin({ () -> () in
                         self.get(streamId, success, failure)
-                    }, failure: { () -> () in
-                        failure(error.toNSError())
+                        }, failure: { () -> () in
+                            failure(error.toNSError())
                     })
-                } else {
+                }
+                else
+                {
                     failure(error.toNSError())
-                }            } else {
+                }
+            }
+            else
+            {
                 let stream = mappingResult?.dictionary()["data"] as! Stream
                 success(stream)
             }
-            }, failure: { (operation, error) -> Void in
-                failure(error as! NSError)
+            },
+                                 failure: { (operation, error) -> Void in
+                                    failure(error as! NSError)
         })
-    }    
+    }
     
     func report(_ streamId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ()) {
         let path = "stream/report"
@@ -789,20 +910,28 @@ class StreamConnector: Connector
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
-            if !error.status {
-                if error.code==CustomError.kLoginExpiredCode {
+            if !error.status
+            {
+                if error.code==CustomError.kLoginExpiredCode
+                {
                     self.relogin({ () -> () in
                         self.report(streamId, success, failure)
-                    }, failure: { () -> () in
-                        failure(error.toNSError())
+                        }, failure: { () -> () in
+                            failure(error.toNSError())
                     })
-                } else {
+                }
+                else
+                {
                     failure(error.toNSError())
-                }            } else {
+                }
+            }
+            else
+            {
                 success()
             }
-            }) { (operation, error) -> Void in
-                failure(error as! NSError)
+            })
+        { (operation, error) -> Void in
+            failure(error as! NSError)
         }
     }
     
@@ -821,21 +950,28 @@ class StreamConnector: Connector
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
-            if !error.status {
-                if error.code==CustomError.kLoginExpiredCode {
+            if !error.status
+            {
+                if error.code==CustomError.kLoginExpiredCode
+                {
                     self.relogin({ () -> () in
                         self.share(streamId, usersId, success, failure)
-                    }, failure: { () -> () in
-                        failure(error.toNSError())
+                        }, failure: { () -> () in
+                            failure(error.toNSError())
                     })
-                } else {
+                }
+                else
+                {
                     failure(error.toNSError())
                 }
-            } else {
+            }
+            else
+            {
                 success()
             }
-            }, failure: { (operation, error) -> Void in
-            failure(error as! NSError)
+            },
+                     failure: { (operation, error) -> Void in
+                        failure(error as! NSError)
         })
     }
     
@@ -849,22 +985,28 @@ class StreamConnector: Connector
             
             let error=self.findErrorObject(mappingResult:mappingResult!)!
             
-            if !error.status {
-                if error.code==CustomError.kLoginExpiredCode {
+            if !error.status
+            {
+                if error.code==CustomError.kLoginExpiredCode
+                {
                     self.relogin({ () -> () in
                         self.ping(streamId, success, failure)
-                    }, failure: { () -> () in
-                        failure(error.toNSError())
+                        }, failure: { () -> () in
+                            failure(error.toNSError())
                     })
-                } else {
+                }
+                else
+                {
                     failure(error.toNSError())
                 }
-            } else {
+            }
+            else
+            {
                 success()
             }
             },
-            failure:{(operation, error)->Void in
-                failure(error as! NSError)
+                     failure:{(operation, error)->Void in
+                        failure(error as! NSError)
         })
     }
 }

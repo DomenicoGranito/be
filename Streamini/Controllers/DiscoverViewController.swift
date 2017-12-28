@@ -181,6 +181,7 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
             let channelObject=Category()
             channelObject.id=channel["id"] as! Int
             channelObject.name=channel["name"] as! String
+            channelObject.isChannel=true
             
             twoChannelsArray.add(channelObject)
             

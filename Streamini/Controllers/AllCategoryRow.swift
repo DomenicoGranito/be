@@ -44,11 +44,26 @@ class AllCategoryRow: UITableViewCell
         let category=sectionItemsArray[gestureRecognizer.view!.tag] as! Category
         
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewController(withIdentifier:"CategoriesViewController") as! CategoriesViewController
-        vc.categoryName=category.name
-        vc.categoryID=category.id
-        vc.isSubCategory=true
-        navigationControllerReference?.pushViewController(vc, animated:true)
+        
+        if category.isChannel
+        {
+            let vc=storyboard.instantiateViewController(withIdentifier:"ChannelsViewController") as! ChannelsViewController
+            
+            vc.channelName=category.name
+            vc.channelID=category.id
+            
+            navigationControllerReference?.pushViewController(vc, animated:true)
+        }
+        else
+        {
+            let vc=storyboard.instantiateViewController(withIdentifier:"CategoriesViewController") as! CategoriesViewController
+            
+            vc.categoryName=category.name
+            vc.categoryID=category.id
+            vc.isSubCategory=true
+            
+            navigationControllerReference?.pushViewController(vc, animated:true)
+        }
     }
     
     func collectionView(_ collectionView:UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAtIndexPath indexPath:IndexPath)->CGSize

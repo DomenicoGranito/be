@@ -6,30 +6,47 @@
 //  Copyright © 2017 Cedricm Video. All rights reserved.
 //
 
-class ChannelsViewController: UIViewController
+class ChannelsViewController: BaseViewController
 {
     @IBOutlet var itemsTbl:UITableView!
     
-    var allChannelsVideosArray=NSMutableArray()
+    var channelUsersVideosArray=NSMutableArray()
+    var channelName:String!
+    var channelID:Int!
+    var page=0
     
     override func viewDidLoad()
     {
+        navigationItem.title=channelName
         
+        itemsTbl.addInfiniteScrolling{()->() in
+            self.fetchMore()
+        }
+        
+        StreamConnector().channelStreams(channelID, page, successStreams, failureStream)
+    }
+    
+    func fetchMore()
+    {
+        page+=1
+        StreamConnector().channelStreams(channelID, page, fetchMoreSuccess, failureStream)
     }
     
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
-        return 10
+        return channelUsersVideosArray.count
     }
-    
-    func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
-    {
-        return 292
-    }
-    
+        
     func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:IndexPath)->UITableViewCell
     {
         let cell=tableView.dequeueReusableCell(withIdentifier:"ChannelCell") as! ChannelCell
+        
+        let userVideosArray=channelUsersVideosArray[indexPath.row] as! NSArray
+        let user=(userVideosArray[0] as! Stream).user
+        
+        cell.update(user)
+        cell.TBVC=tabBarController as! TabBarViewController
+        cell.userVideosArray=userVideosArray
         
         return cell
     }
@@ -43,15 +60,26 @@ class ChannelsViewController: UIViewController
     
     func successStreams(data:NSDictionary)
     {
-        let categories=data["data"] as! NSArray
+        parseData(data)
+    }
+    
+    func fetchMoreSuccess(data:NSDictionary)
+    {
+        itemsTbl?.infiniteScrollingView.stopAnimating()
+        parseData(data)
+    }
+    
+    func parseData(_ data:NSDictionary)
+    {
+        let users=data["data"] as! NSArray
         
-        for i in 0 ..< categories.count
+        for i in 0 ..< users.count
         {
-            let category=categories[i] as! NSDictionary
+            let user=users[i] as! NSDictionary
             
-            let videos=category["videos"] as! NSArray
+            let videos=user["videos"] as! NSArray
             
-            let channelVideosArray=NSMutableArray()
+            let userVideosArray=NSMutableArray()
             
             for j in 0 ..< videos.count
             {
@@ -79,7 +107,6 @@ class ChannelsViewController: UIViewController
                 let userAvatar=user["avatar"] as? String
                 
                 let oneUser=User()
-                
                 oneUser.id=UInt(userID)
                 oneUser.name=userName
                 oneUser.avatar=userAvatar
@@ -106,18 +133,17 @@ class ChannelsViewController: UIViewController
                 oneVideo.rlikes=UInt(rlikes)
                 oneVideo.user=oneUser
                 
-                channelVideosArray.add(oneVideo)
+                userVideosArray.add(oneVideo)
             }
             
-            allChannelsVideosArray.add(channelVideosArray)
+            channelUsersVideosArray.add(userVideosArray)
         }
         
-        itemsTbl!.reloadData()
-        itemsTbl!.isHidden=false
+        itemsTbl?.reloadData()
     }
     
     func failureStream(error:NSError)
     {
-        
+        handleError(error)
     }
 }

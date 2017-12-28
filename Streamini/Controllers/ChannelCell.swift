@@ -14,7 +14,7 @@ class ChannelCell: UITableViewCell
     @IBOutlet var collectionView:UICollectionView!
     
     var TBVC:TabBarViewController!
-    var channelVideosArray:NSArray!
+    var userVideosArray:NSArray!
     let site=Config.shared.site()
     let storyboard=UIStoryboard(name:"Main", bundle:nil)
     
@@ -31,14 +31,14 @@ class ChannelCell: UITableViewCell
 
     func collectionView(_ collectionView:UICollectionView, numberOfItemsInSection section:Int)->Int
     {
-        return channelVideosArray.count
+        return userVideosArray.count
     }
     
     func collectionView(_ collectionView:UICollectionView, cellForItemAtIndexPath indexPath:IndexPath)->UICollectionViewCell
     {
         let cell=collectionView.dequeueReusableCell(withReuseIdentifier:"videoCell", for:indexPath) as! VideoCell
         
-        let video=channelVideosArray[indexPath.row] as! Stream
+        let video=userVideosArray[indexPath.row] as! Stream
         
         cell.videoTitleLbl?.text=video.title
         cell.followersCountLbl?.text=video.user.name
@@ -55,7 +55,7 @@ class ChannelCell: UITableViewCell
     {
         let modalVC=storyboard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController
         
-        let stream=channelVideosArray[gestureRecognizer.view!.tag] as! Stream
+        let stream=userVideosArray[gestureRecognizer.view!.tag] as! Stream
         
         let streamsArray=NSMutableArray()
         streamsArray.add(stream)

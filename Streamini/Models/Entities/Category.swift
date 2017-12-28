@@ -11,4 +11,5 @@ class Category: NSObject
     var id: Int = 0
     var name = ""
     var subCategories:NSArray!
+    var isChannel = false
 }
