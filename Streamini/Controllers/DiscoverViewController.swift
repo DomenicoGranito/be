@@ -25,6 +25,8 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad()
     {
+        tableView.contentInset=UIEdgeInsetsMake(-35, 0, 0, 0)
+        
         NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:Notification.Name("status"), object:nil)
         
         updateUI()
