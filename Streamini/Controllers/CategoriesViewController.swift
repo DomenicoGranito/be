@@ -34,7 +34,14 @@ class CategoriesViewController: BaseViewController
         
         StreamConnector().categoryStreams(isSubCategory, categoryID!, page, successStreams, failureStream)
         
-        topImageView?.sd_setImage(with:URL(string:"\(site)/media/sub-categories/\(categoryID!).jpg"))
+        if isSubCategory
+        {
+            topImageView?.sd_setImage(with:URL(string:"\(site)/media/sub-categories/\(categoryID!).jpg"))
+        }
+        else
+        {
+            topImageView?.sd_setImage(with:URL(string:"\(site)/media/categories/\(categoryID!).jpg"))
+        }
         
         itemsTbl?.addSubview(headerView)
     }
