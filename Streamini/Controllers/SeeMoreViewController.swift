@@ -63,8 +63,8 @@ class SeeMoreViewController: BaseViewController
             let stream=streams[indexPath.row]
             cell.update(stream)
             
-            cell.dotsButton?.tag=indexPath.row
-            cell.dotsButton?.addTarget(self, action:#selector(dotsButtonTapped), for:.touchUpInside)
+            cell.dotsButton.tag=indexPath.row
+            cell.dotsButton.addTarget(self, action:#selector(dotsButtonTapped), for:.touchUpInside)
             
             cell.selectedBackgroundView=SelectedCellView().create()
             

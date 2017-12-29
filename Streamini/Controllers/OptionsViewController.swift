@@ -33,7 +33,7 @@ class OptionsViewController: UIViewController
     {
         let cell=tableView.dequeueReusableCell(withIdentifier:"MenuCell") as! MenuCell
         
-        cell.menuItemTitleLbl?.text=menuItemTitlesArray[indexPath.row] as? String
+        cell.menuItemTitleLbl.text=menuItemTitlesArray[indexPath.row] as? String
         
         return cell
     }

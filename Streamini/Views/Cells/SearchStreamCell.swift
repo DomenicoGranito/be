@@ -11,7 +11,7 @@ class SearchStreamCell: StreamCell
     @IBOutlet var streamImageView:UIImageView!
     @IBOutlet var userLabel:UILabel!
     @IBOutlet var streamNameLabel:UILabel!
-    @IBOutlet var dotsButton:UIButton?
+    @IBOutlet var dotsButton:UIButton!
     
     var userSelectingHandler:UserSelectingHandler?
     let site=Config.shared.site()

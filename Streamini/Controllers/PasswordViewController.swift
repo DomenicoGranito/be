@@ -72,33 +72,33 @@ class PasswordViewController: BaseViewController
     {
         if(textField==currentPassword)
         {
-            view1?.backgroundColor=UIColor(red:34/255, green:35/255, blue:39/255, alpha:1)
-            view2?.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
-            view3?.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
+            view1.backgroundColor=UIColor(red:34/255, green:35/255, blue:39/255, alpha:1)
+            view2.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
+            view3.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
             
-            imageView1?.tintColor=UIColor.white
-            imageView2?.tintColor=UIColor.darkGray
-            imageView3?.tintColor=UIColor.darkGray
+            imageView1.tintColor=UIColor.white
+            imageView2.tintColor=UIColor.darkGray
+            imageView3.tintColor=UIColor.darkGray
         }
         else if(textField==newPassword)
         {
-            view2?.backgroundColor=UIColor(red:34/255, green:35/255, blue:39/255, alpha:1)
-            view1?.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
-            view3?.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
+            view2.backgroundColor=UIColor(red:34/255, green:35/255, blue:39/255, alpha:1)
+            view1.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
+            view3.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
             
-            imageView1?.tintColor=UIColor.darkGray
-            imageView2?.tintColor=UIColor.white
-            imageView3?.tintColor=UIColor.darkGray
+            imageView1.tintColor=UIColor.darkGray
+            imageView2.tintColor=UIColor.white
+            imageView3.tintColor=UIColor.darkGray
         }
         else
         {
-            view3?.backgroundColor=UIColor(red:34/255, green:35/255, blue:39/255, alpha:1)
-            view1?.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
-            view2?.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
+            view3.backgroundColor=UIColor(red:34/255, green:35/255, blue:39/255, alpha:1)
+            view1.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
+            view2.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
             
-            imageView1?.tintColor=UIColor.darkGray
-            imageView2?.tintColor=UIColor.darkGray
-            imageView3?.tintColor=UIColor.white
+            imageView1.tintColor=UIColor.darkGray
+            imageView2.tintColor=UIColor.darkGray
+            imageView3.tintColor=UIColor.white
         }
         
         return true

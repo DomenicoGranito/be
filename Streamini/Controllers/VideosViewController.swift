@@ -73,15 +73,15 @@ class VideosViewController: BaseViewController
     {
         let user=User()
         
-        user.name=favouriteStreams![row].value(forKey:"streamUserName") as! String
-        user.id=favouriteStreams![row].value(forKey:"streamUserID") as! UInt
+        user.name=favouriteStreams[row].value(forKey:"streamUserName") as! String
+        user.id=favouriteStreams[row].value(forKey:"streamUserID") as! UInt
         
         let stream=Stream()
         
-        stream.id=favouriteStreams![row].value(forKey:"streamID") as! UInt
-        stream.title=favouriteStreams![row].value(forKey:"streamTitle") as! String
-        stream.streamHash=favouriteStreams![row].value(forKey:"streamHash") as! String
-        stream.videoID=favouriteStreams![row].value(forKey:"streamKey") as! String
+        stream.id=favouriteStreams[row].value(forKey:"streamID") as! UInt
+        stream.title=favouriteStreams[row].value(forKey:"streamTitle") as! String
+        stream.streamHash=favouriteStreams[row].value(forKey:"streamHash") as! String
+        stream.videoID=favouriteStreams[row].value(forKey:"streamKey") as! String
         stream.user=user
         
         return stream

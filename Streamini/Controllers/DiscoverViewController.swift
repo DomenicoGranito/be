@@ -25,6 +25,8 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad()
     {
+        selectionView.frame=CGRect(x:10, y:45, width:(self.view.frame.size.width-40)/2, height:5)
+        
         tableView.contentInset=UIEdgeInsetsMake(-35, 0, 0, 0)
         
         NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:Notification.Name("status"), object:nil)
@@ -90,13 +92,13 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
         else
         {
             let headerView=UIView(frame:CGRect(x:0, y:0, width:tableView.frame.size.width, height:40))
-            headerView.backgroundColor=UIColor(colorLiteralRed:34/255, green:34/255, blue:34/255, alpha:1)
+            headerView.backgroundColor=UIColor(red:34/255, green:34/255, blue:34/255, alpha:1)
             
             let titleLbl=UILabel(frame:CGRect(x:0, y:0, width:tableView.frame.size.width, height:40))
             titleLbl.text=(categoriesArray[section] as! Category).name
             titleLbl.textAlignment = .center
-            titleLbl.font=UIFont.systemFont(ofSize:16)
-            titleLbl.textColor=UIColor(colorLiteralRed:190/255, green:142/255, blue:64/255, alpha:1)
+            titleLbl.font=UIFont.systemFont(ofSize:15)
+            titleLbl.textColor=UIColor(red:190/255, green:142/255, blue:64/255, alpha:1)
             
             headerView.addSubview(titleLbl)
             
