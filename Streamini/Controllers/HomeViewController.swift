@@ -175,11 +175,6 @@ class HomeViewController: BaseViewController
         //timer!.invalidate()
     }
     
-    func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
-    {
-        return 222
-    }
-    
     func tableView(_ tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
     {
         return 200
@@ -187,7 +182,7 @@ class HomeViewController: BaseViewController
     
     func tableView(_ tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
     {
-        let headerView=UIView(frame:CGRect(x:0, y:0, width:tableView.frame.size.width, height:60))
+        let headerView=UIView(frame:CGRect(x:0, y:0, width:tableView.frame.size.width, height:200))
         headerView.backgroundColor=UIColor(red:18/255, green:19/255, blue:21/255, alpha:1)
         
         let titleLbl=UILabel(frame:CGRect(x:10, y:10, width:view.frame.size.width-20, height:180))
