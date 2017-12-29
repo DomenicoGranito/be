@@ -8,21 +8,21 @@
 
 class RecentlyPlayedCell:UITableViewCell
 {
-    @IBOutlet var videoTitleLbl:UILabel?
-    @IBOutlet var artistNameLbl:UILabel?
-    @IBOutlet var videoThumbnailImageView:UIImageView?
-    @IBOutlet var userImageView:UIImageView?
+    @IBOutlet var videoTitleLbl:UILabel!
+    @IBOutlet var artistNameLbl:UILabel!
+    @IBOutlet var videoThumbnailImageView:UIImageView!
+    @IBOutlet var userImageView:UIImageView!
 }
 
 class EditCell:UITableViewCell
 {
-    @IBOutlet var editButton:UIButton?
+    @IBOutlet var editButton:UIButton!
 }
 
 class MyLibViewController: BaseViewController
 {
     @IBOutlet var messageLbl:UILabel!
-    @IBOutlet var itemsTbl:UITableView?
+    @IBOutlet var itemsTbl:UITableView!
     
     let menuItemTitlesArray=["Live Streams", "Videos", "Channels"]
     let menuItemIconsArray=["rec-off", "youtube", "videochannel"]
@@ -41,7 +41,7 @@ class MyLibViewController: BaseViewController
         
         messageLbl.isHidden=recentlyPlayed.count==0 ? false : true
         
-        itemsTbl?.reloadData()
+        itemsTbl.reloadData()
     }
     
     @IBAction func myaccount()
@@ -78,8 +78,8 @@ class MyLibViewController: BaseViewController
         {
             let cell=tableView.dequeueReusableCell(withIdentifier:"MenuCell") as! MenuCell
             
-            cell.menuItemTitleLbl?.text=menuItemTitlesArray[indexPath.row]
-            cell.menuItemIconImageView?.image=UIImage(named:menuItemIconsArray[indexPath.row])
+            cell.menuItemTitleLbl.text=menuItemTitlesArray[indexPath.row]
+            cell.menuItemIconImageView.image=UIImage(named:menuItemIconsArray[indexPath.row])
             
             cell.selectedBackgroundView=SelectedCellView().create()
             
@@ -89,7 +89,7 @@ class MyLibViewController: BaseViewController
         {
             let cell=tableView.dequeueReusableCell(withIdentifier:"EditCell") as! EditCell
             
-            cell.editButton?.isHidden=recentlyPlayed.count==0 ? true : false
+            cell.editButton.isHidden=recentlyPlayed.count==0 ? true : false
             
             return cell
         }
@@ -97,9 +97,9 @@ class MyLibViewController: BaseViewController
         {
             let cell=tableView.dequeueReusableCell(withIdentifier:"RecentlyPlayedCell") as! RecentlyPlayedCell
             
-            cell.videoTitleLbl?.text=recentlyPlayed[indexPath.row-4].value(forKey:"streamTitle") as? String
-            cell.artistNameLbl?.text=recentlyPlayed[indexPath.row-4].value(forKey:"streamUserName") as? String
-            cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"\(site)/thumb/\(recentlyPlayed[indexPath.row-4].value(forKey:"streamID") as! Int).jpg"), placeholderImage:UIImage(named:"stream"))
+            cell.videoTitleLbl.text=recentlyPlayed[indexPath.row-4].value(forKey:"streamTitle") as? String
+            cell.artistNameLbl.text=recentlyPlayed[indexPath.row-4].value(forKey:"streamUserName") as? String
+            cell.videoThumbnailImageView.sd_setImage(with:URL(string:"\(site)/thumb/\(recentlyPlayed[indexPath.row-4].value(forKey:"streamID") as! Int).jpg"), placeholderImage:UIImage(named:"stream"))
             
             cell.selectedBackgroundView=SelectedCellView().create()
             
@@ -126,8 +126,8 @@ class MyLibViewController: BaseViewController
                 let editCellIndexPath=IndexPath(row:3, section:0)
                 let editCell=tableView.cellForRow(at:editCellIndexPath) as! EditCell
                 tableView.isEditing=false
-                editCell.editButton?.setTitle("Edit", for:.normal)
-                editCell.editButton?.isHidden=true
+                editCell.editButton.setTitle("Edit", for:.normal)
+                editCell.editButton.isHidden=true
                 self.messageLbl.isHidden=false
             }
         }
@@ -178,12 +178,12 @@ class MyLibViewController: BaseViewController
         if itemsTbl!.isEditing
         {
             sender.setTitle("Edit", for:.normal)
-            itemsTbl?.setEditing(false, animated:true)
+            itemsTbl.setEditing(false, animated:true)
         }
         else
         {
             sender.setTitle("Done", for:.normal)
-            itemsTbl?.setEditing(true, animated:true)
+            itemsTbl.setEditing(true, animated:true)
         }
     }
     

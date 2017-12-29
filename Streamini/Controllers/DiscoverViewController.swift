@@ -8,8 +8,8 @@
 
 class MenuCell: UITableViewCell
 {
-    @IBOutlet var menuItemTitleLbl:UILabel?
-    @IBOutlet var menuItemIconImageView:UIImageView?
+    @IBOutlet var menuItemTitleLbl:UILabel!
+    @IBOutlet var menuItemIconImageView:UIImageView!
 }
 
 class DiscoverViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
@@ -96,7 +96,7 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
             titleLbl.text=(categoriesArray[section] as! Category).name
             titleLbl.textAlignment = .center
             titleLbl.font=UIFont.systemFont(ofSize:16)
-            titleLbl.textColor=UIColor(colorLiteralRed:205/255, green:158/255, blue:93/255, alpha:1)
+            titleLbl.textColor=UIColor(colorLiteralRed:190/255, green:142/255, blue:64/255, alpha:1)
             
             headerView.addSubview(titleLbl)
             

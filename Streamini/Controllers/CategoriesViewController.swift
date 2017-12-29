@@ -8,9 +8,9 @@
 
 class CategoriesViewController: BaseViewController
 {
-    @IBOutlet var itemsTbl:UITableView?
-    @IBOutlet var headerLbl:UILabel?
-    @IBOutlet var topImageView:UIImageView?
+    @IBOutlet var itemsTbl:UITableView!
+    @IBOutlet var headerLbl:UILabel!
+    @IBOutlet var topImageView:UIImageView!
     @IBOutlet var headerView:GSKStretchyHeaderView!
     
     var allItemsArray=NSMutableArray()
@@ -25,9 +25,9 @@ class CategoriesViewController: BaseViewController
     {
         TBVC=tabBarController as! TabBarViewController
         
-        headerLbl?.text=categoryName.uppercased()
+        headerLbl.text=categoryName.uppercased()
         navigationController?.isNavigationBarHidden=true
-        itemsTbl?.addInfiniteScrolling{()->() in
+        itemsTbl.addInfiniteScrolling{()->() in
             self.fetchMore()
         }
         
@@ -35,14 +35,14 @@ class CategoriesViewController: BaseViewController
         
         if isSubCategory
         {
-            topImageView?.sd_setImage(with:URL(string:"\(site)/media/sub-categories/\(categoryID!).jpg"))
+            topImageView.sd_setImage(with:URL(string:"\(site)/media/sub-categories/\(categoryID!).jpg"))
         }
         else
         {
-            topImageView?.sd_setImage(with:URL(string:"\(site)/media/categories/\(categoryID!).jpg"))
+            topImageView.sd_setImage(with:URL(string:"\(site)/media/categories/\(categoryID!).jpg"))
         }
         
-        itemsTbl?.addSubview(headerView)
+        itemsTbl.addSubview(headerView)
     }
     
     func scrollViewDidScroll(_ scrollView:UIScrollView)
@@ -51,7 +51,7 @@ class CategoriesViewController: BaseViewController
         let openAmount=headerView.frame.size.height-64
         let percentage=openAmount/range
         
-        topImageView?.alpha=percentage
+        topImageView.alpha=percentage
     }
     
     func fetchMore()
@@ -71,10 +71,10 @@ class CategoriesViewController: BaseViewController
         
         let video=allItemsArray[indexPath.row] as! Stream
         
-        cell.videoTitleLbl?.text=video.title
-        cell.artistNameLbl?.text=video.user.name
-        cell.userImageView?.sd_setImage(with:URL(string:"\(site)/uploads/\(video.user.id)-avatar.jpg"), placeholderImage:UIImage(named:"profile"))
-        cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"\(site)/thumb/\(video.id).jpg"), placeholderImage:UIImage(named:"videostream"))
+        cell.videoTitleLbl.text=video.title
+        cell.artistNameLbl.text=video.user.name
+        cell.userImageView.sd_setImage(with:URL(string:"\(site)/uploads/\(video.user.id)-avatar.jpg"), placeholderImage:UIImage(named:"profile"))
+        cell.videoThumbnailImageView.sd_setImage(with:URL(string:"\(site)/thumb/\(video.id).jpg"), placeholderImage:UIImage(named:"videostream"))
         
         let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
         cell.tag=indexPath.row
@@ -108,14 +108,14 @@ class CategoriesViewController: BaseViewController
     func successStreams(data:NSDictionary)
     {
         allItemsArray.addObjects(from:getData(data) as [AnyObject])
-        itemsTbl?.reloadData()
+        itemsTbl.reloadData()
     }
     
     func fetchMoreSuccess(data:NSDictionary)
     {
-        itemsTbl?.infiniteScrollingView.stopAnimating()
+        itemsTbl.infiniteScrollingView.stopAnimating()
         allItemsArray.addObjects(from:getData(data) as [AnyObject])
-        itemsTbl?.reloadData()
+        itemsTbl.reloadData()
     }
     
     func getData(_ data:NSDictionary)->NSMutableArray

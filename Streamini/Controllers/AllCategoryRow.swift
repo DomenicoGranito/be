@@ -8,14 +8,15 @@
 
 class AllCategoryRow: UITableViewCell
 {
-    @IBOutlet var collectionView:UICollectionView?
+    @IBOutlet var collectionView:UICollectionView!
+    
     var sectionItemsArray:NSArray!
-    var navigationControllerReference:UINavigationController?
+    var navigationControllerReference:UINavigationController!
     let site=Config.shared.site()
     
     func reloadCollectionView()
     {
-        collectionView!.reloadData()
+        collectionView.reloadData()
     }
     
     func collectionView(_ collectionView:UICollectionView, numberOfItemsInSection section:Int)->Int
@@ -29,15 +30,15 @@ class AllCategoryRow: UITableViewCell
         
         let category=sectionItemsArray[indexPath.row] as! Category
         
-        cell.videoTitleLbl?.text=category.name
+        cell.videoTitleLbl.text=category.name
         
         if category.isChannel
         {
-            cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"\(site)/media/channels/\(category.id).jpg"))
+            cell.videoThumbnailImageView.sd_setImage(with:URL(string:"\(site)/media/channels/\(category.id).jpg"))
         }
         else
         {
-            cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"\(site)/media/sub-categories/\(category.id).jpg"))
+            cell.videoThumbnailImageView.sd_setImage(with:URL(string:"\(site)/media/sub-categories/\(category.id).jpg"))
         }
         
         let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
@@ -60,7 +61,7 @@ class AllCategoryRow: UITableViewCell
             vc.channelName=category.name
             vc.channelID=category.id
             
-            navigationControllerReference?.pushViewController(vc, animated:true)
+            navigationControllerReference.pushViewController(vc, animated:true)
         }
         else
         {
@@ -70,7 +71,7 @@ class AllCategoryRow: UITableViewCell
             vc.categoryID=category.id
             vc.isSubCategory=true
             
-            navigationControllerReference?.pushViewController(vc, animated:true)
+            navigationControllerReference.pushViewController(vc, animated:true)
         }
     }
     

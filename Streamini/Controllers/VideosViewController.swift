@@ -10,7 +10,7 @@ class VideosViewController: BaseViewController
 {
     var vType:Int!
     var TBVC:TabBarViewController!
-    var favouriteStreams:[NSManagedObject]?
+    var favouriteStreams:[NSManagedObject]!
     let site=Config.shared.site()
         
     override func viewDidLoad()
@@ -27,19 +27,19 @@ class VideosViewController: BaseViewController
     
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
-        return favouriteStreams!.count
+        return favouriteStreams.count
     }
     
     func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:IndexPath)->UITableViewCell
     {
         let cell=tableView.dequeueReusableCell(withIdentifier:"RecentStreamCell") as! RecentStreamCell
         
-        cell.streamNameLabel?.text=favouriteStreams![indexPath.row].value(forKey: "streamTitle") as? String
-        cell.userLabel?.text=favouriteStreams![indexPath.row].value(forKey: "streamUserName") as? String
-        cell.playImageView?.sd_setImage(with:URL(string:"\(site)/thumb/\(favouriteStreams![indexPath.row].value(forKey:"streamID") as! Int).jpg"), placeholderImage:UIImage(named:"stream"))
+        cell.streamNameLabel.text=favouriteStreams![indexPath.row].value(forKey: "streamTitle") as? String
+        cell.userLabel.text=favouriteStreams![indexPath.row].value(forKey: "streamUserName") as? String
+        cell.playImageView.sd_setImage(with:URL(string:"\(site)/thumb/\(favouriteStreams![indexPath.row].value(forKey:"streamID") as! Int).jpg"), placeholderImage:UIImage(named:"stream"))
         
-        cell.dotsButton?.tag=indexPath.row
-        cell.dotsButton?.addTarget(self, action:#selector(dotsButtonTapped), for:.touchUpInside)
+        cell.dotsButton.tag=indexPath.row
+        cell.dotsButton.addTarget(self, action:#selector(dotsButtonTapped), for:.touchUpInside)
         
         cell.selectedBackgroundView=SelectedCellView().create()
         

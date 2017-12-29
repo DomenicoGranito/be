@@ -8,10 +8,10 @@
 
 class RecentStreamCell: StreamCell
 {
-    @IBOutlet var streamNameLabel: UILabel!
-    @IBOutlet var userLabel: UILabel!
-    @IBOutlet var playImageView: UIImageView!
-    @IBOutlet var dotsButton:UIButton?
+    @IBOutlet var streamNameLabel:UILabel!
+    @IBOutlet var userLabel:UILabel!
+    @IBOutlet var playImageView:UIImageView!
+    @IBOutlet var dotsButton:UIButton!
     
     override func update(_ stream:Stream)
     {

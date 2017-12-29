@@ -8,13 +8,11 @@
 
 class HomeViewController: BaseViewController
 {
-    @IBOutlet var itemsTbl:UITableView?
+    @IBOutlet var itemsTbl:UITableView!
     @IBOutlet var errorView:ErrorView!
     @IBOutlet var activityView:ActivityIndicatorView!
     @IBOutlet var headerView:GSKStretchyHeaderView!
     @IBOutlet var scrollView:UIScrollView!
-    @IBOutlet var videoTitleLbl:UILabel!
-    @IBOutlet var artistNameLbl:UILabel!
     @IBOutlet var pageControl:UIPageControl!
     
     var categoryNamesArray=NSMutableArray()
@@ -31,7 +29,7 @@ class HomeViewController: BaseViewController
         NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:Notification.Name("refreshAfterBlock"), object:nil)
         NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:Notification.Name("status"), object:nil)
         
-        itemsTbl?.addSubview(headerView)
+        itemsTbl.addSubview(headerView)
         
         setUPHeader()
         
@@ -140,7 +138,7 @@ class HomeViewController: BaseViewController
         }
         else
         {
-            itemsTbl!.isHidden=true
+            itemsTbl.isHidden=true
             activityView.isHidden=true
             errorView.update("No Internet Connection", "user")
         }
@@ -158,7 +156,7 @@ class HomeViewController: BaseViewController
         }
         else
         {
-            itemsTbl!.isHidden=true
+            itemsTbl.isHidden=true
             errorView.update("No Internet Connection", "user")
         }
     }
@@ -334,8 +332,8 @@ class HomeViewController: BaseViewController
             allCategoryItemsArray.add(oneCategoryItemsArray)
         }
         
-        itemsTbl!.reloadData()
-        itemsTbl!.isHidden=false
+        itemsTbl.reloadData()
+        itemsTbl.isHidden=false
     }
     
     func failureStream(error:NSError)

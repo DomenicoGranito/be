@@ -20,6 +20,8 @@ class ChannelCell: UITableViewCell
     
     func update(_ user:User)
     {
+        subscribeButton.layer.borderColor=UIColor(red:190/255, green:142/255, blue:64/255, alpha:1).cgColor
+        
         userNameLbl.text=user.name
         userImageView.sd_setImage(with:user.avatarURL(), placeholderImage:UIImage(named:"profile"))
     }
