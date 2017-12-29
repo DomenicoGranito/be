@@ -38,25 +38,25 @@ class HomeViewController: BaseViewController
     
     func setUPHeader()
     {
-        scrollView.frame=CGRect(x:0, y:0, width:pageWidth, height:220)
+        scrollView.frame=CGRect(x:0, y:0, width:pageWidth, height:300)
         
-        let imgOne=UIImageView(frame:CGRect(x:pageWidth, y:0, width:pageWidth, height:220))
+        let imgOne=UIImageView(frame:CGRect(x:pageWidth, y:0, width:pageWidth, height:300))
         imgOne.autoresizingMask=[.flexibleHeight]
         imgOne.sd_setImage(with:URL(string:"\(site)/media/featured/1.jpg"))
         
-        let imgTwo=UIImageView(frame:CGRect(x:2*pageWidth, y:0, width:pageWidth, height:220))
+        let imgTwo=UIImageView(frame:CGRect(x:2*pageWidth, y:0, width:pageWidth, height:300))
         imgTwo.autoresizingMask=[.flexibleHeight]
         imgTwo.sd_setImage(with:URL(string:"\(site)/media/featured/2.jpg"))
         
-        let imgThree=UIImageView(frame:CGRect(x:0, y:0, width:pageWidth, height:220))
+        let imgThree=UIImageView(frame:CGRect(x:0, y:0, width:pageWidth, height:300))
         imgThree.autoresizingMask=[.flexibleHeight]
         imgThree.sd_setImage(with:URL(string:"\(site)/media/featured/3.jpg"))
         
-        let imgFour=UIImageView(frame:CGRect(x:3*pageWidth, y:0, width:pageWidth, height:220))
+        let imgFour=UIImageView(frame:CGRect(x:3*pageWidth, y:0, width:pageWidth, height:300))
         imgFour.autoresizingMask=[.flexibleHeight]
         imgFour.sd_setImage(with:URL(string:"\(site)/media/featured/3.jpg"))
         
-        let imgFive=UIImageView(frame:CGRect(x:4*pageWidth, y:0, width:pageWidth, height:220))
+        let imgFive=UIImageView(frame:CGRect(x:4*pageWidth, y:0, width:pageWidth, height:300))
         imgFive.autoresizingMask=[.flexibleHeight]
         imgFive.sd_setImage(with:URL(string:"\(site)/media/featured/1.jpg"))
         
@@ -66,8 +66,8 @@ class HomeViewController: BaseViewController
         scrollView.addSubview(imgFour)
         scrollView.addSubview(imgFive)
         
-        scrollView.contentSize=CGSize(width:pageWidth*5, height:220)
-        scrollView.scrollRectToVisible(CGRect(x:pageWidth, y:0, width:pageWidth, height:220), animated:false)
+        scrollView.contentSize=CGSize(width:pageWidth*5, height:300)
+        scrollView.scrollRectToVisible(CGRect(x:pageWidth, y:0, width:pageWidth, height:300), animated:false)
         pageControl.currentPage=0
     }
     
@@ -75,11 +75,11 @@ class HomeViewController: BaseViewController
     {
         if scrollView.contentOffset.x==0
         {
-            scrollView.scrollRectToVisible(CGRect(x:3*pageWidth, y:0, width:pageWidth, height:220), animated:false)
+            scrollView.scrollRectToVisible(CGRect(x:3*pageWidth, y:0, width:pageWidth, height:300), animated:false)
         }
         else if scrollView.contentOffset.x==1280
         {
-            scrollView.scrollRectToVisible(CGRect(x:pageWidth, y:0, width:pageWidth, height:220), animated:false)
+            scrollView.scrollRectToVisible(CGRect(x:pageWidth, y:0, width:pageWidth, height:300), animated:false)
         }
         
         let currentPage=floor((scrollView.contentOffset.x-pageWidth/2)/pageWidth)
@@ -91,7 +91,7 @@ class HomeViewController: BaseViewController
     {
         if scrollView==itemsTbl
         {
-            headerView?.alpha = -scrollView.contentOffset.y/220
+            headerView?.alpha = -scrollView.contentOffset.y/300
             
             if scrollView.contentOffset.y >= -64
             {
@@ -110,14 +110,14 @@ class HomeViewController: BaseViewController
         
         if scrollView.contentOffset.x>640
         {
-            scrollView.scrollRectToVisible(CGRect(x:pageWidth, y:0, width:pageWidth, height:220), animated:false)
+            scrollView.scrollRectToVisible(CGRect(x:pageWidth, y:0, width:pageWidth, height:300), animated:false)
             
             pageControl.currentPage=0
             
             return
         }
         
-        scrollView.scrollRectToVisible(CGRect(x:slideToX, y:0, width:pageWidth, height:220), animated:true)
+        scrollView.scrollRectToVisible(CGRect(x:slideToX, y:0, width:pageWidth, height:300), animated:true)
         
         let currentPage=scrollView.contentOffset.x/pageWidth
         

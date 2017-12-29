@@ -94,9 +94,4 @@ class CategoryRow: UITableViewCell
         TBVC.modalVC=modalVC
         TBVC.configure(stream)
     }
-    
-    func collectionView(_ collectionView:UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAtIndexPath indexPath:IndexPath)->CGSize
-    {
-        return CGSize(width:220, height:222)
-    }
 }
