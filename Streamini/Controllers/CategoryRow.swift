@@ -8,26 +8,38 @@
 
 class CategoryRow: UITableViewCell
 {
-    @IBOutlet var collectionView:UICollectionView?
+    @IBOutlet var collectionView:UICollectionView!
     
     var oneCategoryItemsArray:NSArray!
     var TBVC:TabBarViewController!
     let site=Config.shared.site()
-    var sectionTitle:String?
+    var categoryName:String!
+    var categoryID:Int!
     let storyboard=UIStoryboard(name:"Main", bundle:nil)
+    var navigationControllerReference:UINavigationController!
     
     func reloadCollectionView()
     {
-        collectionView!.reloadData()
+        collectionView.reloadData()
     }
     
     func collectionView(_ collectionView:UICollectionView, numberOfItemsInSection section:Int)->Int
     {
-        return oneCategoryItemsArray.count
+        return oneCategoryItemsArray.count+1
     }
     
     func collectionView(_ collectionView:UICollectionView, cellForItemAtIndexPath indexPath:IndexPath)->UICollectionViewCell
     {
+        if indexPath.row==oneCategoryItemsArray.count
+        {
+            let cell=collectionView.dequeueReusableCell(withReuseIdentifier:"seeMoreVideosCell", for:indexPath)
+            
+            let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(seeMoreVideosTapped))
+            cell.addGestureRecognizer(cellRecognizer)
+            
+            return cell
+        }
+        
         let cell=collectionView.dequeueReusableCell(withReuseIdentifier:"videoCell", for:indexPath) as! VideoCell
         
         let stream=oneCategoryItemsArray[indexPath.row] as! Stream
@@ -36,7 +48,7 @@ class CategoryRow: UITableViewCell
         cell.followersCountLbl?.text=stream.user.name
         cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"\(site)/thumb/\(stream.id).jpg"), placeholderImage:UIImage(named:"videostream"))
         
-        if sectionTitle=="live"
+        if categoryName=="live"
         {
             let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(liveCellTapped))
             cell.tag=indexPath.row
@@ -50,6 +62,14 @@ class CategoryRow: UITableViewCell
         }
         
         return cell
+    }
+    
+    func seeMoreVideosTapped()
+    {
+        let vc=storyboard.instantiateViewController(withIdentifier:"CategoriesViewController") as! CategoriesViewController
+        vc.categoryName=categoryName
+        vc.categoryID=categoryID
+        navigationControllerReference.pushViewController(vc, animated:true)
     }
     
     func liveCellTapped(gestureRecognizer:UITapGestureRecognizer)

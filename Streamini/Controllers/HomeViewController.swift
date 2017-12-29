@@ -240,7 +240,9 @@ class HomeViewController: BaseViewController
         {
             cell.TBVC=tabBarController as! TabBarViewController
             cell.oneCategoryItemsArray=allCategoryItemsArray[indexPath.section] as! NSArray
-            cell.sectionTitle=categoryNamesArray[indexPath.section] as? String
+            cell.categoryName=categoryNamesArray[indexPath.section] as! String
+            cell.categoryID=categoryIDsArray[indexPath.section] as! Int
+            cell.navigationControllerReference=navigationController
         }
         
         return cell
