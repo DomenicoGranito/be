@@ -12,6 +12,9 @@ class CategoriesViewController: BaseViewController
     @IBOutlet var headerLbl:UILabel!
     @IBOutlet var topImageView:UIImageView!
     @IBOutlet var headerView:GSKStretchyHeaderView!
+    @IBOutlet var headerLblTopSpaceConstraint:NSLayoutConstraint!
+    @IBOutlet var backButtonImageViewTopSpaceConstraint:NSLayoutConstraint!
+    @IBOutlet var backButtonHeightConstraint:NSLayoutConstraint!
     
     var allItemsArray=NSMutableArray()
     var categoryName:String!
@@ -23,6 +26,14 @@ class CategoriesViewController: BaseViewController
     
     override func viewDidLoad()
     {
+        if UIScreen.main.bounds.height<812
+        {
+            headerView.minimumContentHeight=64
+            headerLblTopSpaceConstraint.constant=32
+            backButtonHeightConstraint.constant=64
+            backButtonImageViewTopSpaceConstraint.constant=30
+        }
+        
         TBVC=tabBarController as! TabBarViewController
         
         headerLbl.text=categoryName.uppercased()
@@ -47,10 +58,16 @@ class CategoriesViewController: BaseViewController
     
     func scrollViewDidScroll(_ scrollView:UIScrollView)
     {
-        let range:CGFloat=136
-        let openAmount=headerView.frame.size.height-64
-        let percentage=openAmount/range
+        var range:CGFloat=136
+        var openAmount=headerView.frame.size.height-64
         
+        if UIScreen.main.bounds.height>667
+        {
+            range=112
+            openAmount=headerView.frame.size.height-88
+        }
+        
+        let percentage=openAmount/range
         topImageView.alpha=percentage
     }
     
