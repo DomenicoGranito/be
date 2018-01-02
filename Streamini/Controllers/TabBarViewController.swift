@@ -28,7 +28,18 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     {
         seekBar.setThumbImage(UIImage(), for:.normal)
         
-        miniPlayerView.frame=CGRect(x:0, y:view.frame.size.height-99, width:view.frame.size.width, height:50)
+        var y:CGFloat=0
+        
+        if UIScreen.main.bounds.height>667
+        {
+            y=view.frame.size.height-133
+        }
+        else
+        {
+            y=view.frame.size.height-99
+        }
+        
+        miniPlayerView.frame=CGRect(x:0, y:y, width:view.frame.size.width, height:50)
         view.addSubview(miniPlayerView)
         miniPlayerView.isHidden=true
         
