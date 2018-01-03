@@ -32,6 +32,7 @@ class CategoriesViewController: BaseViewController
             headerLblTopSpaceConstraint.constant=32
             backButtonHeightConstraint.constant=64
             backButtonImageViewTopSpaceConstraint.constant=30
+            headerView.setNeedsLayout()
         }
         
         TBVC=tabBarController as! TabBarViewController
