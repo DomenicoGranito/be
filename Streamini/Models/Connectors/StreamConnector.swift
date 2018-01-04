@@ -51,7 +51,7 @@ class StreamConnector: Connector
             }
         },
                                  failure:{(operation, error)->Void in
-            failure(error as! NSError)
+                                    failure(error! as NSError)
         })
     }
     
@@ -92,7 +92,7 @@ class StreamConnector: Connector
             }
         },
                                  failure:{(operation, error) in
-            failure(error as! NSError)
+                                    failure(error! as NSError)
         })
     }
     
@@ -141,7 +141,7 @@ class StreamConnector: Connector
             }
             },
                                  failure:{(operation, error) in
-                                    failure(error as! NSError)
+                                    failure(error! as NSError)
         })
     }
     
@@ -177,7 +177,7 @@ class StreamConnector: Connector
             }
             },
                                  failure:{(operation, error) in
-                                    failure(error as! NSError)
+                                    failure(error! as NSError)
         })
     }
     
@@ -213,7 +213,7 @@ class StreamConnector: Connector
             }
             },
                                  failure:{(operation, error) in
-                                    failure(error as! NSError)
+                                    failure(error! as NSError)
         })
     }
     
@@ -249,7 +249,7 @@ class StreamConnector: Connector
             }
             },
                                  failure:{(operation, error) in
-                                    failure(error as! NSError)
+                                    failure(error! as NSError)
         })
     }
 
@@ -294,7 +294,7 @@ class StreamConnector: Connector
             }
             },
                                  failure:{(operation, error)->Void in
-                                    failure(error as! NSError)
+                                    failure(error! as NSError)
         })
     }
     
@@ -354,7 +354,7 @@ class StreamConnector: Connector
             }
             },
                                  failure:{(operation, error) in
-                                    failure(error as! NSError)
+                                    failure(error! as NSError)
         })
     }
     
@@ -398,7 +398,7 @@ class StreamConnector: Connector
             }
             },
                                  failure:{(operation, error)->Void in
-                                    failure(error as! NSError)
+                                    failure(error! as NSError)
         })
     }
 
@@ -442,7 +442,7 @@ class StreamConnector: Connector
             }
             },
                                  failure:{(operation, error)->Void in
-                                    failure(error as! NSError)
+                                    failure(error! as NSError)
         })
     }
 
@@ -477,7 +477,7 @@ class StreamConnector: Connector
             }
             },
                                  failure:{ (operation, error) -> Void in
-                                    failure(error as! NSError)
+                                    failure(error! as NSError)
         })
     }
     
@@ -512,7 +512,7 @@ class StreamConnector: Connector
             }
             },
                                  failure: { (operation, error) in
-                                    failure(error as! NSError)
+                                    failure(error! as NSError)
         })
     }
     
@@ -557,7 +557,7 @@ class StreamConnector: Connector
             }
             },
                      failure:{ (operation, error) -> Void in
-                        failure(error as! NSError)
+                        failure(error! as NSError)
         })
     }
     
@@ -608,7 +608,7 @@ class StreamConnector: Connector
             }
         },
         failure:{(operation, error)->Void in
-            failure(error as! NSError)
+            failure(error! as NSError)
         })
         
         manager.enqueue(operation)
@@ -646,7 +646,7 @@ class StreamConnector: Connector
             }
             },
                      failure:{ (operation, error) -> Void in
-                        failure(error as! NSError)
+                        failure(error! as NSError)
         })
     }
 
@@ -683,7 +683,7 @@ class StreamConnector: Connector
             }
             },
                      failure: { (operation, error) -> Void in
-                        failure(error as! NSError)
+                        failure(error! as NSError)
         })
     }
     
@@ -719,7 +719,7 @@ class StreamConnector: Connector
             }
             },
                      failure:{ (operation, error) -> Void in
-                        failure(error as! NSError)
+                        failure(error! as NSError)
         })
     }
     
@@ -756,7 +756,7 @@ class StreamConnector: Connector
             }
             },
                      failure: { (operation, error) -> Void in
-                        failure(error as! NSError)
+                        failure(error! as NSError)
         })
     }
     
@@ -806,7 +806,7 @@ class StreamConnector: Connector
             }
             },
                                  failure:{ (operation, error) -> Void in
-                                    failure(error as! NSError)
+                                    failure(error! as NSError)
         })
     }
     
@@ -856,7 +856,7 @@ class StreamConnector: Connector
             }
             },
                                  failure: { (operation, error) -> Void in
-                                    failure(error as! NSError)
+                                    failure(error! as NSError)
         })
     }
     
@@ -896,7 +896,7 @@ class StreamConnector: Connector
             }
             },
                                  failure: { (operation, error) -> Void in
-                                    failure(error as! NSError)
+                                    failure(error! as NSError)
         })
     }
     
@@ -931,7 +931,7 @@ class StreamConnector: Connector
             }
             })
         { (operation, error) -> Void in
-            failure(error as! NSError)
+            failure(error! as NSError)
         }
     }
     
@@ -971,7 +971,7 @@ class StreamConnector: Connector
             }
             },
                      failure: { (operation, error) -> Void in
-                        failure(error as! NSError)
+                        failure(error! as NSError)
         })
     }
     
@@ -1006,7 +1006,7 @@ class StreamConnector: Connector
             }
             },
                      failure:{(operation, error)->Void in
-                        failure(error as! NSError)
+                        failure(error! as NSError)
         })
     }
 }

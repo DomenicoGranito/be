@@ -54,7 +54,7 @@ class SocialConnector: Connector
                 success(top, featured)
             }
         }, failure:{(operation, error)->Void in
-            failure(error as! NSError)
+            failure(error! as NSError)
         })
     }
     
@@ -105,7 +105,7 @@ class SocialConnector: Connector
                 success(users)
             }
             }, failure:{(operation, error)->Void in
-                failure(error as! NSError)
+                failure(error! as NSError)
         })
     }
     
@@ -141,7 +141,7 @@ class SocialConnector: Connector
                 success()                
             }
             }, failure:{(operation, error)->Void in
-                failure(error as! NSError)
+                failure(error! as NSError)
         })
     }
     
@@ -176,7 +176,7 @@ class SocialConnector: Connector
                 success()
             }
             }, failure: { (operation, error) -> Void in
-                failure(error as! NSError)
+                failure(error! as NSError)
         })
     }
     
@@ -211,7 +211,7 @@ class SocialConnector: Connector
                 success()
             }
             }, failure:{ (operation, error) -> Void in
-                failure(error as! NSError)
+                failure(error! as NSError)
         })
     }
     
@@ -246,7 +246,7 @@ class SocialConnector: Connector
                 success()
             }
             }, failure: { (operation, error) -> Void in
-                failure(error as! NSError)
+                failure(error! as NSError)
         })
     }
 }

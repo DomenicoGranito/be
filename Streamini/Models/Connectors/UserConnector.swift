@@ -27,7 +27,7 @@ class UserConnector: Connector
             success(json)
             },
         failure:{(operation, error)->Void in
-            failure(error as! NSError)
+            failure(error! as NSError)
         })
     }
     
@@ -49,7 +49,7 @@ class UserConnector: Connector
             success(json)
             },
             failure:{(operation, error)->Void in
-            failure(error as! NSError)
+                failure(error! as NSError)
         })
     }
 
@@ -70,7 +70,7 @@ class UserConnector: Connector
                 success()
             }
             }, failure:{ (operation, error) -> Void in
-                failure(error as! NSError)
+                failure(error! as NSError)
         })
     }
     
@@ -117,7 +117,7 @@ class UserConnector: Connector
                 success(user)
             }
             }, failure: { (operation, error) -> Void in
-                failure(error as! NSError)
+                failure(error! as NSError)
         })
     }
     
@@ -164,7 +164,7 @@ class UserConnector: Connector
                 success()
             }
             }, failure: { (operation, error) -> Void in
-                failure(error as! NSError)
+                failure(error! as NSError)
         })
     }
     
@@ -200,7 +200,7 @@ class UserConnector: Connector
                 success()
             }
             }) { (operation, error) -> Void in
-                failure(error as! NSError)
+                failure(error! as NSError)
         }
         
         operation?.httpRequestOperation.setUploadProgressBlock(progress)
@@ -237,7 +237,7 @@ class UserConnector: Connector
                 success()
             }
             }, failure: { (operation, error) -> Void in
-                failure(error as! NSError)
+                failure(error! as NSError)
         })
     }
     
@@ -270,7 +270,7 @@ class UserConnector: Connector
                 success()
             }
             }, failure: { (operation, error) -> Void in
-            failure(error as! NSError)
+                failure(error! as NSError)
         })
     }
     
@@ -305,7 +305,7 @@ class UserConnector: Connector
                 success()
             }
             }, failure: { (operation, error) -> Void in
-            failure(error as! NSError)
+                failure(error! as NSError)
         })
     }
     
@@ -357,7 +357,7 @@ class UserConnector: Connector
                 success(users)
             }
             }, failure:{ (operation, error) -> Void in
-                failure(error as! NSError)
+                failure(error! as NSError)
         })
     }
 }
