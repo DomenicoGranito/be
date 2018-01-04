@@ -46,6 +46,8 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
     @IBOutlet var followButton:UIButton!
     @IBOutlet var activityIndicator:UIActivityIndicatorView!
     @IBOutlet var headerView:GSKStretchyHeaderView!
+    @IBOutlet var backButtonImageView:UIImageView!
+    @IBOutlet var backButton:UIButton!
     
     var user:User?
     var userStatusDelegate:UserStatusDelegate?
@@ -57,6 +59,13 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
     
     override func viewDidLoad()
     {
+        if view.frame.size.height>667
+        {
+            headerView.minimumContentHeight=140
+            backButtonImageView.frame=CGRect(x:15, y:54, width:13, height:24)
+            backButton.frame=CGRect(x:0, y:0, width:100, height:88)
+        }
+        
         TBVC=tabBarController as! TabBarViewController
         
         let WeChatLogin=A0SimpleKeychain().string(forKey:"WeChatLogin")
