@@ -12,9 +12,8 @@ class CategoriesViewController: BaseViewController
     @IBOutlet var headerLbl:UILabel!
     @IBOutlet var topImageView:UIImageView!
     @IBOutlet var headerView:GSKStretchyHeaderView!
-    @IBOutlet var headerLblTopSpaceConstraint:NSLayoutConstraint!
-    @IBOutlet var backButtonImageViewTopSpaceConstraint:NSLayoutConstraint!
-    @IBOutlet var backButtonHeightConstraint:NSLayoutConstraint!
+    @IBOutlet var backButtonImageView:UIImageView!
+    @IBOutlet var backButton:UIButton!
     
     var allItemsArray=NSMutableArray()
     var categoryName:String!
@@ -26,13 +25,14 @@ class CategoriesViewController: BaseViewController
     
     override func viewDidLoad()
     {
-        if UIScreen.main.bounds.height<812
+        headerLbl.frame=CGRect(x:(view.frame.size.width-200)/2, y:32, width:200, height:20)
+        
+        if view.frame.size.height>667
         {
-            headerView.minimumContentHeight=64
-            headerLblTopSpaceConstraint.constant=32
-            backButtonHeightConstraint.constant=64
-            backButtonImageViewTopSpaceConstraint.constant=30
-            headerView.setNeedsLayout()
+            headerView.minimumContentHeight=88
+            backButtonImageView.frame=CGRect(x:15, y:54, width:13, height:24)
+            backButton.frame=CGRect(x:0, y:0, width:100, height:88)
+            headerLbl.frame=CGRect(x:(view.frame.size.width-200)/2, y:56, width:200, height:20)
         }
         
         TBVC=tabBarController as! TabBarViewController
@@ -62,7 +62,7 @@ class CategoriesViewController: BaseViewController
         var range:CGFloat=136
         var openAmount=headerView.frame.size.height-64
         
-        if UIScreen.main.bounds.height>667
+        if view.frame.size.height>667
         {
             range=112
             openAmount=headerView.frame.size.height-88

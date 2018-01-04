@@ -11,6 +11,7 @@ class SearchViewController: BaseViewController
     @IBOutlet var searchBar:UISearchBar!
     @IBOutlet var tableView:UITableView!
     @IBOutlet var historyTbl:UITableView!
+    @IBOutlet var searchBarTopSpaceConstraint:NSLayoutConstraint!
     
     var sectionTitlesArray=NSMutableArray()
     var TBVC:TabBarViewController!
@@ -24,6 +25,11 @@ class SearchViewController: BaseViewController
         
     override func viewDidLoad()
     {
+        if view.frame.size.height>667
+        {
+            searchBarTopSpaceConstraint.constant=44
+        }
+        
         searchBar.backgroundImage=UIImage()
         
         let attributes=[NSForegroundColorAttributeName:UIColor.white]
@@ -115,7 +121,7 @@ class SearchViewController: BaseViewController
         else
         {
             let headerView=UIView(frame:CGRect(x:0, y:0, width:tableView.frame.size.width, height:40))
-            headerView.backgroundColor=UIColor(colorLiteralRed:18/255, green:19/255, blue:21/255, alpha:1)
+            headerView.backgroundColor=UIColor(red:18/255, green:19/255, blue:21/255, alpha:1)
             
             let titleLbl=UILabel(frame:CGRect(x:15, y:15, width:285, height:20))
             titleLbl.text=(sectionTitlesArray[section] as AnyObject).uppercased
