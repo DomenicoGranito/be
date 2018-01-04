@@ -104,17 +104,14 @@ class CategoriesViewController: BaseViewController
     func cellTapped(gestureRecognizer:UITapGestureRecognizer)
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let modalVC=storyboard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController
+        let playerVC=storyboard.instantiateViewController(withIdentifier:"PlayerViewController") as! PlayerViewController
         
         let stream=allItemsArray[gestureRecognizer.view!.tag] as! Stream
         
-        let streamsArray=NSMutableArray()
-        streamsArray.add(stream)
+        playerVC.stream=stream
+        playerVC.TBVC=TBVC
         
-        modalVC.streamsArray=streamsArray
-        modalVC.TBVC=TBVC
-        
-        TBVC.modalVC=modalVC
+        TBVC.playerVC=playerVC
         TBVC.configure(stream)
     }
     

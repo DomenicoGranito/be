@@ -25,6 +25,7 @@
 		3E6DDCE91F2B580100DFCC0F /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6DDCE81F2B580100DFCC0F /* ChannelCell.swift */; };
 		3E7192691E75701F00B7049B /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7192681E75701F00B7049B /* ActivityIndicatorView.swift */; };
 		3E71926B1E768DFE00B7049B /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E71926A1E768DFD00B7049B /* ErrorView.swift */; };
+		3E72B3981FFE516600EEF386 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E72B3971FFE516600EEF386 /* PlayerViewController.swift */; };
 		3E7828C11EEA741B00F2B5EF /* OfflineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7828C01EEA741B00F2B5EF /* OfflineViewController.swift */; };
 		3E78AFB11EF900D2003FA581 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E78AFAF1EF900D2003FA581 /* SCLAlertView.swift */; };
 		3E78AFB21EF900D2003FA581 /* SCLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E78AFB01EF900D2003FA581 /* SCLExtensions.swift */; };
@@ -232,6 +233,7 @@
 		3E6DDCE81F2B580100DFCC0F /* ChannelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
 		3E7192681E75701F00B7049B /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		3E71926A1E768DFD00B7049B /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		3E72B3971FFE516600EEF386 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		3E7828C01EEA741B00F2B5EF /* OfflineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineViewController.swift; sourceTree = "<group>"; };
 		3E78AFAF1EF900D2003FA581 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SCLAlertView.swift; path = SCLAlertView/SCLAlertView.swift; sourceTree = "<group>"; };
 		3E78AFB01EF900D2003FA581 /* SCLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SCLExtensions.swift; path = SCLAlertView/SCLExtensions.swift; sourceTree = "<group>"; };
@@ -824,6 +826,7 @@
 				B733B1F41B78CF04002FEAB6 /* PeopleViewController.swift */,
 				3E6DDCE61F2B55D000DFCC0F /* ChannelsViewController.swift */,
 				3EF535B71E092A330049B2E9 /* ModalViewController.swift */,
+				3E72B3971FFE516600EEF386 /* PlayerViewController.swift */,
 				3E2A5A591ED80CDC00133E1D /* DevicesViewController.swift */,
 				3ECEC44C1EA22F8A006A00F7 /* PlaylistViewController.swift */,
 				B6A941CE1E48AB00003E2331 /* SettingsViewController.swift */,
@@ -1186,6 +1189,7 @@
 				B76635F11B4BC1710013FCE2 /* Messenger.swift in Sources */,
 				B794AD981B592F810069C2A8 /* ConnectMessageController.swift in Sources */,
 				3E03D5041E67F5F30056D275 /* PopUpViewController.swift in Sources */,
+				3E72B3981FFE516600EEF386 /* PlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

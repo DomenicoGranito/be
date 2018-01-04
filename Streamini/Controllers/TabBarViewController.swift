@@ -20,7 +20,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     @IBOutlet var playButton:UIButton!
     
     var animator:ARNTransitionAnimator!
-    var modalVC:ModalViewController!
+    var playerVC:PlayerViewController!
     let site=Config.shared.site()
     let storyBoard=UIStoryboard(name:"Main", bundle:nil)
     
@@ -57,15 +57,15 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     
     @IBAction func play()
     {
-        if modalVC.player?.playbackState == .playing
+        if playerVC.player?.playbackState == .playing
         {
-            modalVC.player?.pause()
+            playerVC.player?.pause()
             
             playButton?.setImage(UIImage(named:"miniplay"), for:.normal)
         }
         else
         {
-            modalVC.player?.play()
+            playerVC.player?.play()
             
             playButton?.setImage(UIImage(named:"minipause"), for:.normal)
         }
@@ -78,13 +78,13 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     
     func updateSeekBar()
     {
-        if let player=modalVC.player
+        if let player=playerVC.player
         {
-            seekBar.maximumValue=Float(modalVC.player!.duration)
+            seekBar.maximumValue=Float(playerVC.player!.duration)
             seekBar.value=Float(player.currentPlaybackTime)
         }
         
-        if modalVC.player?.playbackState == .playing
+        if playerVC.player?.playbackState == .playing
         {
             playButton?.setImage(UIImage(named:"minipause"), for:.normal)
         }
@@ -134,7 +134,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         let value=UIInterfaceOrientation.portrait.rawValue
         UIDevice.current.setValue(value, forKey:"orientation")
 
-        present(modalVC, animated:true)
+        present(playerVC, animated:true)
     }
     
     func tabBarController(_ tabBarController:UITabBarController, shouldSelect viewController:UIViewController)->Bool
@@ -149,14 +149,14 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     
     func setupAnimator()
     {
-        let animation=MusicPlayerTransitionAnimation(rootVC:self, modalVC:modalVC)
+        let animation=MusicPlayerTransitionAnimation(rootVC:self, playerVC:playerVC)
         
         animation.completion={isPresenting in
             
             if isPresenting
             {
                 let modalGestureHandler=TransitionGestureHandler(targetVC:self, direction:.bottom)
-                modalGestureHandler.registerGesture(self.modalVC.view)
+                modalGestureHandler.registerGesture(self.playerVC.view)
                 modalGestureHandler.panCompletionThreshold=15.0
                 self.animator.registerInteractiveTransitioning(.dismiss, gestureHandler:modalGestureHandler)
             }
@@ -173,7 +173,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         animator=ARNTransitionAnimator(duration:0.5, animation:animation)
         animator.registerInteractiveTransitioning(.present, gestureHandler:gestureHandler)
         
-        modalVC.transitioningDelegate=animator
+        playerVC.transitioningDelegate=animator
     }
     
     func getPermissions()

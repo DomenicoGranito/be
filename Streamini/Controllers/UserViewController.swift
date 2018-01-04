@@ -345,15 +345,12 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
     
     func streamDidSelected(_ stream:Stream)
     {
-        let modalVC=storyBoard.instantiateViewController(withIdentifier: "ModalViewController") as! ModalViewController
+        let playerVC=storyBoard.instantiateViewController(withIdentifier:"PlayerViewController") as! PlayerViewController
         
-        let streamsArray=NSMutableArray()
-        streamsArray.add(stream)
+        playerVC.stream=stream
+        playerVC.TBVC=TBVC
         
-        modalVC.streamsArray=streamsArray
-        modalVC.TBVC=TBVC
-        
-        TBVC.modalVC=modalVC
+        TBVC.playerVC=playerVC
         TBVC.configure(stream)
     }
     

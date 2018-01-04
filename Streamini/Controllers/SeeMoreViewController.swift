@@ -92,15 +92,12 @@ class SeeMoreViewController: BaseViewController
         
         if t=="videos"
         {
-            let modalVC=storyBoard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController
+            let playerVC=storyBoard.instantiateViewController(withIdentifier:"PlayerViewController") as! PlayerViewController
             
-            let streamsArray=NSMutableArray()
-            streamsArray.add(streams[indexPath.row])
+            playerVC.stream=streams[indexPath.row]
+            playerVC.TBVC=TBVC
             
-            modalVC.streamsArray=streamsArray
-            modalVC.TBVC=TBVC
-            
-            TBVC.modalVC=modalVC
+            TBVC.playerVC=playerVC
             TBVC.configure(streams[indexPath.row])
         }
         else

@@ -11,7 +11,7 @@ import UIKit
 final class MusicPlayerTransitionAnimation : TransitionAnimatable
 {
     var rootVC:TabBarViewController!
-    var modalVC:ModalViewController!
+    var playerVC:PlayerViewController!
     var completion:((Bool)->Void)?
     var miniPlayerStartFrame:CGRect
     var tabBarStartFrame:CGRect
@@ -24,13 +24,13 @@ final class MusicPlayerTransitionAnimation : TransitionAnimatable
     
     func destVC()->UIViewController
     {
-        return modalVC
+        return playerVC
     }
     
-    init(rootVC:TabBarViewController, modalVC:ModalViewController)
+    init(rootVC:TabBarViewController, playerVC:PlayerViewController)
     {
         self.rootVC=rootVC
-        self.modalVC=modalVC
+        self.playerVC=playerVC
         
         miniPlayerStartFrame=rootVC.miniPlayerView.frame
         tabBarStartFrame=rootVC.vtabBar.frame
@@ -40,7 +40,7 @@ final class MusicPlayerTransitionAnimation : TransitionAnimatable
     {
         self.containerView=containerView
         
-        rootVC.view.insertSubview(modalVC.view, belowSubview:rootVC.vtabBar)
+        rootVC.view.insertSubview(playerVC.view, belowSubview:rootVC.vtabBar)
     }
     
     func willAnimation(_ transitionType:TransitionType, containerView:UIView)
@@ -49,7 +49,7 @@ final class MusicPlayerTransitionAnimation : TransitionAnimatable
         
         if transitionType.isPresenting
         {
-            modalVC.view.frame.origin.y=rootVC.miniPlayerView.frame.origin.y
+            playerVC.view.frame.origin.y=rootVC.miniPlayerView.frame.origin.y
         }
         else
         {
@@ -65,12 +65,12 @@ final class MusicPlayerTransitionAnimation : TransitionAnimatable
             let startOriginY=miniPlayerStartFrame.origin.y
             
             let tabStartOriginY=tabBarStartFrame.origin.y
-            let tabEndOriginY=modalVC.view.frame.size.height
+            let tabEndOriginY=playerVC.view.frame.size.height
             let tabDiff=tabEndOriginY-tabStartOriginY
             
             let playerY=startOriginY-(startOriginY*percentComplete)
             rootVC.miniPlayerView.frame.origin.y=min(playerY, startOriginY)
-            modalVC.view.frame.origin.y=min(playerY, startOriginY)
+            playerVC.view.frame.origin.y=min(playerY, startOriginY)
             
             let tabY=tabStartOriginY+(tabDiff*percentComplete)
             rootVC.vtabBar.frame.origin.y=max(tabY, tabStartOriginY)
@@ -83,12 +83,12 @@ final class MusicPlayerTransitionAnimation : TransitionAnimatable
         {
             let endOriginY=miniPlayerStartFrame.origin.y
             
-            let tabStartOriginY=modalVC.view.frame.size.height
+            let tabStartOriginY=playerVC.view.frame.size.height
             let tabEndOriginY=tabBarStartFrame.origin.y
             let tabDiff=tabStartOriginY-tabEndOriginY
             
             rootVC.miniPlayerView.frame.origin.y=endOriginY*percentComplete
-            modalVC.view.frame.origin.y=rootVC.miniPlayerView.frame.origin.y
+            playerVC.view.frame.origin.y=rootVC.miniPlayerView.frame.origin.y
             
             rootVC.vtabBar.frame.origin.y=tabStartOriginY-(tabDiff*percentComplete)
             
@@ -106,8 +106,8 @@ final class MusicPlayerTransitionAnimation : TransitionAnimatable
         {
             if didComplete
             {
-                modalVC.view.removeFromSuperview()
-                containerView?.addSubview(modalVC.view)
+                playerVC.view.removeFromSuperview()
+                containerView?.addSubview(playerVC.view)
                 
                 completion?(transitionType.isPresenting)
             }
@@ -121,13 +121,13 @@ final class MusicPlayerTransitionAnimation : TransitionAnimatable
         {
             if didComplete
             {
-                modalVC.view.removeFromSuperview()
+                playerVC.view.removeFromSuperview()
                 completion?(transitionType.isPresenting)
             }
             else
             {
-                modalVC.view.removeFromSuperview()
-                containerView?.addSubview(modalVC.view)
+                playerVC.view.removeFromSuperview()
+                containerView?.addSubview(playerVC.view)
                 
                 rootVC.beginAppearanceTransition(false, animated:false)
                 rootVC.endAppearanceTransition()

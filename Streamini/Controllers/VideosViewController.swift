@@ -57,15 +57,12 @@ class VideosViewController: BaseViewController
     {
         tableView.deselectRow(at:indexPath, animated:true)
         
-        let modalVC=storyBoard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController
+        let playerVC=storyBoard.instantiateViewController(withIdentifier:"PlayerViewController") as! PlayerViewController
         
-        let streamsArray=NSMutableArray()
-        streamsArray.add(makeStreamClassObject(indexPath.row))
+        playerVC.stream=makeStreamClassObject(indexPath.row)
+        playerVC.TBVC=TBVC
         
-        modalVC.streamsArray=streamsArray
-        modalVC.TBVC=TBVC
-        
-        TBVC.modalVC=modalVC
+        TBVC.playerVC=playerVC
         TBVC.configure(makeStreamClassObject(indexPath.row))
     }
     

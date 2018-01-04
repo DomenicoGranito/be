@@ -140,15 +140,12 @@ class MyLibViewController: BaseViewController
     {
         if indexPath.row>3
         {
-            let modalVC=storyBoard.instantiateViewController(withIdentifier:"ModalViewController") as! ModalViewController
+            let playerVC=storyBoard.instantiateViewController(withIdentifier:"PlayerViewController") as! PlayerViewController
             
-            let streamsArray=NSMutableArray()
-            streamsArray.add(makeStreamClassObject(indexPath.row-4))
+            playerVC.stream=makeStreamClassObject(indexPath.row-4)
+            playerVC.TBVC=TBVC
             
-            modalVC.streamsArray=streamsArray
-            modalVC.TBVC=TBVC
-            
-            TBVC.modalVC=modalVC
+            TBVC.playerVC=playerVC
             TBVC.configure(makeStreamClassObject(indexPath.row-4))
         }
         else if indexPath.row<3

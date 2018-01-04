@@ -90,7 +90,7 @@ class Connector: NSObject
                 success(session, user)
             }
             }, failure:{(operation, error)->Void in
-                failure(error as! NSError)
+                failure(error! as NSError)
         })
     }
     
