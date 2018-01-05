@@ -11,6 +11,17 @@ class Stream: NSObject {
     var vType=0
     var videoID=""
     var title = ""
+    var category = ""
+    var year = ""
+    var videoDescription = ""
+    var brand = ""
+    var venue = ""
+    var PRAgency = ""
+    var musicAgency = ""
+    var adAgency = ""
+    var eventAgency = ""
+    var videoAgency = ""
+    var talentAgency = ""
     var streamHash = ""
     var lon: Double = 0
     var lat: Double = 0
@@ -20,6 +31,8 @@ class Stream: NSObject {
     var tviewers: UInt = 0
     var rviewers: UInt = 0
     var likes: UInt = 0
+    var shares: UInt = 0
+    var comments: UInt = 0
     var rlikes: UInt = 0
     var user = User()   
 }

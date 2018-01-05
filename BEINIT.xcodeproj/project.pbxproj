@@ -26,6 +26,7 @@
 		3E7192691E75701F00B7049B /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7192681E75701F00B7049B /* ActivityIndicatorView.swift */; };
 		3E71926B1E768DFE00B7049B /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E71926A1E768DFD00B7049B /* ErrorView.swift */; };
 		3E72B3981FFE516600EEF386 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E72B3971FFE516600EEF386 /* PlayerViewController.swift */; };
+		3E72B39C1FFE71D000EEF386 /* AboutVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E72B39B1FFE71D000EEF386 /* AboutVideoCell.swift */; };
 		3E7828C11EEA741B00F2B5EF /* OfflineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7828C01EEA741B00F2B5EF /* OfflineViewController.swift */; };
 		3E78AFB11EF900D2003FA581 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E78AFAF1EF900D2003FA581 /* SCLAlertView.swift */; };
 		3E78AFB21EF900D2003FA581 /* SCLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E78AFB01EF900D2003FA581 /* SCLExtensions.swift */; };
@@ -234,6 +235,7 @@
 		3E7192681E75701F00B7049B /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		3E71926A1E768DFD00B7049B /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		3E72B3971FFE516600EEF386 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		3E72B39B1FFE71D000EEF386 /* AboutVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVideoCell.swift; sourceTree = "<group>"; };
 		3E7828C01EEA741B00F2B5EF /* OfflineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineViewController.swift; sourceTree = "<group>"; };
 		3E78AFAF1EF900D2003FA581 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SCLAlertView.swift; path = SCLAlertView/SCLAlertView.swift; sourceTree = "<group>"; };
 		3E78AFB01EF900D2003FA581 /* SCLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SCLExtensions.swift; path = SCLAlertView/SCLExtensions.swift; sourceTree = "<group>"; };
@@ -812,6 +814,7 @@
 				3E6DDCE81F2B580100DFCC0F /* ChannelCell.swift */,
 				3E2021701D81ACFE0058DAAD /* VideoCell.swift */,
 				B6EAF8291E28F179007038DC /* CategoryCell.swift */,
+				3E72B39B1FFE71D000EEF386 /* AboutVideoCell.swift */,
 				3EEF52BC1D83127B0015BA92 /* CategoriesViewController.swift */,
 				B6EAF8271E28EF6E007038DC /* AllCategoryRow.swift */,
 				B72475821B411D910080BE1B /* CreateStreamViewController.swift */,
@@ -1170,6 +1173,7 @@
 				B67448201E2C63CC0049890F /* PlaylistProtocols.swift in Sources */,
 				3E1DEB101EF7A4470001756B /* MarqueeLabel.swift in Sources */,
 				B72815381B5E38D00005BBC6 /* ViewersCollectionViewCell.swift in Sources */,
+				3E72B39C1FFE71D000EEF386 /* AboutVideoCell.swift in Sources */,
 				3E935BC11E937D6100065FEC /* PlaylistDetailView.swift in Sources */,
 				3EF535B21E0920B90049B2E9 /* TransitionGestureHandler.swift in Sources */,
 				B77AABE61B398815007DE187 /* StreamMappingProvider.swift in Sources */,
