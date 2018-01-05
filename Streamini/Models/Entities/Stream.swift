@@ -7,7 +7,7 @@
 //
 
 class Stream: NSObject {
-    var id: UInt = 0
+    var id: Int = 0
     var vType=0
     var videoID=""
     var title = ""
@@ -27,13 +27,13 @@ class Stream: NSObject {
     var lat: Double = 0
     var city = ""
     var ended: NSDate? = nil
-    var viewers: UInt = 0
-    var tviewers: UInt = 0
-    var rviewers: UInt = 0
-    var likes: UInt = 0
-    var shares: UInt = 0
-    var comments: UInt = 0
-    var rlikes: UInt = 0
+    var viewers: Int = 0
+    var tviewers: Int = 0
+    var rviewers: Int = 0
+    var likes: Int = 0
+    var shares: Int = 0
+    var comments: Int = 0
+    var rlikes: Int = 0
     var user = User()   
 }
 

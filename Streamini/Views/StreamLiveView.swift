@@ -33,7 +33,7 @@ class StreamLiveView: UIView {
         label.frame = CGRect(x: 10, y: 0, width: self.bounds.width-20, height: self.bounds.height)
     }
     
-    func setCount(_ count: UInt) {
+    func setCount(_ count:Int) {
         let liveText = NSLocalizedString("stream_live_count", comment: "")
         label.text = "\(liveText) | \(count)"
         self.layoutIfNeeded()

@@ -22,7 +22,7 @@ extension User {
     
     class func deserialize(_ data: NSDictionary) -> User {
         let user    = User()
-        user.id     = data["id"] as! UInt
+        user.id     = data["id"] as! Int
         user.name   = data["name"] as! String
         user.avatar = data["avatar"] as? String
         

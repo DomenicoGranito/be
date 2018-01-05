@@ -8,7 +8,7 @@
 
 class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, LinkedUserCellDelegate
 {
-    let userId: UInt
+    let userId: Int
     var users: [User] = []
     var page: UInt = 0
     var tableView: UITableView
@@ -19,7 +19,7 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
     var type:ProfileStatisticsType = .following
     var vType:Int!
     
-    class func create(_ type:ProfileStatisticsType, userId:UInt, tableView:UITableView)->UserStatisticsDataSource?
+    class func create(_ type:ProfileStatisticsType, userId:Int, tableView:UITableView)->UserStatisticsDataSource?
     {
         switch type
         {
@@ -34,7 +34,7 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         }
     }
     
-    init(_ userId:UInt, _ tableView:UITableView)
+    init(_ userId:Int, _ tableView:UITableView)
     {
         self.userId      = userId
         self.tableView   = tableView

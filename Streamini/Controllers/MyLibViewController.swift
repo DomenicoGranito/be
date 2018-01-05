@@ -189,11 +189,11 @@ class MyLibViewController: BaseViewController
         let user=User()
         
         user.name=recentlyPlayed[row].value(forKey:"streamUserName") as! String
-        user.id=recentlyPlayed[row].value(forKey:"streamUserID") as! UInt
+        user.id=recentlyPlayed[row].value(forKey:"streamUserID") as! Int
         
         let stream=Stream()
         
-        stream.id=recentlyPlayed[row].value(forKey:"streamID") as! UInt
+        stream.id=recentlyPlayed[row].value(forKey:"streamID") as! Int
         stream.title=recentlyPlayed[row].value(forKey:"streamTitle") as! String
         stream.streamHash=recentlyPlayed[row].value(forKey:"streamHash") as! String
         stream.videoID=recentlyPlayed[row].value(forKey:"streamKey") as! String

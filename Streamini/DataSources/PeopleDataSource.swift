@@ -166,7 +166,7 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         
         let indexPath = tableView.indexPath(for: cell)!
         
-        let userId: UInt
+        let userId:Int
         if isSearchMode
         {
             userId = foundUsers[indexPath.row].id

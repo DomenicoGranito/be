@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 class Camera {
-    var liveStreamId: UInt?
+    var liveStreamId:Int?
     var session: VCSimpleSession?
     var image: UIImage?
     var previewView: UIView?
@@ -39,7 +39,7 @@ class Camera {
         session!.previewView.frame = view.bounds
     }
     
-    func start(_ hash: String, streamId: UInt) {
+    func start(_ hash: String, streamId:Int) {
         self.liveStreamId = streamId
         let (url, streamName) = self.getConnectionData(hash, streamId: streamId)
         session!.startRtmpSession(withURL: url, andStreamKey: streamName)
@@ -76,7 +76,7 @@ class Camera {
         session!.cameraState = (session!.cameraState == VCCameraState.back) ? VCCameraState.front : VCCameraState.back
     }
     
-    fileprivate func getConnectionData(_ hash: String, streamId: UInt) -> (String, String)
+    fileprivate func getConnectionData(_ hash: String, streamId:Int) -> (String, String)
     {
         let (host, port, application, username, password)=Config.shared.wowza()
         let url="rtmp://\(username):\(password)@\(host):\(port)/\(application)"

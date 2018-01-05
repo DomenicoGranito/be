@@ -9,9 +9,9 @@
 import UIKit
 
 protocol Messenger {
-    func connect(_ streamId: UInt)
-    func disconnect(_ streamId: UInt)
-    func send(_ message: Message, streamId: UInt)
+    func connect(_ streamId: Int)
+    func disconnect(_ streamId: Int)
+    func send(_ message: Message, streamId: Int)
     func receive(_ handler: (_ message: Message)->())
 }
 

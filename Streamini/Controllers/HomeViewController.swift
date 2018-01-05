@@ -277,53 +277,33 @@ class HomeViewController: BaseViewController
             {
                 let video=videos[j] as! NSDictionary
                 
-                let videoID=video["id"] as! Int
-                let streamKey=video["streamkey"] as! String
-                let vType=video["vtype"] as! Int
-                let videoTitle=video["title"] as! String
-                let videoHash=video["hash"] as! String
-                let lon=video["lon"] as! Double
-                let lat=video["lat"] as! Double
-                let city=video["city"] as! String
-                let ended=video["ended"] as? String
-                let viewers=video["viewers"] as! Int
-                let tviewers=video["tviewers"] as! Int
-                let rviewers=video["rviewers"] as! Int
-                let likes=video["likes"] as! Int
-                let rlikes=video["rlikes"] as! Int
-                
                 let user=video["user"] as! NSDictionary
                 
-                let userID=user["id"] as! Int
-                let userName=user["name"] as! String
-                let userAvatar=user["avatar"] as? String
-                
                 let oneUser=User()
-                
-                oneUser.id=UInt(userID)
-                oneUser.name=userName
-                oneUser.avatar=userAvatar
+                oneUser.id=user["id"] as! Int
+                oneUser.name=user["name"] as! String
+                oneUser.avatar=user["avatar"] as? String
                 
                 let oneVideo=Stream()
-                oneVideo.id=UInt(videoID)
-                oneVideo.vType=vType
-                oneVideo.videoID=streamKey
-                oneVideo.title=videoTitle
-                oneVideo.streamHash=videoHash
-                oneVideo.lon=lon
-                oneVideo.lat=lat
-                oneVideo.city=city
+                oneVideo.id=video["id"] as! Int
+                oneVideo.vType=video["vtype"] as! Int
+                oneVideo.videoID=video["streamkey"] as! String
+                oneVideo.title=video["title"] as! String
+                oneVideo.streamHash=video["hash"] as! String
+                oneVideo.lon=video["lon"] as! Double
+                oneVideo.lat=video["lat"] as! Double
+                oneVideo.city=video["city"] as! String
                 
-                if let e=ended
+                if let e=video["ended"] as? String
                 {
                     oneVideo.ended=NSDate(timeIntervalSince1970:Double(e)!)
                 }
                 
-                oneVideo.viewers=UInt(viewers)
-                oneVideo.tviewers=UInt(tviewers)
-                oneVideo.rviewers=UInt(rviewers)
-                oneVideo.likes=UInt(likes)
-                oneVideo.rlikes=UInt(rlikes)
+                oneVideo.viewers=video["viewers"] as! Int
+                oneVideo.tviewers=video["tviewers"] as! Int
+                oneVideo.rviewers=video["rviewers"] as! Int
+                oneVideo.likes=video["likes"] as! Int
+                oneVideo.rlikes=video["rlikes"] as! Int
                 oneVideo.user=oneUser
                 
                 oneCategoryItemsArray.add(oneVideo)

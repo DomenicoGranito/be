@@ -44,16 +44,16 @@ open class SongManager
         
         let user=User()
         
-        user.id=object.value(forKey:"id") as! UInt
+        user.id=object.value(forKey:"id") as! Int
         user.name=object.value(forKeyPath:"name") as! String
         user.sname=object.value(forKey:"sname") as! String
         user.avatar=object.value(forKey:"avatar") as? String
-        user.likes=object.value(forKey:"likes") as! UInt
-        user.recent=object.value(forKey:"recent") as! UInt
-        user.followers=object.value(forKey:"followers") as! UInt
-        user.following=object.value(forKey:"following") as! UInt
-        user.streams=object.value(forKey:"streams") as! UInt
-        user.blocked=object.value(forKey:"blocked") as! UInt
+        user.likes=object.value(forKey:"likes") as! Int
+        user.recent=object.value(forKey:"recent") as! Int
+        user.followers=object.value(forKey:"followers") as! Int
+        user.following=object.value(forKey:"following") as! Int
+        user.streams=object.value(forKey:"streams") as! Int
+        user.blocked=object.value(forKey:"blocked") as! Int
         user.desc=object.value(forKey:"desc") as? String
         user.isLive=object.value(forKey:"isLive") as! Bool
         user.isFollowed=object.value(forKey:"isFollowed") as! Bool
@@ -151,7 +151,7 @@ open class SongManager
         return false
     }
     
-    class func deleteBlockedUserVideos(_ userID:UInt)
+    class func deleteBlockedUserVideos(_ userID:Int)
     {
         let favouriteEntity:NSFetchRequest<NSFetchRequestResult>=NSFetchRequest(entityName:"Favourites")
         favouriteEntity.predicate=NSPredicate(format:"streamUserID=%d", userID)
@@ -174,7 +174,7 @@ open class SongManager
         save()
     }
     
-    class func isRecentlyPlayed(_ streamID:UInt)->Bool
+    class func isRecentlyPlayed(_ streamID:Int)->Bool
     {
         let recentlyPlayedEntity:NSFetchRequest<NSFetchRequestResult>=NSFetchRequest(entityName:"RecentlyPlayed")
         recentlyPlayedEntity.predicate=NSPredicate(format:"streamID=%d", streamID)
@@ -188,7 +188,7 @@ open class SongManager
         return false
     }
     
-    class func addToRecentlyPlayed(_ streamTitle:String, _ streamHash:String, _ streamID:UInt, _ streamUserName:String, _ streamKey:String, _ streamUserID:UInt)
+    class func addToRecentlyPlayed(_ streamTitle:String, _ streamHash:String, _ streamID:Int, _ streamUserName:String, _ streamKey:String, _ streamUserID:Int)
     {
         if(!isRecentlyPlayed(streamID))
         {
@@ -237,7 +237,7 @@ open class SongManager
         return (sortedArray as NSArray) as! [NSManagedObject]
     }
     
-    class func isAlreadyDownloaded(_ streamID:UInt)->Bool
+    class func isAlreadyDownloaded(_ streamID:Int)->Bool
     {
         let downloadEntity:NSFetchRequest<NSFetchRequestResult>=NSFetchRequest(entityName:"Downloads")
         downloadEntity.predicate=NSPredicate(format:"streamID=%d", streamID)
@@ -263,9 +263,9 @@ open class SongManager
         save()
     }
     
-    class func addToFavourite(_ streamTitle:String, _ streamHash:String, _ streamID:UInt, _ streamUserName:String, _ vType:Int, _ streamKey:String, _ streamUserID:UInt)
+    class func addToFavourite(_ streamTitle:String, _ streamHash:String, _ streamID:Int, _ streamUserName:String, _ vType:Int, _ streamKey:String, _ streamUserID:Int)
     {
-        let newFavourite=NSEntityDescription.insertNewObject(forEntityName: "Favourites", into:context)
+        let newFavourite=NSEntityDescription.insertNewObject(forEntityName:"Favourites", into:context)
         newFavourite.setValue(streamTitle, forKey:"streamTitle")
         newFavourite.setValue(streamHash, forKey:"streamHash")
         newFavourite.setValue(streamUserName, forKey:"streamUserName")
@@ -276,7 +276,7 @@ open class SongManager
         save()
     }
     
-    class func removeFromFavourite(_ streamID:UInt)
+    class func removeFromFavourite(_ streamID:Int)
     {
         let favouriteEntity:NSFetchRequest<NSFetchRequestResult>=NSFetchRequest(entityName:"Favourites")
         favouriteEntity.predicate=NSPredicate(format:"streamID=%d", streamID)
@@ -286,7 +286,7 @@ open class SongManager
         save()
     }
     
-    class func isAlreadyFavourited(_ streamID:UInt)->Bool
+    class func isAlreadyFavourited(_ streamID:Int)->Bool
     {
         let favouriteEntity:NSFetchRequest<NSFetchRequestResult>=NSFetchRequest(entityName:"Favourites")
         favouriteEntity.predicate=NSPredicate(format:"streamID=%d", streamID)

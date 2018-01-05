@@ -9,7 +9,7 @@
 import UIKit
 
 class NotificationsDelegate: NSObject, UIAlertViewDelegate {
-    var streamId: UInt?
+    var streamId:Int?
     
     func streamSuccess(_ stream: Stream) {
         

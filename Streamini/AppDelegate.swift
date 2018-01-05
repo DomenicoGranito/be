@@ -293,7 +293,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, UIAlertVie
             return
         }
         
-        notificationsDelegate.streamId = userInfo["uni-id"] as? UInt
+        notificationsDelegate.streamId = userInfo["uni-id"] as? Int
         UIAlertView.notificationAlert(notificationsDelegate, userInfo: userInfo).show()
     }
     

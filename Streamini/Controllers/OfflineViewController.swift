@@ -316,11 +316,11 @@ class OfflineViewController: BaseViewController
         let user=User()
         
         user.name=downloadFinishItems[row].value(forKey:"streamUserName") as! String
-        user.id=downloadFinishItems[row].value(forKey:"streamUserID") as! UInt
+        user.id=downloadFinishItems[row].value(forKey:"streamUserID") as! Int
         
         let stream=Stream()
         
-        stream.id=downloadFinishItems[row].value(forKey:"streamID") as! UInt
+        stream.id=downloadFinishItems[row].value(forKey:"streamID") as! Int
         stream.title=downloadFinishItems[row].value(forKey:"streamTitle") as! String
         stream.streamHash=downloadFinishItems[row].value(forKey:"streamHash") as! String
         stream.videoID=downloadFinishItems[row].value(forKey:"streamKey") as! String

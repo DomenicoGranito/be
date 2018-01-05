@@ -74,7 +74,7 @@ class UserConnector: Connector
         })
     }
     
-    func get(_ id: UInt?, _ success: @escaping (_ user: User) -> (), _ failure: @escaping (_ error: NSError) -> ())
+    func get(_ id:Int?, _ success: @escaping (_ user: User) -> (), _ failure: @escaping (_ error: NSError) -> ())
     {
         let path = "user"
         

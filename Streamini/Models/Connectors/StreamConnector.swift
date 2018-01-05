@@ -446,7 +446,7 @@ class StreamConnector: Connector
         })
     }
 
-    func recent(_ userId: UInt, _ success: @escaping (_ streams: [Stream]) -> (), _ failure: @escaping (_ error: NSError) -> ())
+    func recent(_ userId:Int, _ success: @escaping (_ streams: [Stream]) -> (), _ failure: @escaping (_ error: NSError) -> ())
     {
         let path = ("stream/recent" as NSString).appendingPathComponent("\(userId)")
         
@@ -614,7 +614,7 @@ class StreamConnector: Connector
         manager.enqueue(operation)
     }
     
-    func del(_ streamId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
+    func del(_ streamId:Int, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
     {
         let path = "stream/delete"
         
@@ -651,7 +651,7 @@ class StreamConnector: Connector
     }
 
     
-    func close(_ streamId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
+    func close(_ streamId:Int, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
     {
         let path = "stream/close"
         
@@ -687,7 +687,7 @@ class StreamConnector: Connector
         })
     }
     
-    func join(_ streamId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
+    func join(_ streamId:Int, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
     {
         let path = "stream/join"
         
@@ -723,7 +723,7 @@ class StreamConnector: Connector
         })
     }
     
-    func leave(_ streamId: UInt, _ likes: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
+    func leave(_ streamId:Int, _ likes: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
     {
         let path = "stream/leave"
         
@@ -860,7 +860,7 @@ class StreamConnector: Connector
         })
     }
     
-    func get(_ streamId: UInt, _ success: @escaping (_ stream: Stream) -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func get(_ streamId:Int, _ success: @escaping (_ stream: Stream) -> (), _ failure: @escaping (_ error: NSError) -> ()) {
         let path = ("stream" as NSString).appendingPathComponent("\(streamId)")
         
         let streamMapping = StreamMappingProvider.streamResponseMapping()
@@ -900,7 +900,7 @@ class StreamConnector: Connector
         })
     }
     
-    func report(_ streamId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func report(_ streamId:Int, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ()) {
         let path = "stream/report"
         
         var params = self.sessionParams()
@@ -935,7 +935,7 @@ class StreamConnector: Connector
         }
     }
     
-    func share(_ streamId:UInt, _ usersId:[UInt]?, _ success:@escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
+    func share(_ streamId:Int, _ usersId:[Int]?, _ success:@escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
     {
         let path = "stream/share"
         
@@ -975,7 +975,7 @@ class StreamConnector: Connector
         })
     }
     
-    func ping(_ streamId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ()) {
+    func ping(_ streamId:Int, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ()) {
         let path = "stream/ping"
         
         var params = self.sessionParams()

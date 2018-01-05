@@ -318,7 +318,7 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         activityIndicator.stopAnimating()
     }
     
-    func update(_ userId:UInt)
+    func update(_ userId:Int)
     {
         activityIndicator.startAnimating()
         UserConnector().get(userId, getUserSuccess, getUserFailure)

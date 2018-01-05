@@ -9,16 +9,16 @@
 import UIKit
 
 class User: NSObject {
-    var id: UInt = 0
+    var id: Int = 0
     var name = ""
     var sname = ""
     var avatar: String? = ""
-    var likes: UInt = 0
-    var recent: UInt = 0
-    var followers: UInt = 0
-    var following: UInt = 0
-    var streams: UInt = 0
-    var blocked: UInt = 0
+    var likes: Int = 0
+    var recent: Int = 0
+    var followers: Int = 0
+    var following: Int = 0
+    var streams: Int = 0
+    var blocked: Int = 0
     var desc: String? = ""
     var isLive = false
     var isFollowed = false

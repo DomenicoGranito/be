@@ -109,7 +109,7 @@ class SocialConnector: Connector
         })
     }
     
-    func follow(_ userId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
+    func follow(_ userId:Int, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
     {
         let path = "social/follow"
         
@@ -145,7 +145,7 @@ class SocialConnector: Connector
         })
     }
     
-    func unfollow(_ userId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
+    func unfollow(_ userId:Int, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
     {
         let path = "social/unfollow"
         
@@ -180,7 +180,7 @@ class SocialConnector: Connector
         })
     }
     
-    func block(_ userId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
+    func block(_ userId:Int, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
     {
         let path = "social/block"
         
@@ -215,7 +215,7 @@ class SocialConnector: Connector
         })
     }
     
-    func unblock(_ userId: UInt, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
+    func unblock(_ userId: Int, _ success: @escaping () -> (), _ failure: @escaping (_ error: NSError) -> ())
     {
         let path = "social/unblock"
         
