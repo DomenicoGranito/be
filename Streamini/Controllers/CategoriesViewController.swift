@@ -159,6 +159,17 @@ class CategoriesViewController: BaseViewController
             oneVideo.lon=video["lon"] as! Double
             oneVideo.lat=video["lat"] as! Double
             oneVideo.city=video["city"] as! String
+            oneVideo.brand=video["brand"] as! String
+            oneVideo.venue=video["venue"] as! String
+            oneVideo.category=video["category"] as! String
+            oneVideo.PRAgency=video["pr_agency"] as! String
+            oneVideo.musicAgency=video["music_agency"] as! String
+            oneVideo.adAgency=video["ad_agency"] as! String
+            oneVideo.talentAgency=video["talent_agency"] as! String
+            oneVideo.eventAgency=video["event_agency"] as! String
+            oneVideo.videoAgency=video["video_agency"] as! String
+            oneVideo.year=video["year"] as! String
+            oneVideo.videoDescription=video["description"] as! String
             
             if let e=video["ended"] as? String
             {
