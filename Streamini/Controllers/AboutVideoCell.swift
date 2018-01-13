@@ -31,8 +31,12 @@ class AboutVideoCell: UITableViewCell
     @IBOutlet var userNameLbl:UILabel!
     @IBOutlet var userImageView:UIImageView!
     
+    var stream:Stream!
+    
     func update(_ stream:Stream)
     {
+        self.stream=stream
+        
         videoTitleLbl.text=stream.title
         categoryLbl.text=stream.category
         viewersCountAndUploadedAgoLbl.text="\(stream.viewers) Views | Uploaded 1 month ago"
@@ -53,5 +57,37 @@ class AboutVideoCell: UITableViewCell
         commentCountLbl.text="\(stream.comments)"
         userNameLbl.text=stream.user.name
         userImageView.sd_setImage(with:stream.user.avatarURL(), placeholderImage:UIImage(named:"profile"))
+        
+        SongManager.addToRecentlyPlayed(stream.title, stream.streamHash, stream.id, stream.user.name, stream.videoID, stream.user.id)
+        
+        songLikeStatus()
+    }
+    
+    @IBAction func like()
+    {
+        if SongManager.isAlreadyFavourited(stream.id)
+        {
+            likeCountLbl.text="\(Int(likeCountLbl.text!)!-1)"
+            likeButton.setImage(UIImage(named:"empty_heart"), for:.normal)
+            SongManager.removeFromFavourite(stream.id)
+        }
+        else
+        {
+            likeCountLbl.text="\(Int(likeCountLbl.text!)!+1)"
+            likeButton.setImage(UIImage(named:"red_heart"), for:.normal)
+            SongManager.addToFavourite(stream.title, stream.streamHash, stream.id, stream.user.name, stream.vType, stream.videoID, stream.user.id)
+        }
+    }
+    
+    func songLikeStatus()
+    {
+        if SongManager.isAlreadyFavourited(stream.id)
+        {
+            likeButton.setImage(UIImage(named:"red_heart"), for:.normal)
+        }
+        else
+        {
+            likeButton.setImage(UIImage(named:"empty_heart"), for:.normal)
+        }
     }
 }

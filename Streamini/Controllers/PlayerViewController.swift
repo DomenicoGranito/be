@@ -25,6 +25,30 @@ class PlayerViewController: UIViewController
         addPlayer()
     }
     
+    override func viewDidAppear(_ animated:Bool)
+    {
+        UIApplication.shared.setStatusBarHidden(true, with:.slide)
+        
+        if isPlaying
+        {
+            player?.play()
+            
+            playButton?.setImage(UIImage(named:"big_pause_button"), for:.normal)
+        }
+        else
+        {
+            player?.pause()
+            
+            playButton?.setImage(UIImage(named:"big_play_button"), for:.normal)
+        }
+    }
+    
+    override func viewWillDisappear(_ animated:Bool)
+    {
+        player?.shouldAutoplay=false
+        player?.pause()
+    }
+    
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
         return 1
@@ -67,8 +91,16 @@ class PlayerViewController: UIViewController
         player.controlStyle = .none
         player.scalingMode = .aspectFit
         
-        player.videoId=stream.videoID
-        player.startRequestPlayInfo()
+        if SongManager.isAlreadyDownloaded(stream.id)
+        {
+            player.contentURL=URL(fileURLWithPath:"\(SongManager.documentsDir)/\(stream.videoID).mp4")
+        }
+        else
+        {
+            player.videoId=stream.videoID
+            player.startRequestPlayInfo()
+        }
+        
         player.play()
         
         player.view.frame=CGRect(x:0, y:0, width:view.frame.size.width, height:160)
