@@ -314,6 +314,8 @@ class HomeViewController: BaseViewController
                 oneVideo.tviewers=video["tviewers"] as! Int
                 oneVideo.rviewers=video["rviewers"] as! Int
                 oneVideo.likes=video["likes"] as! Int
+                oneVideo.shares=video["sharecount"] as! Int
+                oneVideo.comments=video["commentcount"] as! Int
                 oneVideo.rlikes=video["rlikes"] as! Int
                 oneVideo.user=oneUser
                 
