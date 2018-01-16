@@ -43,7 +43,7 @@ class CategoriesViewController: BaseViewController
             self.fetchMore()
         }
         
-        StreamConnector().categoryStreams(isSubCategory, categoryID, page, successStreams, failureStream)
+        StreamConnector().categoryStreams(isSubCategory, false, categoryID, page, successStreams, failureStream)
         
         if isSubCategory
         {
@@ -75,7 +75,7 @@ class CategoriesViewController: BaseViewController
     func fetchMore()
     {
         page+=1
-        StreamConnector().categoryStreams(isSubCategory, categoryID, page, fetchMoreSuccess, failureStream)
+        StreamConnector().categoryStreams(isSubCategory, false, categoryID, page, fetchMoreSuccess, failureStream)
     }
     
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
@@ -161,6 +161,7 @@ class CategoriesViewController: BaseViewController
             oneVideo.city=video["city"] as! String
             oneVideo.brand=video["brand"] as! String
             oneVideo.venue=video["venue"] as! String
+            oneVideo.cid=video["cid"] as! Int
             oneVideo.category=video["category"] as! String
             oneVideo.PRAgency=video["pr_agency"] as! String
             oneVideo.musicAgency=video["music_agency"] as! String

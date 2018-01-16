@@ -6,11 +6,13 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-class Stream: NSObject {
+class Stream: NSObject
+{
     var id: Int = 0
     var vType=0
     var videoID=""
     var title = ""
+    var cid: Int = 0
     var category = ""
     var year = ""
     var videoDescription = ""
@@ -37,8 +39,8 @@ class Stream: NSObject {
     var user = User()   
 }
 
-
-class Video: NSObject {
+class Video: NSObject
+{
     var id: UInt = 0
     var title = ""
     var duration = Double()

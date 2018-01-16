@@ -21,8 +21,6 @@ class FollowersViewController: BaseViewController, UISearchBarDelegate, UserSele
     var searchTerm              = ""
     weak var delegate: SelectFollowersDelegate?
     
-    // MARK: - Actions
-    
     func selectedDone() {
         if let del = delegate {
             if !selectedUsers.isEmpty {

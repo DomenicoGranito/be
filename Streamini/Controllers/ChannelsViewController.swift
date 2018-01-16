@@ -116,7 +116,8 @@ class ChannelsViewController: BaseViewController
                 oneVideo.city=video["city"] as! String
                 oneVideo.brand=video["brand"] as! String
                 oneVideo.venue=video["venue"] as! String
-                oneVideo.category=video["category"] as! String
+                oneVideo.cid=video["cid"] as! Int
+                oneVideo.category=video["categoryname"] as! String
                 oneVideo.PRAgency=video["pr_agency"] as! String
                 oneVideo.musicAgency=video["music_agency"] as! String
                 oneVideo.adAgency=video["ad_agency"] as! String
