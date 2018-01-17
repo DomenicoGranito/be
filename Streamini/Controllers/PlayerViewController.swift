@@ -14,6 +14,7 @@ class PlayerViewController: BaseViewController
     @IBOutlet var playButton:UIButton!
     @IBOutlet var relatedVideosTbl:UITableView!
     
+    let site=Config.shared.site()
     var allItemsArray=NSMutableArray()
     var isPlaying=true
     var TBVC:TabBarViewController!
@@ -39,22 +40,22 @@ class PlayerViewController: BaseViewController
         
         if isPlaying
         {
-            player?.play()
+            player.play()
             
-            playButton?.setImage(UIImage(named:"big_pause_button"), for:.normal)
+            playButton.setImage(UIImage(named:"big_pause_button"), for:.normal)
         }
         else
         {
-            player?.pause()
+            player.pause()
             
-            playButton?.setImage(UIImage(named:"big_play_button"), for:.normal)
+            playButton.setImage(UIImage(named:"big_play_button"), for:.normal)
         }
     }
     
     override func viewWillDisappear(_ animated:Bool)
     {
-        player?.shouldAutoplay=false
-        player?.pause()
+        player.shouldAutoplay=false
+        player.pause()
     }
     
     func fetchMore()
@@ -63,18 +64,38 @@ class PlayerViewController: BaseViewController
         StreamConnector().categoryStreams(false, true, stream.cid, page, fetchMoreSuccess, failureStream)
     }
     
+    func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
+    {
+        return indexPath.row==0 ? 320 : 80
+    }
+    
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
-        return 1
+        return allItemsArray.count+1
     }
     
     func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:IndexPath)->UITableViewCell
     {
-        let cell=tableView.dequeueReusableCell(withIdentifier:"AboutVideoCell") as! AboutVideoCell
-        
-        cell.update(stream)
-        
-        return cell
+        if indexPath.row==0
+        {
+            let cell=tableView.dequeueReusableCell(withIdentifier:"AboutVideoCell") as! AboutVideoCell
+            
+            cell.update(stream)
+            
+            return cell
+        }
+        else
+        {
+            let cell=tableView.dequeueReusableCell(withIdentifier:"RelatedVideoCell") as! RecentlyPlayedCell
+            
+            let stream=allItemsArray[indexPath.row-1] as! Stream
+            
+            cell.videoTitleLbl.text=stream.title
+            cell.artistNameLbl.text=stream.user.name
+            cell.videoThumbnailImageView.sd_setImage(with:URL(string:"\(site)/thumb/\(stream.id).jpg"), placeholderImage:UIImage(named:"stream"))
+            
+            return cell
+        }
     }
     
     @IBAction func play()
