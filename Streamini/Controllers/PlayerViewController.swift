@@ -12,6 +12,8 @@ class PlayerViewController: BaseViewController
     @IBOutlet var videoDurationLbl:UILabel!
     @IBOutlet var seekBar:UISlider!
     @IBOutlet var playButton:UIButton!
+    @IBOutlet var previousButton:UIButton!
+    @IBOutlet var nextButton:UIButton!
     @IBOutlet var relatedVideosTbl:UITableView!
     
     let site=Config.shared.site()
@@ -20,11 +22,15 @@ class PlayerViewController: BaseViewController
     var TBVC:TabBarViewController!
     var player:DWMoviePlayerController!
     var stream:Stream!
+    var originalStream:Stream!
     var timer:Timer!
     var page=0
+    var selectedItemIndex=0
     
     override func viewDidLoad()
     {
+        originalStream=stream
+        
         relatedVideosTbl.addInfiniteScrolling{()->() in
             self.fetchMore()
         }
@@ -60,8 +66,8 @@ class PlayerViewController: BaseViewController
     
     func fetchMore()
     {
-        page+=1
-        StreamConnector().categoryStreams(false, true, stream.cid, page, fetchMoreSuccess, failureStream)
+        //page+=1
+        //StreamConnector().categoryStreams(false, true, stream.cid, page, fetchMoreSuccess, failureStream)
     }
     
     func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
@@ -98,6 +104,17 @@ class PlayerViewController: BaseViewController
         }
     }
     
+    func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:IndexPath)
+    {
+        if indexPath.row>0
+        {
+            selectedItemIndex=indexPath.row-1
+            stream=allItemsArray[selectedItemIndex] as! Stream
+            relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.fade)
+            updateButtons()
+        }
+    }
+    
     @IBAction func play()
     {
         if isPlaying
@@ -114,6 +131,22 @@ class PlayerViewController: BaseViewController
             playButton.setImage(UIImage(named:"big_pause_button"), for:.normal)
             isPlaying=true
         }
+    }
+    
+    @IBAction func previous()
+    {
+        selectedItemIndex=selectedItemIndex-1
+        stream=selectedItemIndex==0 ? originalStream : allItemsArray[selectedItemIndex] as! Stream
+        relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.fade)
+        updateButtons()
+    }
+    
+    @IBAction func next()
+    {
+        selectedItemIndex=selectedItemIndex+1
+        stream=allItemsArray[selectedItemIndex-1] as! Stream
+        relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.fade)
+        updateButtons()
     }
     
     func addPlayer()
@@ -138,6 +171,7 @@ class PlayerViewController: BaseViewController
         
         player.play()
         
+        player.view.removeFromSuperview()
         player.view.frame=CGRect(x:0, y:0, width:view.frame.size.width, height:160)
         view.addSubview(player.view)
         view.sendSubview(toBack:player.view)
@@ -200,10 +234,27 @@ class PlayerViewController: BaseViewController
         return readableDuration
     }
     
+    func updateButtons()
+    {
+        nextButton.isEnabled=true
+        previousButton.isEnabled=true
+        
+        if selectedItemIndex==0
+        {
+            previousButton.isEnabled=false
+        }
+        
+        if selectedItemIndex==allItemsArray.count-1
+        {
+            nextButton.isEnabled=false
+        }
+    }
+    
     func successStreams(data:NSDictionary)
     {
         allItemsArray.addObjects(from:getData(data) as [AnyObject])
         relatedVideosTbl.reloadData()
+        updateButtons()
     }
     
     func fetchMoreSuccess(data:NSDictionary)

@@ -9788,6 +9788,9 @@
                                         <rect key="frame" x="70" y="60" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="prev_song"/>
+                                        <connections>
+                                            <action selector="previous" destination="vYl-TH-Oqr" eventType="touchUpInside" id="KEd-2V-osR"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dTi-9T-Aoq">
                                         <rect key="frame" x="140" y="60" width="40" height="40"/>
@@ -9801,6 +9804,9 @@
                                         <rect key="frame" x="210" y="60" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="next_song"/>
+                                        <connections>
+                                            <action selector="next" destination="vYl-TH-Oqr" eventType="touchUpInside" id="Fd5-Pf-0pn"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ht2-jX-cl4">
                                         <rect key="frame" x="280" y="100" width="40" height="40"/>
@@ -10197,7 +10203,7 @@
                                             <outlet property="yearLbl" destination="4OD-Hm-dFC" id="Jli-eP-aGl"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RelatedVideoCell" rowHeight="80" id="sgH-88-2ab" customClass="RecentlyPlayedCell" customModule="Streamini" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RelatedVideoCell" rowHeight="80" id="sgH-88-2ab" customClass="RecentlyPlayedCell" customModule="Streamini" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="321" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sgH-88-2ab" id="EiW-qo-xlC">
@@ -10249,7 +10255,9 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <size key="freeformSize" width="320" height="570"/>
                     <connections>
+                        <outlet property="nextButton" destination="fk7-B6-6JJ" id="cx1-id-hjI"/>
                         <outlet property="playButton" destination="dTi-9T-Aoq" id="BzE-cz-6R8"/>
+                        <outlet property="previousButton" destination="B7v-zx-WUD" id="ptd-RD-c3X"/>
                         <outlet property="relatedVideosTbl" destination="bzF-1h-J8J" id="6Pa-QL-WWc"/>
                         <outlet property="seekBar" destination="RrG-DV-CeE" id="KvO-YK-qzl"/>
                         <outlet property="videoDurationLbl" destination="DdX-E6-6tb" id="RX1-2s-8vj"/>
