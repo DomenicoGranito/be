@@ -108,8 +108,8 @@ class PlayerViewController: BaseViewController
     {
         if indexPath.row>0
         {
-            selectedItemIndex=indexPath.row-1
-            stream=allItemsArray[selectedItemIndex] as! Stream
+            selectedItemIndex=indexPath.row
+            stream=allItemsArray[indexPath.row-1] as! Stream
             relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.fade)
             updateButtons()
         }
@@ -136,15 +136,15 @@ class PlayerViewController: BaseViewController
     @IBAction func previous()
     {
         selectedItemIndex=selectedItemIndex-1
-        stream=selectedItemIndex==0 ? originalStream : allItemsArray[selectedItemIndex] as! Stream
+        stream=selectedItemIndex==0 ? originalStream : allItemsArray[selectedItemIndex-1] as! Stream
         relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.fade)
         updateButtons()
     }
     
     @IBAction func next()
     {
+        stream=allItemsArray[selectedItemIndex] as! Stream
         selectedItemIndex=selectedItemIndex+1
-        stream=allItemsArray[selectedItemIndex-1] as! Stream
         relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.fade)
         updateButtons()
     }
@@ -244,7 +244,7 @@ class PlayerViewController: BaseViewController
             previousButton.isEnabled=false
         }
         
-        if selectedItemIndex==allItemsArray.count-1
+        if selectedItemIndex==allItemsArray.count
         {
             nextButton.isEnabled=false
         }
