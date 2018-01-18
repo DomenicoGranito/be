@@ -66,8 +66,8 @@ class PlayerViewController: BaseViewController
     
     func fetchMore()
     {
-        //page+=1
-        //StreamConnector().categoryStreams(false, true, stream.cid, page, fetchMoreSuccess, failureStream)
+        page+=1
+        StreamConnector().categoryStreams(false, true, stream.cid, page, fetchMoreSuccess, failureStream)
     }
     
     func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
@@ -111,7 +111,7 @@ class PlayerViewController: BaseViewController
             selectedItemIndex=indexPath.row
             stream=allItemsArray[indexPath.row-1] as! Stream
             relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.fade)
-            updateButtons()
+            addPlayer()
         }
     }
     
@@ -138,7 +138,7 @@ class PlayerViewController: BaseViewController
         selectedItemIndex=selectedItemIndex-1
         stream=selectedItemIndex==0 ? originalStream : allItemsArray[selectedItemIndex-1] as! Stream
         relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.fade)
-        updateButtons()
+        addPlayer()
     }
     
     @IBAction func next()
@@ -146,14 +146,21 @@ class PlayerViewController: BaseViewController
         stream=allItemsArray[selectedItemIndex] as! Stream
         selectedItemIndex=selectedItemIndex+1
         relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.fade)
-        updateButtons()
+        addPlayer()
     }
     
     func addPlayer()
     {
+        updateButtons()
+        
         seekBar.value=0
         videoProgressDurationLbl.text="0:00"
         videoDurationLbl.text="-0:00"
+        
+        if player != nil
+        {
+            player.view.removeFromSuperview()
+        }
         
         player=DWMoviePlayerController(userId:"D43560320694466A", key:"WGbPBVI3075vGwA0AIW0SR9pDTsQR229")
         player.controlStyle = .none
@@ -171,7 +178,6 @@ class PlayerViewController: BaseViewController
         
         player.play()
         
-        player.view.removeFromSuperview()
         player.view.frame=CGRect(x:0, y:0, width:view.frame.size.width, height:160)
         view.addSubview(player.view)
         view.sendSubview(toBack:player.view)
