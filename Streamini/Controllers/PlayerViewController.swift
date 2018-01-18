@@ -65,8 +65,8 @@ class PlayerViewController: BaseViewController, ARNImageTransitionZoomable
     
     func fetchMore()
     {
-        //page+=1
-        //StreamConnector().categoryStreams(false, true, stream.cid, page, fetchMoreSuccess, failureStream)
+        page+=1
+        StreamConnector().categoryStreams(false, true, stream.cid, page, fetchMoreSuccess, failureStream)
     }
     
     func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
@@ -125,11 +125,11 @@ class PlayerViewController: BaseViewController, ARNImageTransitionZoomable
     
     func menu()
     {
-        let vc=storyBoard.instantiateViewController(withIdentifier:"PlaylistViewController") as! PlaylistViewController
-        vc.transitioningDelegate=vc
-        vc.nowPlayingStream=stream
-        vc.streamsArray=allItemsArray
-        present(vc, animated:true)
+        //let vc=storyBoard.instantiateViewController(withIdentifier:"PlaylistViewController") as! PlaylistViewController
+        //vc.transitioningDelegate=vc
+        //vc.nowPlayingStream=stream
+        //vc.streamsArray=allItemsArray
+        //present(vc, animated:true)
     }
     
     @IBAction func play()
