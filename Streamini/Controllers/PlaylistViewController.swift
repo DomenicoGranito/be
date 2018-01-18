@@ -23,10 +23,6 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         
     override func viewDidLoad()
     {
-        nowPlayingStream=streamsArray.object(at:nowPlayingStreamIndex) as! Stream
-        
-        streamsArray.removeObject(at:nowPlayingStreamIndex)
-        
         backgroundImageView.sd_setImage(with:URL(string:"\(site)/thumb/\(nowPlayingStream.id).jpg"))
         
         headerTitleLbl.text=nowPlayingStream.title
@@ -96,7 +92,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
             cell.streamNameLabel.text=nowPlayingStream.title
             cell.userLabel.text=nowPlayingStream.user.name
             cell.playImageView.sd_setImage(with:URL(string:"\(site)/thumb/\(nowPlayingStream.id).jpg"), placeholderImage:UIImage(named:"stream"))
-            cell.dotsButton?.addTarget(self, action:#selector(dotsButtonTapped), for:.touchUpInside)
+            cell.dotsButton.addTarget(self, action:#selector(dotsButtonTapped), for:.touchUpInside)
             
             return cell
         }
@@ -186,10 +182,10 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         for i in 0 ..< selectedStreamsArray.count
         {
             let sourceIndex=selectedStreamsArray[i] as! Int
-            let destinationIndex=nowPlayingStreamIndex+i
+            let destinationIndex=i
             
             streamsArray.exchangeObject(at:sourceIndex, withObjectAt:destinationIndex)
-            upNextStreamsArray.add(streamsArray.object(at:sourceIndex))
+            upNextStreamsArray.add(streamsArray.object(at:destinationIndex))
         }
         
         selectedStreamsArray.removeAllObjects()
@@ -200,7 +196,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     func dotsButtonTapped()
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewController(withIdentifier: "PopUpViewController") as! PopUpViewController
+        let vc=storyboard.instantiateViewController(withIdentifier:"PopUpViewController") as! PopUpViewController
         vc.stream=nowPlayingStream
         present(vc, animated:true)
     }

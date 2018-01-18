@@ -28,6 +28,7 @@ class AboutVideoCell: UITableViewCell
     @IBOutlet var commentCountLbl:UILabel!
     @IBOutlet var likeButton:UIButton!
     @IBOutlet var shareButton:UIButton!
+    @IBOutlet var playlistButton:UIButton!
     @IBOutlet var subscribeButton:UIButton!
     @IBOutlet var userNameLbl:UILabel!
     @IBOutlet var userImageView:UIImageView!

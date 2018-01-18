@@ -6,7 +6,7 @@
 //  Copyright © 2018 Cedricm Video. All rights reserved.
 //
 
-class PlayerViewController: BaseViewController
+class PlayerViewController: BaseViewController, ARNImageTransitionZoomable
 {
     @IBOutlet var videoProgressDurationLbl:UILabel!
     @IBOutlet var videoDurationLbl:UILabel!
@@ -23,7 +23,6 @@ class PlayerViewController: BaseViewController
     var player:DWMoviePlayerController!
     var stream:Stream!
     var originalStream:Stream!
-    var timer:Timer!
     var page=0
     var selectedItemIndex=0
     
@@ -66,8 +65,8 @@ class PlayerViewController: BaseViewController
     
     func fetchMore()
     {
-        page+=1
-        StreamConnector().categoryStreams(false, true, stream.cid, page, fetchMoreSuccess, failureStream)
+        //page+=1
+        //StreamConnector().categoryStreams(false, true, stream.cid, page, fetchMoreSuccess, failureStream)
     }
     
     func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
@@ -87,6 +86,7 @@ class PlayerViewController: BaseViewController
             let cell=tableView.dequeueReusableCell(withIdentifier:"AboutVideoCell") as! AboutVideoCell
             
             cell.shareButton.addTarget(self, action:#selector(share), for:.touchUpInside)
+            cell.playlistButton.addTarget(self, action:#selector(menu), for:.touchUpInside)
             cell.update(stream)
             
             return cell
@@ -120,6 +120,15 @@ class PlayerViewController: BaseViewController
     {
         let vc=storyBoard.instantiateViewController(withIdentifier:"PopUpViewController") as! PopUpViewController
         vc.stream=stream
+        present(vc, animated:true)
+    }
+    
+    func menu()
+    {
+        let vc=storyBoard.instantiateViewController(withIdentifier:"PlaylistViewController") as! PlaylistViewController
+        vc.transitioningDelegate=vc
+        vc.nowPlayingStream=stream
+        vc.streamsArray=allItemsArray
         present(vc, animated:true)
     }
     
@@ -192,7 +201,7 @@ class PlayerViewController: BaseViewController
         
         NotificationCenter.default.addObserver(self, selector:#selector(moviePlayerDurationAvailable), name:.MPMovieDurationAvailable, object:player)
         
-        timer=Timer.scheduledTimer(timeInterval:1, target:self, selector:#selector(timerHandler), userInfo:nil, repeats:true)
+        Timer.scheduledTimer(timeInterval:1, target:self, selector:#selector(timerHandler), userInfo:nil, repeats:true)
     }
     
     func moviePlayerDurationAvailable()
@@ -340,5 +349,10 @@ class PlayerViewController: BaseViewController
     func failureStream(error:NSError)
     {
         handleError(error)
+    }
+    
+    func createTransitionImageView()->UIImageView
+    {
+        return UIImageView()
     }
 }

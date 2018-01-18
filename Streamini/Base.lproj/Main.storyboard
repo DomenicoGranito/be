@@ -10189,6 +10189,7 @@
                                             <outlet property="likeButton" destination="F4V-58-165" id="GN1-Wp-Ttj"/>
                                             <outlet property="likeCountLbl" destination="DK5-Za-qKQ" id="ToZ-ry-2yi"/>
                                             <outlet property="musicAgencyLbl" destination="0mQ-Io-jEE" id="e76-xe-YlS"/>
+                                            <outlet property="playlistButton" destination="GgL-48-JIg" id="vNY-9D-uKg"/>
                                             <outlet property="shareButton" destination="n1E-db-LL5" id="5eP-6V-HCp"/>
                                             <outlet property="shareCountLbl" destination="sF9-LO-aau" id="pz6-gY-bBl"/>
                                             <outlet property="subscribeButton" destination="QrG-lp-7Vn" id="tnI-Gd-09e"/>
