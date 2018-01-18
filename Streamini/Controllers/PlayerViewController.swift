@@ -86,6 +86,7 @@ class PlayerViewController: BaseViewController
         {
             let cell=tableView.dequeueReusableCell(withIdentifier:"AboutVideoCell") as! AboutVideoCell
             
+            cell.shareButton.addTarget(self, action:#selector(share), for:.touchUpInside)
             cell.update(stream)
             
             return cell
@@ -113,6 +114,13 @@ class PlayerViewController: BaseViewController
             relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.fade)
             addPlayer()
         }
+    }
+    
+    func share()
+    {
+        let vc=storyBoard.instantiateViewController(withIdentifier:"PopUpViewController") as! PopUpViewController
+        vc.stream=stream
+        present(vc, animated:true)
     }
     
     @IBAction func play()

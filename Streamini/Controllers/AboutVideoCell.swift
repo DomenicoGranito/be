@@ -27,11 +27,13 @@ class AboutVideoCell: UITableViewCell
     @IBOutlet var shareCountLbl:UILabel!
     @IBOutlet var commentCountLbl:UILabel!
     @IBOutlet var likeButton:UIButton!
+    @IBOutlet var shareButton:UIButton!
     @IBOutlet var subscribeButton:UIButton!
     @IBOutlet var userNameLbl:UILabel!
     @IBOutlet var userImageView:UIImageView!
     
     var stream:Stream!
+    let storyboard=UIStoryboard(name:"Main", bundle:nil)
     
     func update(_ stream:Stream)
     {

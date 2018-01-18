@@ -10,7 +10,7 @@ class PopUpViewController: BaseViewController
 {
     @IBOutlet var backgroundImageView:UIImageView?
     
-    let menuItemTitlesArray:NSMutableArray=["Share to friends", "Share on timeline", "Go to channels", "Report this video", "Add to favourite", "Block content from this channel"]
+    let menuItemTitlesArray:NSMutableArray=["Share to Friends", "Share to Timeline", "Go to channels", "Report this Video", "Add to favourite", "Block Content from this Channel"]
     let menuItemIconsArray:NSMutableArray=["upload", "upload", "add", "share", "report", "add"]
     
     var stream:Stream?
