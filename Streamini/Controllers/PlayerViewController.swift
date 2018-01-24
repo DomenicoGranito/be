@@ -23,12 +23,15 @@ class PlayerViewController: BaseViewController
     var player:DWMoviePlayerController!
     var stream:Stream!
     var originalStream:Stream!
+    var appDelegate:AppDelegate!
     var page=0
     var selectedItemIndex=0
     
     override func viewDidLoad()
     {
         NotificationCenter.default.addObserver(self, selector:#selector(onDeviceOrientationChange), name:.UIDeviceOrientationDidChange, object:nil)
+        
+        appDelegate=UIApplication.shared.delegate as! AppDelegate
         
         originalStream=stream
         
@@ -43,6 +46,8 @@ class PlayerViewController: BaseViewController
     
     override func viewDidAppear(_ animated:Bool)
     {
+        appDelegate.shouldRotate=true
+        
         UIApplication.shared.setStatusBarHidden(true, with:.slide)
         
         if isPlaying
@@ -63,6 +68,8 @@ class PlayerViewController: BaseViewController
     {
         player.shouldAutoplay=false
         player.pause()
+        
+        appDelegate.shouldRotate=false
     }
     
     func fetchMore()
@@ -242,12 +249,18 @@ class PlayerViewController: BaseViewController
     
     func showLandscape()
     {
-        print("Landscape")
+        for gesture in view.gestureRecognizers!
+        {
+            gesture.isEnabled=false
+        }
     }
     
     func showPortrait()
     {
-        print("Portrait")
+        for gesture in view.gestureRecognizers!
+        {
+            gesture.isEnabled=true
+        }
     }
     
     func secondsToReadableTime(_ durationSeconds:Double)->String
