@@ -9813,6 +9813,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Fxb-E9-E5Z"/>
                                             <constraint firstAttribute="width" constant="180" id="ecM-9F-pv8"/>
                                         </constraints>
                                     </view>
@@ -9827,9 +9828,12 @@
                                             <action selector="rotateScreen" destination="vYl-TH-Oqr" eventType="touchUpInside" id="PH7-bt-AEW"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HrV-Pd-eLv">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HrV-Pd-eLv">
                                         <rect key="frame" x="5" y="140" width="35" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="Lse-SY-fNq"/>
+                                            <constraint firstAttribute="width" constant="35" id="o2f-Nj-419"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -9858,15 +9862,16 @@
                                 <constraints>
                                     <constraint firstItem="DdX-E6-6tb" firstAttribute="top" secondItem="ht2-jX-cl4" secondAttribute="bottom" id="5MY-Xq-w36"/>
                                     <constraint firstAttribute="trailing" secondItem="ht2-jX-cl4" secondAttribute="trailing" id="9ft-Tj-myn"/>
-                                    <constraint firstItem="R8e-Mt-u72" firstAttribute="top" secondItem="x3m-xb-ajQ" secondAttribute="top" constant="60" id="BJd-ZP-oEh"/>
                                     <constraint firstAttribute="bottom" secondItem="DdX-E6-6tb" secondAttribute="bottom" id="EFe-nT-1T5"/>
                                     <constraint firstAttribute="bottom" secondItem="RrG-DV-CeE" secondAttribute="bottom" constant="-15" id="HOC-aV-VWh"/>
                                     <constraint firstAttribute="trailing" secondItem="RrG-DV-CeE" secondAttribute="trailing" constant="-1" id="OCQ-Qy-nqB"/>
                                     <constraint firstItem="R8e-Mt-u72" firstAttribute="centerX" secondItem="x3m-xb-ajQ" secondAttribute="centerX" id="RPW-Rc-qjX"/>
-                                    <constraint firstItem="RrG-DV-CeE" firstAttribute="top" secondItem="R8e-Mt-u72" secondAttribute="bottom" constant="45" id="XFb-6s-sdc"/>
+                                    <constraint firstItem="R8e-Mt-u72" firstAttribute="centerY" secondItem="x3m-xb-ajQ" secondAttribute="centerY" id="W9a-wb-3Yz"/>
                                     <constraint firstItem="RrG-DV-CeE" firstAttribute="leading" secondItem="x3m-xb-ajQ" secondAttribute="leading" constant="-1" id="cUB-HF-NfZ"/>
                                     <constraint firstAttribute="height" constant="160" id="eA8-Xi-oSc"/>
                                     <constraint firstAttribute="trailing" secondItem="DdX-E6-6tb" secondAttribute="trailing" constant="5" id="kl1-Hk-tDi"/>
+                                    <constraint firstItem="HrV-Pd-eLv" firstAttribute="leading" secondItem="x3m-xb-ajQ" secondAttribute="leading" constant="5" id="ngg-xk-eQ6"/>
+                                    <constraint firstAttribute="bottom" secondItem="HrV-Pd-eLv" secondAttribute="bottom" id="vl8-4y-ezo"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="320" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="bzF-1h-J8J">
@@ -10340,6 +10345,7 @@
                     <connections>
                         <outlet property="nextButton" destination="fk7-B6-6JJ" id="cx1-id-hjI"/>
                         <outlet property="playButton" destination="dTi-9T-Aoq" id="BzE-cz-6R8"/>
+                        <outlet property="playerHeightConstraint" destination="eA8-Xi-oSc" id="L9H-1N-cI1"/>
                         <outlet property="previousButton" destination="B7v-zx-WUD" id="ptd-RD-c3X"/>
                         <outlet property="relatedVideosTbl" destination="bzF-1h-J8J" id="6Pa-QL-WWc"/>
                         <outlet property="seekBar" destination="RrG-DV-CeE" id="KvO-YK-qzl"/>

@@ -15,6 +15,7 @@ class PlayerViewController: BaseViewController
     @IBOutlet var previousButton:UIButton!
     @IBOutlet var nextButton:UIButton!
     @IBOutlet var relatedVideosTbl:UITableView!
+    @IBOutlet var playerHeightConstraint:NSLayoutConstraint!
     
     let site=Config.shared.site()
     var allItemsArray=NSMutableArray()
@@ -259,6 +260,9 @@ class PlayerViewController: BaseViewController
     
     func showLandscape()
     {
+        player.view.frame=CGRect(x:0, y:0, width:view.frame.size.width, height:view.frame.size.height)
+        playerHeightConstraint.constant=view.frame.size.height
+        
         for gesture in view.gestureRecognizers!
         {
             gesture.isEnabled=false
@@ -267,6 +271,9 @@ class PlayerViewController: BaseViewController
     
     func showPortrait()
     {
+        player.view.frame=CGRect(x:0, y:0, width:view.frame.size.width, height:160)
+        playerHeightConstraint.constant=160
+        
         for gesture in view.gestureRecognizers!
         {
             gesture.isEnabled=true
