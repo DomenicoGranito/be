@@ -6,7 +6,7 @@
 //  Copyright © 2018 Cedricm Video. All rights reserved.
 //
 
-class PlayerViewController: BaseViewController, ARNImageTransitionZoomable
+class PlayerViewController: BaseViewController
 {
     @IBOutlet var videoProgressDurationLbl:UILabel!
     @IBOutlet var videoDurationLbl:UILabel!
@@ -86,7 +86,6 @@ class PlayerViewController: BaseViewController, ARNImageTransitionZoomable
             let cell=tableView.dequeueReusableCell(withIdentifier:"AboutVideoCell") as! AboutVideoCell
             
             cell.shareButton.addTarget(self, action:#selector(share), for:.touchUpInside)
-            cell.playlistButton.addTarget(self, action:#selector(menu), for:.touchUpInside)
             cell.update(stream)
             
             return cell
@@ -121,15 +120,6 @@ class PlayerViewController: BaseViewController, ARNImageTransitionZoomable
         let vc=storyBoard.instantiateViewController(withIdentifier:"PopUpViewController") as! PopUpViewController
         vc.stream=stream
         present(vc, animated:true)
-    }
-    
-    func menu()
-    {
-        //let vc=storyBoard.instantiateViewController(withIdentifier:"PlaylistViewController") as! PlaylistViewController
-        //vc.transitioningDelegate=vc
-        //vc.nowPlayingStream=stream
-        //vc.streamsArray=allItemsArray
-        //present(vc, animated:true)
     }
     
     @IBAction func play()
@@ -349,10 +339,5 @@ class PlayerViewController: BaseViewController, ARNImageTransitionZoomable
     func failureStream(error:NSError)
     {
         handleError(error)
-    }
-    
-    func createTransitionImageView()->UIImageView
-    {
-        return UIImageView()
     }
 }
