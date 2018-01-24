@@ -229,8 +229,18 @@ class PlayerViewController: BaseViewController
     
     @IBAction func rotateScreen()
     {
-        let value=UIInterfaceOrientation.landscapeRight.rawValue
-        UIDevice.current.setValue(value, forKey:"orientation")
+        let orientation=UIApplication.shared.statusBarOrientation
+        
+        if UIInterfaceOrientationIsLandscape(orientation)
+        {
+            let value=UIInterfaceOrientation.portrait.rawValue
+            UIDevice.current.setValue(value, forKey:"orientation")
+        }
+        else
+        {
+            let value=UIInterfaceOrientation.landscapeRight.rawValue
+            UIDevice.current.setValue(value, forKey:"orientation")
+        }
     }
     
     func onDeviceOrientationChange()
