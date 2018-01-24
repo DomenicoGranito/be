@@ -28,6 +28,8 @@ class PlayerViewController: BaseViewController
     
     override func viewDidLoad()
     {
+        NotificationCenter.default.addObserver(self, selector:#selector(onDeviceOrientationChange), name:.UIDeviceOrientationDidChange, object:nil)
+        
         originalStream=stream
         
         relatedVideosTbl.addInfiniteScrolling{()->() in
@@ -216,6 +218,36 @@ class PlayerViewController: BaseViewController
         
         videoProgressDurationLbl.text=secondsToReadableTime(player.currentPlaybackTime)
         videoDurationLbl.text="-\(secondsToReadableTime(player.duration-player.currentPlaybackTime))"
+    }
+    
+    @IBAction func rotateScreen()
+    {
+        let value=UIInterfaceOrientation.landscapeRight.rawValue
+        UIDevice.current.setValue(value, forKey:"orientation")
+    }
+    
+    func onDeviceOrientationChange()
+    {
+        let orientation=UIApplication.shared.statusBarOrientation
+        
+        if UIInterfaceOrientationIsLandscape(orientation)
+        {
+            showLandscape()
+        }
+        else
+        {
+            showPortrait()
+        }
+    }
+    
+    func showLandscape()
+    {
+        print("Landscape")
+    }
+    
+    func showPortrait()
+    {
+        print("Portrait")
     }
     
     func secondsToReadableTime(_ durationSeconds:Double)->String
