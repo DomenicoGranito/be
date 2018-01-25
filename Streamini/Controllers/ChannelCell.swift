@@ -13,6 +13,7 @@ class ChannelCell: UITableViewCell
     @IBOutlet var subscribeButton:UIButton!
     @IBOutlet var collectionView:UICollectionView!
     
+    var user:User!
     var TBVC:TabBarViewController!
     var userVideosArray:NSArray!
     let site=Config.shared.site()
@@ -20,10 +21,64 @@ class ChannelCell: UITableViewCell
     
     func update(_ user:User)
     {
+        self.user=user
+        
         subscribeButton.layer.borderColor=UIColor(red:190/255, green:142/255, blue:64/255, alpha:1).cgColor
         
         userNameLbl.text=user.name
         userImageView.sd_setImage(with:user.avatarURL(), placeholderImage:UIImage(named:"profile"))
+        
+        subscribeStatus()
+    }
+    
+    func subscribeStatus()
+    {
+        if user.isFollowed
+        {
+            subscribeButton.setTitle("Subscribed", for:.normal)
+            subscribeButton.setTitleColor(UIColor.white, for:.normal)
+            subscribeButton.backgroundColor=UIColor(red:190/255, green:142/255, blue:64/255, alpha:1)
+        }
+        else
+        {
+            subscribeButton.setTitle("+ Subscribe", for:.normal)
+        }
+    }
+    
+    @IBAction func subscribe()
+    {
+        if user.isFollowed
+        {
+            SocialConnector().unfollow(user.id, unfollowSuccess, unfollowFailure)
+        }
+        else
+        {
+            SocialConnector().follow(user.id, followSuccess, followFailure)
+        }
+    }
+    
+    func followSuccess()
+    {
+        subscribeButton.setTitle("Subscribed", for:.normal)
+        subscribeButton.setTitleColor(UIColor.white, for:.normal)
+        subscribeButton.backgroundColor=UIColor(red:190/255, green:142/255, blue:64/255, alpha:1)
+    }
+    
+    func followFailure(_ error:NSError)
+    {
+        
+    }
+    
+    func unfollowSuccess()
+    {
+        subscribeButton.setTitle("+ Subscribe", for:.normal)
+        subscribeButton.setTitleColor(UIColor(red:190/255, green:142/255, blue:64/255, alpha:1), for:.normal)
+        subscribeButton.backgroundColor=UIColor.clear
+    }
+    
+    func unfollowFailure(_ error:NSError)
+    {
+        
     }
     
     func reloadCollectionView()

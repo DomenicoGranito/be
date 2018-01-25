@@ -827,6 +827,9 @@
                                                             <integer key="value" value="2"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="subscribe" destination="k1O-A1-Ox8" eventType="touchUpInside" id="ZKw-eU-UDC"/>
+                                                    </connections>
                                                 </button>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Lfk-YU-cnC">
                                                     <rect key="frame" x="0.0" y="70" width="320" height="222"/>
@@ -10396,8 +10399,8 @@
         <image name="user" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AcD-60-gNs"/>
-        <segue reference="bjY-rG-Avh"/>
+        <segue reference="ybU-Cf-XEH"/>
+        <segue reference="7Qu-7p-ztG"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
