@@ -138,6 +138,8 @@ class AboutVideoCell: UITableViewCell
         if stream.user.isFollowed
         {
             subscribeButton.setTitle("Subscribed", for:.normal)
+            subscribeButton.setTitleColor(UIColor.white, for:.normal)
+            subscribeButton.backgroundColor=UIColor(red:190/255, green:142/255, blue:64/255, alpha:1)
         }
         else
         {
