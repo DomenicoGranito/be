@@ -6,7 +6,8 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-class Location: NSObject {
+class Location: NSObject
+{
     var lon: Double = 0
     var lat: Double = 0
     var city = ""

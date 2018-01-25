@@ -6,9 +6,8 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-import UIKit
-
-class User: NSObject {
+class User: NSObject
+{
     var id: Int = 0
     var name = ""
     var sname = ""

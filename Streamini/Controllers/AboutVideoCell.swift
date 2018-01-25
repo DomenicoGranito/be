@@ -64,6 +64,39 @@ class AboutVideoCell: UITableViewCell
         SongManager.addToRecentlyPlayed(stream.title, stream.streamHash, stream.id, stream.user.name, stream.videoID, stream.user.id)
         
         songLikeStatus()
+        subscribeStatus()
+    }
+    
+    @IBAction func subscribe()
+    {
+        if stream.user.isFollowed
+        {
+            SocialConnector().unfollow(stream.user.id, unfollowSuccess, unfollowFailure)
+        }
+        else
+        {
+            SocialConnector().follow(stream.user.id, followSuccess, followFailure)
+        }
+    }
+    
+    func followSuccess()
+    {
+        subscribeButton.setTitle("Subscribed", for:.normal)
+    }
+    
+    func followFailure(_ error:NSError)
+    {
+        
+    }
+    
+    func unfollowSuccess()
+    {
+        subscribeButton.setTitle("+ Subscribe", for:.normal)
+    }
+    
+    func unfollowFailure(_ error:NSError)
+    {
+        
     }
     
     @IBAction func like()
@@ -91,6 +124,18 @@ class AboutVideoCell: UITableViewCell
         else
         {
             likeButton.setImage(UIImage(named:"empty_heart"), for:.normal)
+        }
+    }
+    
+    func subscribeStatus()
+    {
+        if stream.user.isFollowed
+        {
+            subscribeButton.setTitle("Subscribed", for:.normal)
+        }
+        else
+        {
+            subscribeButton.setTitle("+ Subscribe", for:.normal)
         }
     }
 }
