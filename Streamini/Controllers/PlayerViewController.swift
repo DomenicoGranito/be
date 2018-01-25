@@ -14,6 +14,7 @@ class PlayerViewController: BaseViewController
     @IBOutlet var playButton:UIButton!
     @IBOutlet var previousButton:UIButton!
     @IBOutlet var nextButton:UIButton!
+    @IBOutlet var fullScreenButton:UIButton!
     @IBOutlet var relatedVideosTbl:UITableView!
     @IBOutlet var playerHeightConstraint:NSLayoutConstraint!
     
@@ -262,6 +263,7 @@ class PlayerViewController: BaseViewController
     {
         player.view.frame=CGRect(x:0, y:0, width:view.frame.size.width, height:view.frame.size.height)
         playerHeightConstraint.constant=view.frame.size.height
+        fullScreenButton.setImage(UIImage(named:"nonfullscreen"), for:.normal)
         
         for gesture in view.gestureRecognizers!
         {
@@ -273,6 +275,7 @@ class PlayerViewController: BaseViewController
     {
         player.view.frame=CGRect(x:0, y:0, width:view.frame.size.width, height:160)
         playerHeightConstraint.constant=160
+        fullScreenButton.setImage(UIImage(named:"fullscreen"), for:.normal)
         
         for gesture in view.gestureRecognizers!
         {
