@@ -196,7 +196,17 @@ class PlayerViewController: BaseViewController
         
         player.play()
         
-        player.view.frame=CGRect(x:0, y:0, width:view.frame.size.width, height:160)
+        let orientation=UIApplication.shared.statusBarOrientation
+        
+        if UIInterfaceOrientationIsLandscape(orientation)
+        {
+            player.view.frame=CGRect(x:0, y:0, width:view.frame.size.width, height:view.frame.size.height)
+        }
+        else
+        {
+            player.view.frame=CGRect(x:0, y:0, width:view.frame.size.width, height:160)
+        }
+        
         view.addSubview(player.view)
         view.sendSubview(toBack:player.view)
         

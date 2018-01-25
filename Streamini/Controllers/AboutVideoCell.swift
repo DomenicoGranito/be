@@ -40,6 +40,8 @@ class AboutVideoCell: UITableViewCell
     {
         self.stream=stream
         
+        subscribeButton.layer.borderColor=UIColor(red:190/255, green:142/255, blue:64/255, alpha:1).cgColor
+        
         videoTitleLbl.text=stream.title
         categoryLbl.text=stream.category
         viewersCountAndUploadedAgoLbl.text="\(stream.viewers) Views | Uploaded 1 month ago"
@@ -82,6 +84,8 @@ class AboutVideoCell: UITableViewCell
     func followSuccess()
     {
         subscribeButton.setTitle("Subscribed", for:.normal)
+        subscribeButton.setTitleColor(UIColor.white, for:.normal)
+        subscribeButton.backgroundColor=UIColor(red:190/255, green:142/255, blue:64/255, alpha:1)
     }
     
     func followFailure(_ error:NSError)
@@ -92,6 +96,8 @@ class AboutVideoCell: UITableViewCell
     func unfollowSuccess()
     {
         subscribeButton.setTitle("+ Subscribe", for:.normal)
+        subscribeButton.setTitleColor(UIColor(red:190/255, green:142/255, blue:64/255, alpha:1), for:.normal)
+        subscribeButton.backgroundColor=UIColor.clear
     }
     
     func unfollowFailure(_ error:NSError)
