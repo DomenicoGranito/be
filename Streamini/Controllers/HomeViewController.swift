@@ -6,7 +6,7 @@
 //  Copyright © 2016 UniProgy s.r.o. All rights reserved.
 //
 
-class HomeViewController: BaseViewController
+class HomeViewController: BaseViewController, PlayerViewControllerDelegate
 {
     @IBOutlet var itemsTbl:UITableView!
     @IBOutlet var errorView:ErrorView!
@@ -34,6 +34,31 @@ class HomeViewController: BaseViewController
         setUPHeader()
         
         updateUI()
+    }
+    
+    func updateSubscribeStatus(_ stream:Stream, _ isFollowed:Bool)
+    {
+        let userID=stream.user.id
+        
+        for i in 0 ..< allCategoryItemsArray.count
+        {
+            let streamsArray=allCategoryItemsArray[i] as! NSMutableArray
+            allCategoryItemsArray.remove(streamsArray)
+            
+            for j in 0 ..< streamsArray.count
+            {
+                let s=streamsArray[j] as! Stream
+                
+                if s.user.id==userID
+                {
+                    streamsArray.remove(s)
+                    s.user.isFollowed=isFollowed
+                    streamsArray.insert(s, at:j)
+                }
+            }
+            
+            allCategoryItemsArray.insert(streamsArray, at:i)
+        }
     }
     
     func setUPHeader()
@@ -236,6 +261,7 @@ class HomeViewController: BaseViewController
             cell.categoryName=categoryNamesArray[indexPath.section] as! String
             cell.categoryID=categoryIDsArray[indexPath.section] as! Int
             cell.navigationControllerReference=navigationController
+            cell.homeClassReference=self
         }
         
         return cell
@@ -283,6 +309,7 @@ class HomeViewController: BaseViewController
                 oneUser.id=user["id"] as! Int
                 oneUser.name=user["name"] as! String
                 oneUser.avatar=user["avatar"] as? String
+                oneUser.isFollowed=user["isfollowed"] as! Bool
                 
                 let oneVideo=Stream()
                 oneVideo.id=video["id"] as! Int
