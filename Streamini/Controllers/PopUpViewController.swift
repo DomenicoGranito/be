@@ -10,8 +10,8 @@ class PopUpViewController: BaseViewController
 {
     @IBOutlet var backgroundImageView:UIImageView?
     
-    let menuItemTitlesArray:NSMutableArray=["Share to Friends", "Share to Timeline", "Go to channels", "Report this Video", "Add to favourite", "Block Content from this Channel"]
-    let menuItemIconsArray:NSMutableArray=["upload", "upload", "add", "share", "report", "add"]
+    let menuItemTitlesArray:NSMutableArray=["Share to Friends", "Share to Timeline", "Report this Video", "Block Content from this Channel"]
+    let menuItemIconsArray:NSMutableArray=["upload", "upload", "add", "add"]
     
     var stream:Stream?
     let site=Config.shared.site()
@@ -38,12 +38,6 @@ class PopUpViewController: BaseViewController
             }
         }
 
-        if SongManager.isAlreadyFavourited(stream!.id)
-        {
-            menuItemTitlesArray.replaceObject(at:4, with:"Remove from favourite")
-            menuItemIconsArray.replaceObject(at:4, with:"time.png")
-        }
-        
         backgroundImageView?.sd_setImage(with:URL(string:"\(site)/thumb/\(stream!.id).jpg"))
     }
     
@@ -106,27 +100,9 @@ class PopUpViewController: BaseViewController
         }
         if indexPath.row==3
         {
-            view.window?.rootViewController?.dismiss(animated:true, completion:nil)
-            NotificationCenter.default.post(name: Notification.Name("goToChannels"), object:stream?.user)
-        }
-        if indexPath.row==4
-        {
             StreamConnector().report(stream!.id, reportSuccess, failureWithoutAction)
         }
-        if indexPath.row==5
-        {
-            dismiss(animated:true, completion:nil)
-            
-            if SongManager.isAlreadyFavourited(stream!.id)
-            {
-                SongManager.removeFromFavourite(stream!.id)
-            }
-            else
-            {
-                SongManager.addToFavourite(stream!.title, stream!.streamHash, stream!.id, stream!.user.name, stream!.vType, stream!.videoID, stream!.user.id)
-            }
-        }
-        if indexPath.row==6
+        if indexPath.row==4
         {
             dismiss(animated:true)
             SocialConnector().block(stream!.user.id, blockSuccess, failureWithoutAction)
@@ -135,7 +111,7 @@ class PopUpViewController: BaseViewController
             NotificationCenter.default.post(name: Notification.Name("hideMiniPlayer"), object:nil)
             NotificationCenter.default.post(name: Notification.Name("refreshAfterBlock"), object:nil)
         }
-        if indexPath.row==7
+        if indexPath.row==5
         {
             if SongManager.isAlreadyDownloaded(stream!.id)
             {
