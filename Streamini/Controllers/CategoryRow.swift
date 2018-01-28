@@ -17,6 +17,7 @@ class CategoryRow: UITableViewCell
     var categoryID:Int!
     let storyboard=UIStoryboard(name:"Main", bundle:nil)
     var navigationControllerReference:UINavigationController!
+    var homeClassReference:HomeViewController!
     
     func reloadCollectionView()
     {
@@ -87,6 +88,7 @@ class CategoryRow: UITableViewCell
         
         playerVC.stream=stream
         playerVC.TBVC=TBVC
+        playerVC.homeClassReference=homeClassReference
         
         TBVC.playerVC=playerVC
         TBVC.configure(stream)
