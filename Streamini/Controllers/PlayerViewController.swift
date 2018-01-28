@@ -28,6 +28,8 @@ class PlayerViewController: BaseViewController
     var appDelegate:AppDelegate!
     var page=0
     var selectedItemIndex=0
+    var homeClassReference:HomeViewController?
+    var categoryClassReference:CategoriesViewController?
     
     override func viewDidLoad()
     {
@@ -97,6 +99,16 @@ class PlayerViewController: BaseViewController
             let cell=tableView.dequeueReusableCell(withIdentifier:"AboutVideoCell") as! AboutVideoCell
             
             cell.shareButton.addTarget(self, action:#selector(share), for:.touchUpInside)
+            
+            if let obj=homeClassReference
+            {
+                cell.delegate=obj
+            }
+            if let obj=categoryClassReference
+            {
+                cell.delegate=obj
+            }
+            
             cell.update(stream)
             
             return cell
