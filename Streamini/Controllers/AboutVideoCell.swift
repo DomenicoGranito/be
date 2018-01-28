@@ -6,6 +6,11 @@
 //  Copyright © 2018 Cedricm Video. All rights reserved.
 //
 
+protocol PlayerViewControllerDelegate
+{
+    func updateSubscribeStatus(_ stream:Stream, _ isFollowed:Bool)
+}
+
 class AboutVideoCell: UITableViewCell
 {
     @IBOutlet var videoTitleLbl:UILabel!
@@ -33,6 +38,7 @@ class AboutVideoCell: UITableViewCell
     @IBOutlet var userNameLbl:UILabel!
     @IBOutlet var userImageView:UIImageView!
     
+    var delegate:PlayerViewControllerDelegate!
     var stream:Stream!
     let storyboard=UIStoryboard(name:"Main", bundle:nil)
     
@@ -86,6 +92,7 @@ class AboutVideoCell: UITableViewCell
         subscribeButton.setTitle("Subscribed", for:.normal)
         subscribeButton.setTitleColor(UIColor.white, for:.normal)
         subscribeButton.backgroundColor=UIColor(red:190/255, green:142/255, blue:64/255, alpha:1)
+        delegate.updateSubscribeStatus(stream, true)
     }
     
     func followFailure(_ error:NSError)
@@ -98,6 +105,7 @@ class AboutVideoCell: UITableViewCell
         subscribeButton.setTitle("+ Subscribe", for:.normal)
         subscribeButton.setTitleColor(UIColor(red:190/255, green:142/255, blue:64/255, alpha:1), for:.normal)
         subscribeButton.backgroundColor=UIColor.clear
+        delegate.updateSubscribeStatus(stream, false)
     }
     
     func unfollowFailure(_ error:NSError)
