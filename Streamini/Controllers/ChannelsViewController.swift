@@ -104,6 +104,7 @@ class ChannelsViewController: BaseViewController
                 oneUser.id=user["id"] as! Int
                 oneUser.name=user["name"] as! String
                 oneUser.avatar=user["avatar"] as? String
+                oneUser.isFollowed=user["isfollowed"] as! Bool
                 
                 let oneVideo=Stream()
                 oneVideo.id=video["id"] as! Int
