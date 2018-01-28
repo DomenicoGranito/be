@@ -6,7 +6,7 @@
 //  Copyright © 2016 UniProgy s.r.o. All rights reserved.
 //
 
-class CategoriesViewController: BaseViewController
+class CategoriesViewController: BaseViewController, PlayerViewControllerDelegate
 {
     @IBOutlet var itemsTbl:UITableView!
     @IBOutlet var headerLbl:UILabel!
@@ -110,6 +110,7 @@ class CategoriesViewController: BaseViewController
         
         playerVC.stream=stream
         playerVC.TBVC=TBVC
+        playerVC.categoryClassReference=self
         
         TBVC.playerVC=playerVC
         TBVC.configure(stream)
@@ -149,6 +150,7 @@ class CategoriesViewController: BaseViewController
             oneUser.id=user["id"] as! Int
             oneUser.name=user["name"] as! String
             oneUser.avatar=user["avatar"] as? String
+            oneUser.isFollowed=user["isfollowed"] as! Bool
             
             let oneVideo=Stream()
             oneVideo.id=video["id"] as! Int
@@ -195,5 +197,22 @@ class CategoriesViewController: BaseViewController
     func failureStream(error:NSError)
     {
         handleError(error)
+    }
+    
+    func updateSubscribeStatus(_ stream:Stream, _ isFollowed:Bool)
+    {
+        let userID=stream.user.id
+        
+        for i in 0 ..< allItemsArray.count
+        {
+            let s=allItemsArray[i] as! Stream
+            
+            if s.user.id==userID
+            {
+                allItemsArray.remove(s)
+                s.user.isFollowed=isFollowed
+                allItemsArray.insert(s, at:i)
+            }
+        }
     }
 }
