@@ -42,6 +42,8 @@ class ChannelCell: UITableViewCell
         else
         {
             subscribeButton.setTitle("+ Subscribe", for:.normal)
+            subscribeButton.setTitleColor(UIColor(red:190/255, green:142/255, blue:64/255, alpha:1), for:.normal)
+            subscribeButton.backgroundColor=UIColor.clear
         }
     }
     
