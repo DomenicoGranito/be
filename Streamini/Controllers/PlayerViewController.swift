@@ -33,6 +33,25 @@ class PlayerViewController: BaseViewController
     
     override func viewDidLoad()
     {
+        let screenSize=UIScreen.main.bounds.height
+        
+        if screenSize==568
+        {
+            playerHeightConstraint.constant=227
+        }
+        else if screenSize==667
+        {
+            playerHeightConstraint.constant=267
+        }
+        else if screenSize==736
+        {
+            playerHeightConstraint.constant=294
+        }
+        else
+        {
+            playerHeightConstraint.constant=325
+        }
+        
         NotificationCenter.default.addObserver(self, selector:#selector(onDeviceOrientationChange), name:.UIDeviceOrientationDidChange, object:nil)
         
         appDelegate=UIApplication.shared.delegate as! AppDelegate
@@ -216,7 +235,7 @@ class PlayerViewController: BaseViewController
         }
         else
         {
-            player.view.frame=CGRect(x:0, y:0, width:view.frame.size.width, height:160)
+            player.view.frame=CGRect(x:0, y:0, width:view.frame.size.width, height:playerHeightConstraint.constant)
         }
         
         view.addSubview(player.view)
@@ -295,8 +314,27 @@ class PlayerViewController: BaseViewController
     
     func showPortrait()
     {
-        player.view.frame=CGRect(x:0, y:0, width:view.frame.size.width, height:160)
-        playerHeightConstraint.constant=160
+        let screenSize=UIScreen.main.bounds.height
+        
+        if screenSize==568
+        {
+            playerHeightConstraint.constant=227
+        }
+        else if screenSize==667
+        {
+            playerHeightConstraint.constant=267
+        }
+        else if screenSize==736
+        {
+            playerHeightConstraint.constant=294
+        }
+        else
+        {
+            playerHeightConstraint.constant=325
+        }
+        
+        player.view.frame=CGRect(x:0, y:0, width:view.frame.size.width, height:playerHeightConstraint.constant)
+        
         fullScreenButton.setImage(UIImage(named:"fullscreen"), for:.normal)
         
         for gesture in view.gestureRecognizers!
