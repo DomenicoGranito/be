@@ -59,18 +59,18 @@
 	<key>Legal</key>
 	<dict>
 		<key>termsOfService</key>
-		<string>http://beinit.live/terms</string>
+		<string>https://api.cedricm.com/terms</string>
 		<key>privacyPolicy</key>
-		<string>http://beinit.live/privacy</string>
+		<string>https://api.cedricm.com/privacy</string>
 	</dict>
 	<key>API</key>
 	<dict>
 		<key>media</key>
 		<string>http://spectator.live</string>
 		<key>site</key>
-		<string>http://beinit.live</string>
+		<string>https://api.cedricm.com</string>
 		<key>host</key>
-		<string>http://beinit.live/api</string>
+		<string>https://api.cedricm.com/api</string>
 	</dict>
 </dict>
 </plist>
