@@ -89,16 +89,29 @@ class CategoriesViewController: BaseViewController, PlayerViewControllerDelegate
         
         let video=allItemsArray[indexPath.row] as! Stream
         
+        cell.stream=video
+        cell.songLikeStatus()
+        
         cell.videoTitleLbl.text=video.title
         cell.artistNameLbl.text=video.user.name
         cell.userImageView.sd_setImage(with:URL(string:"\(site)/uploads/\(video.user.id)-avatar.jpg"), placeholderImage:UIImage(named:"profile"))
         cell.videoThumbnailImageView.sd_setImage(with:URL(string:"\(site)/thumb/\(video.id).jpg"), placeholderImage:UIImage(named:"videostream"))
+        cell.likesAndCommentsCountLbl.text="\(video.likes) Likes • \(video.comments) Comments"
+        
+        cell.shareButton.addTarget(self, action:#selector(share), for:.touchUpInside)
         
         let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
         cell.tag=indexPath.row
         cell.addGestureRecognizer(cellRecognizer)
         
         return cell
+    }
+    
+    func share(sender:RecentlyPlayedCell)
+    {
+        let vc=storyBoard.instantiateViewController(withIdentifier:"PopUpViewController") as! PopUpViewController
+        vc.stream=allItemsArray[sender.tag] as? Stream
+        present(vc, animated:true)
     }
     
     func cellTapped(gestureRecognizer:UITapGestureRecognizer)
