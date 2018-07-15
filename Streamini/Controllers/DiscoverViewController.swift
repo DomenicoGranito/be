@@ -98,7 +98,7 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
             titleLbl.text=(categoriesArray[section] as! Category).name
             titleLbl.textAlignment = .center
             titleLbl.font=UIFont.systemFont(ofSize:15)
-            titleLbl.textColor=UIColor(red:190/255, green:142/255, blue:64/255, alpha:1)
+            titleLbl.textColor=UIColor(red:231/255, green:206/255, blue:151/255, alpha:1)
             
             headerView.addSubview(titleLbl)
             

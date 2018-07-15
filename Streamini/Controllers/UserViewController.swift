@@ -249,7 +249,7 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         followButton.isEnabled=true
         user!.isFollowed=true
         
-        followButton.layer.borderColor=UIColor(red:190/255, green:142/255, blue:64/255, alpha:1).cgColor
+        followButton.layer.borderColor=UIColor(red:231/255, green:206/255, blue:151/255, alpha:1).cgColor
         followButton.setTitle("FOLLOWING", for:.normal)
         
         if let delegate=userStatusDelegate
@@ -299,7 +299,7 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         
         if user.isFollowed
         {
-            followButton.layer.borderColor=UIColor(red:190/255, green:142/255, blue:64/255, alpha:1).cgColor
+            followButton.layer.borderColor=UIColor(red:231/255, green:206/255, blue:151/255, alpha:1).cgColor
             followButton.setTitle("FOLLOWING", for:.normal)
         }
         else

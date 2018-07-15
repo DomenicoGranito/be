@@ -23,7 +23,7 @@ class ChannelCell: UITableViewCell
     {
         self.user=user
         
-        subscribeButton.layer.borderColor=UIColor(red:190/255, green:142/255, blue:64/255, alpha:1).cgColor
+        subscribeButton.layer.borderColor=UIColor(red:231/255, green:206/255, blue:151/255, alpha:1).cgColor
         
         userNameLbl.text=user.name
         userImageView.sd_setImage(with:user.avatarURL(), placeholderImage:UIImage(named:"profile"))
@@ -37,12 +37,12 @@ class ChannelCell: UITableViewCell
         {
             subscribeButton.setTitle("Subscribed", for:.normal)
             subscribeButton.setTitleColor(UIColor.white, for:.normal)
-            subscribeButton.backgroundColor=UIColor(red:190/255, green:142/255, blue:64/255, alpha:1)
+            subscribeButton.backgroundColor=UIColor(red:231/255, green:206/255, blue:151/255, alpha:1)
         }
         else
         {
             subscribeButton.setTitle("+ Subscribe", for:.normal)
-            subscribeButton.setTitleColor(UIColor(red:190/255, green:142/255, blue:64/255, alpha:1), for:.normal)
+            subscribeButton.setTitleColor(UIColor(red:231/255, green:206/255, blue:151/255, alpha:1), for:.normal)
             subscribeButton.backgroundColor=UIColor.clear
         }
     }
@@ -63,7 +63,7 @@ class ChannelCell: UITableViewCell
     {
         subscribeButton.setTitle("Subscribed", for:.normal)
         subscribeButton.setTitleColor(UIColor.white, for:.normal)
-        subscribeButton.backgroundColor=UIColor(red:190/255, green:142/255, blue:64/255, alpha:1)
+        subscribeButton.backgroundColor=UIColor(red:231/255, green:206/255, blue:151/255, alpha:1)
     }
     
     func followFailure(_ error:NSError)
@@ -74,7 +74,7 @@ class ChannelCell: UITableViewCell
     func unfollowSuccess()
     {
         subscribeButton.setTitle("+ Subscribe", for:.normal)
-        subscribeButton.setTitleColor(UIColor(red:190/255, green:142/255, blue:64/255, alpha:1), for:.normal)
+        subscribeButton.setTitleColor(UIColor(red:231/255, green:206/255, blue:151/255, alpha:1), for:.normal)
         subscribeButton.backgroundColor=UIColor.clear
     }
     
