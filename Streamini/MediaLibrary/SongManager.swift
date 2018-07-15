@@ -54,7 +54,7 @@ open class SongManager
         user.following=object.value(forKey:"following") as! Int
         user.streams=object.value(forKey:"streams") as! Int
         user.blocked=object.value(forKey:"blocked") as! Int
-        user.desc=object.value(forKey:"desc") as? String
+        user.desc=object.value(forKey:"desc") as! String
         user.isLive=object.value(forKey:"isLive") as! Bool
         user.isFollowed=object.value(forKey:"isFollowed") as! Bool
         user.isBlocked=object.value(forKey:"isBlocked") as! Bool

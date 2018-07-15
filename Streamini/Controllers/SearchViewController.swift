@@ -258,7 +258,7 @@ class SearchViewController: BaseViewController
                     
                     cell.userImageView.sd_setImage(with:user.avatarURL(), placeholderImage:UIImage(named:"profile"))
                     cell.usernameLabel.text=user.name
-                    cell.likesLabel.text="\(user.followers)- FOLLOWERS - \(user.desc!)"
+                    cell.likesLabel.text="\(user.followers)- FOLLOWERS - \(user.desc)"
                     
                     cell.selectedBackgroundView=SelectedCellView().create()
                     

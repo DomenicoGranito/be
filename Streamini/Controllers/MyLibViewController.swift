@@ -10,6 +10,9 @@ class RecentlyPlayedCell:UITableViewCell
 {
     @IBOutlet var videoTitleLbl:UILabel!
     @IBOutlet var artistNameLbl:UILabel!
+    @IBOutlet var videoCategoryLbl:UILabel!
+    @IBOutlet var videoBrandLbl:UILabel!
+    @IBOutlet var videoYearLbl:UILabel!
     @IBOutlet var videoThumbnailImageView:UIImageView!
     @IBOutlet var userImageView:UIImageView!
     @IBOutlet var likesAndCommentsCountLbl:UILabel!

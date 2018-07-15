@@ -93,7 +93,10 @@ class CategoriesViewController: BaseViewController, PlayerViewControllerDelegate
         cell.songLikeStatus()
         
         cell.videoTitleLbl.text=video.title
-        cell.artistNameLbl.text=video.user.name
+        cell.artistNameLbl.text="\(video.user.name) - \(video.user.desc)"
+        cell.videoYearLbl.text="\(video.year) | \(video.city)"
+        cell.videoCategoryLbl.text=video.category
+        cell.videoBrandLbl.text="#\(video.brand)"
         cell.userImageView.sd_setImage(with:URL(string:"\(site)/uploads/\(video.user.id)-avatar.jpg"), placeholderImage:UIImage(named:"profile"))
         cell.videoThumbnailImageView.sd_setImage(with:URL(string:"\(site)/thumb/\(video.id).jpg"), placeholderImage:UIImage(named:"videostream"))
         cell.likesAndCommentsCountLbl.text="\(video.likes) Likes • \(video.comments) Comments"

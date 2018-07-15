@@ -34,7 +34,7 @@ class LinkedUserCell: UITableViewCell
     
     func update(_ user:User)
     {
-        likesLbl.text="\(user.followers) FOLLOWERS - \(user.desc!)"
+        likesLbl.text="\(user.followers) FOLLOWERS - \(user.desc)"
         usernameLabel.text=user.name
         userImageView.sd_setImage(with:user.avatarURL(), placeholderImage:UIImage(named:"profile"))
         

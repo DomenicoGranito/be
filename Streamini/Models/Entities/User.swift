@@ -18,7 +18,7 @@ class User: NSObject
     var following: Int = 0
     var streams: Int = 0
     var blocked: Int = 0
-    var desc: String? = ""
+    var desc = ""
     var isLive = false
     var isFollowed = false
     var isBlocked = false
