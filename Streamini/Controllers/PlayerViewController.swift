@@ -103,7 +103,7 @@ class PlayerViewController: BaseViewController
     
     func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
     {
-        return indexPath.row==0 ? 320 : 80
+        return indexPath.row==0 ? 425 : 80
     }
     
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
