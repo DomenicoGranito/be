@@ -10450,15 +10450,68 @@
                                     <outlet property="delegate" destination="vYl-TH-Oqr" id="bka-E5-Dno"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2pf-yB-2Db">
+                                <rect key="frame" x="0.0" y="512" width="320" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BAK-na-pe3">
+                                        <rect key="frame" x="10" y="10" width="90" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="90" id="lVM-Kr-ZUv"/>
+                                        </constraints>
+                                        <inset key="titleEdgeInsets" minX="-35" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="-45" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Like" image="heart-small">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wb2-wP-ku9">
+                                        <rect key="frame" x="112.5" y="10" width="95" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Comment" image="heart-small">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lE3-ap-mq9">
+                                        <rect key="frame" x="220" y="10" width="90" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="90" id="OvK-cn-5rQ"/>
+                                        </constraints>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-20" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Share" image="share">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="BAK-na-pe3" secondAttribute="bottom" constant="10" id="47s-nc-j0m"/>
+                                    <constraint firstItem="wb2-wP-ku9" firstAttribute="top" secondItem="2pf-yB-2Db" secondAttribute="top" constant="10" id="Hym-nU-pvd"/>
+                                    <constraint firstAttribute="trailing" secondItem="lE3-ap-mq9" secondAttribute="trailing" constant="10" id="P3p-K3-6QN"/>
+                                    <constraint firstAttribute="bottom" secondItem="wb2-wP-ku9" secondAttribute="bottom" constant="10" id="SUz-By-6Xo"/>
+                                    <constraint firstItem="wb2-wP-ku9" firstAttribute="centerX" secondItem="2pf-yB-2Db" secondAttribute="centerX" id="YPV-yf-deA"/>
+                                    <constraint firstAttribute="height" constant="50" id="cuZ-5v-KXd"/>
+                                    <constraint firstItem="BAK-na-pe3" firstAttribute="top" secondItem="2pf-yB-2Db" secondAttribute="top" constant="10" id="feb-aQ-Uap"/>
+                                    <constraint firstItem="BAK-na-pe3" firstAttribute="leading" secondItem="2pf-yB-2Db" secondAttribute="leading" constant="10" id="ju8-Ia-NeN"/>
+                                    <constraint firstAttribute="bottom" secondItem="lE3-ap-mq9" secondAttribute="bottom" constant="10" id="sfd-4Q-vKf"/>
+                                    <constraint firstItem="lE3-ap-mq9" firstAttribute="top" secondItem="2pf-yB-2Db" secondAttribute="top" constant="10" id="u94-dW-7Kg"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="bzF-1h-J8J" secondAttribute="bottom" id="Iyy-Lo-4Ua"/>
                             <constraint firstItem="bzF-1h-J8J" firstAttribute="leading" secondItem="2Gk-3I-qeE" secondAttribute="leading" id="Lpp-DL-431"/>
                             <constraint firstItem="x3m-xb-ajQ" firstAttribute="top" secondItem="2Gk-3I-qeE" secondAttribute="top" id="WT5-nW-OK3"/>
+                            <constraint firstAttribute="trailing" secondItem="2pf-yB-2Db" secondAttribute="trailing" id="g3u-h1-BYp"/>
                             <constraint firstItem="x3m-xb-ajQ" firstAttribute="leading" secondItem="2Gk-3I-qeE" secondAttribute="leading" id="j39-sq-21o"/>
                             <constraint firstAttribute="trailing" secondItem="bzF-1h-J8J" secondAttribute="trailing" id="lW9-UT-cha"/>
+                            <constraint firstItem="2pf-yB-2Db" firstAttribute="leading" secondItem="2Gk-3I-qeE" secondAttribute="leading" id="oWV-iX-KXC"/>
                             <constraint firstItem="bzF-1h-J8J" firstAttribute="top" secondItem="x3m-xb-ajQ" secondAttribute="bottom" constant="2" id="pWa-if-cne"/>
+                            <constraint firstItem="RfV-8Z-hN4" firstAttribute="top" secondItem="2pf-yB-2Db" secondAttribute="bottom" id="yZC-4J-bh2"/>
                             <constraint firstAttribute="trailing" secondItem="x3m-xb-ajQ" secondAttribute="trailing" id="ynF-Ie-trm"/>
                         </constraints>
                     </view>
