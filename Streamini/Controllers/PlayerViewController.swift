@@ -227,9 +227,8 @@ class PlayerViewController: BaseViewController
     
     func goToChannel()
     {
-        //let vc=storyBoard.instantiateViewController(withIdentifier:"UserViewControllerId") as! UserViewController
-        //vc.user=stream.user
-        //present(vc, animated:true)
+        view.window?.rootViewController?.dismiss(animated:true, completion:nil)
+        NotificationCenter.default.post(name: Notification.Name("goToChannels"), object:stream.user)
     }
     
     func addPlayer()
