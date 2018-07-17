@@ -10256,6 +10256,10 @@
                                                             <color key="textColor" red="0.90588235289999997" green="0.80784313730000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SXF-c8-LFs">
+                                                            <rect key="frame" x="0.0" y="0.0" width="200" height="60"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </button>
                                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QrG-lp-7Vn">
                                                             <rect key="frame" x="230" y="15" width="80" height="30"/>
                                                             <constraints>
@@ -10315,6 +10319,7 @@
                                             <outlet property="adAgencyLbl" destination="KNr-j4-Kfb" id="btn-8Z-o9y"/>
                                             <outlet property="brandLbl" destination="qji-uz-VGP" id="jBX-Uy-B8z"/>
                                             <outlet property="categoryLbl" destination="79N-C0-a6N" id="Zex-m4-aDg"/>
+                                            <outlet property="channelButton" destination="SXF-c8-LFs" id="4k8-UQ-X2O"/>
                                             <outlet property="cityLbl" destination="VPF-2j-BSL" id="6m5-Ww-DqI"/>
                                             <outlet property="eventAgencyLbl" destination="vkP-Va-uhC" id="DJW-pA-735"/>
                                             <outlet property="musicAgencyLbl" destination="0mQ-Io-jEE" id="e76-xe-YlS"/>

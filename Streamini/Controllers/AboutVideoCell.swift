@@ -29,6 +29,7 @@ class AboutVideoCell: UITableViewCell
     @IBOutlet var videoAgencyLbl:UILabel!
     @IBOutlet var talentAgencyLbl:UILabel!
     @IBOutlet var subscribeButton:UIButton!
+    @IBOutlet var channelButton:UIButton!
     @IBOutlet var userNameLbl:UILabel!
     @IBOutlet var userImageView:UIImageView!
     

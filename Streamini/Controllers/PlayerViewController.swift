@@ -118,6 +118,8 @@ class PlayerViewController: BaseViewController
         {
             let cell=tableView.dequeueReusableCell(withIdentifier:"AboutVideoCell") as! AboutVideoCell
             
+            cell.channelButton.addTarget(self, action:#selector(goToChannel), for:.touchUpInside)
+            
             if let obj=homeClassReference
             {
                 cell.delegate=obj
@@ -221,6 +223,13 @@ class PlayerViewController: BaseViewController
         selectedItemIndex=selectedItemIndex+1
         relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.fade)
         addPlayer()
+    }
+    
+    func goToChannel()
+    {
+        //let vc=storyBoard.instantiateViewController(withIdentifier:"UserViewControllerId") as! UserViewController
+        //vc.user=stream.user
+        //present(vc, animated:true)
     }
     
     func addPlayer()
