@@ -12,6 +12,7 @@ class PlayerViewController: BaseViewController
     @IBOutlet var videoDurationLbl:UILabel!
     @IBOutlet var seekBar:UISlider!
     @IBOutlet var playButton:UIButton!
+    @IBOutlet var likeButton:UIButton!
     @IBOutlet var previousButton:UIButton!
     @IBOutlet var nextButton:UIButton!
     @IBOutlet var fullScreenButton:UIButton!
@@ -103,7 +104,7 @@ class PlayerViewController: BaseViewController
     
     func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
     {
-        return indexPath.row==0 ? 425 : 80
+        return indexPath.row==0 ? 390 : 80
     }
     
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
@@ -116,8 +117,6 @@ class PlayerViewController: BaseViewController
         if indexPath.row==0
         {
             let cell=tableView.dequeueReusableCell(withIdentifier:"AboutVideoCell") as! AboutVideoCell
-            
-            cell.shareButton.addTarget(self, action:#selector(share), for:.touchUpInside)
             
             if let obj=homeClassReference
             {
@@ -157,7 +156,33 @@ class PlayerViewController: BaseViewController
         }
     }
     
-    func share()
+    @IBAction func like()
+    {
+        if SongManager.isAlreadyFavourited(stream.id)
+        {
+            likeButton.setImage(UIImage(named:"heart-small"), for:.normal)
+            SongManager.removeFromFavourite(stream.id)
+        }
+        else
+        {
+            likeButton.setImage(UIImage(named:"red_heart"), for:.normal)
+            SongManager.addToFavourite(stream.title, stream.streamHash, stream.id, stream.user.name, stream.vType, stream.videoID, stream.user.id)
+        }
+    }
+    
+    func songLikeStatus()
+    {
+        if SongManager.isAlreadyFavourited(stream.id)
+        {
+            likeButton.setImage(UIImage(named:"red_heart"), for:.normal)
+        }
+        else
+        {
+            likeButton.setImage(UIImage(named:"heart-small"), for:.normal)
+        }
+    }
+    
+    @IBAction func share()
     {
         let vc=storyBoard.instantiateViewController(withIdentifier:"PopUpViewController") as! PopUpViewController
         vc.stream=stream
@@ -201,6 +226,7 @@ class PlayerViewController: BaseViewController
     func addPlayer()
     {
         updateButtons()
+        songLikeStatus()
         
         seekBar.value=0
         videoProgressDurationLbl.text="0:00"

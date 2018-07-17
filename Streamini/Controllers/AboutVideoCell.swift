@@ -28,12 +28,6 @@ class AboutVideoCell: UITableViewCell
     @IBOutlet var eventAgencyLbl:UILabel!
     @IBOutlet var videoAgencyLbl:UILabel!
     @IBOutlet var talentAgencyLbl:UILabel!
-    @IBOutlet var likeCountLbl:UILabel!
-    @IBOutlet var shareCountLbl:UILabel!
-    @IBOutlet var commentCountLbl:UILabel!
-    @IBOutlet var likeButton:UIButton!
-    @IBOutlet var shareButton:UIButton!
-    @IBOutlet var playlistButton:UIButton!
     @IBOutlet var subscribeButton:UIButton!
     @IBOutlet var userNameLbl:UILabel!
     @IBOutlet var userImageView:UIImageView!
@@ -63,15 +57,11 @@ class AboutVideoCell: UITableViewCell
         eventAgencyLbl.text=stream.eventAgency
         videoAgencyLbl.text=stream.videoAgency
         talentAgencyLbl.text=stream.talentAgency
-        likeCountLbl.text="\(stream.likes)"
-        shareCountLbl.text="\(stream.shares)"
-        commentCountLbl.text="\(stream.comments)"
         userNameLbl.text=stream.user.name
         userImageView.sd_setImage(with:stream.user.avatarURL(), placeholderImage:UIImage(named:"profile"))
         
         SongManager.addToRecentlyPlayed(stream.title, stream.streamHash, stream.id, stream.user.name, stream.videoID, stream.user.id)
         
-        songLikeStatus()
         subscribeStatus()
     }
     
@@ -111,34 +101,6 @@ class AboutVideoCell: UITableViewCell
     func unfollowFailure(_ error:NSError)
     {
         
-    }
-    
-    @IBAction func like()
-    {
-        if SongManager.isAlreadyFavourited(stream.id)
-        {
-            likeCountLbl.text="\(Int(likeCountLbl.text!)!-1)"
-            likeButton.setImage(UIImage(named:"empty_heart"), for:.normal)
-            SongManager.removeFromFavourite(stream.id)
-        }
-        else
-        {
-            likeCountLbl.text="\(Int(likeCountLbl.text!)!+1)"
-            likeButton.setImage(UIImage(named:"red_heart"), for:.normal)
-            SongManager.addToFavourite(stream.title, stream.streamHash, stream.id, stream.user.name, stream.vType, stream.videoID, stream.user.id)
-        }
-    }
-    
-    func songLikeStatus()
-    {
-        if SongManager.isAlreadyFavourited(stream.id)
-        {
-            likeButton.setImage(UIImage(named:"red_heart"), for:.normal)
-        }
-        else
-        {
-            likeButton.setImage(UIImage(named:"empty_heart"), for:.normal)
-        }
     }
     
     func subscribeStatus()

@@ -9996,19 +9996,19 @@
                                     <constraint firstAttribute="bottom" secondItem="HrV-Pd-eLv" secondAttribute="bottom" id="vl8-4y-ezo"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="425" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="bzF-1h-J8J">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="390" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="bzF-1h-J8J">
                                 <rect key="frame" x="0.0" y="162" width="320" height="400"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AboutVideoCell" id="6gZ-yn-C2f" customClass="AboutVideoCell" customModule="Streamini" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1" width="320" height="425"/>
+                                        <rect key="frame" x="0.0" y="1" width="320" height="390"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6gZ-yn-C2f" id="0L7-bn-abL">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="425"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="390"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aN9-Xw-K5y" propertyAccessControl="none">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="335"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" fixedFrame="YES" text="Video Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5D-10-fgN">
                                                             <rect key="frame" x="5" y="5" width="210" height="20"/>
@@ -10213,70 +10213,15 @@
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4V-58-165">
-                                                            <rect key="frame" x="5" y="305" width="25" height="25"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                            <state key="normal" image="empty_heart"/>
-                                                            <connections>
-                                                                <action selector="like" destination="6gZ-yn-C2f" eventType="touchUpInside" id="8KL-td-DYq"/>
-                                                            </connections>
-                                                        </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" fixedFrame="YES" text="221" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DK5-Za-qKQ">
-                                                            <rect key="frame" x="35" y="307" width="30" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n1E-db-LL5">
-                                                            <rect key="frame" x="70" y="305" width="25" height="25"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                            <state key="normal" image="empty_heart"/>
-                                                        </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" fixedFrame="YES" text="856" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sF9-LO-aau">
-                                                            <rect key="frame" x="100" y="307" width="30" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmw-cC-CXO">
-                                                            <rect key="frame" x="135" y="305" width="25" height="25"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                            <state key="normal" image="empty_heart"/>
-                                                        </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" fixedFrame="YES" text="403" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSW-4L-o8T">
-                                                            <rect key="frame" x="165" y="307" width="30" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GgL-48-JIg">
-                                                            <rect key="frame" x="285" y="305" width="25" height="25"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="25" id="r8s-Vb-CpQ"/>
-                                                            </constraints>
-                                                            <state key="normal" image="menu"/>
-                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="79N-C0-a6N" secondAttribute="trailing" constant="5" id="ScV-KY-zho"/>
                                                         <constraint firstItem="79N-C0-a6N" firstAttribute="top" secondItem="aN9-Xw-K5y" secondAttribute="top" constant="5" id="fAi-Rn-9pH"/>
-                                                        <constraint firstAttribute="bottom" secondItem="GgL-48-JIg" secondAttribute="bottom" constant="5" id="weP-Uk-ZQh"/>
-                                                        <constraint firstAttribute="trailing" secondItem="GgL-48-JIg" secondAttribute="trailing" constant="10" id="xku-Pw-Kde"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x64-J4-bJJ" propertyAccessControl="none">
-                                                    <rect key="frame" x="0.0" y="335" width="320" height="60"/>
+                                                    <rect key="frame" x="0.0" y="300" width="320" height="60"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="leq-W5-vUi">
                                                             <rect key="frame" x="5" y="5" width="50" height="50"/>
@@ -10342,7 +10287,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Related Videos" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rrd-pp-vLl">
-                                                    <rect key="frame" x="5" y="400" width="103.5" height="20"/>
+                                                    <rect key="frame" x="5" y="365" width="103.5" height="20"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="kfU-Si-ySN"/>
@@ -10371,14 +10316,8 @@
                                             <outlet property="brandLbl" destination="qji-uz-VGP" id="jBX-Uy-B8z"/>
                                             <outlet property="categoryLbl" destination="79N-C0-a6N" id="Zex-m4-aDg"/>
                                             <outlet property="cityLbl" destination="VPF-2j-BSL" id="6m5-Ww-DqI"/>
-                                            <outlet property="commentCountLbl" destination="TSW-4L-o8T" id="cK9-1U-Gyf"/>
                                             <outlet property="eventAgencyLbl" destination="vkP-Va-uhC" id="DJW-pA-735"/>
-                                            <outlet property="likeButton" destination="F4V-58-165" id="GN1-Wp-Ttj"/>
-                                            <outlet property="likeCountLbl" destination="DK5-Za-qKQ" id="ToZ-ry-2yi"/>
                                             <outlet property="musicAgencyLbl" destination="0mQ-Io-jEE" id="e76-xe-YlS"/>
-                                            <outlet property="playlistButton" destination="GgL-48-JIg" id="vNY-9D-uKg"/>
-                                            <outlet property="shareButton" destination="n1E-db-LL5" id="5eP-6V-HCp"/>
-                                            <outlet property="shareCountLbl" destination="sF9-LO-aau" id="pz6-gY-bBl"/>
                                             <outlet property="subscribeButton" destination="QrG-lp-7Vn" id="tnI-Gd-09e"/>
                                             <outlet property="talentAgencyLbl" destination="Elc-9p-QMT" id="3Ov-zr-eDf"/>
                                             <outlet property="uploadedDateLbl" destination="9Kb-ex-9AA" id="wdq-Me-y8Y"/>
@@ -10393,7 +10332,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RelatedVideoCell" rowHeight="80" id="sgH-88-2ab" customClass="RecentlyPlayedCell" customModule="Streamini" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="426" width="320" height="80"/>
+                                        <rect key="frame" x="0.0" y="391" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sgH-88-2ab" id="EiW-qo-xlC">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
@@ -10464,6 +10403,9 @@
                                         <state key="normal" title="Like" image="heart-small">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="like" destination="vYl-TH-Oqr" eventType="touchUpInside" id="p8H-zB-jGG"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wb2-wP-ku9">
                                         <rect key="frame" x="112.5" y="10" width="95" height="30"/>
@@ -10484,6 +10426,9 @@
                                         <state key="normal" title="Share" image="share">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="share" destination="vYl-TH-Oqr" eventType="touchUpInside" id="vlf-He-txe"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -10522,6 +10467,7 @@
                     <size key="freeformSize" width="320" height="562"/>
                     <connections>
                         <outlet property="fullScreenButton" destination="ht2-jX-cl4" id="zJi-i5-hNe"/>
+                        <outlet property="likeButton" destination="BAK-na-pe3" id="vVb-mx-JKw"/>
                         <outlet property="nextButton" destination="fk7-B6-6JJ" id="cx1-id-hjI"/>
                         <outlet property="playButton" destination="dTi-9T-Aoq" id="BzE-cz-6R8"/>
                         <outlet property="playerHeightConstraint" destination="eA8-Xi-oSc" id="L9H-1N-cI1"/>
