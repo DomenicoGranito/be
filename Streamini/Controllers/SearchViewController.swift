@@ -126,7 +126,7 @@ class SearchViewController: BaseViewController
             let titleLbl=UILabel(frame:CGRect(x:15, y:15, width:285, height:20))
             titleLbl.text=(sectionTitlesArray[section] as AnyObject).uppercased
             titleLbl.font=UIFont.systemFont(ofSize: 16)
-            titleLbl.textColor=UIColor.darkGray
+            titleLbl.textColor = .darkGray
             
             headerView.addSubview(titleLbl)
             

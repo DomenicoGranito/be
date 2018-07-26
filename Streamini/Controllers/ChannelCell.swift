@@ -36,14 +36,14 @@ class ChannelCell: UITableViewCell
         if user.isFollowed
         {
             subscribeButton.setTitle("Subscribed", for:.normal)
-            subscribeButton.setTitleColor(UIColor.white, for:.normal)
+            subscribeButton.setTitleColor(.white, for:.normal)
             subscribeButton.backgroundColor=UIColor(red:231/255, green:206/255, blue:151/255, alpha:1)
         }
         else
         {
             subscribeButton.setTitle("+ Subscribe", for:.normal)
             subscribeButton.setTitleColor(UIColor(red:231/255, green:206/255, blue:151/255, alpha:1), for:.normal)
-            subscribeButton.backgroundColor=UIColor.clear
+            subscribeButton.backgroundColor = .clear
         }
     }
     
@@ -62,7 +62,7 @@ class ChannelCell: UITableViewCell
     func followSuccess()
     {
         subscribeButton.setTitle("Subscribed", for:.normal)
-        subscribeButton.setTitleColor(UIColor.white, for:.normal)
+        subscribeButton.setTitleColor(.white, for:.normal)
         subscribeButton.backgroundColor=UIColor(red:231/255, green:206/255, blue:151/255, alpha:1)
     }
     
@@ -75,7 +75,7 @@ class ChannelCell: UITableViewCell
     {
         subscribeButton.setTitle("+ Subscribe", for:.normal)
         subscribeButton.setTitleColor(UIColor(red:231/255, green:206/255, blue:151/255, alpha:1), for:.normal)
-        subscribeButton.backgroundColor=UIColor.clear
+        subscribeButton.backgroundColor = .clear
     }
     
     func unfollowFailure(_ error:NSError)

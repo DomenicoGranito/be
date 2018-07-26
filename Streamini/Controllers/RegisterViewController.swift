@@ -25,9 +25,9 @@ class RegisterViewController: BaseViewController
         usernameImageView?.image=usernameImageView?.image?.withRenderingMode(.alwaysTemplate)
         passwordImageView?.image=passwordImageView?.image?.withRenderingMode(.alwaysTemplate)
         emailImageView?.image=emailImageView?.image?.withRenderingMode(.alwaysTemplate)
-        usernameImageView?.tintColor=UIColor.darkGray
-        passwordImageView?.tintColor=UIColor.darkGray
-        emailImageView?.tintColor=UIColor.darkGray
+        usernameImageView?.tintColor = .darkGray
+        passwordImageView?.tintColor = .darkGray
+        emailImageView?.tintColor = .darkGray
     }
     
     override func viewWillAppear(_ animated:Bool)
@@ -111,9 +111,9 @@ class RegisterViewController: BaseViewController
             usernameBackgroundView?.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
             passwordBackgroundView?.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
             
-            emailImageView?.tintColor=UIColor.white
-            usernameImageView?.tintColor=UIColor.darkGray
-            passwordImageView?.tintColor=UIColor.darkGray
+            emailImageView?.tintColor = .white
+            usernameImageView?.tintColor = .darkGray
+            passwordImageView?.tintColor = .darkGray
         }
         else if(textField==usernameTxt)
         {
@@ -121,9 +121,9 @@ class RegisterViewController: BaseViewController
             emailBackgroundView?.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
             passwordBackgroundView?.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
             
-            emailImageView?.tintColor=UIColor.darkGray
-            usernameImageView?.tintColor=UIColor.white
-            passwordImageView?.tintColor=UIColor.darkGray
+            emailImageView?.tintColor = .darkGray
+            usernameImageView?.tintColor = .white
+            passwordImageView?.tintColor = .darkGray
         }
         else
         {
@@ -131,9 +131,9 @@ class RegisterViewController: BaseViewController
             emailBackgroundView?.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
             usernameBackgroundView?.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
             
-            emailImageView?.tintColor=UIColor.darkGray
-            usernameImageView?.tintColor=UIColor.darkGray
-            passwordImageView?.tintColor=UIColor.white
+            emailImageView?.tintColor = .darkGray
+            usernameImageView?.tintColor = .darkGray
+            passwordImageView?.tintColor = .white
         }
         
         return true

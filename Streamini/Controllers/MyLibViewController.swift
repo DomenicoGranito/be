@@ -169,7 +169,7 @@ class MyLibViewController: BaseViewController
                 self.messageLbl.isHidden=false
             }
         }
-        clearButton.backgroundColor=UIColor.darkGray
+        clearButton.backgroundColor = .darkGray
         
         return [clearButton]
     }

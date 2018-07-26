@@ -59,7 +59,7 @@ class FollowersViewController: BaseViewController, UISearchBarDelegate, UserSele
     }
     
     func configureView() {
-        self.navigationController!.navigationBar.tintColor = UIColor.white
+        self.navigationController!.navigationBar.tintColor = .white
         self.title = NSLocalizedString("select_followers_title", comment: "")
         
         let buttonItem = UIBarButtonItem(barButtonSystemItem:.done, target: self, action: #selector(FollowersViewController.selectedDone))

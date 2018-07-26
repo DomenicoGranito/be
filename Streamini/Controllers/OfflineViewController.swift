@@ -72,8 +72,8 @@ class OfflineViewController: BaseViewController
     
     @IBAction func completed()
     {
-        completedButton.setTitleColor(UIColor.white, for:.normal)
-        downloadingButton.setTitleColor(UIColor.darkGray, for:.normal)
+        completedButton.setTitleColor(.white, for:.normal)
+        downloadingButton.setTitleColor(.darkGray, for:.normal)
         
         downloadFinishTbl.isHidden=false
         downloadingTbl.isHidden=true
@@ -85,8 +85,8 @@ class OfflineViewController: BaseViewController
     
     @IBAction func downloading()
     {
-        downloadingButton.setTitleColor(UIColor.white, for:.normal)
-        completedButton.setTitleColor(UIColor.darkGray, for:.normal)
+        downloadingButton.setTitleColor(.white, for:.normal)
+        completedButton.setTitleColor(.darkGray, for:.normal)
         
         downloadFinishTbl.isHidden=true
         downloadingTbl.isHidden=false

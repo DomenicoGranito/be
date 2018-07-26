@@ -469,7 +469,7 @@ UIActionSheetDelegate, SelectFollowersDelegate, ReplayViewDelegate, UserSelectin
             infoButton.isHidden                       = true
             messageTextView.isHidden                  = true
             viewersLabel.isHidden                     = true
-            viewersLabel.backgroundColor            = UIColor.red
+            viewersLabel.backgroundColor              = .red
             eyeButton.isHidden                        = true
             self.view.layoutIfNeeded()
         }

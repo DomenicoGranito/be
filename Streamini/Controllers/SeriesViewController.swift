@@ -38,13 +38,13 @@ class SeriesViewController: BaseViewController
         
         navigationBarBackgroundImage=navigationController!.navigationBar.backgroundImage(for: .default)
         
-        navigationController!.navigationBar.backgroundColor=UIColor.clear
+        navigationController!.navigationBar.backgroundColor = .clear
         navigationController!.navigationBar.setBackgroundImage(UIImage(), for:.default)
         
         tableView.contentOffset=CGPoint(x:0, y:64)
         
         blockingView=UIView(frame:CGRect(x:0, y:0, width:view.frame.size.width, height:64))
-        blockingView.backgroundColor=UIColor.black
+        blockingView.backgroundColor = .black
         view.addSubview(blockingView)
     }
     

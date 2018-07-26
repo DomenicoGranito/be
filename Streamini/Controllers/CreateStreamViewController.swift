@@ -178,7 +178,7 @@ class CreateStreamViewController: BaseViewController, UITextFieldDelegate, Locat
         // Set width constraint corresponds to the locality string lenght
         let size = locationLabel.sizeThatFits(locationLabel.bounds.size)
         locationLabelWidthConstraint.constant = size.width + 10
-        locationLabel.backgroundColor = UIColor.white
+        locationLabel.backgroundColor = .white
         self.view.layoutIfNeeded()
     }
     
@@ -199,7 +199,7 @@ class CreateStreamViewController: BaseViewController, UITextFieldDelegate, Locat
         textViewHandler!.setText("", withAnimation: false)
         
         // Set placeholder for NameTextView
-        nameTextView.tintColor = UIColor.white
+        nameTextView.tintColor = .white
         let placeholderText = NSLocalizedString("stream_name_placeholder", comment: "")
         applyPlaceholderStyle(nameTextView, placeholderText: placeholderText)
         
@@ -213,7 +213,7 @@ class CreateStreamViewController: BaseViewController, UITextFieldDelegate, Locat
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(CreateStreamViewController.categoryTapped(_:)))
         categoryLabel.addGestureRecognizer(tapGesture)
         categoryLabel.isUserInteractionEnabled = true
-        categoryLabel.textColor = UIColor.white
+        categoryLabel.textColor = .white
         self.categoryPicker.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         // connect category picker
         self.categoryPicker.delegate = self
@@ -226,7 +226,7 @@ class CreateStreamViewController: BaseViewController, UITextFieldDelegate, Locat
     func updateCategory()
     {
         let text = String(format: "%@: %@", NSLocalizedString("category", comment: ""), selectedCategory.name);
-        categoryLabel.textColor = UIColor.white
+        categoryLabel.textColor = .white
         categoryLabel.text = text;
         // Set width constraint corresponds to the locality string lenght
         let size = categoryLabel.sizeThatFits(categoryLabel.bounds.size)
@@ -357,7 +357,7 @@ class CreateStreamViewController: BaseViewController, UITextFieldDelegate, Locat
     func applyNonPlaceholderStyle(_ aTextview:UITextView)
     {
         // make it look like normal text instead of a placeholder
-        aTextview.textColor = UIColor.white
+        aTextview.textColor = .white
         aTextview.alpha = 1.0
     }
     

@@ -23,9 +23,9 @@ class PasswordViewController: BaseViewController
         imageView1?.image=imageView1?.image?.withRenderingMode(.alwaysTemplate)
         imageView2?.image=imageView2?.image?.withRenderingMode(.alwaysTemplate)
         imageView3?.image=imageView3?.image?.withRenderingMode(.alwaysTemplate)
-        imageView1?.tintColor=UIColor.darkGray
-        imageView2?.tintColor=UIColor.darkGray
-        imageView3?.tintColor=UIColor.darkGray
+        imageView1?.tintColor = .darkGray
+        imageView2?.tintColor = .darkGray
+        imageView3?.tintColor = .darkGray
     }
     
     @IBAction func doneButtonPressed()
@@ -76,9 +76,9 @@ class PasswordViewController: BaseViewController
             view2.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
             view3.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
             
-            imageView1.tintColor=UIColor.white
-            imageView2.tintColor=UIColor.darkGray
-            imageView3.tintColor=UIColor.darkGray
+            imageView1.tintColor = .white
+            imageView2.tintColor = .darkGray
+            imageView3.tintColor = .darkGray
         }
         else if(textField==newPassword)
         {
@@ -86,9 +86,9 @@ class PasswordViewController: BaseViewController
             view1.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
             view3.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
             
-            imageView1.tintColor=UIColor.darkGray
-            imageView2.tintColor=UIColor.white
-            imageView3.tintColor=UIColor.darkGray
+            imageView1.tintColor = .darkGray
+            imageView2.tintColor = .white
+            imageView3.tintColor = .darkGray
         }
         else
         {
@@ -96,9 +96,9 @@ class PasswordViewController: BaseViewController
             view1.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
             view2.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
             
-            imageView1.tintColor=UIColor.darkGray
-            imageView2.tintColor=UIColor.darkGray
-            imageView3.tintColor=UIColor.white
+            imageView1.tintColor = .darkGray
+            imageView2.tintColor = .darkGray
+            imageView3.tintColor = .white
         }
         
         return true

@@ -31,8 +31,8 @@ class LoginViewController: BaseViewController
         
         usernameImageView?.image=usernameImageView?.image?.withRenderingMode(.alwaysTemplate)
         passwordImageView?.image=passwordImageView?.image?.withRenderingMode(.alwaysTemplate)
-        usernameImageView?.tintColor=UIColor.darkGray
-        passwordImageView?.tintColor=UIColor.darkGray
+        usernameImageView?.tintColor = .darkGray
+        passwordImageView?.tintColor = .darkGray
     }
     
     @IBAction func wechatLogin()
@@ -202,16 +202,16 @@ class LoginViewController: BaseViewController
             usernameBackgroundView?.backgroundColor=UIColor(red:34/255, green:35/255, blue:39/255, alpha:1)
             passwordBackgroundView?.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
             
-            usernameImageView?.tintColor=UIColor.white
-            passwordImageView?.tintColor=UIColor.darkGray
+            usernameImageView?.tintColor = .white
+            passwordImageView?.tintColor = .darkGray
         }
         else
         {
             passwordBackgroundView?.backgroundColor=UIColor(red:34/255, green:35/255, blue:39/255, alpha:1)
             usernameBackgroundView?.backgroundColor=UIColor(red:28/255, green:27/255, blue:32/255, alpha:1)
             
-            usernameImageView?.tintColor=UIColor.darkGray
-            passwordImageView?.tintColor=UIColor.white
+            usernameImageView?.tintColor = .darkGray
+            passwordImageView?.tintColor = .white
         }
         
         return true

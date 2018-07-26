@@ -286,7 +286,7 @@ class ModalViewController: BaseViewController, ARNImageTransitionZoomable
         stream=streamsArray![index] as? Stream
         
         let thumbnailView=UIImageView(frame:CGRect(x:0, y:0, width:self.view.frame.size.width, height:self.view.frame.size.width-140))
-        thumbnailView.backgroundColor=UIColor.darkGray
+        thumbnailView.backgroundColor = .darkGray
         thumbnailView.sd_setImage(with:URL(string:"\(site)/thumb/\(stream!.id).jpg"))
         
         return thumbnailView
@@ -364,7 +364,7 @@ class ModalViewController: BaseViewController, ARNImageTransitionZoomable
         {
             let label=UILabel(frame:CGRect(x:0, y:(view.frame.size.width-140)/2-10, width:view.frame.size.width, height:20))
             label.text="Video not available"
-            label.textColor=UIColor.white
+            label.textColor = .white
             label.textAlignment = .center
             player!.view.addSubview(label)
             

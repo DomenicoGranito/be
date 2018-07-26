@@ -200,34 +200,52 @@ class HomeViewController: BaseViewController, PlayerViewControllerDelegate
     
     func tableView(_ tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
     {
-        return 200
+        return 190
     }
     
     func tableView(_ tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
     {
-        let headerView=UIView(frame:CGRect(x:0, y:0, width:tableView.frame.size.width, height:200))
+        let headerView=UIView(frame:CGRect(x:0, y:0, width:tableView.frame.size.width, height:190))
         headerView.backgroundColor=UIColor(red:18/255, green:19/255, blue:21/255, alpha:1)
         
-        let titleLbl=UILabel(frame:CGRect(x:10, y:10, width:view.frame.size.width-20, height:180))
+        let seriesLbl=UILabel(frame:CGRect(x:10, y:10, width:view.frame.size.width-20, height:20))
+        seriesLbl.text="SERIES"
+        seriesLbl.font=UIFont.systemFont(ofSize:13)
+        seriesLbl.textColor = .white
+        seriesLbl.textAlignment = .center
+        
+        let titleLbl=UILabel(frame:CGRect(x:10, y:40, width:view.frame.size.width-20, height:30))
         
         if(allCategoryItemsArray.count>0)
         {
             titleLbl.text=(categoryNamesArray[section] as AnyObject).uppercased
         }
         
-        titleLbl.font=UIFont.systemFont(ofSize:24)
-        titleLbl.textColor=UIColor.white
+        titleLbl.font=UIFont.systemFont(ofSize:20)
+        titleLbl.textColor = .white
         titleLbl.textAlignment = .center
         
-        let categoryImageView=UIImageView(frame:CGRect(x:0, y:0, width:view.frame.size.width, height:200))
-        categoryImageView.sd_setImage(with:URL(string:"\(site)/media/categories/\(categoryIDsArray[section]).jpg"))
+        let descriptionLbl=UILabel(frame:CGRect(x:10, y:80, width:view.frame.size.width-20, height:50))
+        descriptionLbl.text="BE IN IT. Original Series Studio(s) explores the creative process through those who define modern culture."
+        descriptionLbl.numberOfLines=3
+        descriptionLbl.font=UIFont.systemFont(ofSize:13)
+        descriptionLbl.textColor = .white
+        descriptionLbl.textAlignment = .center
+        
+        let seeAllButton=UIButton(frame:CGRect(x:(view.frame.size.width-80)/2, y:140, width:80, height:40))
+        seeAllButton.setTitle("SEE ALL", for:.normal)
+        seeAllButton.titleLabel?.font=UIFont.systemFont(ofSize:13)
+        seeAllButton.layer.borderWidth=1
+        seeAllButton.layer.borderColor=UIColor.gray.cgColor
         
         let tapGesture=UITapGestureRecognizer(target:self, action:#selector(headerTapped))
         headerView.addGestureRecognizer(tapGesture)
         headerView.tag=section
         
-        headerView.addSubview(categoryImageView)
+        headerView.addSubview(seriesLbl)
         headerView.addSubview(titleLbl)
+        headerView.addSubview(descriptionLbl)
+        headerView.addSubview(seeAllButton)
         
         return headerView
     }

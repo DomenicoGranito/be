@@ -47,7 +47,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         let titleLbl=UILabel(frame:CGRect(x:10, y:0, width:300, height:20))
         titleLbl.text=sectionTitlesArray[section] as? String
         titleLbl.font=UIFont.systemFont(ofSize: 10)
-        titleLbl.textColor=UIColor.white
+        titleLbl.textColor = .white
         
         let lineView=UIView(frame:CGRect(x:10, y:29.5, width:tableView.frame.size.width-20, height:0.5))
         lineView.backgroundColor=UIColor(red:37/255, green:36/255, blue:41/255, alpha:1)
