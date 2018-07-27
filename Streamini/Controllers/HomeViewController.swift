@@ -17,7 +17,6 @@ class HomeViewController: BaseViewController, PlayerViewControllerDelegate
     var allCategoryItemsArray=NSMutableArray()
     var timer:Timer?
     let site=Config.shared.site()
-    let pageWidth=UIScreen.main.bounds.width
     
     override func viewDidLoad()
     {
