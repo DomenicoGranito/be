@@ -11,9 +11,6 @@ class HomeViewController: BaseViewController, PlayerViewControllerDelegate
     @IBOutlet var itemsTbl:UITableView!
     @IBOutlet var errorView:ErrorView!
     @IBOutlet var activityView:ActivityIndicatorView!
-    @IBOutlet var headerView:GSKStretchyHeaderView!
-    @IBOutlet var scrollView:UIScrollView!
-    @IBOutlet var pageControl:UIPageControl!
     
     var categoryNamesArray=NSMutableArray()
     var categoryIDsArray=NSMutableArray()
@@ -24,14 +21,8 @@ class HomeViewController: BaseViewController, PlayerViewControllerDelegate
     
     override func viewDidLoad()
     {
-        Timer.scheduledTimer(timeInterval:5, target:self, selector:#selector(moveToNextPage), userInfo:nil, repeats:true)
-        
         NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:Notification.Name("refreshAfterBlock"), object:nil)
         NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:Notification.Name("status"), object:nil)
-        
-        itemsTbl.addSubview(headerView)
-        
-        setUPHeader()
         
         updateUI()
     }
@@ -59,94 +50,6 @@ class HomeViewController: BaseViewController, PlayerViewControllerDelegate
             
             allCategoryItemsArray.insert(streamsArray, at:i)
         }
-    }
-    
-    func setUPHeader()
-    {
-        scrollView.frame=CGRect(x:0, y:0, width:pageWidth, height:300)
-        
-        let imgOne=UIImageView(frame:CGRect(x:pageWidth, y:0, width:pageWidth, height:300))
-        imgOne.autoresizingMask=[.flexibleHeight]
-        imgOne.sd_setImage(with:URL(string:"\(site)/media/featured/1.jpg"))
-        
-        let imgTwo=UIImageView(frame:CGRect(x:2*pageWidth, y:0, width:pageWidth, height:300))
-        imgTwo.autoresizingMask=[.flexibleHeight]
-        imgTwo.sd_setImage(with:URL(string:"\(site)/media/featured/2.jpg"))
-        
-        let imgThree=UIImageView(frame:CGRect(x:0, y:0, width:pageWidth, height:300))
-        imgThree.autoresizingMask=[.flexibleHeight]
-        imgThree.sd_setImage(with:URL(string:"\(site)/media/featured/3.jpg"))
-        
-        let imgFour=UIImageView(frame:CGRect(x:3*pageWidth, y:0, width:pageWidth, height:300))
-        imgFour.autoresizingMask=[.flexibleHeight]
-        imgFour.sd_setImage(with:URL(string:"\(site)/media/featured/3.jpg"))
-        
-        let imgFive=UIImageView(frame:CGRect(x:4*pageWidth, y:0, width:pageWidth, height:300))
-        imgFive.autoresizingMask=[.flexibleHeight]
-        imgFive.sd_setImage(with:URL(string:"\(site)/media/featured/1.jpg"))
-        
-        scrollView.addSubview(imgThree)
-        scrollView.addSubview(imgOne)
-        scrollView.addSubview(imgTwo)
-        scrollView.addSubview(imgFour)
-        scrollView.addSubview(imgFive)
-        
-        scrollView.contentSize=CGSize(width:pageWidth*5, height:300)
-        scrollView.scrollRectToVisible(CGRect(x:pageWidth, y:0, width:pageWidth, height:300), animated:false)
-        pageControl.currentPage=0
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView:UIScrollView)
-    {
-        if scrollView.contentOffset.x==0
-        {
-            scrollView.scrollRectToVisible(CGRect(x:3*pageWidth, y:0, width:pageWidth, height:300), animated:false)
-        }
-        else if scrollView.contentOffset.x==1280
-        {
-            scrollView.scrollRectToVisible(CGRect(x:pageWidth, y:0, width:pageWidth, height:300), animated:false)
-        }
-        
-        let currentPage=floor((scrollView.contentOffset.x-pageWidth/2)/pageWidth)
-        
-        pageControl.currentPage=Int(currentPage)
-    }
-    
-    func scrollViewDidScroll(_ scrollView:UIScrollView)
-    {
-        if scrollView==itemsTbl
-        {
-            headerView?.alpha = -scrollView.contentOffset.y/300
-            
-            if scrollView.contentOffset.y >= -64
-            {
-                navigationController?.isNavigationBarHidden=false
-            }
-            else
-            {
-                navigationController?.isNavigationBarHidden=true
-            }
-        }
-    }
-    
-    func moveToNextPage()
-    {
-        let slideToX=scrollView.contentOffset.x+pageWidth
-        
-        if scrollView.contentOffset.x>640
-        {
-            scrollView.scrollRectToVisible(CGRect(x:pageWidth, y:0, width:pageWidth, height:300), animated:false)
-            
-            pageControl.currentPage=0
-            
-            return
-        }
-        
-        scrollView.scrollRectToVisible(CGRect(x:slideToX, y:0, width:pageWidth, height:300), animated:true)
-        
-        let currentPage=scrollView.contentOffset.x/pageWidth
-        
-        pageControl.currentPage=Int(currentPage)
     }
     
     func updateUI()
@@ -200,21 +103,37 @@ class HomeViewController: BaseViewController, PlayerViewControllerDelegate
     
     func tableView(_ tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
     {
-        return 190
+        return section==0 ? view.frame.size.height+190 : 190
     }
     
     func tableView(_ tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
     {
-        let headerView=UIView(frame:CGRect(x:0, y:0, width:tableView.frame.size.width, height:190))
+        var headerHeight:CGFloat=0
+        
+        let headerView=UIView(frame:CGRect(x:0, y:0, width:view.frame.size.width, height:190))
         headerView.backgroundColor=UIColor(red:18/255, green:19/255, blue:21/255, alpha:1)
         
-        let seriesLbl=UILabel(frame:CGRect(x:10, y:10, width:view.frame.size.width-20, height:20))
+        if section==0
+        {
+            headerHeight=view.frame.size.height
+            headerView.frame=CGRect(x:0, y:0, width:view.frame.size.width, height:view.frame.size.height+190)
+            
+            let player=AVPlayer(url:URL(string:"https://api.cedricm.com/media/featured/banner.mp4")!)
+            player.isMuted=true
+            let playerLayer=AVPlayerLayer(player:player)
+            playerLayer.frame=CGRect(x:0, y:0, width:view.frame.size.width, height:view.frame.size.height)
+            playerLayer.videoGravity=AVLayerVideoGravityResize
+            headerView.layer.addSublayer(playerLayer)
+            player.play()
+        }
+        
+        let seriesLbl=UILabel(frame:CGRect(x:10, y:headerHeight+10, width:view.frame.size.width-20, height:20))
         seriesLbl.text="SERIES"
         seriesLbl.font=UIFont.systemFont(ofSize:13)
         seriesLbl.textColor = .white
         seriesLbl.textAlignment = .center
         
-        let titleLbl=UILabel(frame:CGRect(x:10, y:40, width:view.frame.size.width-20, height:30))
+        let titleLbl=UILabel(frame:CGRect(x:10, y:headerHeight+40, width:view.frame.size.width-20, height:30))
         
         if(allCategoryItemsArray.count>0)
         {
@@ -225,14 +144,14 @@ class HomeViewController: BaseViewController, PlayerViewControllerDelegate
         titleLbl.textColor = .white
         titleLbl.textAlignment = .center
         
-        let descriptionLbl=UILabel(frame:CGRect(x:10, y:80, width:view.frame.size.width-20, height:50))
+        let descriptionLbl=UILabel(frame:CGRect(x:10, y:headerHeight+80, width:view.frame.size.width-20, height:50))
         descriptionLbl.text="BE IN IT. Original Series Studio(s) explores the creative process through those who define modern culture."
         descriptionLbl.numberOfLines=3
         descriptionLbl.font=UIFont.systemFont(ofSize:13)
         descriptionLbl.textColor = .white
         descriptionLbl.textAlignment = .center
         
-        let seeAllButton=UIButton(frame:CGRect(x:(view.frame.size.width-80)/2, y:140, width:80, height:40))
+        let seeAllButton=UIButton(frame:CGRect(x:(view.frame.size.width-80)/2, y:headerHeight+140, width:80, height:40))
         seeAllButton.setTitle("SEE ALL", for:.normal)
         seeAllButton.titleLabel?.font=UIFont.systemFont(ofSize:13)
         seeAllButton.layer.borderWidth=1
