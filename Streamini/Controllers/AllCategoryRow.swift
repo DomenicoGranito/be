@@ -30,7 +30,7 @@ class AllCategoryRow: UITableViewCell
         
         let category=sectionItemsArray[indexPath.row] as! Category
         
-        cell.videoTitleLbl.text=category.name
+        cell.videoTitleLbl.text=category.name.uppercased()
         
         if category.isChannel
         {

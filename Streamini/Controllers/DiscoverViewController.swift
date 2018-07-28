@@ -18,6 +18,8 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var errorView:ErrorView!
     @IBOutlet var activityView:ActivityIndicatorView!
     @IBOutlet var selectionView:UIView!
+    @IBOutlet var channelsButton:UIButton!
+    @IBOutlet var categoriesButton:UIButton!
     
     var categoriesArray=NSMutableArray()
     var channelsArray=NSMutableArray()
@@ -25,7 +27,7 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad()
     {
-        selectionView.frame=CGRect(x:10, y:45, width:(self.view.frame.size.width-40)/2, height:5)
+        selectionView.frame=CGRect(x:channelsButton.frame.origin.x, y:30, width:80, height:3)
         
         tableView.contentInset=UIEdgeInsetsMake(-35, 0, 0, 0)
         
@@ -64,8 +66,11 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.reloadData()
         
         UIView.animate(withDuration:0.2, animations:{
-            self.selectionView.frame=CGRect(x:10, y:45, width:(self.view.frame.size.width-40)/2, height:5)
+            self.selectionView.frame=CGRect(x:self.channelsButton.frame.origin.x, y:30, width:80, height:3)
             }, completion:nil)
+        
+        channelsButton.setTitleColor(.white, for:.normal)
+        categoriesButton.setTitleColor(.darkGray, for:.normal)
     }
     
     @IBAction func categories()
@@ -74,8 +79,11 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.reloadData()
         
         UIView.animate(withDuration:0.2, animations:{
-            self.selectionView.frame=CGRect(x:self.view.frame.size.width-self.selectionView.frame.size.width-10, y:45, width:(self.view.frame.size.width-40)/2, height:5)
+            self.selectionView.frame=CGRect(x:self.categoriesButton.frame.origin.x, y:30, width:80, height:3)
             }, completion:nil)
+        
+        channelsButton.setTitleColor(.darkGray, for:.normal)
+        categoriesButton.setTitleColor(.white, for:.normal)
     }
     
     func tableView(_ tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
@@ -92,13 +100,13 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
         else
         {
             let headerView=UIView(frame:CGRect(x:0, y:0, width:tableView.frame.size.width, height:40))
-            headerView.backgroundColor=UIColor(red:34/255, green:34/255, blue:34/255, alpha:1)
+            headerView.backgroundColor = .clear
             
             let titleLbl=UILabel(frame:CGRect(x:0, y:0, width:tableView.frame.size.width, height:40))
-            titleLbl.text=(categoriesArray[section] as! Category).name
+            titleLbl.text=(categoriesArray[section] as! Category).name.uppercased()
             titleLbl.textAlignment = .center
             titleLbl.font=UIFont.systemFont(ofSize:15)
-            titleLbl.textColor=UIColor(red:231/255, green:206/255, blue:151/255, alpha:1)
+            titleLbl.textColor = .darkGray
             
             headerView.addSubview(titleLbl)
             
