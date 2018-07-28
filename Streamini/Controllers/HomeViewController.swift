@@ -11,11 +11,13 @@ class HomeViewController: BaseViewController, PlayerViewControllerDelegate
     @IBOutlet var itemsTbl:UITableView!
     @IBOutlet var errorView:ErrorView!
     @IBOutlet var activityView:ActivityIndicatorView!
+    @IBOutlet var headerView:UIView!
     
     var categoryNamesArray=NSMutableArray()
     var categoryIDsArray=NSMutableArray()
     var allCategoryItemsArray=NSMutableArray()
     var timer:Timer?
+    var player:AVPlayer!
     let site=Config.shared.site()
     
     override func viewDidLoad()
@@ -23,7 +25,30 @@ class HomeViewController: BaseViewController, PlayerViewControllerDelegate
         NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:Notification.Name("refreshAfterBlock"), object:nil)
         NotificationCenter.default.addObserver(self, selector:#selector(updateUI), name:Notification.Name("status"), object:nil)
         
+        setUPHeader()
+        
         updateUI()
+    }
+    
+    func setUPHeader()
+    {
+        headerView.frame=CGRect(x:0, y:0, width:view.frame.size.width, height:view.frame.size.height)
+        
+        player=AVPlayer(url:URL(string:"https://api.cedricm.com/media/featured/banner.mp4")!)
+        player.isMuted=true
+        let playerLayer=AVPlayerLayer(player:player)
+        playerLayer.frame=headerView.frame
+        playerLayer.videoGravity=AVLayerVideoGravityResize
+        headerView.layer.addSublayer(playerLayer)
+        player.play()
+        
+        NotificationCenter.default.addObserver(self, selector:#selector(itemDidReachEnd), name:NSNotification.Name.AVPlayerItemDidPlayToEndTime, object:nil)
+    }
+    
+    func itemDidReachEnd()
+    {
+        player.seek(to:kCMTimeZero)
+        player.play()
     }
     
     func updateSubscribeStatus(_ stream:Stream, _ isFollowed:Bool)
@@ -90,7 +115,7 @@ class HomeViewController: BaseViewController, PlayerViewControllerDelegate
     
     override func viewWillAppear(_ animated:Bool)
     {
-        navigationController?.isNavigationBarHidden=true
+        navigationController?.isNavigationBarHidden=false
         
         timer=Timer.scheduledTimer(timeInterval:15, target:self, selector:#selector(reload), userInfo:nil, repeats:true)
     }
@@ -102,37 +127,21 @@ class HomeViewController: BaseViewController, PlayerViewControllerDelegate
     
     func tableView(_ tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
     {
-        return section==0 ? view.frame.size.height+190 : 190
+        return 190
     }
     
     func tableView(_ tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
     {
-        var headerHeight:CGFloat=0
-        
         let headerView=UIView(frame:CGRect(x:0, y:0, width:view.frame.size.width, height:190))
         headerView.backgroundColor=UIColor(red:18/255, green:19/255, blue:21/255, alpha:1)
         
-        if section==0
-        {
-            headerHeight=view.frame.size.height
-            headerView.frame=CGRect(x:0, y:0, width:view.frame.size.width, height:view.frame.size.height+190)
-            
-            let player=AVPlayer(url:URL(string:"https://api.cedricm.com/media/featured/banner.mp4")!)
-            player.isMuted=true
-            let playerLayer=AVPlayerLayer(player:player)
-            playerLayer.frame=CGRect(x:0, y:0, width:view.frame.size.width, height:view.frame.size.height)
-            playerLayer.videoGravity=AVLayerVideoGravityResize
-            headerView.layer.addSublayer(playerLayer)
-            player.play()
-        }
-        
-        let seriesLbl=UILabel(frame:CGRect(x:10, y:headerHeight+10, width:view.frame.size.width-20, height:20))
+        let seriesLbl=UILabel(frame:CGRect(x:10, y:10, width:view.frame.size.width-20, height:20))
         seriesLbl.text="SERIES"
         seriesLbl.font=UIFont.systemFont(ofSize:13)
         seriesLbl.textColor = .white
         seriesLbl.textAlignment = .center
         
-        let titleLbl=UILabel(frame:CGRect(x:10, y:headerHeight+40, width:view.frame.size.width-20, height:30))
+        let titleLbl=UILabel(frame:CGRect(x:10, y:40, width:view.frame.size.width-20, height:30))
         
         if(allCategoryItemsArray.count>0)
         {
@@ -143,14 +152,14 @@ class HomeViewController: BaseViewController, PlayerViewControllerDelegate
         titleLbl.textColor = .white
         titleLbl.textAlignment = .center
         
-        let descriptionLbl=UILabel(frame:CGRect(x:10, y:headerHeight+80, width:view.frame.size.width-20, height:50))
+        let descriptionLbl=UILabel(frame:CGRect(x:10, y:80, width:view.frame.size.width-20, height:50))
         descriptionLbl.text="BE IN IT. Original Series Studio(s) explores the creative process through those who define modern culture."
         descriptionLbl.numberOfLines=3
         descriptionLbl.font=UIFont.systemFont(ofSize:13)
         descriptionLbl.textColor = .white
         descriptionLbl.textAlignment = .center
         
-        let seeAllButton=UIButton(frame:CGRect(x:(view.frame.size.width-80)/2, y:headerHeight+140, width:80, height:40))
+        let seeAllButton=UIButton(frame:CGRect(x:(view.frame.size.width-80)/2, y:140, width:80, height:40))
         seeAllButton.setTitle("SEE ALL", for:.normal)
         seeAllButton.titleLabel?.font=UIFont.systemFont(ofSize:13)
         seeAllButton.layer.borderWidth=1

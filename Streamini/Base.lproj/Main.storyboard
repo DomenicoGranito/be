@@ -5448,14 +5448,19 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="226" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="kNM-n7-n2Q">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="uHv-dE-Tpy" propertyAccessControl="none">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="bdu-lg-VSZ" propertyAccessControl="none">
-                                    <rect key="frame" x="0.0" y="282.5" width="320" height="50"/>
+                                    <rect key="frame" x="0.0" y="332.5" width="320" height="50"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" id="UP8-ew-ec6" customClass="CategoryRow" customModule="Streamini" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="320" height="226"/>
+                                        <rect key="frame" x="0.0" y="105.5" width="320" height="226"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UP8-ew-ec6" id="9jj-rM-7pS">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="226"/>
@@ -5591,6 +5596,7 @@
                     <connections>
                         <outlet property="activityView" destination="fTf-pB-VoN" id="SyS-MN-kgS"/>
                         <outlet property="errorView" destination="Dks-yq-rCq" id="YeL-rM-jEO"/>
+                        <outlet property="headerView" destination="uHv-dE-Tpy" id="bgJ-bK-kgT"/>
                         <outlet property="itemsTbl" destination="kNM-n7-n2Q" id="RA4-rD-EIW"/>
                     </connections>
                 </viewController>
