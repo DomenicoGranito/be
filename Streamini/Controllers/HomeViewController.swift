@@ -34,7 +34,7 @@ class HomeViewController: BaseViewController, PlayerViewControllerDelegate
     {
         headerView.frame=CGRect(x:0, y:0, width:view.frame.size.width, height:view.frame.size.height)
         
-        player=AVPlayer(url:URL(string:"https://api.cedricm.com/media/featured/banner.mp4")!)
+        player=AVPlayer(url:URL(string:"\(site)/media/featured/banner.mp4")!)
         player.isMuted=true
         let playerLayer=AVPlayerLayer(player:player)
         playerLayer.frame=headerView.frame
@@ -42,7 +42,7 @@ class HomeViewController: BaseViewController, PlayerViewControllerDelegate
         headerView.layer.addSublayer(playerLayer)
         player.play()
         
-        NotificationCenter.default.addObserver(self, selector:#selector(itemDidReachEnd), name:NSNotification.Name.AVPlayerItemDidPlayToEndTime, object:nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(itemDidReachEnd), name:Notification.Name.AVPlayerItemDidPlayToEndTime, object:nil)
     }
     
     func itemDidReachEnd()
