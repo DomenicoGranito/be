@@ -27,7 +27,10 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad()
     {
-        selectionView.frame=CGRect(x:channelsButton.frame.origin.x, y:30, width:80, height:3)
+        channelsButton.titleLabel?.addCharacterSpacing()
+        categoriesButton.titleLabel?.addCharacterSpacing()
+        
+        selectionView.frame=CGRect(x:channelsButton.frame.origin.x, y:30, width:95, height:3)
         
         tableView.contentInset=UIEdgeInsetsMake(-35, 0, 0, 0)
         
@@ -66,7 +69,7 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.reloadData()
         
         UIView.animate(withDuration:0.2, animations:{
-            self.selectionView.frame=CGRect(x:self.channelsButton.frame.origin.x, y:30, width:80, height:3)
+            self.selectionView.frame=CGRect(x:self.channelsButton.frame.origin.x, y:30, width:95, height:3)
             }, completion:nil)
         
         channelsButton.setTitleColor(.white, for:.normal)
@@ -79,7 +82,7 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.reloadData()
         
         UIView.animate(withDuration:0.2, animations:{
-            self.selectionView.frame=CGRect(x:self.categoriesButton.frame.origin.x, y:30, width:80, height:3)
+            self.selectionView.frame=CGRect(x:self.categoriesButton.frame.origin.x, y:30, width:95, height:3)
             }, completion:nil)
         
         channelsButton.setTitleColor(.darkGray, for:.normal)
@@ -104,6 +107,7 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
             
             let titleLbl=UILabel(frame:CGRect(x:0, y:0, width:tableView.frame.size.width, height:40))
             titleLbl.text=(categoriesArray[section] as! Category).name.uppercased()
+            titleLbl.addCharacterSpacing()
             titleLbl.textAlignment = .center
             titleLbl.font=UIFont.systemFont(ofSize:15)
             titleLbl.textColor = .darkGray

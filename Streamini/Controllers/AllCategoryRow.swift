@@ -31,6 +31,7 @@ class AllCategoryRow: UITableViewCell
         let category=sectionItemsArray[indexPath.row] as! Category
         
         cell.videoTitleLbl.text=category.name.uppercased()
+        cell.videoTitleLbl.addCharacterSpacing()
         
         if category.isChannel
         {
@@ -80,5 +81,18 @@ class AllCategoryRow: UITableViewCell
         let width=(collectionView.frame.size.width-6)/2
         
         return CGSize(width:width, height:width)
+    }
+}
+
+extension UILabel
+{
+    func addCharacterSpacing()
+    {
+        if let labelText=text, labelText.count>0
+        {
+            let attributedString=NSMutableAttributedString(string:labelText)
+            attributedString.addAttribute(NSKernAttributeName, value:1.15, range:NSRange(location:0, length:attributedString.length-1))
+            attributedText=attributedString
+        }
     }
 }
