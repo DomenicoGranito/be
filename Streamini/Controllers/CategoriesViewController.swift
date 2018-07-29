@@ -92,10 +92,14 @@ class CategoriesViewController: BaseViewController, PlayerViewControllerDelegate
         cell.stream=video
         cell.songLikeStatus()
         
-        cell.videoTitleLbl.text=video.title
-        cell.artistNameLbl.text="\(video.user.name) - \(video.user.desc)"
-        cell.videoYearLbl.text="\(video.year) | \(video.city)"
-        cell.videoCategoryLbl.text=video.category
+        cell.videoTitleLbl.text=video.title.uppercased()
+        cell.videoTitleLbl.addCharacterSpacing()
+        cell.artistNameLbl.text="\(video.user.name) - \(video.user.desc)".uppercased()
+        cell.artistNameLbl.addCharacterSpacing()
+        cell.videoYearLbl.text="\(video.year) | \(video.city)".uppercased()
+        cell.videoYearLbl.addCharacterSpacing()
+        cell.videoCategoryLbl.text=video.category.uppercased()
+        cell.videoCategoryLbl.addCharacterSpacing()
         cell.videoBrandLbl.text="#\(video.brand)"
         
         cell.userImageView.layer.borderColor=UIColor.white.cgColor
@@ -107,9 +111,9 @@ class CategoriesViewController: BaseViewController, PlayerViewControllerDelegate
         cell.userImageView.sd_setImage(with:URL(string:"\(site)/uploads/\(video.user.id)-avatar.jpg"), placeholderImage:UIImage(named:"profile"))
         
         cell.videoThumbnailImageView.sd_setImage(with:URL(string:"\(site)/thumb/\(video.id).jpg"), placeholderImage:UIImage(named:"videostream"))
-        cell.likesAndCommentsCountLbl.text="\(video.likes) Likes • \(video.comments) Comments"
         
         cell.shareButton.addTarget(self, action:#selector(share), for:.touchUpInside)
+        cell.shareButton.tag=indexPath.row
         
         let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
         cell.tag=indexPath.row
@@ -118,7 +122,7 @@ class CategoriesViewController: BaseViewController, PlayerViewControllerDelegate
         return cell
     }
     
-    func share(sender:RecentlyPlayedCell)
+    func share(sender:UIButton)
     {
         let vc=storyBoard.instantiateViewController(withIdentifier:"PopUpViewController") as! PopUpViewController
         vc.stream=allItemsArray[sender.tag] as? Stream
@@ -173,6 +177,7 @@ class CategoriesViewController: BaseViewController, PlayerViewControllerDelegate
             let oneUser=User()
             oneUser.id=user["id"] as! Int
             oneUser.name=user["name"] as! String
+            oneUser.desc=user["description"] as! String
             oneUser.avatar=user["avatar"] as? String
             oneUser.isFollowed=user["isfollowed"] as! Bool
             

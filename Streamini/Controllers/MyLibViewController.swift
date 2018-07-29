@@ -15,7 +15,6 @@ class RecentlyPlayedCell:UITableViewCell
     @IBOutlet var videoYearLbl:UILabel!
     @IBOutlet var videoThumbnailImageView:UIImageView!
     @IBOutlet var userImageView:UIImageView!
-    @IBOutlet var likesAndCommentsCountLbl:UILabel!
     @IBOutlet var shareButton:UIButton!
     @IBOutlet var likeButton:UIButton!
     
@@ -23,17 +22,13 @@ class RecentlyPlayedCell:UITableViewCell
     
     @IBAction func like()
     {
-        let words=likesAndCommentsCountLbl.text!.components(separatedBy:" ")
-        
         if SongManager.isAlreadyFavourited(stream.id)
         {
-            likesAndCommentsCountLbl.text="\(Int(words[0])!-1) Likes • \(stream.comments) Comments"
-            likeButton.setImage(UIImage(named:"heart-small"), for:.normal)
+            likeButton.setImage(UIImage(named:"empty_heart"), for:.normal)
             SongManager.removeFromFavourite(stream.id)
         }
         else
         {
-            likesAndCommentsCountLbl.text="\(Int(words[0])!+1) Likes • \(stream.comments) Comments"
             likeButton.setImage(UIImage(named:"red_heart"), for:.normal)
             SongManager.addToFavourite(stream.title, stream.streamHash, stream.id, stream.user.name, stream.vType, stream.videoID, stream.user.id)
         }
@@ -47,7 +42,7 @@ class RecentlyPlayedCell:UITableViewCell
         }
         else
         {
-            likeButton.setImage(UIImage(named:"heart-small"), for:.normal)
+            likeButton.setImage(UIImage(named:"empty_heart"), for:.normal)
         }
     }
 }
