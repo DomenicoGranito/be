@@ -99,9 +99,11 @@ class ChannelCell: UITableViewCell
         
         let video=userVideosArray[indexPath.row] as! Stream
         
-        cell.videoTitleLbl?.text=video.title
-        cell.followersCountLbl?.text=video.user.name
-        cell.videoThumbnailImageView?.sd_setImage(with:URL(string:"\(site)/thumb/\(video.id).jpg"), placeholderImage:UIImage(named:"videostream"))
+        cell.categoryNameLbl.text=video.category.uppercased()
+        cell.videoYearLbl.text="\(video.year) | \(video.city)".uppercased()
+        cell.videoTitleLbl.text=video.title.uppercased()
+        cell.followersCountLbl.text=video.user.name.uppercased()
+        cell.videoThumbnailImageView.sd_setImage(with:URL(string:"\(site)/thumb/\(video.id).jpg"), placeholderImage:UIImage(named:"videostream"))
         
         let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
         cell.tag=indexPath.row

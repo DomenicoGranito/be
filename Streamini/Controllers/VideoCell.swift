@@ -8,6 +8,8 @@
 
 class VideoCell: UICollectionViewCell
 {
+    @IBOutlet var categoryNameLbl:UILabel!
+    @IBOutlet var videoYearLbl:UILabel!
     @IBOutlet var videoTitleLbl:UILabel!
     @IBOutlet var followersCountLbl:UILabel!
     @IBOutlet var videoThumbnailImageView:UIImageView!
