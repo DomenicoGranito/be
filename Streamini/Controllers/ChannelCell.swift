@@ -10,6 +10,7 @@ class ChannelCell: UITableViewCell
 {
     @IBOutlet var userImageView:UIImageView!
     @IBOutlet var userNameLbl:UILabel!
+    @IBOutlet var followersCountLbl:UILabel!
     @IBOutlet var subscribeButton:UIButton!
     @IBOutlet var collectionView:UICollectionView!
     
@@ -23,9 +24,10 @@ class ChannelCell: UITableViewCell
     {
         self.user=user
         
-        subscribeButton.layer.borderColor=UIColor(red:231/255, green:206/255, blue:151/255, alpha:1).cgColor
+        subscribeButton.layer.borderColor=UIColor.white.cgColor
         
         userNameLbl.text=user.name
+        followersCountLbl.text="\(user.followers) FOLLOWERS | \(user.streams) VIDEOS"
         userImageView.sd_setImage(with:user.avatarURL(), placeholderImage:UIImage(named:"profile"))
         
         subscribeStatus()
@@ -35,15 +37,11 @@ class ChannelCell: UITableViewCell
     {
         if user.isFollowed
         {
-            subscribeButton.setTitle("Subscribed", for:.normal)
-            subscribeButton.setTitleColor(.white, for:.normal)
-            subscribeButton.backgroundColor=UIColor(red:231/255, green:206/255, blue:151/255, alpha:1)
+            subscribeButton.setTitle("Unfollow", for:.normal)
         }
         else
         {
-            subscribeButton.setTitle("+ Subscribe", for:.normal)
-            subscribeButton.setTitleColor(UIColor(red:231/255, green:206/255, blue:151/255, alpha:1), for:.normal)
-            subscribeButton.backgroundColor = .clear
+            subscribeButton.setTitle("+ Follow", for:.normal)
         }
     }
     
@@ -61,9 +59,10 @@ class ChannelCell: UITableViewCell
     
     func followSuccess()
     {
-        subscribeButton.setTitle("Subscribed", for:.normal)
-        subscribeButton.setTitleColor(.white, for:.normal)
-        subscribeButton.backgroundColor=UIColor(red:231/255, green:206/255, blue:151/255, alpha:1)
+        subscribeButton.setTitle("Unfollow", for:.normal)
+        user.isFollowed=true
+        let words=followersCountLbl.text!.components(separatedBy:" ")
+        followersCountLbl.text="\(Int(words[0])!+1) FOLLOWERS | \(user.streams) VIDEOS"
     }
     
     func followFailure(_ error:NSError)
@@ -73,9 +72,10 @@ class ChannelCell: UITableViewCell
     
     func unfollowSuccess()
     {
-        subscribeButton.setTitle("+ Subscribe", for:.normal)
-        subscribeButton.setTitleColor(UIColor(red:231/255, green:206/255, blue:151/255, alpha:1), for:.normal)
-        subscribeButton.backgroundColor = .clear
+        subscribeButton.setTitle("+ Follow", for:.normal)
+        user.isFollowed=false
+        let words=followersCountLbl.text!.components(separatedBy:" ")
+        followersCountLbl.text="\(Int(words[0])!-1) FOLLOWERS | \(user.streams) VIDEOS"
     }
     
     func unfollowFailure(_ error:NSError)

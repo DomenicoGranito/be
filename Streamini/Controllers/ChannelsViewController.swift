@@ -102,6 +102,7 @@ class ChannelsViewController: BaseViewController
                 
                 let oneUser=User()
                 oneUser.id=user["id"] as! Int
+                oneUser.followers=user["followers"] as! Int
                 oneUser.name=user["name"] as! String
                 oneUser.avatar=user["avatar"] as? String
                 oneUser.isFollowed=user["isfollowed"] as! Bool
