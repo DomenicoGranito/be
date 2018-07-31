@@ -45,8 +45,10 @@ class CategoryRow: UITableViewCell
         
         let stream=oneCategoryItemsArray[indexPath.row] as! Stream
         
-        cell.videoTitleLbl.text=stream.title
-        cell.followersCountLbl.text=stream.user.name
+        cell.categoryNameLbl.text=stream.category.uppercased()
+        cell.videoYearLbl.text="\(stream.year) | \(stream.city)".uppercased()
+        cell.videoTitleLbl.text=stream.title.uppercased()
+        cell.followersCountLbl.text=stream.user.name.uppercased()
         cell.videoThumbnailImageView.sd_setImage(with:URL(string:"\(site)/thumb/\(stream.id).jpg"), placeholderImage:UIImage(named:"videostream"))
         
         if categoryName=="live"
