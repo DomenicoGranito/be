@@ -13,9 +13,9 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
     var page: UInt = 0
     var tableView: UITableView
     var selectedCells: [LinkedUserCell] = []
-    var profileDelegate: ProfileDelegate?
-    var userSelectedDelegate: UserSelecting?
-    var streamSelectedDelegate: StreamSelecting?
+    var profileDelegate: ProfileDelegate!
+    var userSelectedDelegate: UserSelecting!
+    var streamSelectedDelegate: StreamSelecting!
     var type:ProfileStatisticsType = .following
     var vType:Int!
     
@@ -109,10 +109,7 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         selectedCell.userStatusButton.isEnabled = true
         selectedCells.remove(at: 0)
         
-        if let delegate=profileDelegate
-        {
-            delegate.reload()
-        }
+        profileDelegate.reload()
     }
     
     func followSuccess()
@@ -122,10 +119,7 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         selectedCell.userStatusButton.isEnabled = true
         selectedCells.remove(at: 0)
         
-        if let delegate=profileDelegate
-        {
-            delegate.reload()
-        }
+        profileDelegate.reload()
     }
     
     func followActionFailure(_ error:NSError)
