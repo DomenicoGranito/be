@@ -9,35 +9,7 @@
 class RecentStreamsDataSource:UserStatisticsDataSource
 {
     var streams:[Stream]=[]
-        
-    override func tableView(_ tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
-    {
-        return 40
-    }
-
-    func tableView(_ tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
-    {
-        let headerView=UIView(frame:CGRect(x:0, y:0, width:tableView.frame.size.width, height:40))
-        headerView.backgroundColor=UIColor(red:18/255, green:19/255, blue:21/255, alpha:1)
-        
-        let titleLbl=UILabel(frame:CGRect(x:5, y:10, width:150, height:20))
-        titleLbl.text="ALL VIDEOS"
-        titleLbl.font=UIFont.systemFont(ofSize:14)
-        titleLbl.textColor=UIColor.lightGray
-        
-        let filterButton=UIButton(frame:CGRect(x:tableView.frame.size.width-25, y:10, width:20, height:20))
-        filterButton.setImage(UIImage(named:"menu"), for:.normal)
-        
-        let lineView=UIView(frame:CGRect(x:0, y:39, width:tableView.frame.size.width, height:1))
-        lineView.backgroundColor=UIColor.darkGray
-        
-        headerView.addSubview(lineView)
-        headerView.addSubview(titleLbl)
-        headerView.addSubview(filterButton)
-        
-        return headerView
-    }
-
+    
     override func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
         return streams.count

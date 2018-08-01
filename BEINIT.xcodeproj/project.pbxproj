@@ -34,6 +34,8 @@
 		3E79060E1E7FBD6A00257C5B /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E79060C1E7FBD6200257C5B /* iCarousel.m */; };
 		3E7C66DA1EEECD120014C6BB /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E7C66D91EEECD120014C6BB /* CoreTelephony.framework */; };
 		3E7C66DC1EEF9B310014C6BB /* UploadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7C66DB1EEF9B310014C6BB /* UploadCell.swift */; };
+		3E7CC22421118BFD00FCB2D7 /* PopularStreamsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7CC22321118BFD00FCB2D7 /* PopularStreamsDataSource.swift */; };
+		3E7CC226211192C500FCB2D7 /* PopularStreamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7CC225211192C500FCB2D7 /* PopularStreamCell.swift */; };
 		3E82056A1EEA9C3600D3B918 /* DWDownloadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8205691EEA9C3600D3B918 /* DWDownloadItem.m */; };
 		3E82056D1EEA9CC500D3B918 /* DWTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E82056C1EEA9CC500D3B918 /* DWTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3E8205711EEC4B7100D3B918 /* OfflineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8205701EEC4B7100D3B918 /* OfflineCell.swift */; };
@@ -247,6 +249,8 @@
 		3E79060C1E7FBD6200257C5B /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iCarousel.m; path = iCarousel/iCarousel.m; sourceTree = "<group>"; };
 		3E7C66D91EEECD120014C6BB /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3E7C66DB1EEF9B310014C6BB /* UploadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadCell.swift; sourceTree = "<group>"; };
+		3E7CC22321118BFD00FCB2D7 /* PopularStreamsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularStreamsDataSource.swift; sourceTree = "<group>"; };
+		3E7CC225211192C500FCB2D7 /* PopularStreamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularStreamCell.swift; sourceTree = "<group>"; };
 		3E8205681EEA9C3600D3B918 /* DWDownloadItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWDownloadItem.h; path = DWSDK/DWDownloadItem.h; sourceTree = "<group>"; };
 		3E8205691EEA9C3600D3B918 /* DWDownloadItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWDownloadItem.m; path = DWSDK/DWDownloadItem.m; sourceTree = "<group>"; };
 		3E82056B1EEA9CC500D3B918 /* DWTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWTools.h; path = DWSDK/DWTools.h; sourceTree = "<group>"; };
@@ -626,6 +630,7 @@
 				B7D5EA971B579CDC003EE25D /* CommentsDataSource.swift */,
 				B72815391B5E4C400005BBC6 /* ViewersDataSource.swift */,
 				B70E041A1B74E92600422AF0 /* RecentStreamsDataSource.swift */,
+				3E7CC22321118BFD00FCB2D7 /* PopularStreamsDataSource.swift */,
 				B77E0BD61B8B52B3007C3107 /* MyStreamsDataSource.swift */,
 				B73E30951B74F15200549A49 /* FollowersDataSource.swift */,
 				B73464E11B74F31B0025ECC3 /* FollowingDataSource.swift */,
@@ -812,6 +817,7 @@
 				3E20216C1D81A6530058DAAD /* HomeViewController.swift */,
 				3E20216E1D81AB440058DAAD /* CategoryRow.swift */,
 				3E6DDCE81F2B580100DFCC0F /* ChannelCell.swift */,
+				3E7CC225211192C500FCB2D7 /* PopularStreamCell.swift */,
 				3E2021701D81ACFE0058DAAD /* VideoCell.swift */,
 				B6EAF8291E28F179007038DC /* CategoryCell.swift */,
 				3E72B39B1FFE71D000EEF386 /* AboutVideoCell.swift */,
@@ -1060,6 +1066,7 @@
 				B71BA5DB1B84A86C0055F427 /* ProfileStatisticsViewController.swift in Sources */,
 				B79187981B4437FC002DFAB4 /* AmazonTool.swift in Sources */,
 				B77AABEE1B398B95007DE187 /* StreamConnector.swift in Sources */,
+				3E7CC22421118BFD00FCB2D7 /* PopularStreamsDataSource.swift in Sources */,
 				3EF535B61E0922D40049B2E9 /* MusicPlayerTransitionAnimation.swift in Sources */,
 				A631E6321D378D95002C7F78 /* PasswordViewController.swift in Sources */,
 				A60F82E91D490F4D002E2CEA /* Category.swift in Sources */,
@@ -1127,6 +1134,7 @@
 				B6EAF8281E28EF6E007038DC /* AllCategoryRow.swift in Sources */,
 				B6D413571E17AC1A001E8108 /* ARNImageTransitionNavigationController.swift in Sources */,
 				B6A941CF1E48AB00003E2331 /* SettingsViewController.swift in Sources */,
+				3E7CC226211192C500FCB2D7 /* PopularStreamCell.swift in Sources */,
 				3E20216F1D81AB440058DAAD /* CategoryRow.swift in Sources */,
 				B7763AFF1B6110A600D469E3 /* NSDateExtension.swift in Sources */,
 				B77AABEC1B398B03007DE187 /* CustomError.swift in Sources */,
