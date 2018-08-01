@@ -47,6 +47,7 @@ class StreamMappingProvider: NSObject {
             "id"            : "id",
             "streamkey"     : "videoID",
             "vtype"         : "vType",
+            "category"      : "category",
             "title"         : "title",
             "hash"          : "streamHash",
             "ended"         : "ended",
