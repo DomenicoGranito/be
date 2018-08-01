@@ -28,12 +28,7 @@ class MyStreamsDataSource: RecentStreamsDataSource
     {
         StreamConnector().recent(userId, myRecentSuccess, recentFailure)
     }
-    
-    override func fetchMore()
-    {
         
-    }
-    
     func tableView(_ tableView:UITableView, canEditRowAtIndexPath indexPath:NSIndexPath)->Bool
     {
         return true
