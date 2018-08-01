@@ -248,7 +248,7 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         user!.isFollowed=true
         
         followButton.layer.borderColor=UIColor(red:231/255, green:206/255, blue:151/255, alpha:1).cgColor
-        followButton.setTitle("FOLLOWING", for:.normal)
+        followButton.setTitle("Unfollow", for:.normal)
         
         userStatusDelegate.followStatusDidChange(true, user:user!)
         
@@ -267,7 +267,7 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         user!.isFollowed=false
         
         followButton.layer.borderColor=UIColor.darkGray.cgColor
-        followButton.setTitle("FOLLOW", for:.normal)
+        followButton.setTitle("+ Follow", for:.normal)
         
         userStatusDelegate.followStatusDidChange(false, user:user!)
         
@@ -292,12 +292,12 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         if user.isFollowed
         {
             followButton.layer.borderColor=UIColor(red:231/255, green:206/255, blue:151/255, alpha:1).cgColor
-            followButton.setTitle("FOLLOWING", for:.normal)
+            followButton.setTitle("Unfollow", for:.normal)
         }
         else
         {
             followButton.layer.borderColor=UIColor.darkGray.cgColor
-            followButton.setTitle("FOLLOW", for:.normal)
+            followButton.setTitle("+ Follow", for:.normal)
         }
         
         backgroundImageView?.image=renderImageFromView()
