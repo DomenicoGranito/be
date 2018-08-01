@@ -197,7 +197,7 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
     
     @IBAction func recentButtonPressed()
     {
-        dataSource=RecentStreamsDataSource(user!.id, tableView)
+        dataSource=PopularStreamsDataSource(user!.id, tableView)
         dataSource.streamSelectedDelegate=self
         helper()
     }
