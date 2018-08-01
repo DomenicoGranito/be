@@ -50,11 +50,11 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
     @IBOutlet var backButton:UIButton!
     
     var user:User?
-    var userStatusDelegate:UserStatusDelegate?
-    var userSelectedDelegate:UserSelecting?
+    var userStatusDelegate:UserStatusDelegate!
+    var userSelectedDelegate:UserSelecting!
     var selectedImage:UIImage?
-    var profileDelegate:ProfileDelegate?
-    var dataSource:UserStatisticsDataSource?
+    var profileDelegate:ProfileDelegate!
+    var dataSource:UserStatisticsDataSource!
     var TBVC:TabBarViewController!
     
     override func viewDidLoad()
@@ -147,10 +147,8 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
     {
         //userHeaderView.progressView.setProgress(0.0, animated:false)
         userHeaderView.updateAvatar(user!, placeholder:selectedImage!)
-        if let delegate=profileDelegate
-        {
-            delegate.reload()
-        }
+        
+        profileDelegate.reload()
     }
     
     func uploadAvatarFailure(error:NSError)
@@ -200,29 +198,29 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
     @IBAction func recentButtonPressed()
     {
         dataSource=RecentStreamsDataSource(user!.id, tableView)
-        dataSource!.streamSelectedDelegate=self
+        dataSource.streamSelectedDelegate=self
         helper()
     }
     
     @IBAction func followersButtonPressed()
     {
         dataSource=FollowersDataSource(user!.id, tableView)
-        dataSource!.userSelectedDelegate=self
+        dataSource.userSelectedDelegate=self
         helper()
     }
     
     @IBAction func followingButtonPressed()
     {
         dataSource=FollowingDataSource(user!.id, tableView)
-        dataSource!.userSelectedDelegate=self
+        dataSource.userSelectedDelegate=self
         helper()
     }
     
     func helper()
     {
-        dataSource!.profileDelegate=self
-        dataSource!.clean()
-        dataSource!.reload()
+        dataSource.profileDelegate=self
+        dataSource.clean()
+        dataSource.reload()
     }
     
     @IBAction func followButtonPressed()
@@ -252,10 +250,7 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         followButton.layer.borderColor=UIColor(red:231/255, green:206/255, blue:151/255, alpha:1).cgColor
         followButton.setTitle("FOLLOWING", for:.normal)
         
-        if let delegate=userStatusDelegate
-        {
-            delegate.followStatusDidChange(true, user:user!)
-        }
+        userStatusDelegate.followStatusDidChange(true, user:user!)
         
         update(user!.id)
     }
@@ -274,10 +269,7 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         followButton.layer.borderColor=UIColor.darkGray.cgColor
         followButton.setTitle("FOLLOW", for:.normal)
         
-        if let delegate=userStatusDelegate
-        {
-            delegate.followStatusDidChange(false, user:user!)
-        }
+        userStatusDelegate.followStatusDidChange(false, user:user!)
         
         update(user!.id)
     }
