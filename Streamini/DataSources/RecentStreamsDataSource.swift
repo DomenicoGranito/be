@@ -1,5 +1,5 @@
 //
-//  RecentUsersDataSource.swift
+//  RecentStreamsDataSource.swift
 //  Streamini
 //
 //  Created by Vasily Evreinov on 07/08/15.
@@ -9,12 +9,7 @@
 class RecentStreamsDataSource:UserStatisticsDataSource
 {
     var streams:[Stream]=[]
-    
-    override func numberOfSections(in tableView:UITableView)->Int
-    {
-        return 1
-    }
-    
+        
     override func tableView(_ tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
     {
         return 40
@@ -64,20 +59,14 @@ class RecentStreamsDataSource:UserStatisticsDataSource
     
     func dotsButtonTapped(_ sender:UIButton)
     {
-        if let delegate=streamSelectedDelegate
-        {
-            delegate.openPopUpForSelectedStream(streams[sender.tag])
-        }
+        streamSelectedDelegate.openPopUpForSelectedStream(streams[sender.tag])
     }
     
     func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:IndexPath)
     {
         tableView.deselectRow(at:indexPath, animated:true)
         
-        if let delegate=streamSelectedDelegate
-        {
-            delegate.streamDidSelected(streams[indexPath.row])
-        }
+        streamSelectedDelegate.streamDidSelected(streams[indexPath.row])
     }
     
     func recentSuccess(_ streams:[Stream])
@@ -107,12 +96,7 @@ class RecentStreamsDataSource:UserStatisticsDataSource
     {
         StreamConnector().recent(userId, recentSuccess, recentFailure)
     }
-    
-    override func fetchMore()
-    {
         
-    }
-    
     override func clean()
     {
         streams=[]
