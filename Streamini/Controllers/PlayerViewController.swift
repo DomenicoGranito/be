@@ -31,6 +31,7 @@ class PlayerViewController: BaseViewController
     var selectedItemIndex=0
     var homeClassReference:HomeViewController?
     var categoryClassReference:CategoriesViewController?
+    var channelClassReference:ChannelsViewController?
     
     override func viewDidLoad()
     {
@@ -125,6 +126,10 @@ class PlayerViewController: BaseViewController
                 cell.delegate=obj
             }
             if let obj=categoryClassReference
+            {
+                cell.delegate=obj
+            }
+            if let obj=channelClassReference
             {
                 cell.delegate=obj
             }

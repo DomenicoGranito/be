@@ -6,7 +6,7 @@
 //  Copyright © 2017 Cedricm Video. All rights reserved.
 //
 
-class ChannelsViewController: BaseViewController
+class ChannelsViewController: BaseViewController, PlayerViewControllerDelegate
 {
     @IBOutlet var itemsTbl:UITableView!
     
@@ -52,6 +52,7 @@ class ChannelsViewController: BaseViewController
         cell.update(user)
         cell.TBVC=tabBarController as! TabBarViewController
         cell.userVideosArray=userVideosArray
+        cell.channelClassReference=self
         
         return cell
     }
@@ -155,5 +156,30 @@ class ChannelsViewController: BaseViewController
     func failureStream(error:NSError)
     {
         handleError(error)
+    }
+    
+    func updateSubscribeStatus(_ stream:Stream, _ isFollowed:Bool)
+    {
+        let userID=stream.user.id
+        
+        for i in 0 ..< channelUsersVideosArray.count
+        {
+            let streamsArray=channelUsersVideosArray[i] as! NSMutableArray
+            channelUsersVideosArray.remove(streamsArray)
+            
+            for j in 0 ..< streamsArray.count
+            {
+                let s=streamsArray[j] as! Stream
+                
+                if s.user.id==userID
+                {
+                    streamsArray.remove(s)
+                    s.user.isFollowed=isFollowed
+                    streamsArray.insert(s, at:j)
+                }
+            }
+            
+            channelUsersVideosArray.insert(streamsArray, at:i)
+        }
     }
 }

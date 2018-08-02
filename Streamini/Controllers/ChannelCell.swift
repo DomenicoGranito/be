@@ -16,6 +16,7 @@ class ChannelCell: UITableViewCell
     
     var user:User!
     var TBVC:TabBarViewController!
+    var channelClassReference:ChannelsViewController!
     var userVideosArray:NSArray!
     let site=Config.shared.site()
     let storyboard=UIStoryboard(name:"Main", bundle:nil)
@@ -120,6 +121,7 @@ class ChannelCell: UITableViewCell
         
         playerVC.stream=stream
         playerVC.TBVC=TBVC
+        playerVC.channelClassReference=channelClassReference
         
         TBVC.playerVC=playerVC
         TBVC.configure(stream)

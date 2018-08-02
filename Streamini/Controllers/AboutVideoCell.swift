@@ -41,7 +41,7 @@ class AboutVideoCell: UITableViewCell
     {
         self.stream=stream
         
-        subscribeButton.layer.borderColor=UIColor(red:231/255, green:206/255, blue:151/255, alpha:1).cgColor
+        subscribeButton.layer.borderColor=UIColor.white.cgColor
         
         videoTitleLbl.text=stream.title
         categoryLbl.text=stream.category
@@ -80,9 +80,7 @@ class AboutVideoCell: UITableViewCell
     
     func followSuccess()
     {
-        subscribeButton.setTitle("Subscribed", for:.normal)
-        subscribeButton.setTitleColor(.white, for:.normal)
-        subscribeButton.backgroundColor=UIColor(red:231/255, green:206/255, blue:151/255, alpha:1)
+        subscribeButton.setTitle("Unfollow", for:.normal)
         delegate.updateSubscribeStatus(stream, true)
     }
     
@@ -93,9 +91,7 @@ class AboutVideoCell: UITableViewCell
     
     func unfollowSuccess()
     {
-        subscribeButton.setTitle("+ Subscribe", for:.normal)
-        subscribeButton.setTitleColor(UIColor(red:231/255, green:206/255, blue:151/255, alpha:1), for:.normal)
-        subscribeButton.backgroundColor = .clear
+        subscribeButton.setTitle("+ Follow", for:.normal)
         delegate.updateSubscribeStatus(stream, false)
     }
     
@@ -108,13 +104,11 @@ class AboutVideoCell: UITableViewCell
     {
         if stream.user.isFollowed
         {
-            subscribeButton.setTitle("Subscribed", for:.normal)
-            subscribeButton.setTitleColor(.white, for:.normal)
-            subscribeButton.backgroundColor=UIColor(red:231/255, green:206/255, blue:151/255, alpha:1)
+            subscribeButton.setTitle("Unfollow", for:.normal)
         }
         else
         {
-            subscribeButton.setTitle("+ Subscribe", for:.normal)
+            subscribeButton.setTitle("+ Follow", for:.normal)
         }
     }
 }

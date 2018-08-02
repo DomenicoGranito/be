@@ -10132,8 +10132,8 @@
                                                                 <constraint firstAttribute="height" constant="30" id="Y0W-77-qUc"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <state key="normal" title="+ Subscribe">
-                                                                <color key="titleColor" red="0.90588235289999997" green="0.80784313730000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <state key="normal" title="+ Follow">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
