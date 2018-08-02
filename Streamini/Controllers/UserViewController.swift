@@ -249,7 +249,10 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         
         followButton.setTitle("Unfollow", for:.normal)
         
-        userStatusDelegate.followStatusDidChange(true, user:user!)
+        if let delegate=userStatusDelegate
+        {
+            delegate.followStatusDidChange(true, user:user!)
+        }
         
         update(user!.id)
     }
@@ -267,8 +270,11 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         
         followButton.setTitle("+ Follow", for:.normal)
         
-        userStatusDelegate.followStatusDidChange(false, user:user!)
-        
+        if let delegate=userStatusDelegate
+        {
+            delegate.followStatusDidChange(false, user:user!)
+        }
+            
         update(user!.id)
     }
     
