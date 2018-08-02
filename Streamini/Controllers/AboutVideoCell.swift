@@ -15,9 +15,6 @@ class AboutVideoCell: UITableViewCell
 {
     @IBOutlet var videoTitleLbl:UILabel!
     @IBOutlet var categoryLbl:UILabel!
-    @IBOutlet var viewersCountAndUploadedAgoLbl:UILabel!
-    @IBOutlet var uploadedDateLbl:UILabel!
-    @IBOutlet var videoDescriptionTextView:UITextView!
     @IBOutlet var cityLbl:UILabel!
     @IBOutlet var yearLbl:UILabel!
     @IBOutlet var brandLbl:UILabel!
@@ -31,7 +28,10 @@ class AboutVideoCell: UITableViewCell
     @IBOutlet var subscribeButton:UIButton!
     @IBOutlet var channelButton:UIButton!
     @IBOutlet var userNameLbl:UILabel!
+    @IBOutlet var followersCountLbl:UILabel!
     @IBOutlet var userImageView:UIImageView!
+    @IBOutlet var likeButton:UIButton!
+    @IBOutlet var shareButton:UIButton!
     
     var delegate:PlayerViewControllerDelegate!
     var stream:Stream!
@@ -43,26 +43,27 @@ class AboutVideoCell: UITableViewCell
         
         subscribeButton.layer.borderColor=UIColor.white.cgColor
         
-        videoTitleLbl.text=stream.title
-        categoryLbl.text=stream.category
-        viewersCountAndUploadedAgoLbl.text="\(stream.viewers) Views | Uploaded 1 month ago"
-        uploadedDateLbl.text="Jul 21, 2017"
-        videoDescriptionTextView.text=stream.videoDescription
-        cityLbl.text=stream.city
-        yearLbl.text=stream.year
-        brandLbl.text=stream.brand
-        venueLbl.text=stream.venue
-        PRAgencyLbl.text=stream.PRAgency
-        musicAgencyLbl.text=stream.musicAgency
-        adAgencyLbl.text=stream.adAgency
-        eventAgencyLbl.text=stream.eventAgency
-        videoAgencyLbl.text=stream.videoAgency
-        talentAgencyLbl.text=stream.talentAgency
+        videoTitleLbl.text=stream.title.uppercased()
+        videoTitleLbl.addCharacterSpacing()
+        categoryLbl.text=stream.category.uppercased()
+        categoryLbl.addCharacterSpacing()
+        cityLbl.text=stream.city=="" ? "NA" : stream.city
+        yearLbl.text=stream.year=="" ? "NA" : stream.year
+        brandLbl.text=stream.brand=="" ? "NA" : stream.brand
+        venueLbl.text=stream.venue=="" ? "NA" : stream.venue
+        PRAgencyLbl.text=stream.PRAgency=="" ? "NA" : stream.PRAgency
+        musicAgencyLbl.text=stream.musicAgency=="" ? "NA" : stream.musicAgency
+        adAgencyLbl.text=stream.adAgency=="" ? "NA" : stream.adAgency
+        eventAgencyLbl.text=stream.eventAgency=="" ? "NA" : stream.eventAgency
+        videoAgencyLbl.text=stream.videoAgency=="" ? "NA" : stream.videoAgency
+        talentAgencyLbl.text=stream.talentAgency=="" ? "NA" : stream.talentAgency
         userNameLbl.text=stream.user.name
+        followersCountLbl.text="FOLLOWERS \(stream.user.followers)"
         userImageView.sd_setImage(with:stream.user.avatarURL(), placeholderImage:UIImage(named:"profile"))
         
         SongManager.addToRecentlyPlayed(stream.title, stream.streamHash, stream.id, stream.user.name, stream.videoID, stream.user.id)
         
+        songLikeStatus()
         subscribeStatus()
     }
     
@@ -98,6 +99,32 @@ class AboutVideoCell: UITableViewCell
     func unfollowFailure(_ error:NSError)
     {
         
+    }
+    
+    @IBAction func like()
+    {
+        if SongManager.isAlreadyFavourited(stream.id)
+        {
+            likeButton.setImage(UIImage(named:"empty_heart"), for:.normal)
+            SongManager.removeFromFavourite(stream.id)
+        }
+        else
+        {
+            likeButton.setImage(UIImage(named:"red_heart"), for:.normal)
+            SongManager.addToFavourite(stream.title, stream.streamHash, stream.id, stream.user.name, stream.vType, stream.videoID, stream.user.id)
+        }
+    }
+    
+    func songLikeStatus()
+    {
+        if SongManager.isAlreadyFavourited(stream.id)
+        {
+            likeButton.setImage(UIImage(named:"red_heart"), for:.normal)
+        }
+        else
+        {
+            likeButton.setImage(UIImage(named:"empty_heart"), for:.normal)
+        }
     }
     
     func subscribeStatus()
