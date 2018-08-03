@@ -104,7 +104,7 @@ class PlayerViewController: BaseViewController
     
     func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
     {
-        return indexPath.row==0 ? 440 : 80
+        return indexPath.row==0 ? 440 : 180
     }
     
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
@@ -144,8 +144,10 @@ class PlayerViewController: BaseViewController
             
             let stream=allItemsArray[indexPath.row-1] as! Stream
             
-            cell.videoTitleLbl.text=stream.title
-            cell.artistNameLbl.text=stream.user.name
+            cell.videoTitleLbl.text=stream.title.uppercased()
+            cell.videoTitleLbl.addCharacterSpacing()
+            cell.artistNameLbl.text=stream.category.uppercased()
+            cell.artistNameLbl.addCharacterSpacing()
             cell.videoThumbnailImageView.sd_setImage(with:URL(string:"\(site)/thumb/\(stream.id).jpg"), placeholderImage:UIImage(named:"stream"))
             
             return cell
