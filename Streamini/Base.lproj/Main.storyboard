@@ -970,7 +970,9 @@
                         </variation>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="CHANNELS" id="EEH-OX-SY9"/>
+                    <navigationItem key="navigationItem" title="CHANNELS" id="EEH-OX-SY9">
+                        <barButtonItem key="backBarButtonItem" title=" " id="x58-0o-i9h"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="itemsTbl" destination="Ad9-xm-a5N" id="suN-Ob-2R8"/>
                     </connections>
@@ -10419,8 +10421,8 @@
         <image name="user" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AcD-60-gNs"/>
-        <segue reference="7Qu-7p-ztG"/>
+        <segue reference="ybU-Cf-XEH"/>
+        <segue reference="bjY-rG-Avh"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

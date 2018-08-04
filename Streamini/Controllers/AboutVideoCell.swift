@@ -57,7 +57,7 @@ class AboutVideoCell: UITableViewCell
         eventAgencyLbl.text=stream.eventAgency=="" ? "NA" : stream.eventAgency
         videoAgencyLbl.text=stream.videoAgency=="" ? "NA" : stream.videoAgency
         talentAgencyLbl.text=stream.talentAgency=="" ? "NA" : stream.talentAgency
-        userNameLbl.text=stream.user.name
+        userNameLbl.text=stream.user.name.uppercased()
         followersCountLbl.text="FOLLOWERS \(stream.user.followers)"
         userImageView.sd_setImage(with:stream.user.avatarURL(), placeholderImage:UIImage(named:"profile"))
         
