@@ -6,7 +6,13 @@
 //  Copyright © 2018 Cedricm Video. All rights reserved.
 //
 
-class PlayerViewController: BaseViewController
+protocol RelatedVideoSelecting:class
+{
+    func updateRelatedVideosArray(_ videos:NSMutableArray)
+    func relatedVideoDidSelected(_ index:Int)
+}
+
+class PlayerViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, RelatedVideoSelecting
 {
     @IBOutlet var videoProgressDurationLbl:UILabel!
     @IBOutlet var videoDurationLbl:UILabel!
@@ -19,7 +25,8 @@ class PlayerViewController: BaseViewController
     @IBOutlet var playerHeightConstraint:NSLayoutConstraint!
     
     let site=Config.shared.site()
-    var allItemsArray=NSMutableArray()
+    var relatedVideosArray=NSMutableArray()
+    var popularVideosArray=NSMutableArray()
     var isPlaying=true
     var TBVC:TabBarViewController!
     var player:DWMoviePlayerController!
@@ -34,6 +41,9 @@ class PlayerViewController: BaseViewController
     
     override func viewDidLoad()
     {
+        relatedVideosTbl.delegate=self
+        relatedVideosTbl.dataSource=self
+        
         let screenSize=UIScreen.main.bounds.height
         
         if screenSize==568
@@ -60,10 +70,11 @@ class PlayerViewController: BaseViewController
         originalStream=stream
         
         relatedVideosTbl.addInfiniteScrolling{()->() in
-            self.fetchMore()
+            self.fetchMorePopularVideos()
         }
         
-        StreamConnector().categoryStreams(false, true, stream.cid, page, successStreams, failureStream)
+        StreamConnector().categoryStreams(false, true, stream.cid, 0, relatedVideosSuccess, failureStream)
+        StreamConnector().categoryStreams(false, true, stream.cid, 0, popularVideosSuccess, failureStream)
         
         addPlayer()
     }
@@ -96,25 +107,69 @@ class PlayerViewController: BaseViewController
         appDelegate.shouldRotate=false
     }
     
-    func fetchMore()
+    func fetchMorePopularVideos()
     {
         page+=1
-        StreamConnector().categoryStreams(false, true, stream.cid, page, fetchMoreSuccess, failureStream)
+        StreamConnector().categoryStreams(false, true, stream.cid, page, fetchMorePopularVideosSuccess, failureStream)
     }
     
-    func tableView(_ tableView:UITableView, heightForRowAtIndexPath indexPath:IndexPath)->CGFloat
+    func numberOfSections(in tableView:UITableView)->Int
     {
-        return indexPath.row==0 ? 440 : 180
+        return 3
     }
     
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
-        return allItemsArray.count+1
+        return section==2 ? popularVideosArray.count : 1
     }
     
-    func tableView(_ tableView:UITableView, cellForRowAtIndexPath indexPath:IndexPath)->UITableViewCell
+    func tableView(_ tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
     {
-        if indexPath.row==0
+        return section==2 ? 30 : 1
+    }
+    
+    func tableView(_ tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
+    {
+        if section<2
+        {
+            return nil
+        }
+        else
+        {
+            let headerView=UIView(frame:CGRect(x:0, y:0, width:view.frame.size.width, height:30))
+            headerView.backgroundColor = .clear
+            
+            let titleLbl=UILabel(frame:CGRect(x:0, y:5, width:view.frame.size.width, height:20))
+            titleLbl.text="POPULAR"
+            titleLbl.textAlignment = .center
+            titleLbl.font=UIFont.systemFont(ofSize:15)
+            titleLbl.textColor = .darkGray
+            
+            headerView.addSubview(titleLbl)
+            
+            return headerView
+        }
+    }
+    
+    func tableView(_ tableView:UITableView, heightForRowAt indexPath:IndexPath)->CGFloat
+    {
+        if indexPath.section==0
+        {
+            return 410
+        }
+        else if indexPath.section==1
+        {
+            return 269
+        }
+        else
+        {
+            return 180
+        }
+    }
+    
+    func tableView(_ tableView:UITableView, cellForRowAt indexPath:IndexPath)->UITableViewCell
+    {
+        if indexPath.section==0
         {
             let cell=tableView.dequeueReusableCell(withIdentifier:"AboutVideoCell") as! AboutVideoCell
             
@@ -138,11 +193,21 @@ class PlayerViewController: BaseViewController
             
             return cell
         }
+        else if indexPath.section==1
+        {
+            let cell=tableView.dequeueReusableCell(withIdentifier:"cell") as! RelatedVideoCell
+            
+            cell.relatedVideosArray=relatedVideosArray
+            cell.categoryID=stream.cid
+            cell.delegate=self
+            
+            return cell
+        }
         else
         {
             let cell=tableView.dequeueReusableCell(withIdentifier:"RelatedVideoCell") as! RecentlyPlayedCell
             
-            let stream=allItemsArray[indexPath.row-1] as! Stream
+            let stream=popularVideosArray[indexPath.row] as! Stream
             
             cell.videoTitleLbl.text=stream.title.uppercased()
             cell.videoTitleLbl.addCharacterSpacing()
@@ -154,14 +219,23 @@ class PlayerViewController: BaseViewController
         }
     }
     
-    func tableView(_ tableView:UITableView, didSelectRowAtIndexPath indexPath:IndexPath)
+    func tableView(_ tableView:UITableView, didSelectRowAt indexPath:IndexPath)
     {
-        if indexPath.row>0
+        if indexPath.section==2
         {
-            selectedItemIndex=indexPath.row
-            stream=allItemsArray[indexPath.row-1] as! Stream
+            stream=popularVideosArray[indexPath.row] as! Stream
             relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.fade)
             addPlayer()
+        }
+    }
+    
+    func tableView(_ tableView:UITableView, willDisplay cell:UITableViewCell, forRowAt indexPath:IndexPath)
+    {
+        if indexPath.section==1
+        {
+            let cell=cell as! RelatedVideoCell
+            
+            cell.reloadCollectionView()
         }
     }
     
@@ -193,14 +267,14 @@ class PlayerViewController: BaseViewController
     @IBAction func previous()
     {
         selectedItemIndex=selectedItemIndex-1
-        stream=selectedItemIndex==0 ? originalStream : allItemsArray[selectedItemIndex-1] as! Stream
+        stream=selectedItemIndex==0 ? originalStream : relatedVideosArray[selectedItemIndex-1] as! Stream
         relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.fade)
         addPlayer()
     }
     
     @IBAction func next()
     {
-        stream=allItemsArray[selectedItemIndex] as! Stream
+        stream=relatedVideosArray[selectedItemIndex] as! Stream
         selectedItemIndex=selectedItemIndex+1
         relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.fade)
         addPlayer()
@@ -210,6 +284,20 @@ class PlayerViewController: BaseViewController
     {
         view.window?.rootViewController?.dismiss(animated:true, completion:nil)
         NotificationCenter.default.post(name: Notification.Name("goToChannels"), object:stream.user)
+    }
+    
+    func relatedVideoDidSelected(_ index:Int)
+    {
+        selectedItemIndex=index+1
+        stream=relatedVideosArray[index] as! Stream
+        relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.fade)
+        addPlayer()
+    }
+    
+    func updateRelatedVideosArray(_ videos:NSMutableArray)
+    {
+        relatedVideosArray=videos
+        updateButtons()
     }
     
     func addPlayer()
@@ -396,31 +484,35 @@ class PlayerViewController: BaseViewController
             previousButton.isEnabled=false
         }
         
-        if selectedItemIndex==allItemsArray.count
+        if selectedItemIndex==relatedVideosArray.count
         {
             nextButton.isEnabled=false
         }
     }
     
-    func successStreams(data:NSDictionary)
+    func relatedVideosSuccess(data:NSDictionary)
     {
-        allItemsArray.addObjects(from:getData(data) as [AnyObject])
-        relatedVideosTbl.reloadData()
+        relatedVideosArray.addObjects(from:getData(data) as [AnyObject])
         updateButtons()
     }
     
-    func fetchMoreSuccess(data:NSDictionary)
+    func popularVideosSuccess(_ data:NSDictionary)
+    {
+        popularVideosArray.addObjects(from:getData(data) as [AnyObject])
+        relatedVideosTbl.reloadData()
+    }
+    
+    func fetchMorePopularVideosSuccess(data:NSDictionary)
     {
         relatedVideosTbl.infiniteScrollingView.stopAnimating()
-        allItemsArray.addObjects(from:getData(data) as [AnyObject])
-        relatedVideosTbl.reloadData()
+        popularVideosSuccess(data)
     }
     
     func getData(_ data:NSDictionary)->NSMutableArray
     {
         let videos=data["data"] as! NSArray
         
-        let allItemsArray=NSMutableArray()
+        let videosArray=NSMutableArray()
         
         for i in 0 ..< videos.count
         {
@@ -469,10 +561,10 @@ class PlayerViewController: BaseViewController
             oneVideo.rlikes=video["rlikes"] as! Int
             oneVideo.user=oneUser
             
-            allItemsArray.add(oneVideo)
+            videosArray.add(oneVideo)
         }
         
-        return allItemsArray
+        return videosArray
     }
     
     func failureStream(error:NSError)

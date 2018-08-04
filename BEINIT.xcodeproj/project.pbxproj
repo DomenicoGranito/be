@@ -36,6 +36,7 @@
 		3E7C66DC1EEF9B310014C6BB /* UploadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7C66DB1EEF9B310014C6BB /* UploadCell.swift */; };
 		3E7CC22421118BFD00FCB2D7 /* PopularStreamsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7CC22321118BFD00FCB2D7 /* PopularStreamsDataSource.swift */; };
 		3E7CC226211192C500FCB2D7 /* PopularStreamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7CC225211192C500FCB2D7 /* PopularStreamCell.swift */; };
+		3E7CC228211453F000FCB2D7 /* RelatedVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7CC227211453EE00FCB2D7 /* RelatedVideoCell.swift */; };
 		3E82056A1EEA9C3600D3B918 /* DWDownloadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8205691EEA9C3600D3B918 /* DWDownloadItem.m */; };
 		3E82056D1EEA9CC500D3B918 /* DWTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E82056C1EEA9CC500D3B918 /* DWTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3E8205711EEC4B7100D3B918 /* OfflineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8205701EEC4B7100D3B918 /* OfflineCell.swift */; };
@@ -251,6 +252,7 @@
 		3E7C66DB1EEF9B310014C6BB /* UploadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadCell.swift; sourceTree = "<group>"; };
 		3E7CC22321118BFD00FCB2D7 /* PopularStreamsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularStreamsDataSource.swift; sourceTree = "<group>"; };
 		3E7CC225211192C500FCB2D7 /* PopularStreamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularStreamCell.swift; sourceTree = "<group>"; };
+		3E7CC227211453EE00FCB2D7 /* RelatedVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedVideoCell.swift; sourceTree = "<group>"; };
 		3E8205681EEA9C3600D3B918 /* DWDownloadItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWDownloadItem.h; path = DWSDK/DWDownloadItem.h; sourceTree = "<group>"; };
 		3E8205691EEA9C3600D3B918 /* DWDownloadItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWDownloadItem.m; path = DWSDK/DWDownloadItem.m; sourceTree = "<group>"; };
 		3E82056B1EEA9CC500D3B918 /* DWTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWTools.h; path = DWSDK/DWTools.h; sourceTree = "<group>"; };
@@ -815,6 +817,7 @@
 				3EF1F02D1D719B100055A372 /* RegisterViewController.swift */,
 				B7D6F0B01B37F16C0070C36A /* LoginViewController.swift */,
 				3E20216C1D81A6530058DAAD /* HomeViewController.swift */,
+				3E7CC227211453EE00FCB2D7 /* RelatedVideoCell.swift */,
 				3E20216E1D81AB440058DAAD /* CategoryRow.swift */,
 				3E6DDCE81F2B580100DFCC0F /* ChannelCell.swift */,
 				3E7CC225211192C500FCB2D7 /* PopularStreamCell.swift */,
@@ -1166,6 +1169,7 @@
 				3E68E8F81E715D3F008AAB9E /* VideosViewController.swift in Sources */,
 				B746FB101B5FC23100DE3534 /* FollowersViewController.swift in Sources */,
 				B7AA93241B3172740005972E /* AppDelegate.swift in Sources */,
+				3E7CC228211453F000FCB2D7 /* RelatedVideoCell.swift in Sources */,
 				B7E15E551B6A62B6000C8C69 /* JoinStreamKeyboardHandler.swift in Sources */,
 				B7316E0A1B5553030079D387 /* Animator.swift in Sources */,
 				B728153C1B5E633F0005BBC6 /* InfoView.swift in Sources */,
