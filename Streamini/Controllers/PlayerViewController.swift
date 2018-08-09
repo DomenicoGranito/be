@@ -38,6 +38,7 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
     var homeClassReference:HomeViewController?
     var categoryClassReference:CategoriesViewController?
     var channelClassReference:ChannelsViewController?
+    var canExpand=true
     
     override func viewDidLoad()
     {
@@ -155,7 +156,7 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
     {
         if indexPath.section==0
         {
-            return 410
+            return canExpand ? 235 : 410
         }
         else if indexPath.section==1
         {
@@ -224,7 +225,7 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
         if indexPath.section==2
         {
             stream=popularVideosArray[indexPath.row] as! Stream
-            relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.fade)
+            relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.none)
             addPlayer()
         }
     }
@@ -244,6 +245,20 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
         let vc=storyBoard.instantiateViewController(withIdentifier:"PopUpViewController") as! PopUpViewController
         vc.stream=stream
         present(vc, animated:true)
+    }
+    
+    @IBAction func readMore()
+    {
+        if canExpand
+        {
+            canExpand=false
+            relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.none)
+        }
+        else
+        {
+            canExpand=true
+            relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.none)
+        }
     }
     
     @IBAction func play()
@@ -268,7 +283,7 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
     {
         selectedItemIndex=selectedItemIndex-1
         stream=selectedItemIndex==0 ? originalStream : relatedVideosArray[selectedItemIndex-1] as! Stream
-        relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.fade)
+        relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.none)
         addPlayer()
     }
     
@@ -276,7 +291,7 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
     {
         stream=relatedVideosArray[selectedItemIndex] as! Stream
         selectedItemIndex=selectedItemIndex+1
-        relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.fade)
+        relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.none)
         addPlayer()
     }
     
@@ -290,7 +305,7 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
     {
         selectedItemIndex=index+1
         stream=relatedVideosArray[index] as! Stream
-        relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.fade)
+        relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.none)
         addPlayer()
     }
     

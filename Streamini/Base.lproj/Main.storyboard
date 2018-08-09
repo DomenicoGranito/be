@@ -10135,6 +10135,17 @@
                                                                 <action selector="like" destination="6gZ-yn-C2f" eventType="touchUpInside" id="V9a-rK-Hxh"/>
                                                             </connections>
                                                         </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kY0-Ng-4Fn">
+                                                            <rect key="frame" x="129.5" y="11.5" width="61" height="27"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <state key="normal" title="Read more">
+                                                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="readMore" destination="vYl-TH-Oqr" eventType="touchUpInside" id="YEb-jN-A2A"/>
+                                                            </connections>
+                                                        </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lE3-ap-mq9">
                                                             <rect key="frame" x="280" y="10" width="30" height="30"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -10152,7 +10163,9 @@
                                                         <constraint firstAttribute="bottom" secondItem="BAK-na-pe3" secondAttribute="bottom" constant="10" id="9Ip-S1-tou"/>
                                                         <constraint firstAttribute="trailing" secondItem="lE3-ap-mq9" secondAttribute="trailing" constant="10" id="H2I-ik-o29"/>
                                                         <constraint firstAttribute="height" constant="50" id="OS9-V6-hjE"/>
+                                                        <constraint firstItem="kY0-Ng-4Fn" firstAttribute="centerY" secondItem="2pf-yB-2Db" secondAttribute="centerY" id="XOF-gu-m5w"/>
                                                         <constraint firstItem="BAK-na-pe3" firstAttribute="leading" secondItem="2pf-yB-2Db" secondAttribute="leading" constant="10" id="YcV-G1-6MG"/>
+                                                        <constraint firstItem="kY0-Ng-4Fn" firstAttribute="centerX" secondItem="2pf-yB-2Db" secondAttribute="centerX" id="ga3-hk-8hc"/>
                                                         <constraint firstItem="lE3-ap-mq9" firstAttribute="top" secondItem="2pf-yB-2Db" secondAttribute="top" constant="10" id="lY1-xO-PF2"/>
                                                         <constraint firstItem="BAK-na-pe3" firstAttribute="top" secondItem="2pf-yB-2Db" secondAttribute="top" constant="10" id="vNQ-hq-oz1"/>
                                                     </constraints>
