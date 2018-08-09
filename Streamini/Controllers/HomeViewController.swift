@@ -159,11 +159,13 @@ class HomeViewController: BaseViewController, PlayerViewControllerDelegate
         descriptionLbl.textColor = .white
         descriptionLbl.textAlignment = .center
         
-        let seeAllButton=UIButton(frame:CGRect(x:(view.frame.size.width-80)/2, y:140, width:80, height:40))
-        seeAllButton.setTitle("SEE ALL", for:.normal)
-        seeAllButton.titleLabel?.font=UIFont.systemFont(ofSize:13)
-        seeAllButton.layer.borderWidth=1
-        seeAllButton.layer.borderColor=UIColor.gray.cgColor
+        let seeAllLbl=UILabel(frame:CGRect(x:(view.frame.size.width-80)/2, y:140, width:80, height:40))
+        seeAllLbl.text="SEE ALL"
+        seeAllLbl.font=UIFont.systemFont(ofSize:13)
+        seeAllLbl.layer.borderWidth=1
+        seeAllLbl.textColor = .white
+        seeAllLbl.textAlignment = .center
+        seeAllLbl.layer.borderColor=UIColor.gray.cgColor
         
         let tapGesture=UITapGestureRecognizer(target:self, action:#selector(headerTapped))
         headerView.addGestureRecognizer(tapGesture)
@@ -172,7 +174,7 @@ class HomeViewController: BaseViewController, PlayerViewControllerDelegate
         headerView.addSubview(seriesLbl)
         headerView.addSubview(titleLbl)
         headerView.addSubview(descriptionLbl)
-        headerView.addSubview(seeAllButton)
+        headerView.addSubview(seeAllLbl)
         
         return headerView
     }
