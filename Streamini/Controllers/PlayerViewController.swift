@@ -268,6 +268,7 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
     {
         if indexPath.section==2
         {
+            NotificationCenter.default.removeObserver(self, name:.MPMoviePlayerPlaybackDidFinish, object:player)
             stream=popularVideosArray[indexPath.row] as! Stream
             relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.none)
             addPlayer()
@@ -325,6 +326,7 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
     
     @IBAction func previous()
     {
+        NotificationCenter.default.removeObserver(self, name:.MPMoviePlayerPlaybackDidFinish, object:player)
         selectedItemIndex=selectedItemIndex-1
         stream=relatedVideosArray[selectedItemIndex] as! Stream
         relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0), IndexPath(row:0, section:1)], with:.none)
@@ -333,6 +335,7 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
     
     @IBAction func next()
     {
+        NotificationCenter.default.removeObserver(self, name:.MPMoviePlayerPlaybackDidFinish, object:player)
         selectedItemIndex=selectedItemIndex+1
         stream=relatedVideosArray[selectedItemIndex] as! Stream
         relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0), IndexPath(row:0, section:1)], with:.none)
@@ -347,6 +350,7 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
     
     func relatedVideoDidSelected(_ index:Int)
     {
+        NotificationCenter.default.removeObserver(self, name:.MPMoviePlayerPlaybackDidFinish, object:player)
         selectedItemIndex=index
         stream=relatedVideosArray[index] as! Stream
         relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0), IndexPath(row:0, section:1)], with:.none)
