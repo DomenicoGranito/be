@@ -34,7 +34,7 @@ class RelatedVideoCell: UITableViewCell
         
         let video=relatedVideosArray[indexPath.row] as! Stream
         
-        cell.durationLbl.frame=CGRect(x:10, y:127, width:70, height:20)
+        cell.durationLbl.frame=CGRect(x:10, y:80, width:60, height:20)
         
         if video.id==stream.id
         {
@@ -47,12 +47,11 @@ class RelatedVideoCell: UITableViewCell
         }
         else
         {
-            cell.durationLbl.frame=CGRect(x:10, y:127, width:50, height:20)
+            cell.durationLbl.frame=CGRect(x:10, y:80, width:40, height:20)
             cell.durationLbl.text=video.duration
         }
         
         cell.durationLbl.layer.borderColor=UIColor.white.cgColor
-        cell.categoryNameLbl.text=video.category.uppercased()
         cell.videoYearLbl.text="\(video.year) | \(video.city)".uppercased()
         cell.videoTitleLbl.text=video.title.uppercased()
         cell.followersCountLbl.text=video.user.name.uppercased()

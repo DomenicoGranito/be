@@ -180,7 +180,7 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
         }
         else if indexPath.section==1
         {
-            return 269
+            return 202
         }
         else
         {

@@ -9767,7 +9767,7 @@
                         <viewControllerLayoutGuide type="bottom" id="RfV-8Z-hN4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2Gk-3I-qeE" propertyAccessControl="none">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="1020"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="953"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x3m-xb-ajQ">
@@ -9865,7 +9865,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="410" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="bzF-1h-J8J">
-                                <rect key="frame" x="0.0" y="161" width="320" height="859"/>
+                                <rect key="frame" x="0.0" y="161" width="320" height="792"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AboutVideoCell" rowHeight="410" id="6gZ-yn-C2f" customClass="AboutVideoCell" customModule="Streamini" customModuleProvider="target">
@@ -10211,40 +10211,40 @@
                                             <outlet property="yearLbl" destination="4OD-Hm-dFC" id="Jli-eP-aGl"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="269" id="eJK-pQ-I4b" customClass="RelatedVideoCell" customModule="Streamini" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="465.5" width="320" height="269"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="202" id="eJK-pQ-I4b" customClass="RelatedVideoCell" customModule="Streamini" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="465.5" width="320" height="202"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eJK-pQ-I4b" id="Hmk-Ki-rbI">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="269"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="202"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7nA-iz-hZ7">
-                                                    <rect key="frame" x="0.0" y="13" width="320" height="242"/>
+                                                    <rect key="frame" x="0.0" y="13" width="320" height="175"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="15" minimumInteritemSpacing="0.0" id="Pft-vE-XCt">
-                                                        <size key="itemSize" width="255" height="242"/>
+                                                        <size key="itemSize" width="180" height="175"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="videoCell" id="EGz-9k-a7H" customClass="VideoCell" customModule="Streamini" customModuleProvider="target">
-                                                            <rect key="frame" x="15" y="0.0" width="255" height="242"/>
+                                                            <rect key="frame" x="15" y="0.0" width="180" height="175"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                <rect key="frame" x="0.0" y="0.0" width="255" height="242"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="180" height="175"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XK7-Oy-j0a">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="255" height="157"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="180" height="110"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <color key="backgroundColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10:50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sF4-6y-Rfo">
-                                                                        <rect key="frame" x="10" y="127" width="50" height="20"/>
+                                                                        <rect key="frame" x="10" y="80" width="40" height="20"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <nil key="highlightedColor"/>
                                                                         <userDefinedRuntimeAttributes>
@@ -10253,35 +10253,27 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="category" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nar-tZ-7uY">
-                                                                        <rect key="frame" x="5" y="160" width="245" height="20"/>
-                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                        <color key="textColor" red="0.90588235289999997" green="0.80784313730000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="video title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="st8-pQ-sXT">
-                                                                        <rect key="frame" x="5" y="180" width="245" height="40"/>
+                                                                        <rect key="frame" x="5" y="135" width="170" height="40"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQQ-zP-le9">
-                                                                        <rect key="frame" x="5" y="220" width="120" height="22"/>
+                                                                        <rect key="frame" x="5" y="113" width="82.5" height="22"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                                                         <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="year | city" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qur-9P-cAa">
-                                                                        <rect key="frame" x="130" y="220" width="120" height="22"/>
+                                                                        <rect key="frame" x="92.5" y="113" width="82.5" height="22"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                                                         <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -10289,7 +10281,6 @@
                                                             </view>
                                                             <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                                                             <connections>
-                                                                <outlet property="categoryNameLbl" destination="Nar-tZ-7uY" id="vWj-lz-BUP"/>
                                                                 <outlet property="durationLbl" destination="sF4-6y-Rfo" id="oHT-pF-KEX"/>
                                                                 <outlet property="followersCountLbl" destination="kQQ-zP-le9" id="SIS-Md-le9"/>
                                                                 <outlet property="videoThumbnailImageView" destination="XK7-Oy-j0a" id="FXJ-JU-F42"/>
@@ -10318,7 +10309,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RelatedVideoCell" rowHeight="180" id="sgH-88-2ab" customClass="RecentlyPlayedCell" customModule="Streamini" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="734.5" width="320" height="180"/>
+                                        <rect key="frame" x="0.0" y="667.5" width="320" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sgH-88-2ab" id="EiW-qo-xlC">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
@@ -10412,7 +10403,7 @@
                     <navigationItem key="navigationItem" id="Iaw-EH-6oo"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <size key="freeformSize" width="320" height="1020"/>
+                    <size key="freeformSize" width="320" height="953"/>
                     <connections>
                         <outlet property="fullScreenButton" destination="ht2-jX-cl4" id="zJi-i5-hNe"/>
                         <outlet property="nextButton" destination="fk7-B6-6JJ" id="cx1-id-hjI"/>
