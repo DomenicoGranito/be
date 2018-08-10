@@ -17,6 +17,7 @@ class RecentlyPlayedCell:UITableViewCell
     @IBOutlet var userImageView:UIImageView!
     @IBOutlet var shareButton:UIButton!
     @IBOutlet var likeButton:UIButton!
+    @IBOutlet var durationLbl:UILabel!
     
     var stream:Stream!
     

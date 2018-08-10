@@ -595,6 +595,7 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
             oneVideo.city=video["city"] as! String
             oneVideo.brand=video["brand"] as! String
             oneVideo.venue=video["venue"] as! String
+            oneVideo.duration=video["duration"] as! String
             oneVideo.cid=video["cid"] as! Int
             oneVideo.category=video["category"] as! String
             oneVideo.PRAgency=video["pr_agency"] as! String
