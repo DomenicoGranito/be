@@ -254,6 +254,8 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
             
             let stream=popularVideosArray[indexPath.row] as! Stream
             
+            cell.durationLbl.layer.borderColor=UIColor.white.cgColor
+            cell.durationLbl.text=stream.duration
             cell.videoTitleLbl.text=stream.title.uppercased()
             cell.videoTitleLbl.addCharacterSpacing()
             cell.artistNameLbl.text=stream.category.uppercased()

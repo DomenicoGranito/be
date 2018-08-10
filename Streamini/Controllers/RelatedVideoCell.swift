@@ -33,6 +33,8 @@ class RelatedVideoCell: UITableViewCell
         
         let video=relatedVideosArray[indexPath.row] as! Stream
         
+        cell.durationLbl.layer.borderColor=UIColor.white.cgColor
+        cell.durationLbl.text=video.duration
         cell.categoryNameLbl.text=video.category.uppercased()
         cell.videoYearLbl.text="\(video.year) | \(video.city)".uppercased()
         cell.videoTitleLbl.text=video.title.uppercased()
