@@ -31,7 +31,6 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
     var TBVC:TabBarViewController!
     var player:DWMoviePlayerController!
     var stream:Stream!
-    var originalStream:Stream!
     var appDelegate:AppDelegate!
     var page=0
     var timer:Timer!
@@ -71,8 +70,6 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
         NotificationCenter.default.addObserver(self, selector:#selector(onDeviceOrientationChange), name:.UIDeviceOrientationDidChange, object:nil)
         
         appDelegate=UIApplication.shared.delegate as! AppDelegate
-        
-        originalStream=stream
         
         relatedVideosTbl.addInfiniteScrolling{()->() in
             self.fetchMorePopularVideos()
@@ -328,15 +325,15 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
     @IBAction func previous()
     {
         selectedItemIndex=selectedItemIndex-1
-        stream=selectedItemIndex==0 ? originalStream : relatedVideosArray[selectedItemIndex-1] as! Stream
+        stream=relatedVideosArray[selectedItemIndex] as! Stream
         relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.none)
         addPlayer()
     }
     
     @IBAction func next()
     {
-        stream=relatedVideosArray[selectedItemIndex] as! Stream
         selectedItemIndex=selectedItemIndex+1
+        stream=relatedVideosArray[selectedItemIndex] as! Stream
         relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.none)
         addPlayer()
     }
@@ -349,7 +346,7 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
     
     func relatedVideoDidSelected(_ index:Int)
     {
-        selectedItemIndex=index+1
+        selectedItemIndex=index
         stream=relatedVideosArray[index] as! Stream
         relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.none)
         addPlayer()
@@ -545,7 +542,7 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
             previousButton.isEnabled=false
         }
         
-        if selectedItemIndex==relatedVideosArray.count
+        if selectedItemIndex==relatedVideosArray.count-1
         {
             nextButton.isEnabled=false
         }
