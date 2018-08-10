@@ -403,8 +403,14 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
         view.sendSubview(toBack:player.view)
         
         NotificationCenter.default.addObserver(self, selector:#selector(moviePlayerDurationAvailable), name:.MPMovieDurationAvailable, object:player)
+        NotificationCenter.default.addObserver(self, selector:#selector(movieFinish), name:.MPMoviePlayerPlaybackDidFinish, object:player)
         
         Timer.scheduledTimer(timeInterval:1, target:self, selector:#selector(timerHandler), userInfo:nil, repeats:true)
+    }
+    
+    func movieFinish()
+    {
+        next()
     }
     
     func moviePlayerDurationAvailable()
