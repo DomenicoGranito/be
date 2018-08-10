@@ -14,7 +14,7 @@ class RelatedVideoCell: UITableViewCell
     var relatedVideosArray:NSArray!
     let site=Config.shared.site()
     var page=0
-    var categoryID:Int!
+    var stream:Stream!
     var isMoreData=true
     
     func reloadCollectionView()
@@ -64,7 +64,7 @@ class RelatedVideoCell: UITableViewCell
     func fetchMore()
     {
         page+=1
-        StreamConnector().categoryStreams(false, true, categoryID, page, fetchMoreSuccess, failureStream)
+        StreamConnector().categoryStreams(false, true, stream.cid, page, fetchMoreSuccess, failureStream)
     }
     
     func fetchMoreSuccess(data:NSDictionary)

@@ -243,7 +243,7 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
             let cell=tableView.dequeueReusableCell(withIdentifier:"cell") as! RelatedVideoCell
             
             cell.relatedVideosArray=relatedVideosArray
-            cell.categoryID=stream.cid
+            cell.stream=stream
             cell.delegate=self
             
             return cell
