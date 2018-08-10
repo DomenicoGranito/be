@@ -34,6 +34,8 @@ class RelatedVideoCell: UITableViewCell
         
         let video=relatedVideosArray[indexPath.row] as! Stream
         
+        cell.durationLbl.frame=CGRect(x:10, y:127, width:70, height:20)
+        
         if video.id==stream.id
         {
             nextVideoIndex=indexPath.row+1
@@ -45,6 +47,7 @@ class RelatedVideoCell: UITableViewCell
         }
         else
         {
+            cell.durationLbl.frame=CGRect(x:10, y:127, width:50, height:20)
             cell.durationLbl.text=video.duration
         }
         

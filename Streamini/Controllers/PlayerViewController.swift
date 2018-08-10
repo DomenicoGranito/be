@@ -242,6 +242,7 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
             cell.relatedVideosArray=relatedVideosArray
             cell.stream=stream
             cell.delegate=self
+            cell.reloadCollectionView()
             
             return cell
         }
@@ -542,7 +543,7 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
             previousButton.isEnabled=false
         }
         
-        if selectedItemIndex==relatedVideosArray.count-1
+        if selectedItemIndex==relatedVideosArray.count-1||relatedVideosArray.count==0
         {
             nextButton.isEnabled=false
         }
