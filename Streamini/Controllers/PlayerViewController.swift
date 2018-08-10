@@ -34,6 +34,7 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
     var originalStream:Stream!
     var appDelegate:AppDelegate!
     var page=0
+    var timer:Timer!
     var selectedItemIndex=0
     var homeClassReference:HomeViewController?
     var categoryClassReference:CategoriesViewController?
@@ -43,6 +44,8 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad()
     {
+        timer=Timer.scheduledTimer(timeInterval:5, target:self, selector:#selector(hideButtons), userInfo:nil, repeats:true)
+        
         relatedVideosTbl.delegate=self
         relatedVideosTbl.dataSource=self
         
@@ -107,6 +110,25 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
         player.pause()
         
         appDelegate.shouldRotate=false
+    }
+    
+    func hideButtons()
+    {
+        previousButton.isHidden=true
+        playButton.isHidden=true
+        nextButton.isHidden=true
+        fullScreenButton.isHidden=true
+    }
+    
+    override func touchesBegan(_ touches:Set<UITouch>, with event:UIEvent?)
+    {
+        previousButton.isHidden=false
+        playButton.isHidden=false
+        nextButton.isHidden=false
+        fullScreenButton.isHidden=false
+        
+        timer.invalidate()
+        timer=Timer.scheduledTimer(timeInterval:5, target:self, selector:#selector(hideButtons), userInfo:nil, repeats:true)
     }
     
     func fetchMorePopularVideos()
