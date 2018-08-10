@@ -39,6 +39,7 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
     var categoryClassReference:CategoriesViewController?
     var channelClassReference:ChannelsViewController?
     var canExpand=true
+    var layer:CAGradientLayer!
     
     override func viewDidLoad()
     {
@@ -176,6 +177,27 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
             
             cell.channelButton.addTarget(self, action:#selector(goToChannel), for:.touchUpInside)
             cell.shareButton.addTarget(self, action:#selector(share), for:.touchUpInside)
+            
+            if canExpand
+            {
+                cell.expandButton.setTitle("Read more", for:.normal)
+                if layer==nil
+                {
+                    layer=CAGradientLayer()
+                    layer.frame=cell.infoView.bounds
+                    layer.colors=[UIColor(red:19/255, green:19/255, blue:19/255, alpha:1).cgColor]
+                    cell.infoView.layer.insertSublayer(layer, at:0)
+                }
+            }
+            else
+            {
+                cell.expandButton.setTitle("Pick up", for:.normal)
+                if layer != nil
+                {
+                    layer.removeFromSuperlayer()
+                    layer=nil
+                }
+            }
             
             if let obj=homeClassReference
             {

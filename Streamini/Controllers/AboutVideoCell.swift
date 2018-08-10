@@ -32,6 +32,8 @@ class AboutVideoCell: UITableViewCell
     @IBOutlet var userImageView:UIImageView!
     @IBOutlet var likeButton:UIButton!
     @IBOutlet var shareButton:UIButton!
+    @IBOutlet var expandButton:UIButton!
+    @IBOutlet var infoView:UIView!
     
     var delegate:PlayerViewControllerDelegate!
     var stream:Stream!

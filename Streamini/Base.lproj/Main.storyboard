@@ -9930,7 +9930,7 @@
                                                             </connections>
                                                         </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="QrG-lp-7Vn" secondAttribute="trailing" constant="10" id="OxC-LN-37Y"/>
                                                         <constraint firstAttribute="height" constant="60" id="VWk-p7-7zT"/>
@@ -10117,7 +10117,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="0.074509803921568626" green="0.074509803921568626" blue="0.074509803921568626" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2pf-yB-2Db">
                                                     <rect key="frame" x="0.0" y="360" width="320" height="50"/>
@@ -10136,10 +10136,10 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kY0-Ng-4Fn">
-                                                            <rect key="frame" x="129.5" y="11.5" width="61" height="27"/>
+                                                            <rect key="frame" x="139" y="11.5" width="42" height="27"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <state key="normal" title="Read more">
+                                                            <state key="normal" title="Pick up">
                                                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
@@ -10157,7 +10157,8 @@
                                                             </state>
                                                         </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.074509803920000006" green="0.074509803920000006" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="lE3-ap-mq9" secondAttribute="bottom" constant="10" id="0P1-Sa-lHK"/>
                                                         <constraint firstAttribute="bottom" secondItem="BAK-na-pe3" secondAttribute="bottom" constant="10" id="9Ip-S1-tou"/>
@@ -10194,7 +10195,9 @@
                                             <outlet property="channelButton" destination="SXF-c8-LFs" id="4k8-UQ-X2O"/>
                                             <outlet property="cityLbl" destination="VPF-2j-BSL" id="6m5-Ww-DqI"/>
                                             <outlet property="eventAgencyLbl" destination="vkP-Va-uhC" id="DJW-pA-735"/>
+                                            <outlet property="expandButton" destination="kY0-Ng-4Fn" id="gWV-ig-L81"/>
                                             <outlet property="followersCountLbl" destination="edG-ht-dft" id="Pgm-df-KKk"/>
+                                            <outlet property="infoView" destination="aN9-Xw-K5y" id="R4d-Sw-SdE"/>
                                             <outlet property="likeButton" destination="BAK-na-pe3" id="Aev-gn-HHO"/>
                                             <outlet property="musicAgencyLbl" destination="0mQ-Io-jEE" id="e76-xe-YlS"/>
                                             <outlet property="shareButton" destination="lE3-ap-mq9" id="V6O-Kc-LGf"/>
@@ -10271,7 +10274,7 @@
                                                                     </label>
                                                                 </subviews>
                                                             </view>
-                                                            <color key="backgroundColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                                                             <connections>
                                                                 <outlet property="categoryNameLbl" destination="Nar-tZ-7uY" id="vWj-lz-BUP"/>
                                                                 <outlet property="followersCountLbl" destination="kQQ-zP-le9" id="SIS-Md-le9"/>
@@ -10331,7 +10334,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="ZBh-W8-BWI" secondAttribute="bottom" id="07Q-B7-Kc5"/>
                                                         <constraint firstItem="xfD-7M-CXc" firstAttribute="top" secondItem="8Ch-ku-edR" secondAttribute="top" constant="5" id="7BQ-lW-apN"/>
