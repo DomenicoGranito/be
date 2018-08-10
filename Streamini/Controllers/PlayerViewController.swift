@@ -326,7 +326,7 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
     {
         selectedItemIndex=selectedItemIndex-1
         stream=relatedVideosArray[selectedItemIndex] as! Stream
-        relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.none)
+        relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0), IndexPath(row:0, section:1)], with:.none)
         addPlayer()
     }
     
@@ -334,7 +334,7 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
     {
         selectedItemIndex=selectedItemIndex+1
         stream=relatedVideosArray[selectedItemIndex] as! Stream
-        relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.none)
+        relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0), IndexPath(row:0, section:1)], with:.none)
         addPlayer()
     }
     
@@ -348,7 +348,7 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
     {
         selectedItemIndex=index
         stream=relatedVideosArray[index] as! Stream
-        relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0)], with:.none)
+        relatedVideosTbl.reloadRows(at:[IndexPath(row:0, section:0), IndexPath(row:0, section:1)], with:.none)
         addPlayer()
     }
     

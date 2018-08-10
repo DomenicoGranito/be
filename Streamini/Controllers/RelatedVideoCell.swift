@@ -14,6 +14,7 @@ class RelatedVideoCell: UITableViewCell
     var relatedVideosArray:NSArray!
     let site=Config.shared.site()
     var page=0
+    var nextVideoIndex=0
     var stream:Stream!
     var isMoreData=true
     
@@ -33,8 +34,21 @@ class RelatedVideoCell: UITableViewCell
         
         let video=relatedVideosArray[indexPath.row] as! Stream
         
+        if video.id==stream.id
+        {
+            nextVideoIndex=indexPath.row+1
+            cell.durationLbl.text="PLAYING"
+        }
+        else if indexPath.row==nextVideoIndex
+        {
+            cell.durationLbl.text="UPNEXT"
+        }
+        else
+        {
+            cell.durationLbl.text=video.duration
+        }
+        
         cell.durationLbl.layer.borderColor=UIColor.white.cgColor
-        cell.durationLbl.text=video.duration
         cell.categoryNameLbl.text=video.category.uppercased()
         cell.videoYearLbl.text="\(video.year) | \(video.city)".uppercased()
         cell.videoTitleLbl.text=video.title.uppercased()
