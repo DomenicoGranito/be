@@ -18,7 +18,6 @@ class ChannelCell: UITableViewCell
     var TBVC:TabBarViewController!
     var channelClassReference:ChannelsViewController!
     var userVideosArray:NSArray!
-    let site=Config.shared.site()
     let storyboard=UIStoryboard(name:"Main", bundle:nil)
     
     func update(_ user:User)
@@ -104,7 +103,7 @@ class ChannelCell: UITableViewCell
         cell.videoYearLbl.text="\(video.year) | \(video.city)".uppercased()
         cell.videoTitleLbl.text=video.title.uppercased()
         cell.followersCountLbl.text=video.user.name.uppercased()
-        cell.videoThumbnailImageView.sd_setImage(with:URL(string:"\(site)/thumb/\(video.id).jpg"), placeholderImage:UIImage(named:"videostream"))
+        cell.videoThumbnailImageView.sd_setImage(with:URL(string:"\(video.imgUrl)"), placeholderImage:UIImage(named:"videostream"))
         
         let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
         cell.tag=indexPath.row
