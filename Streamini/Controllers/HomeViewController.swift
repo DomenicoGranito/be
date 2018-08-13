@@ -167,10 +167,14 @@ class HomeViewController: BaseViewController, PlayerViewControllerDelegate
         seeAllLbl.textAlignment = .center
         seeAllLbl.layer.borderColor=UIColor.gray.cgColor
         
+        let categoryImageView=UIImageView(frame:CGRect(x:0, y:0, width:view.frame.size.width, height:190))
+        categoryImageView.sd_setImage(with:URL(string:"\(site)/media/categories/\(categoryIDsArray[section]).jpg"))
+        
         let tapGesture=UITapGestureRecognizer(target:self, action:#selector(headerTapped))
         headerView.addGestureRecognizer(tapGesture)
         headerView.tag=section
         
+        headerView.addSubview(categoryImageView)
         headerView.addSubview(seriesLbl)
         headerView.addSubview(titleLbl)
         headerView.addSubview(descriptionLbl)
