@@ -110,7 +110,7 @@ class CategoriesViewController: BaseViewController, PlayerViewControllerDelegate
         cell.userImageView.layer.shadowOpacity=1
         cell.userImageView.sd_setImage(with:URL(string:"\(site)/uploads/\(video.user.id)-avatar.jpg"), placeholderImage:UIImage(named:"profile"))
         
-        cell.videoThumbnailImageView.sd_setImage(with:URL(string:"\(site)/thumb/\(video.id).jpg"), placeholderImage:UIImage(named:"videostream"))
+        cell.videoThumbnailImageView.sd_setImage(with:URL(string:"\(video.imgUrl)"), placeholderImage:UIImage(named:"videostream"))
         
         cell.shareButton.addTarget(self, action:#selector(share), for:.touchUpInside)
         cell.shareButton.tag=indexPath.row
@@ -192,6 +192,7 @@ class CategoriesViewController: BaseViewController, PlayerViewControllerDelegate
             oneVideo.city=video["city"] as! String
             oneVideo.brand=video["brand"] as! String
             oneVideo.venue=video["venue"] as! String
+            oneVideo.imgUrl=video["imgUrl"] as! String
             oneVideo.cid=video["cid"] as! Int
             oneVideo.category=video["category"] as! String
             oneVideo.PRAgency=video["pr_agency"] as! String
