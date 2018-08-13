@@ -26,6 +26,7 @@ class Stream: NSObject
     var talentAgency = ""
     var streamHash = ""
     var duration = ""
+    var imgUrl = ""
     var lon: Double = 0
     var lat: Double = 0
     var city = ""

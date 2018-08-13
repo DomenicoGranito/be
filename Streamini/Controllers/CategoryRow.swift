@@ -12,7 +12,6 @@ class CategoryRow: UITableViewCell
     
     var oneCategoryItemsArray:NSArray!
     var TBVC:TabBarViewController!
-    let site=Config.shared.site()
     var categoryName:String!
     var categoryID:Int!
     let storyboard=UIStoryboard(name:"Main", bundle:nil)
@@ -49,7 +48,7 @@ class CategoryRow: UITableViewCell
         cell.videoYearLbl.text="\(stream.year) | \(stream.city)".uppercased()
         cell.videoTitleLbl.text=stream.title.uppercased()
         cell.followersCountLbl.text=stream.user.name.uppercased()
-        cell.videoThumbnailImageView.sd_setImage(with:URL(string:"\(site)/thumb/\(stream.id).jpg"), placeholderImage:UIImage(named:"videostream"))
+        cell.videoThumbnailImageView.sd_setImage(with:URL(string:"\(stream.imgUrl)"), placeholderImage:UIImage(named:"videostream"))
         
         if categoryName=="live"
         {
