@@ -12,7 +12,6 @@ class RelatedVideoCell: UITableViewCell
     
     var delegate:RelatedVideoSelecting!
     var relatedVideosArray:NSArray!
-    let site=Config.shared.site()
     var page=0
     var nextVideoIndex=0
     var stream:Stream!
@@ -55,7 +54,7 @@ class RelatedVideoCell: UITableViewCell
         cell.videoYearLbl.text="\(video.year) | \(video.city)".uppercased()
         cell.videoTitleLbl.text=video.title.uppercased()
         cell.followersCountLbl.text=video.user.name.uppercased()
-        cell.videoThumbnailImageView.sd_setImage(with:URL(string:"\(site)/thumb/\(video.id).jpg"), placeholderImage:UIImage(named:"videostream"))
+        cell.videoThumbnailImageView.sd_setImage(with:URL(string:"\(video.imgUrl)"), placeholderImage:UIImage(named:"videostream"))
         
         let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
         cell.tag=indexPath.row
@@ -126,6 +125,7 @@ class RelatedVideoCell: UITableViewCell
             oneVideo.city=video["city"] as! String
             oneVideo.brand=video["brand"] as! String
             oneVideo.venue=video["venue"] as! String
+            oneVideo.imgUrl=video["imgUrl"] as! String
             oneVideo.duration=video["duration"] as! String
             oneVideo.cid=video["cid"] as! Int
             oneVideo.category=video["category"] as! String

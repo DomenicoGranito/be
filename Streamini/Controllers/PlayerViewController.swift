@@ -24,7 +24,6 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
     @IBOutlet var relatedVideosTbl:UITableView!
     @IBOutlet var playerHeightConstraint:NSLayoutConstraint!
     
-    let site=Config.shared.site()
     var relatedVideosArray=NSMutableArray()
     var popularVideosArray=NSMutableArray()
     var isPlaying=true
@@ -258,7 +257,7 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
             cell.videoTitleLbl.addCharacterSpacing()
             cell.artistNameLbl.text=stream.category.uppercased()
             cell.artistNameLbl.addCharacterSpacing()
-            cell.videoThumbnailImageView.sd_setImage(with:URL(string:"\(site)/thumb/\(stream.id).jpg"), placeholderImage:UIImage(named:"stream"))
+            cell.videoThumbnailImageView.sd_setImage(with:URL(string:"\(stream.imgUrl)"), placeholderImage:UIImage(named:"stream"))
             
             return cell
         }
@@ -605,6 +604,7 @@ class PlayerViewController: BaseViewController, UITableViewDelegate, UITableView
             oneVideo.city=video["city"] as! String
             oneVideo.brand=video["brand"] as! String
             oneVideo.venue=video["venue"] as! String
+            oneVideo.imgUrl=video["imgUrl"] as! String
             oneVideo.duration=video["duration"] as! String
             oneVideo.cid=video["cid"] as! Int
             oneVideo.category=video["category"] as! String
